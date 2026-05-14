@@ -1,0 +1,990 @@
+{
+  "book": {
+    "detected_title": "Ginger the Giraffe",
+    "language": "tr",
+    "analysis_confidence": 0.95
+  },
+  "page_ordering": {
+    "ordering_method": "narrative_inference",
+    "confidence": 0.98
+  },
+  "pages": [
+    {
+      "page_id": "page_1",
+      "page_number": 1,
+      "order_index": 1,
+      "order_confidence": 1,
+      "full_text": "Zürafa Ginger\nYazan: T. Albert\nResimleyen: maaillustrations.com",
+      "primary_scene_hint": "cover",
+      "dominant_visual": "A tall giraffe standing in the rain with other savannah animals.",
+      "mood": "magical"
+    },
+    {
+      "page_id": "page_4",
+      "page_number": 4,
+      "order_index": 4,
+      "order_confidence": 0.98,
+      "full_text": "Bir varmış bir yokmuş, Ginger adında bir zürafa varmış. Ginger, Afrika'daki Kenya ülkesinde yaşarmış. Tüm zürafalar gibi Ginger'ın da uzun bir boynu ve uzun bacakları varmış. O kadar uzun olduğu için savandaki ağaçların en tepesinden yiyecek yiyebilirmiş. Afrika'daki savan, çok sayıda otun ve birkaç ağacın bulunduğu bir bölgedir. Bazen savana çayırlık da denir. Zebralar ve antiloplar gibi diğer hayvanlar Ginger'ın ulaşabildiği yere ulaşamazmış. Ama Ginger her zaman yiyecek bulurmuş. Ağaçların yapraklarını ve yeni tomurcuklarını çok severmiş.",
+      "primary_scene_hint": "intro",
+      "dominant_visual": "Two giraffes standing on a sunny savannah eating from tall trees.",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_5",
+      "page_number": 5,
+      "order_index": 5,
+      "order_confidence": 0.98,
+      "full_text": "Bir gün Ginger, diğer bazı zürafalarla birlikte en sevdiği yaprakları yemekle meşgulmüş. Pırıl pırıl güneşli bir gündü ve gökyüzünde tek bir bulut bile yoktu. Uzun zamandır yağmur yağmamıştı, bu yüzden otlar çok kuruydu. Upuzun bacaklarının dibinden bir ses duydu: arkadaşı Maymun Mickey'di. Mickey bir şeyler söylemeye çalışıyordu ama Ginger ne dediğini anlayamadı. Çok yorgun görünüyordu. 'Neyin var?' diye sordu Ginger. Ginger çok kibar bir zürafaydı ve herkese yardım etmek isterdi. Tam o sırada Mickey yıkıldı!",
+      "primary_scene_hint": "mickey_falls",
+      "dominant_visual": "Ginger looking down at Mickey the Monkey sitting tiredly on the dry grass.",
+      "mood": "suspenseful"
+    },
+    {
+      "page_id": "page_6",
+      "page_number": 6,
+      "order_index": 6,
+      "order_confidence": 0.98,
+      "full_text": "Ginger aynı zamanda akıllı bir zürafaydı. Sorunun ne olduğunu biliyordu. Mickey yiyecek bir şey bulamamış ve çok acıkmıştı. Ginger, yemek yediği ağacın tepesinden taze, körpe yapraklar ve tomurcuklar kopardı. Yaprakların ve tomurcukların bir kısmını Mickey'nin yanına, yere düşürdü. Sonra upuzun bacaklarından birinin ucundaki toynağıyla onu hafifçe dürttü. 'Uyan, Mickey!' dedi Ginger. 'Sana yiyecek bir şey buldum.' Mickey yavaşça doğruldu ve biraz yedi.",
+      "primary_scene_hint": "feeding_mickey",
+      "dominant_visual": "Ginger dropping leaves from the tree to a hungry Mickey.",
+      "mood": "warm"
+    },
+    {
+      "page_id": "page_7",
+      "page_number": 7,
+      "order_index": 7,
+      "order_confidence": 0.98,
+      "full_text": "Bir süre sonra Mickey kendini daha iyi hissedince, Ginger ona sordu: 'Ne oldu Mickey? Neden bu kadar açsın? Neden yiyecek bir şey bulamıyorsun?' Mickey, 'Uzun zamandır yağmur yağmadı ve artık yiyecek kalmadı,' dedi. 'Bu hiç iyi değil,' dedi Ginger. 'Diğer hayvanlara neler oluyor?' 'Kimse ne yapacağını bilmiyor,' diye cevapladı Mickey. 'Bütün zebralar, antiloplar ve filler kuru otlar yüzünden endişeleniyor. Bazıları savanı terk edip ormana ulaşmayı düşünüyor.' 'Bu uzun bir yolculuk,' dedi Ginger. 'Sen de onlarla gidecek misin?'",
+      "primary_scene_hint": "drought_talk",
+      "dominant_visual": "Ginger and Mickey conversing under a single tree in the dry savannah.",
+      "mood": "mysterious"
+    },
+    {
+      "page_id": "page_8",
+      "page_number": 8,
+      "order_index": 8,
+      "order_confidence": 0.98,
+      "full_text": "'Bilmiyorum,' diye cevapladı Mickey. 'Sence ne yapmalıyız?' Ginger bir süre düşündü ve sonra birden aklına iyi bir fikir geldi. 'Aslan Leo ile konuşmaya gitmeliyiz. O savandaki en akıllı hayvandır!' Mickey yürüyemeyecek kadar yorgundu, bu yüzden Ginger onu sırtına almayı teklif etti. 'Boynuma sıkıca tutun,' dedi Ginger. 'Tutunacak çok yer var,' diye şaka yaptı Mickey. Ginger güldü. 'Haklısın. Afrika'nın en uzun boynu bende!' Böylece Leo'yu aramak için savanın diğer tarafına doğru yolculuklarına başladılar.",
+      "primary_scene_hint": "journey_starts",
+      "dominant_visual": "Mickey riding on Ginger's neck across the plains.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_9",
+      "page_number": 9,
+      "order_index": 9,
+      "order_confidence": 0.98,
+      "full_text": "Ginger ve Mickey şanslıydı! Leo bir kayanın üzerinde oturuyordu ve otların arasında yürürlerken onu görmek çok kolaydı. 'Merhaba Leo!' diye birlikte bağırdılar. Leo kestiriyordu ve onu uyandırdıklarında biraz huysuzlaştı. Ama nazikti ve şöyle dedi: 'Merhaba Ginger ve Mickey. Bütün savanı yürüyerek geçtiniz mi? Sırf beni uyandırmak için mi?' Ama şaka yapıyordu; yüzünde bir gülümseme vardı. 'Mickey, çok kurak olduğu için savanda yiyecek kalmadığını söylüyor,' dedi Ginger. 'Aklına bir fikir geliyor mu?'",
+      "primary_scene_hint": "meeting_leo",
+      "dominant_visual": "Leo the Lion yawning on a rock while Ginger and Mickey watch.",
+      "mood": "warm"
+    },
+    {
+      "page_id": "page_10",
+      "page_number": 10,
+      "order_index": 10,
+      "order_confidence": 0.98,
+      "full_text": "Leo bir süre düşündü. 'Yağmur konusunda yapabileceğimiz bir şey yok,' dedi. 'Yakında gelecek ama ne zaman geleceğinden emin olamayız. Yağmur geldiğinde tüm bitkiler yeniden büyüyecek ve herkese bol bol yiyecek olacak.' Biraz daha düşündü. 'Aklıma gelen tek şey, herkesin ormana yaklaşması,' diye devam etti. 'Orada yiyecek daha çok şey olacak, ama uzun bir yolculuk olduğunu ve pek kolay olmayacağını biliyorum. Oraya ulaşmak günler sürebilir.'",
+      "primary_scene_hint": "leo_advice",
+      "dominant_visual": "Leo sitting seriously on his rock giving advice to Ginger and Mickey.",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_11",
+      "page_number": 11,
+      "order_index": 11,
+      "order_confidence": 0.98,
+      "full_text": "Ginger ve Mickey birbirlerine baktılar ve sonra tekrar Leo'ya döndüler. 'Teşekkürler Leo,' dedi Ginger. 'Hepsinin ormana yaklaşmaya çalışması en iyisi olacak galiba.' Vedalaştılar ve savanı geçerek geri yürüdüler. Şimdi uzun yolculuğa başlamak için tüm hayvanları bir araya toplamaları gerekiyordu. Ginger'ın gitmesine gerek yoktu çünkü yüksek ağaçlarında bol bol yiyeceği vardı. Ama o iyi bir arkadaştı ve elinden geldiğince yardım etmek istiyordu. En sevdiği ağaçlara doğru yürüdüler ve tahmin edin Mickey ile ne gördüler?",
+      "primary_scene_hint": "return_journey",
+      "dominant_visual": "Ginger and Mickey walking away from Leo's rock into the distance.",
+      "mood": "adventurous"
+    },
+    {
+      "page_id": "page_12",
+      "page_number": 12,
+      "order_index": 12,
+      "order_confidence": 0.98,
+      "full_text": "Tüm hayvanlar çoktan orada toplanmış, Ginger ile Mickey'i bekliyordu! 'Neden hepiniz buradasınız?' diye sordu Ginger. 'Kartal Eddie bize, bizi ormanın kenarına götüreceğinizi söyledi,' dedi zebralardan biri. 'O nereden biliyor?' diye sordu Mickey. 'Sizin Leo ile konuşmanızı duydu,' dedi antiloplardan biri. 'Yani hepiniz birlikte ormana yürümeye karar mı verdiniz?' diye sordu Ginger. 'Evet,' diye cevap verdiler hep birlikte. 'Eğer oraya ulaşmamıza yardım edersen,' diye ekledi fillerden biri. 'Tabii ki yardım ederim,' dedi Ginger. 'Ben sizin arkadaşınızım.'",
+      "primary_scene_hint": "animal_gathering",
+      "dominant_visual": "A large group of savannah animals, including elephants, zebras, and antelopes, gathered around Ginger.",
+      "mood": "warm"
+    },
+    {
+      "page_id": "page_13",
+      "page_number": 13,
+      "order_index": 13,
+      "order_confidence": 0.98,
+      "full_text": "Böylece savanı geçerek ormana doğru büyük yolculuklarına başladılar. Güneş çok sıcaktı, yiyecek yoktu ve su içecek bir yer de yoktu. Ve sonra onu duydular. Bu gök gürültüsüydü! 'Gök gürültüsü!' diye bağırdılar hep birlikte. Gök gürültüsü savan hayvanları için çok korkutucuydu. Neden, tahmin edebilir misiniz? Yangın! Bazen yıldırım kuru otlara çarpar ve bütün savan alev alır. O zaman herkesin kaçması gerekir. Ve tam da bu oldu. 'Yangın!' diye bağırdılar. Kokusunu alabiliyorlardı. Ve şimdi görebiliyorlardı. Yangın onlara doğru geliyordu!",
+      "primary_scene_hint": "fire_danger",
+      "dominant_visual": "Dark storm clouds, lightning strikes, and fires erupting in the dry savannah grass.",
+      "mood": "suspenseful"
+    },
+    {
+      "page_id": "page_14",
+      "page_number": 14,
+      "order_index": 14,
+      "order_confidence": 0.98,
+      "full_text": "Ginger hızlı düşünmek zorundaydı. Çok uzun olduğu için diğer hayvanlardan daha uzağı görebiliyordu. Uzun boynunu olabildiğince yukarı uzattı. Şimdi yangın olmayan bir yer görebiliyordu. 'Çabuk!' dedi. 'Herkes bu tarafa koşsun.' Bütün hayvanlar onu takip etti ve olabildiğince hızlı koştular. Kısa süre sonra tehlikeden uzaklaştılar. Durdular ve bir kez daha bir araya toplandılar. 'Herkes burada mı?' diye sordu Ginger. Hepsinin güvende olduğundan emin olmak istedi. Bütün hayvanlar etraflarına baktılar; hepsi oradaydı.",
+      "primary_scene_hint": "escape",
+      "dominant_visual": "Ginger leading the animals away from the spreading fire under a dark sky.",
+      "mood": "adventurous"
+    },
+    {
+      "page_id": "page_15",
+      "page_number": 15,
+      "order_index": 15,
+      "order_confidence": 0.98,
+      "full_text": "Ve sonra en harika şey oldu. 'Bir damla hissettim,' dedi bir zebra. 'Ben de,' dedi bir antilop. Bu yağmurdu! Sonunda! Herkes çok mutluydu. Biraz daha, sonra biraz daha yağmaya başladı. Yağmur yangını söndürdü, böylece kaçmak zorunda kalmadılar. Yağmur su birikintilerini doldurdu ve bitkilerin yeniden büyümesini sağladı, böylece ormanın kenarına o uzun yolculuğu yapmak zorunda kalmadılar. Yakında herkesin yeterince yiyeceği ve suyu olacaktı. Böylece Zürafa Ginger en sevdiği ağaca geri döndü ve yaprakları ve tomurcukları yemeye devam etti.",
+      "primary_scene_hint": "rain_falls",
+      "dominant_visual": "Rain pouring down on the joyful animals and greening grass.",
+      "mood": "magical"
+    }
+  ],
+  "scene_graph": [
+    {
+      "scene_id": "scene_intro",
+      "pages": [
+        4
+      ],
+      "scene_summary": "Introduction to Ginger the Giraffe and her life in the sunny Kenyan savannah.",
+      "scene_type": "other",
+      "scene_mood": "calm",
+      "scene_energy": "low",
+      "narrative_phase": "intro",
+      "scene_duration_estimate_seconds": 45,
+      "scene_activation": {
+        "activation_mode": "hybrid",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "Once",
+              "time",
+              "giraffe"
+            ],
+            "secondary_keywords": [
+              "Ginger",
+              "Kenya"
+            ],
+            "semantic_intent": "story_start"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "new buds",
+              "trees"
+            ],
+            "semantic_intent": "page_end"
+          }
+        ],
+        "activation_confidence_threshold": 0.6,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_mickey_drought",
+        "transition_style": "crossfade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 3
+      },
+      "likely_next_scene": "scene_mickey_drought",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "garden_breeze",
+            "variant": "warm",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [
+          {
+            "sound_profile": {
+              "primary_sound": "birds",
+              "variant": "light",
+              "intensity": "low",
+              "texture": "natural",
+              "play_style": "loop"
+            }
+          }
+        ],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "calm",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "ao_leaves",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "ağaçların en tepesinden"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "yiyecek",
+              "ağaç",
+              "tepe"
+            ],
+            "secondary_keywords": [
+              "yaprak",
+              "tomurcuk"
+            ],
+            "semantic_intent": "munching_leaves"
+          },
+          "activation_window": {
+            "start_progress": 0.5,
+            "end_progress": 0.9
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "Soft crunching and rustling of eating fresh leaves.",
+          "sound_category": "environment",
+          "sound_profile": {
+            "primary_sound": "other",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 1,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_mickey_drought",
+      "pages": [
+        5,
+        6,
+        7
+      ],
+      "scene_summary": "Ginger finds Mickey the monkey tired and hungry due to the dry grass, and feeds him.",
+      "scene_type": "other",
+      "scene_mood": "warm",
+      "scene_energy": "low",
+      "narrative_phase": "build_up",
+      "scene_duration_estimate_seconds": 90,
+      "scene_activation": {
+        "activation_mode": "hybrid",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "One day",
+              "busy"
+            ],
+            "secondary_keywords": [
+              "eating",
+              "giraffes"
+            ],
+            "semantic_intent": "scene_start"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "Are you going",
+              "with them"
+            ],
+            "semantic_intent": "questioning_future"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_journey_leo",
+        "transition_style": "crossfade",
+        "audio_continuity": "continue",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_journey_leo",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "wind",
+            "variant": "warm",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [
+          {
+            "sound_profile": {
+              "primary_sound": "other",
+              "variant": "soft",
+              "intensity": "low",
+              "texture": "natural",
+              "play_style": "loop"
+            }
+          }
+        ],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "comfort",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "ao_mickey_falls",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "Mickey yıkıldı"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "düştü",
+              "yıkıldı"
+            ],
+            "secondary_keywords": [
+              "Mickey",
+              "tam o sırada"
+            ],
+            "semantic_intent": "character_falls"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.4
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "A soft, gentle thud in dry grass.",
+          "sound_category": "movement",
+          "sound_profile": {
+            "primary_sound": "other",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "suspenseful"
+        },
+        {
+          "id": "ao_mickey_eats",
+          "layer_role": "animal_vocalization",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "biraz yedi"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "doğruldu",
+              "yedi"
+            ],
+            "secondary_keywords": [
+              "yavaşça",
+              "Mickey"
+            ],
+            "semantic_intent": "monkey_recovering"
+          },
+          "activation_window": {
+            "start_progress": 0.4,
+            "end_progress": 0.7
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "Soft, happy monkey chatter as he eats.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "monkey_chatter",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.8,
+          "mix_level": "medium",
+          "emotional_tone": "warm"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_journey_leo",
+      "pages": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "scene_summary": "Ginger and Mickey travel to ask Leo the Lion for advice. Leo suggests moving to the forest.",
+      "scene_type": "other",
+      "scene_mood": "adventurous",
+      "scene_energy": "medium",
+      "narrative_phase": "build_up",
+      "scene_duration_estimate_seconds": 120,
+      "scene_activation": {
+        "activation_mode": "hybrid",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "don't know",
+              "Mickey"
+            ],
+            "secondary_keywords": [
+              "think",
+              "do"
+            ],
+            "semantic_intent": "discussion_starts"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "Mickey saw"
+            ],
+            "semantic_intent": "cliffhanger_discovery"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_animal_gathering",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_animal_gathering",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "garden_breeze",
+            "variant": "playful",
+            "intensity": "medium",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [
+          {
+            "sound_profile": {
+              "primary_sound": "birds",
+              "variant": "warm",
+              "intensity": "low",
+              "texture": "airy",
+              "play_style": "loop"
+            }
+          }
+        ],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "adventure",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "ao_leo_wakes",
+          "layer_role": "animal_vocalization",
+          "source": "both",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "onu uyandırdı"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "kestir",
+              "huysuz"
+            ],
+            "secondary_keywords": [
+              "uyandı",
+              "Leo"
+            ],
+            "semantic_intent": "lion_waking"
+          },
+          "activation_window": {
+            "start_progress": 0.2,
+            "end_progress": 0.6
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "A deep, soft, slightly grumpy lion yawn and rumble.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "lion_roar_soft",
+            "variant": "warm",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "mysterious"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_animal_gathering",
+      "pages": [
+        12
+      ],
+      "scene_summary": "The savannah animals are gathered, ready to follow Ginger to the jungle edge.",
+      "scene_type": "other",
+      "scene_mood": "warm",
+      "scene_energy": "medium",
+      "narrative_phase": "transition",
+      "scene_duration_estimate_seconds": 40,
+      "scene_activation": {
+        "activation_mode": "hybrid",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "already",
+              "gathered"
+            ],
+            "secondary_keywords": [
+              "animals",
+              "waiting"
+            ],
+            "semantic_intent": "group_meeting"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "your friend"
+            ],
+            "semantic_intent": "promise_to_help"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_fire_danger",
+        "transition_style": "darken",
+        "audio_continuity": "replace",
+        "transition_duration_seconds": 4
+      },
+      "likely_next_scene": "scene_fire_danger",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "birds",
+            "variant": "playful",
+            "intensity": "medium",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [
+          {
+            "sound_profile": {
+              "primary_sound": "other",
+              "variant": "warm",
+              "intensity": "low",
+              "texture": "natural",
+              "play_style": "loop"
+            }
+          }
+        ],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "wonder",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "ao_elephant_voice",
+          "layer_role": "animal_vocalization",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "fillerden biri"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "filler",
+              "ekledi"
+            ],
+            "secondary_keywords": [
+              "yardım",
+              "orada"
+            ],
+            "semantic_intent": "elephant_speaking"
+          },
+          "activation_window": {
+            "start_progress": 0.5,
+            "end_progress": 0.9
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "A distant, gentle elephant trumpet.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "other",
+            "variant": "gentle",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_fire_danger",
+      "pages": [
+        13,
+        14
+      ],
+      "scene_summary": "A sudden lightning strike starts a scary grass fire, but Ginger leads everyone to safety.",
+      "scene_type": "other",
+      "scene_mood": "suspenseful",
+      "scene_energy": "high",
+      "narrative_phase": "action",
+      "scene_duration_estimate_seconds": 70,
+      "scene_activation": {
+        "activation_mode": "hybrid",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "started",
+              "journey"
+            ],
+            "secondary_keywords": [
+              "big",
+              "sun"
+            ],
+            "semantic_intent": "journey_commences"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "all there",
+              "looked around"
+            ],
+            "semantic_intent": "safety_reached"
+          }
+        ],
+        "activation_confidence_threshold": 0.6,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_rain_ending",
+        "transition_style": "crossfade",
+        "audio_continuity": "replace",
+        "transition_duration_seconds": 4
+      },
+      "likely_next_scene": "scene_rain_ending",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "wind",
+            "variant": "mysterious",
+            "intensity": "high",
+            "texture": "dark",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [
+          {
+            "sound_profile": {
+              "primary_sound": "fireplace",
+              "variant": "mysterious",
+              "intensity": "medium",
+              "texture": "dark",
+              "play_style": "fade_in"
+            }
+          }
+        ],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "mystery",
+          "intensity": "high"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "ao_thunder",
+          "layer_role": "event",
+          "source": "both",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "gök gürültüsü"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "gök gürültüsü",
+              "duydu"
+            ],
+            "secondary_keywords": [
+              "korkutucu",
+              "bağırdı"
+            ],
+            "semantic_intent": "lightning_strike"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.4
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 10,
+          "event_summary": "A rolling, cinematic rumble of thunder.",
+          "sound_category": "weather",
+          "sound_profile": {
+            "primary_sound": "other",
+            "variant": "mysterious",
+            "intensity": "high",
+            "texture": "dark",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.95,
+          "mix_level": "prominent",
+          "emotional_tone": "suspenseful"
+        },
+        {
+          "id": "ao_running_hooves",
+          "layer_role": "animal_presence",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "olabildiğince hızlı koştular"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "koş",
+              "hızlı",
+              "takip etti"
+            ],
+            "secondary_keywords": [
+              "çabuk",
+              "tehlike"
+            ],
+            "semantic_intent": "stampede"
+          },
+          "activation_window": {
+            "start_progress": 0.5,
+            "end_progress": 0.8
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "Rhythmic, hurried hooves running on dry earth.",
+          "sound_category": "movement",
+          "sound_profile": {
+            "primary_sound": "horse_gallop",
+            "variant": "soft",
+            "intensity": "medium",
+            "texture": "natural",
+            "play_style": "fade_in"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.8,
+          "mix_level": "medium",
+          "emotional_tone": "excited"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_rain_ending",
+      "pages": [
+        15
+      ],
+      "scene_summary": "Rain finally falls, putting out the fire and bringing life back to the savannah.",
+      "scene_type": "other",
+      "scene_mood": "magical",
+      "scene_energy": "low",
+      "narrative_phase": "ending",
+      "scene_duration_estimate_seconds": 50,
+      "scene_activation": {
+        "activation_mode": "hybrid",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "wonderful",
+              "happened"
+            ],
+            "secondary_keywords": [
+              "drop",
+              "zebra"
+            ],
+            "semantic_intent": "miracle_rain"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "leaves",
+              "buds",
+              "munch"
+            ],
+            "semantic_intent": "story_end"
+          }
+        ],
+        "activation_confidence_threshold": 0.6,
+        "scene_persistence": "timeout"
+      },
+      "scene_transition": {
+        "next_scene_id": "none",
+        "transition_style": "fade",
+        "audio_continuity": "continue",
+        "transition_duration_seconds": 5
+      },
+      "likely_next_scene": "none",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "rain",
+            "variant": "gentle",
+            "intensity": "medium",
+            "texture": "soft",
+            "play_style": "fade_in"
+          }
+        },
+        "secondary_layers": [
+          {
+            "sound_profile": {
+              "primary_sound": "birds",
+              "variant": "warm",
+              "intensity": "low",
+              "texture": "airy",
+              "play_style": "fade_in"
+            }
+          }
+        ],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "wonder",
+          "intensity": "medium"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "ao_raindrops",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "bir damla hissetti"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "damla",
+              "hissetti"
+            ],
+            "secondary_keywords": [
+              "yağmur",
+              "sonunda"
+            ],
+            "semantic_intent": "first_raindrops"
+          },
+          "activation_window": {
+            "start_progress": 0,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "A few distinct, magical water droplets falling.",
+          "sound_category": "weather",
+          "sound_profile": {
+            "primary_sound": "water_splash",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "sparkly",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "wonder"
+        },
+        {
+          "id": "ao_happy_animals",
+          "layer_role": "animal_presence",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "herkes çok mutluydu"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "herkes",
+              "mutlu"
+            ],
+            "secondary_keywords": [
+              "yağmur",
+              "söndürdü"
+            ],
+            "semantic_intent": "relief"
+          },
+          "activation_window": {
+            "start_progress": 0.3,
+            "end_progress": 0.6
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "A warm, soft chorus of relieved animals (birds, soft roars, happy chatter).",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "bird_chirp",
+            "variant": "warm",
+            "intensity": "medium",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "warm"
+        }
+      ]
+    }
+  ]
+}

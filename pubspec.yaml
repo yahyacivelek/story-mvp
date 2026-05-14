@@ -1,0 +1,51 @@
+name: story
+description: "An interactive storytelling application with dynamic audio."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State management
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+
+  # Audio playback (seamless looping + concurrent streams)
+  just_audio: ^0.9.40
+
+  # Networking
+  dio: ^5.4.3+1
+
+  # Environment variables / secrets
+  flutter_dotenv: ^5.1.0
+
+  # Speech recognition
+  speech_to_text: ^7.0.0
+
+  # Runtime permissions
+  permission_handler: ^11.3.1
+
+  # Audio session (AudioFocus)
+  audio_session: ^0.1.21
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+  build_runner: ^2.4.9
+  riverpod_generator: ^2.4.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/story.json
+    - .env
