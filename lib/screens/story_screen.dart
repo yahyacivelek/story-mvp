@@ -52,6 +52,7 @@ class StoryScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: colorScheme.surfaceContainerLowest,
       body: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SceneSidebar(),
           Expanded(

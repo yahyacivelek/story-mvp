@@ -33,12 +33,16 @@ class SfxLegend extends ConsumerWidget {
               Icon(Icons.touch_app_rounded,
                   size: 14, color: colorScheme.onSurfaceVariant),
               const SizedBox(width: 6),
-              Text(
-                'INTERACTIVE SOUNDS IN THIS SCENE',
-                style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                      color: colorScheme.onSurfaceVariant,
-                      letterSpacing: 1.2,
-                    ),
+              Flexible(
+                child: Text(
+                  'INTERACTIVE SOUNDS IN THIS SCENE',
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                        letterSpacing: 1.2,
+                      ),
+                ),
               ),
             ],
           ),
@@ -109,12 +113,16 @@ class _SfxChip extends StatelessWidget {
                 color: colorScheme.secondary,
               ),
             const SizedBox(width: 6),
-            Text(
-              '"${opportunity.triggerAnchor.value}"',
-              style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                    color: colorScheme.onSecondaryContainer,
-                    fontStyle: FontStyle.italic,
-                  ),
+            Flexible(
+              child: Text(
+                '"${opportunity.triggerAnchor.value}"',
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                      color: colorScheme.onSecondaryContainer,
+                      fontStyle: FontStyle.italic,
+                    ),
+              ),
             ),
           ],
         ),

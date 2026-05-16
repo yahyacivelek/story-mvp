@@ -152,12 +152,16 @@ class _Tag extends StatelessWidget {
         children: [
           Icon(icon, size: 13, color: color),
           const SizedBox(width: 5),
-          Text(
-            label,
-            style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                  color: color,
-                  fontWeight: FontWeight.w600,
-                ),
+          Flexible(
+            child: Text(
+              label,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                    color: color,
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
           ),
         ],
       ),
@@ -196,12 +200,16 @@ class _ListeningBadge extends StatelessWidget {
           else
             Icon(Icons.mic_off_rounded, size: 12, color: color),
           const SizedBox(width: 5),
-          Text(
-            isListening ? 'Listening' : 'Mic off',
-            style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                  color: color,
-                  fontWeight: FontWeight.w600,
-                ),
+          Flexible(
+            child: Text(
+              isListening ? 'Listening' : 'Mic off',
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                    color: color,
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
           ),
         ],
       ),
@@ -301,12 +309,16 @@ class _AmbienceStatusBadge extends StatelessWidget {
           else
             Icon(icon, size: 13, color: color),
           const SizedBox(width: 6),
-          Text(
-            label,
-            style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                  color: color,
-                  fontWeight: FontWeight.w600,
-                ),
+          Flexible(
+            child: Text(
+              label,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                    color: color,
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
           ),
         ],
       ),

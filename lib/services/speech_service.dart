@@ -46,21 +46,40 @@ class SpeechService {
   // tight start→error→start loop that hammers the mic and floods the log.
 
   int _consecutiveErrors = 0;
-  bool _useOnDevice = true;
+  bool _useOnDevice = false;
 
-  void _onError(dynamic e) {
+  // Prevents counting multiple errors that fire for the same listen session
+  // (e.g. error_client + error_speech_timeout both fire when the online STT
+  // drops). Without this guard errCount grows by 2 per failed session,
+  // hitting the 5-second backoff tier after just 3 quiet sessions.
+  bool _erroredThisSession = false;
+
+  Future<void> _onError(dynamic e) async {
     final msg = e?.errorMsg?.toString() ?? e.toString();
     debugPrint('[Speech] error: $msg');
 
+    // Only count one error per listen session even if the plugin fires several
+    // (e.g. error_client + error_speech_timeout both fire for one bad session).
+    if (_erroredThisSession) return;
+    _erroredThisSession = true;
+
+    // Silence events (timeout, no_match) are NOT engine failures — they happen
+    // whenever the user pauses between sentences. Don't apply any backoff;
+    // let the loop restart immediately at 120ms.
+    //
+    // error_busy / error_recognizer_busy → real contention; apply backoff so
+    // the previous session has time to release the mic, but don't fall back to
+    // online since it's transient.
+    // error_client → hard engine failure; backoff + online fallback after 2.
+    const silenceErrors = ['error_speech_timeout', 'error_no_match'];
+    if (silenceErrors.any((t) => msg.contains(t))) return;
+
     _consecutiveErrors++;
 
-    // Two immediate `error_client` failures in a row almost always means
-    // the on-device recognizer isn't available for this locale. Fall back
-    // to the online recognizer permanently for the rest of the session.
-    if (_useOnDevice && msg.contains('error_client') && _consecutiveErrors >= 2) {
-      debugPrint('[Speech] on-device unavailable, falling back to online recognizer');
-      _useOnDevice = false;
-    }
+    // Non-silence errors may not trigger 'done' status with cancelOnError: false.
+    // Force-stop the dead session and schedule a restart to keep the loop alive.
+    await _stt.stop();
+    _scheduleRestart();
   }
 
   /// Requests RECORD_AUDIO permission, initialises STT, and starts the
@@ -87,6 +106,11 @@ class SpeechService {
     // the actual locale list and pick the closest match to what we want.
     _localeId = await _resolveLocale(languageCode);
     debugPrint('[Speech] resolved locale: $_localeId');
+
+    // Only try on-device for English — most devices lack offline models for
+    // other languages and error_client will fire on every attempt.
+    _useOnDevice = (languageCode == 'en');
+    _consecutiveErrors = 0;
 
     _isListening = true;
     _listenLoop();
@@ -169,12 +193,12 @@ class SpeechService {
       _stt.statusListener = (status) {
         debugPrint('[Speech] status: $status');
         if (!_isListening) return;
-        // A successful `listening` status means the recognizer started
-        // cleanly — reset the error counter so a later hiccup doesn't trip
-        // the fallback prematurely.
-        if (status == 'listening') {
-          _consecutiveErrors = 0;
-        }
+        // NOTE: Do NOT reset `_consecutiveErrors` on `'listening'` — Android
+        // fires that status whenever the recognizer *starts*, even when it
+        // immediately times out without decoding any audio (common on
+        // non-English on-device packs). Resetting here would mask a broken
+        // engine forever and the online fallback would never engage. The
+        // counter is only cleared on a successful onResult below.
         // Only restart on a true session end. `notListening` also fires
         // during natural speech pauses while the session is still alive —
         // restarting then would cycle the mic needlessly and (on online
@@ -186,18 +210,33 @@ class SpeechService {
       _statusListenerAttached = true;
     }
 
+    _erroredThisSession = false;
+    debugPrint(
+      '[Speech] listen() locale=$_localeId onDevice=$_useOnDevice errCount=$_consecutiveErrors',
+    );
     _stt.listen(
       onResult: (result) {
         final text = result.recognizedWords.toLowerCase().trim();
+        // Log every result — including empty finals — so we can tell whether
+        // the recognizer is hearing anything at all.
+        debugPrint(
+          '[Speech] onResult final=${result.finalResult} '
+          'conf=${result.confidence.toStringAsFixed(2)} '
+          'text="$text"',
+        );
         if (text.isNotEmpty) {
-          debugPrint('[Speech] heard: "$text"');
+          // Real recognition happened — engine is healthy, clear the
+          // fallback counter.
+          _consecutiveErrors = 0;
           _wordController.add(text);
         }
       },
       // Android hard-caps at ~60 s; use max to minimise open/close cycles.
       listenFor: const Duration(seconds: 58),
-      // Long pause tolerance so background ambience doesn't trigger early stop.
-      pauseFor: const Duration(seconds: 30),
+      // Shorter pause: with ambience playing, longer pauseFor often makes the
+      // recognizer wait forever for a perceived silence and then time out
+      // without ever emitting a final. 5 s is enough for a sentence break.
+      pauseFor: const Duration(seconds: 5),
       localeId: _localeId,
       onSoundLevelChange: null,
       listenOptions: SpeechListenOptions(

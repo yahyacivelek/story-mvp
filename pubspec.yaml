@@ -35,6 +35,12 @@ dependencies:
   # Audio session (AudioFocus)
   audio_session: ^0.1.21
 
+  # Persistent on-device file paths for cached audio
+  path_provider: ^2.1.3
+
+  # SHA1 hashing for cache filenames
+  crypto: ^3.0.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

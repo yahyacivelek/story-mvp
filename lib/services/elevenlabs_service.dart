@@ -57,8 +57,8 @@ class ElevenLabsService {
     String prompt, {
     double durationSeconds = 15.0,
   }) async {
-    // 1. Cache hit → return immediately without an API call.
-    final cached = _cache.get(prompt);
+    // 1. Cache hit (memory or disk) → return immediately without an API call.
+    final cached = await _cache.get(prompt);
     if (cached != null) {
       return AudioResult(bytes: cached, fromCache: true);
     }
@@ -80,8 +80,8 @@ class ElevenLabsService {
     final bytes = Uint8List.fromList(response.data as List<int>);
     debugPrint('[ElevenLabs] Decoded ${bytes.length} bytes');
 
-    // 3. Store in cache before returning.
-    _cache.put(prompt, bytes);
+    // 3. Store in cache (memory + disk) before returning.
+    await _cache.put(prompt, bytes);
 
     return AudioResult(bytes: bytes, fromCache: false);
   }

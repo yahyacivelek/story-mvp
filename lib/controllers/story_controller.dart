@@ -187,11 +187,10 @@ class StoryController extends StateNotifier<StoryState> {
         continue;
       }
 
-      // Build primary list: JSON trigger_structure.primary_keywords + anchor.
-      final primary = [
-        ...ao.triggerPrimaryKeywords,
-        ao.triggerAnchor.value.toLowerCase(),
-      ];
+      // Anchor is checked literally below — don't add it to primary keywords
+      // or it inflates maxPoints with a phrase that STT often misrecognises,
+      // making it harder for individual keyword matches to reach the threshold.
+      final primary = [...ao.triggerPrimaryKeywords];
       final secondary = [
         ...ao.triggerSecondaryKeywords,
         ao.eventSummary.toLowerCase(),
@@ -201,11 +200,13 @@ class StoryController extends StateNotifier<StoryState> {
       final anchorHit =
           transcript.contains(ao.triggerAnchor.value.toLowerCase());
 
+      // Threshold 0.28: allows 1-of-3 primary keyword matches (2/6 ≈ 0.33)
+      // to trigger while still requiring meaningful signal.
       final keywordHit = FuzzyMatcher.matches(
         transcript: transcript,
         primaryKeywords: primary,
         secondaryKeywords: secondary,
-        threshold: 0.35,
+        threshold: 0.28,
       );
 
       debugPrint(
