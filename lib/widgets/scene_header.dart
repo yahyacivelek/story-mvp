@@ -61,6 +61,10 @@ class SceneHeader extends ConsumerWidget {
           status: audioState.ambienceStatus,
           prompt: audioState.ambiencePrompt,
         ),
+        _MusicStatusBadge(
+          status: audioState.musicStatus,
+          theme: audioState.musicTheme,
+        ),
         _ListeningBadge(isListening: storyState.isListening),
       ],
     );
@@ -106,6 +110,11 @@ class SceneHeader extends ConsumerWidget {
                         _AmbienceStatusBadge(
                           status: audioState.ambienceStatus,
                           prompt: audioState.ambiencePrompt,
+                        ),
+                        const SizedBox(height: 8),
+                        _MusicStatusBadge(
+                          status: audioState.musicStatus,
+                          theme: audioState.musicTheme,
                         ),
                         const SizedBox(height: 8),
                         _ListeningBadge(isListening: storyState.isListening),
@@ -245,6 +254,78 @@ class _HeardStrip extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     color: colorScheme.onSurfaceVariant,
                     fontStyle: FontStyle.italic,
+                  ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _MusicStatusBadge extends StatelessWidget {
+  final MusicStatus status;
+  final String? theme;
+
+  const _MusicStatusBadge({required this.status, this.theme});
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    final (IconData icon, String label, Color color) = switch (status) {
+      MusicStatus.loading => (
+          Icons.sync_rounded,
+          'Loading music…',
+          colorScheme.tertiary,
+        ),
+      MusicStatus.playing => (
+          Icons.music_note_rounded,
+          theme != null ? '♪ $theme' : 'Music playing',
+          colorScheme.secondary,
+        ),
+      MusicStatus.error => (
+          Icons.error_outline_rounded,
+          'Music error',
+          colorScheme.error,
+        ),
+      MusicStatus.idle => (
+          Icons.music_off_rounded,
+          'Music off',
+          colorScheme.onSurfaceVariant,
+        ),
+    };
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: color.withOpacity(0.3)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (status == MusicStatus.loading)
+            SizedBox(
+              width: 13,
+              height: 13,
+              child: CircularProgressIndicator(
+                strokeWidth: 1.8,
+                color: color,
+              ),
+            )
+          else
+            Icon(icon, size: 13, color: color),
+          const SizedBox(width: 6),
+          Flexible(
+            child: Text(
+              label,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                    color: color,
+                    fontWeight: FontWeight.w600,
                   ),
             ),
           ),

@@ -14,10 +14,15 @@ import '../services/elevenlabs_service.dart';
 
 enum AmbienceStatus { idle, loading, playing, error }
 
+enum MusicStatus { idle, loading, playing, error }
+
 class AudioState {
   final AmbienceStatus ambienceStatus;
   final String? ambiencePrompt;
   final String? ambienceError;
+  final MusicStatus musicStatus;
+  final String? musicTheme;
+  final String? musicError;
 
   /// Keys are [AudioOpportunity.eventSummary]; value is `true` while loading.
   final Map<String, bool> sfxLoadingStates;
@@ -26,6 +31,9 @@ class AudioState {
     this.ambienceStatus = AmbienceStatus.idle,
     this.ambiencePrompt,
     this.ambienceError,
+    this.musicStatus = MusicStatus.idle,
+    this.musicTheme,
+    this.musicError,
     this.sfxLoadingStates = const {},
   });
 
@@ -33,12 +41,18 @@ class AudioState {
     AmbienceStatus? ambienceStatus,
     String? ambiencePrompt,
     String? ambienceError,
+    MusicStatus? musicStatus,
+    String? musicTheme,
+    String? musicError,
     Map<String, bool>? sfxLoadingStates,
   }) {
     return AudioState(
       ambienceStatus: ambienceStatus ?? this.ambienceStatus,
       ambiencePrompt: ambiencePrompt ?? this.ambiencePrompt,
       ambienceError: ambienceError ?? this.ambienceError,
+      musicStatus: musicStatus ?? this.musicStatus,
+      musicTheme: musicTheme ?? this.musicTheme,
+      musicError: musicError ?? this.musicError,
       sfxLoadingStates: sfxLoadingStates ?? this.sfxLoadingStates,
     );
   }
@@ -105,6 +119,11 @@ class AudioController extends StateNotifier<AudioState> {
 
   /// Dedicated player for foreground one-shot SFX.
   final AudioPlayer _sfxPlayer = AudioPlayer(
+    handleAudioSessionActivation: false,
+  );
+
+  /// Dedicated player for looping background music layer.
+  final AudioPlayer _musicPlayer = AudioPlayer(
     handleAudioSessionActivation: false,
   );
 
@@ -204,6 +223,71 @@ class AudioController extends StateNotifier<AudioState> {
   }
 
   // -------------------------------------------------------------------------
+  // Music layer
+  // -------------------------------------------------------------------------
+
+  /// Loads and plays the music layer for [scene] if enabled.
+  Future<void> loadAndPlayMusic(Scene scene) async {
+    final musicLayer = scene.sceneAudio.musicLayer;
+    if (musicLayer == null || !musicLayer.enabled) {
+      await stopMusic();
+      return;
+    }
+
+    final theme = musicLayer.musicTheme;
+
+    // Guard: don't re-fetch if already playing this theme.
+    if (state.musicTheme == theme && state.musicStatus == MusicStatus.playing) {
+      return;
+    }
+
+    state = state.copyWith(
+      musicStatus: MusicStatus.loading,
+      musicTheme: theme,
+      musicError: null,
+    );
+
+    debugPrint('[AudioController] Fetching music: theme="$theme"');
+
+    try {
+      final result = await _api.fetchMusic(theme);
+      debugPrint(
+        '[AudioController] Music fetched: ${result.bytes.length} bytes '
+        '(fromCache: ${result.fromCache})',
+      );
+      await _playMusicFromBytes(result.bytes, musicLayer.intensity);
+      state = state.copyWith(musicStatus: MusicStatus.playing);
+      debugPrint('[AudioController] Music playing');
+    } catch (e, st) {
+      debugPrint('[AudioController] Music ERROR: $e\n$st');
+      state = state.copyWith(
+        musicStatus: MusicStatus.error,
+        musicError: e.toString(),
+      );
+    }
+  }
+
+  Future<void> _playMusicFromBytes(Uint8List bytes, String intensity) async {
+    await _musicPlayer.stop();
+
+    final volume = _intensityToVolume(intensity) * 0.6; // Music sits below ambience
+    debugPrint('[AudioController] Setting music volume: $volume (intensity: $intensity)');
+
+    final byteSource = _BytesAudioSource(bytes);
+    await _musicPlayer.setLoopMode(LoopMode.one);
+    await _musicPlayer.setAudioSource(byteSource);
+    await _musicPlayer.setVolume(volume);
+    await _musicPlayer.play();
+    debugPrint('[AudioController] _musicPlayer.play() called');
+  }
+
+  /// Stops the music layer.
+  Future<void> stopMusic() async {
+    await _musicPlayer.stop();
+    state = state.copyWith(musicStatus: MusicStatus.idle, musicTheme: null);
+  }
+
+  // -------------------------------------------------------------------------
   // SFX
   // -------------------------------------------------------------------------
 
@@ -250,6 +334,7 @@ class AudioController extends StateNotifier<AudioState> {
   void dispose() {
     _ambiencePlayer.dispose();
     _sfxPlayer.dispose();
+    _musicPlayer.dispose();
     super.dispose();
   }
 }

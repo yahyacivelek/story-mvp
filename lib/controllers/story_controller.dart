@@ -95,9 +95,11 @@ class StoryController extends StateNotifier<StoryState> {
       );
 
       if (data.sceneGraph.isNotEmpty) {
+        final firstScene = data.sceneGraph.first;
         _ref
             .read(audioControllerProvider.notifier)
-            .loadAndPlayAmbience(data.sceneGraph.first);
+            .loadAndPlayAmbience(firstScene);
+        _ref.read(audioControllerProvider.notifier).loadAndPlayMusic(firstScene);
       }
 
       // Start listening in the story's language.
@@ -310,9 +312,11 @@ class StoryController extends StateNotifier<StoryState> {
     _transcriptBuffer.clear();
     _lastTriggered.clear();
 
+    final scene = data.sceneGraph[index];
     _ref
         .read(audioControllerProvider.notifier)
-        .loadAndPlayAmbience(data.sceneGraph[index]);
+        .loadAndPlayAmbience(scene);
+    _ref.read(audioControllerProvider.notifier).loadAndPlayMusic(scene);
   }
 
   // -------------------------------------------------------------------------

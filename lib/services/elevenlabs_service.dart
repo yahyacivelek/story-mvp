@@ -93,4 +93,9 @@ class ElevenLabsService {
   /// Convenience overload for SFX: requests a shorter 4 s clip.
   Future<AudioResult> fetchSfx(String prompt) =>
       fetchAudio(prompt, durationSeconds: 4.0);
+
+  /// Convenience overload for music layer: requests max 22 s for richer clips.
+  Future<AudioResult> fetchMusic(String theme) =>
+      fetchAudio('background music theme $theme, cinematic instrumental loop',
+          durationSeconds: 22.0);
 }
