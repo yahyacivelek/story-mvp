@@ -4,59 +4,111 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../controllers/story_controller.dart';
 import '../models/story_models.dart';
 
-/// Fixed-width left sidebar listing all scenes.
-class SceneSidebar extends ConsumerWidget {
-  const SceneSidebar({super.key});
-
-  static const double sidebarWidth = 260.0;
+/// Modal bottom sheet listing all scenes — opens from the FAB.
+class SceneSidebarSheet extends ConsumerWidget {
+  const SceneSidebarSheet({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final storyState = ref.watch(storyControllerProvider);
     final colorScheme = Theme.of(context).colorScheme;
 
-    if (storyState.isLoading) {
-      return const SizedBox(
-        width: sidebarWidth,
-        child: Center(child: CircularProgressIndicator()),
-      );
-    }
-
-    if (storyState.storyData == null) {
-      return const SizedBox(width: sidebarWidth);
-    }
+    if (storyState.storyData == null) return const SizedBox.shrink();
 
     final scenes = storyState.storyData!.sceneGraph;
 
     return Container(
-      width: sidebarWidth,
+      constraints: BoxConstraints(
+        maxHeight: MediaQuery.of(context).size.height * 0.65,
+      ),
       decoration: BoxDecoration(
-        color: colorScheme.surface,
-        border: Border(
-          right: BorderSide(
-            color: colorScheme.outlineVariant,
-            width: 1,
-          ),
-        ),
+        color: colorScheme.surfaceContainerHigh,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          _SidebarHeader(storyData: storyState.storyData!),
-          Expanded(
+          // Drag handle
+          Center(
+            child: Container(
+              margin: const EdgeInsets.only(top: 12, bottom: 4),
+              width: 32,
+              height: 4,
+              decoration: BoxDecoration(
+                color: colorScheme.onSurfaceVariant.withValues(alpha: 0.3),
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+          ),
+          // Header
+          _SheetHeader(storyData: storyState.storyData!),
+          // Scene list
+          Flexible(
             child: ListView.builder(
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               itemCount: scenes.length,
               itemBuilder: (context, index) {
                 final scene = scenes[index];
                 final isActive = storyState.activeSceneIndex == index;
-                return _SceneTile(
-                  scene: scene,
-                  isActive: isActive,
-                  onTap: () => ref
-                      .read(storyControllerProvider.notifier)
-                      .selectScene(index),
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: _SceneCard(
+                    scene: scene,
+                    index: index,
+                    isActive: isActive,
+                    onTap: () {
+                      ref
+                          .read(storyControllerProvider.notifier)
+                          .selectScene(index);
+                      Navigator.of(context).pop();
+                    },
+                  ),
                 );
               },
+            ),
+          ),
+          const SizedBox(height: 16),
+        ],
+      ),
+    );
+  }
+}
+
+class _SheetHeader extends StatelessWidget {
+  final StoryData storyData;
+
+  const _SheetHeader({required this.storyData});
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
+      child: Row(
+        children: [
+          Icon(Icons.auto_stories_rounded,
+              color: colorScheme.primary, size: 22),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  storyData.title,
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: colorScheme.onSurface,
+                        fontWeight: FontWeight.w600,
+                      ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Text(
+                  '${storyData.sceneGraph.length} scenes · ${storyData.book.language.toUpperCase()}',
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                      ),
+                ),
+              ],
             ),
           ),
         ],
@@ -65,66 +117,15 @@ class SceneSidebar extends ConsumerWidget {
   }
 }
 
-class _SidebarHeader extends StatelessWidget {
-  final StoryData storyData;
-
-  const _SidebarHeader({required this.storyData});
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    return Container(
-      padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(color: colorScheme.outlineVariant),
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(Icons.auto_stories_rounded,
-                  color: colorScheme.primary, size: 20),
-              const SizedBox(width: 8),
-              Text(
-                'SCENES',
-                style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                      color: colorScheme.primary,
-                      letterSpacing: 1.5,
-                      fontWeight: FontWeight.w700,
-                    ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Text(
-            storyData.title,
-            style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                  color: colorScheme.onSurface,
-                  fontWeight: FontWeight.w600,
-                ),
-          ),
-          Text(
-            storyData.book.language.toUpperCase(),
-            style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                  color: colorScheme.onSurfaceVariant,
-                ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _SceneTile extends StatelessWidget {
+class _SceneCard extends StatelessWidget {
   final Scene scene;
+  final int index;
   final bool isActive;
   final VoidCallback onTap;
 
-  const _SceneTile({
+  const _SceneCard({
     required this.scene,
+    required this.index,
     required this.isActive,
     required this.onTap,
   });
@@ -132,78 +133,95 @@ class _SceneTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-
     final moodEmoji = _moodEmoji(scene.sceneMood);
 
-    return InkWell(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        decoration: BoxDecoration(
-          color: isActive
-              ? colorScheme.primaryContainer.withOpacity(0.5)
-              : Colors.transparent,
-          border: isActive
-              ? Border(
-                  left: BorderSide(
-                    color: colorScheme.primary,
-                    width: 3,
-                  ),
-                )
-              : const Border(left: BorderSide(color: Colors.transparent, width: 3)),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(moodEmoji, style: const TextStyle(fontSize: 14)),
-                const SizedBox(width: 6),
-                Expanded(
-                  child: Text(
-                    scene.sceneId
-                        .replaceAll('_', ' ')
-                        .toUpperCase(),
-                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                          color: isActive
-                              ? colorScheme.primary
-                              : colorScheme.onSurfaceVariant,
-                          letterSpacing: 0.8,
+    return Material(
+      color: isActive
+          ? colorScheme.primaryContainer.withValues(alpha: 0.4)
+          : colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+      borderRadius: BorderRadius.circular(16),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              // Scene number circle
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: isActive
+                      ? colorScheme.primary.withValues(alpha: 0.2)
+                      : colorScheme.surfaceContainerHigh,
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: isActive
+                      ? Icon(Icons.play_arrow_rounded,
+                          size: 20, color: colorScheme.primary)
+                      : Text(
+                          '${index + 1}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium!
+                              .copyWith(
+                                color: colorScheme.onSurfaceVariant,
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
                 ),
-              ],
-            ),
-            const SizedBox(height: 4),
-            Text(
-              scene.sceneSummary,
-              style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    color: isActive
-                        ? colorScheme.onSurface
-                        : colorScheme.onSurfaceVariant,
-                    fontWeight:
-                        isActive ? FontWeight.w600 : FontWeight.normal,
-                  ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const SizedBox(height: 6),
-            Row(
-              children: [
-                _Tag(
-                  label: scene.sceneMood,
-                  color: colorScheme.tertiary,
+              ),
+              const SizedBox(width: 14),
+              // Scene info
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(moodEmoji, style: const TextStyle(fontSize: 14)),
+                        const SizedBox(width: 6),
+                        Expanded(
+                          child: Text(
+                            scene.sceneSummary,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                  color: isActive
+                                      ? colorScheme.primary
+                                      : colorScheme.onSurface,
+                                  fontWeight: isActive
+                                      ? FontWeight.w600
+                                      : FontWeight.w500,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    Row(
+                      children: [
+                        _Chip(
+                          label: scene.sceneMood,
+                          color: colorScheme.tertiary,
+                        ),
+                        const SizedBox(width: 6),
+                        _Chip(
+                          label: scene.sceneEnergy,
+                          color: colorScheme.secondary,
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 4),
-                _Tag(
-                  label: scene.sceneEnergy,
-                  color: colorScheme.secondary,
-                ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -220,26 +238,26 @@ class _SceneTile extends StatelessWidget {
       };
 }
 
-class _Tag extends StatelessWidget {
+class _Chip extends StatelessWidget {
   final String label;
   final Color color;
 
-  const _Tag({required this.label, required this.color});
+  const _Chip({required this.label, required this.color});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.15),
-        borderRadius: BorderRadius.circular(4),
-        border: Border.all(color: color.withOpacity(0.3)),
+        color: color.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(12),
       ),
       child: Text(
         label,
         style: Theme.of(context).textTheme.labelSmall!.copyWith(
               color: color,
               fontSize: 10,
+              fontWeight: FontWeight.w600,
             ),
       ),
     );

@@ -36,8 +36,8 @@ class StoryApp extends StatelessWidget {
       useMaterial3: true,
       fontFamily: 'Georgia',
       textTheme: const TextTheme(
-        bodyLarge: TextStyle(fontSize: 17, height: 1.8),
-        bodyMedium: TextStyle(fontSize: 15),
+        bodyLarge: TextStyle(fontSize: 18, height: 1.9, letterSpacing: 0.2),
+        bodyMedium: TextStyle(fontSize: 15, height: 1.6),
         bodySmall: TextStyle(fontSize: 13),
       ),
     );

@@ -5,8 +5,8 @@ import '../controllers/audio_controller.dart';
 import '../controllers/story_controller.dart';
 import '../models/story_models.dart';
 
-/// Header panel shown above the story text area.
-/// Displays scene summary, mood/energy tags, and ambience playback status.
+/// Slim top bar: scene title on the left, compact audio status pills on the right.
+/// Keeps vertical space minimal so the story text dominates the screen.
 class SceneHeader extends ConsumerWidget {
   final Scene scene;
 
@@ -18,213 +18,217 @@ class SceneHeader extends ConsumerWidget {
     final storyState = ref.watch(storyControllerProvider);
     final colorScheme = Theme.of(context).colorScheme;
 
-    final summaryColumn = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          scene.sceneSummary,
-          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                color: colorScheme.onSurface,
-                fontWeight: FontWeight.w600,
-              ),
-        ),
-        const SizedBox(height: 10),
-        Wrap(
-          spacing: 8,
-          runSpacing: 6,
-          children: [
-            _Tag(
-              icon: Icons.mood_rounded,
-              label: scene.sceneMood,
-              color: colorScheme.tertiary,
-            ),
-            _Tag(
-              icon: Icons.bolt_rounded,
-              label: '${scene.sceneEnergy} energy',
-              color: colorScheme.secondary,
-            ),
-            _Tag(
-              icon: Icons.menu_book_rounded,
-              label: 'pages ${scene.pages.join(', ')}',
-              color: colorScheme.primary,
-            ),
-          ],
-        ),
-      ],
-    );
-
-    final badges = Wrap(
-      spacing: 8,
-      runSpacing: 6,
-      children: [
-        _AmbienceStatusBadge(
-          status: audioState.ambienceStatus,
-          prompt: audioState.ambiencePrompt,
-        ),
-        _MusicStatusBadge(
-          status: audioState.musicStatus,
-          theme: audioState.musicTheme,
-        ),
-        _ListeningBadge(isListening: storyState.isListening),
-      ],
-    );
-
     return Container(
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
+      padding: const EdgeInsets.fromLTRB(20, 12, 16, 12),
       decoration: BoxDecoration(
-        color: colorScheme.surfaceContainerHigh,
+        color: colorScheme.surface,
         border: Border(
-          bottom: BorderSide(color: colorScheme.outlineVariant),
+          bottom: BorderSide(
+            color: colorScheme.outlineVariant.withValues(alpha: 0.5),
+          ),
         ),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          // Adaptive: stack vertically on narrow screens (phones), side-by-side
-          // on wide ones (tablet / desktop). The 560 px breakpoint matches the
-          // sidebar-collapsed point so the layout stays sensible on every form
-          // factor.
-          LayoutBuilder(
-            builder: (context, constraints) {
-              final isNarrow = constraints.maxWidth < 560;
-              if (isNarrow) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          // Main row: title + audio pills
+          Row(
+            children: [
+              // Scene title + mood
+              Expanded(
+                child: Row(
                   children: [
-                    summaryColumn,
-                    const SizedBox(height: 12),
-                    badges,
-                  ],
-                );
-              }
-              return Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(child: summaryColumn),
-                  const SizedBox(width: 24),
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 220),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        _AmbienceStatusBadge(
-                          status: audioState.ambienceStatus,
-                          prompt: audioState.ambiencePrompt,
-                        ),
-                        const SizedBox(height: 8),
-                        _MusicStatusBadge(
-                          status: audioState.musicStatus,
-                          theme: audioState.musicTheme,
-                        ),
-                        const SizedBox(height: 8),
-                        _ListeningBadge(isListening: storyState.isListening),
-                      ],
+                    Text(
+                      _moodEmoji(scene.sceneMood),
+                      style: const TextStyle(fontSize: 18),
                     ),
-                  ),
-                ],
-              );
-            },
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            scene.sceneSummary,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(
+                                  color: colorScheme.onSurface,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                          ),
+                          Text(
+                            '${scene.sceneMood} · ${scene.sceneEnergy} energy',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelSmall!
+                                .copyWith(
+                                  color: colorScheme.onSurfaceVariant,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Compact audio pills
+              _AudioPills(
+                ambienceStatus: audioState.ambienceStatus,
+                musicStatus: audioState.musicStatus,
+                musicTheme: audioState.musicTheme,
+                isListening: storyState.isListening,
+              ),
+            ],
           ),
+
+          // Heard text strip (only when listening)
           if (storyState.isListening &&
               storyState.lastHeardText.isNotEmpty) ...[
-            const SizedBox(height: 12),
+            const SizedBox(height: 8),
             _HeardStrip(text: storyState.lastHeardText),
           ],
         ],
       ),
     );
   }
+
+  String _moodEmoji(String mood) => switch (mood) {
+        'mysterious' => '🌙',
+        'joyful' => '🎉',
+        'tense' => '⚡',
+        'dramatic' => '🌊',
+        'cozy' => '🔥',
+        'awe' => '✨',
+        _ => '📖',
+      };
 }
 
-class _Tag extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final Color color;
+// ---------------------------------------------------------------------------
+// Compact audio status pills row
+// ---------------------------------------------------------------------------
 
-  const _Tag({
+class _AudioPills extends StatelessWidget {
+  final AmbienceStatus ambienceStatus;
+  final MusicStatus musicStatus;
+  final String? musicTheme;
+  final bool isListening;
+
+  const _AudioPills({
+    required this.ambienceStatus,
+    required this.musicStatus,
+    this.musicTheme,
+    required this.isListening,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _StatusPill(
+          icon: _ambienceIcon(ambienceStatus),
+          color: _ambienceColor(ambienceStatus, context),
+          isLoading: ambienceStatus == AmbienceStatus.loading,
+        ),
+        const SizedBox(width: 6),
+        _StatusPill(
+          icon: _musicIcon(musicStatus),
+          color: _musicColor(musicStatus, context),
+          isLoading: musicStatus == MusicStatus.loading,
+        ),
+        const SizedBox(width: 6),
+        _StatusPill(
+          icon: isListening ? Icons.mic_rounded : Icons.mic_off_rounded,
+          color: isListening
+              ? Theme.of(context).colorScheme.error
+              : Theme.of(context).colorScheme.onSurfaceVariant,
+          isActive: isListening,
+        ),
+      ],
+    );
+  }
+
+  IconData _ambienceIcon(AmbienceStatus s) => switch (s) {
+        AmbienceStatus.loading => Icons.sync_rounded,
+        AmbienceStatus.playing => Icons.graphic_eq_rounded,
+        AmbienceStatus.error => Icons.error_outline_rounded,
+        AmbienceStatus.idle => Icons.volume_off_rounded,
+      };
+
+  Color _ambienceColor(AmbienceStatus s, BuildContext ctx) {
+    final cs = Theme.of(ctx).colorScheme;
+    return switch (s) {
+      AmbienceStatus.loading => cs.tertiary,
+      AmbienceStatus.playing => cs.primary,
+      AmbienceStatus.error => cs.error,
+      AmbienceStatus.idle => cs.onSurfaceVariant,
+    };
+  }
+
+  IconData _musicIcon(MusicStatus s) => switch (s) {
+        MusicStatus.loading => Icons.sync_rounded,
+        MusicStatus.playing => Icons.music_note_rounded,
+        MusicStatus.error => Icons.error_outline_rounded,
+        MusicStatus.idle => Icons.music_off_rounded,
+      };
+
+  Color _musicColor(MusicStatus s, BuildContext ctx) {
+    final cs = Theme.of(ctx).colorScheme;
+    return switch (s) {
+      MusicStatus.loading => cs.tertiary,
+      MusicStatus.playing => cs.secondary,
+      MusicStatus.error => cs.error,
+      MusicStatus.idle => cs.onSurfaceVariant,
+    };
+  }
+}
+
+/// Tiny circular pill — just an icon with a subtle background.
+class _StatusPill extends StatelessWidget {
+  final IconData icon;
+  final Color color;
+  final bool isLoading;
+  final bool isActive;
+
+  const _StatusPill({
     required this.icon,
-    required this.label,
     required this.color,
+    this.isLoading = false,
+    this.isActive = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      width: 32,
+      height: 32,
       decoration: BoxDecoration(
-        color: color.withOpacity(0.12),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: color.withOpacity(0.35)),
+        color: color.withValues(alpha: isActive ? 0.2 : 0.1),
+        shape: BoxShape.circle,
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 13, color: color),
-          const SizedBox(width: 5),
-          Flexible(
-            child: Text(
-              label,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                    color: color,
-                    fontWeight: FontWeight.w600,
-                  ),
-            ),
-          ),
-        ],
+      child: Center(
+        child: isLoading
+            ? SizedBox(
+                width: 14,
+                height: 14,
+                child: CircularProgressIndicator(
+                  strokeWidth: 1.8,
+                  color: color,
+                ),
+              )
+            : Icon(icon, size: 16, color: color),
       ),
     );
   }
 }
 
-class _ListeningBadge extends StatelessWidget {
-  final bool isListening;
-  const _ListeningBadge({required this.isListening});
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final color =
-        isListening ? colorScheme.error : colorScheme.onSurfaceVariant;
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: color.withOpacity(0.3)),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (isListening)
-            SizedBox(
-              width: 10,
-              height: 10,
-              child: CircularProgressIndicator(
-                strokeWidth: 1.5,
-                color: color,
-              ),
-            )
-          else
-            Icon(Icons.mic_off_rounded, size: 12, color: color),
-          const SizedBox(width: 5),
-          Flexible(
-            child: Text(
-              isListening ? 'Listening' : 'Mic off',
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                    color: color,
-                    fontWeight: FontWeight.w600,
-                  ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+// ---------------------------------------------------------------------------
+// Heard text strip
+// ---------------------------------------------------------------------------
 
 class _HeardStrip extends StatelessWidget {
   final String text;
@@ -234,18 +238,16 @@ class _HeardStrip extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     return Container(
-      width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         color: colorScheme.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(6),
-        border: Border.all(color: colorScheme.outlineVariant),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
         children: [
           Icon(Icons.hearing_rounded,
-              size: 13, color: colorScheme.onSurfaceVariant),
-          const SizedBox(width: 6),
+              size: 14, color: colorScheme.onSurfaceVariant),
+          const SizedBox(width: 8),
           Expanded(
             child: Text(
               text,
@@ -254,150 +256,6 @@ class _HeardStrip extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     color: colorScheme.onSurfaceVariant,
                     fontStyle: FontStyle.italic,
-                  ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _MusicStatusBadge extends StatelessWidget {
-  final MusicStatus status;
-  final String? theme;
-
-  const _MusicStatusBadge({required this.status, this.theme});
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    final (IconData icon, String label, Color color) = switch (status) {
-      MusicStatus.loading => (
-          Icons.sync_rounded,
-          'Loading music…',
-          colorScheme.tertiary,
-        ),
-      MusicStatus.playing => (
-          Icons.music_note_rounded,
-          theme != null ? '♪ $theme' : 'Music playing',
-          colorScheme.secondary,
-        ),
-      MusicStatus.error => (
-          Icons.error_outline_rounded,
-          'Music error',
-          colorScheme.error,
-        ),
-      MusicStatus.idle => (
-          Icons.music_off_rounded,
-          'Music off',
-          colorScheme.onSurfaceVariant,
-        ),
-    };
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: color.withOpacity(0.3)),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (status == MusicStatus.loading)
-            SizedBox(
-              width: 13,
-              height: 13,
-              child: CircularProgressIndicator(
-                strokeWidth: 1.8,
-                color: color,
-              ),
-            )
-          else
-            Icon(icon, size: 13, color: color),
-          const SizedBox(width: 6),
-          Flexible(
-            child: Text(
-              label,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                    color: color,
-                    fontWeight: FontWeight.w600,
-                  ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _AmbienceStatusBadge extends StatelessWidget {
-  final AmbienceStatus status;
-  final String? prompt;
-
-  const _AmbienceStatusBadge({required this.status, this.prompt});
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    final (IconData icon, String label, Color color) = switch (status) {
-      AmbienceStatus.loading => (
-          Icons.sync_rounded,
-          'Loading ambience…',
-          colorScheme.tertiary,
-        ),
-      AmbienceStatus.playing => (
-          Icons.graphic_eq_rounded,
-          'Ambience playing',
-          colorScheme.primary,
-        ),
-      AmbienceStatus.error => (
-          Icons.error_outline_rounded,
-          'Audio error',
-          colorScheme.error,
-        ),
-      AmbienceStatus.idle => (
-          Icons.volume_off_rounded,
-          'Ambience idle',
-          colorScheme.onSurfaceVariant,
-        ),
-    };
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: color.withOpacity(0.3)),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (status == AmbienceStatus.loading)
-            SizedBox(
-              width: 13,
-              height: 13,
-              child: CircularProgressIndicator(
-                strokeWidth: 1.8,
-                color: color,
-              ),
-            )
-          else
-            Icon(icon, size: 13, color: color),
-          const SizedBox(width: 6),
-          Flexible(
-            child: Text(
-              label,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                    color: color,
-                    fontWeight: FontWeight.w600,
                   ),
             ),
           ),

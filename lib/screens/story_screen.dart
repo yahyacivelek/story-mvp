@@ -6,9 +6,14 @@ import '../models/story_models.dart';
 import '../widgets/interactive_text_widget.dart';
 import '../widgets/scene_header.dart';
 import '../widgets/scene_sidebar.dart';
-import '../widgets/sfx_legend.dart';
 
-/// The main application screen: sidebar + main content area.
+/// Immersive full-screen story reader.
+///
+/// Layout:
+/// - Slim top bar: scene title + compact audio status pills
+/// - Full-screen scrollable story text (the hero)
+/// - Floating action button → opens scene picker as bottom sheet
+/// - No permanent sidebar or footer — maximises reading area
 class StoryScreen extends ConsumerWidget {
   const StoryScreen({super.key});
 
@@ -18,28 +23,24 @@ class StoryScreen extends ConsumerWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     if (storyState.isLoading) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
-    }
-
-    if (storyState.error != null) {
       return Scaffold(
+        backgroundColor: colorScheme.surface,
         body: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.error_outline_rounded,
-                  color: colorScheme.error, size: 48),
+              SizedBox(
+                width: 40,
+                height: 40,
+                child: CircularProgressIndicator(
+                  strokeWidth: 3,
+                  color: colorScheme.primary,
+                ),
+              ),
               const SizedBox(height: 16),
               Text(
-                'Failed to load story',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                storyState.error!,
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                'Loading story…',
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: colorScheme.onSurfaceVariant,
                     ),
               ),
@@ -49,45 +50,79 @@ class StoryScreen extends ConsumerWidget {
       );
     }
 
-    return Scaffold(
-      backgroundColor: colorScheme.surfaceContainerLowest,
-      body: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const SceneSidebar(),
-          Expanded(
-            child: storyState.activeScene == null
-                ? const SizedBox.shrink()
-                : _SceneMainArea(
-                    scene: storyState.activeScene!,
-                    pages: storyState.activePagesContent,
-                  ),
+    if (storyState.error != null) {
+      return Scaffold(
+        backgroundColor: colorScheme.surface,
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.error_outline_rounded,
+                    color: colorScheme.error, size: 48),
+                const SizedBox(height: 16),
+                Text(
+                  'Failed to load story',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  storyState.error!,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                      ),
+                ),
+              ],
+            ),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class _SceneMainArea extends StatelessWidget {
-  final Scene scene;
-  final List<StoryPage> pages;
-
-  const _SceneMainArea({required this.scene, required this.pages});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SceneHeader(scene: scene),
-        Expanded(
-          child: _StoryBody(scene: scene, pages: pages),
         ),
-        SfxLegend(opportunities: scene.audioOpportunities),
-      ],
+      );
+    }
+
+    final scene = storyState.activeScene;
+
+    return Scaffold(
+      backgroundColor: colorScheme.surface,
+      body: scene == null
+          ? const SizedBox.shrink()
+          : Stack(
+              children: [
+                // Main scrollable content
+                SafeArea(
+                  child: Column(
+                    children: [
+                      SceneHeader(scene: scene),
+                      Expanded(
+                        child: _StoryBody(
+                          scene: scene,
+                          pages: storyState.activePagesContent,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Floating scene picker button
+                Positioned(
+                  right: 20,
+                  bottom: 28,
+                  child: _ScenePickerFab(
+                    sceneCount:
+                        storyState.storyData?.sceneGraph.length ?? 0,
+                    activeIndex: storyState.activeSceneIndex,
+                  ),
+                ),
+              ],
+            ),
     );
   }
 }
+
+// ---------------------------------------------------------------------------
+// Story body — the hero of the screen
+// ---------------------------------------------------------------------------
 
 class _StoryBody extends StatelessWidget {
   final Scene scene;
@@ -98,21 +133,22 @@ class _StoryBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scrollbar(
+      radius: const Radius.circular(4),
       child: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(48, 32, 48, 32),
+        padding: const EdgeInsets.fromLTRB(24, 24, 24, 100),
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 760),
+            constraints: const BoxConstraints(maxWidth: 680),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: pages.map((page) {
                 return Padding(
-                  padding: const EdgeInsets.only(bottom: 40),
+                  padding: const EdgeInsets.only(bottom: 48),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _PageNumberBadge(pageNumber: page.pageNumber),
-                      const SizedBox(height: 16),
+                      _PageDivider(pageNumber: page.pageNumber),
+                      const SizedBox(height: 20),
                       InteractiveTextWidget(
                         fullText: page.fullText,
                         opportunities: scene.audioOpportunities,
@@ -129,27 +165,76 @@ class _StoryBody extends StatelessWidget {
   }
 }
 
-class _PageNumberBadge extends StatelessWidget {
+class _PageDivider extends StatelessWidget {
   final int pageNumber;
 
-  const _PageNumberBadge({required this.pageNumber});
+  const _PageDivider({required this.pageNumber});
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      decoration: BoxDecoration(
-        color: colorScheme.primaryContainer.withOpacity(0.4),
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Text(
-        'Page $pageNumber',
-        style: Theme.of(context).textTheme.labelSmall!.copyWith(
-              color: colorScheme.primary,
-              letterSpacing: 0.8,
-            ),
-      ),
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            height: 1,
+            color: colorScheme.outlineVariant.withValues(alpha: 0.4),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14),
+          child: Text(
+            '$pageNumber',
+            style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                  color: colorScheme.onSurfaceVariant.withValues(alpha: 0.6),
+                  letterSpacing: 1,
+                ),
+          ),
+        ),
+        Expanded(
+          child: Container(
+            height: 1,
+            color: colorScheme.outlineVariant.withValues(alpha: 0.4),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Floating scene picker
+// ---------------------------------------------------------------------------
+
+class _ScenePickerFab extends ConsumerWidget {
+  final int sceneCount;
+  final int activeIndex;
+
+  const _ScenePickerFab({
+    required this.sceneCount,
+    required this.activeIndex,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return FloatingActionButton.extended(
+      backgroundColor: colorScheme.secondaryContainer,
+      foregroundColor: colorScheme.onSecondaryContainer,
+      elevation: 3,
+      icon: const Icon(Icons.auto_stories_rounded, size: 20),
+      label: Text('Scene ${activeIndex + 1}/$sceneCount'),
+      onPressed: () => _showSceneSheet(context, ref),
+    );
+  }
+
+  void _showSceneSheet(BuildContext context, WidgetRef ref) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => const SceneSidebarSheet(),
     );
   }
 }
