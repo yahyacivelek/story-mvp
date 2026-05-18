@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 
 // Conditional imports — resolved at compile time per platform.
 // dart.library.html  → JS-compiled web (dart:html available)
@@ -111,7 +112,57 @@ class AudioCacheService {
   }
 
   // -----------------------------------------------------------------------
-  // Startup pre-warm
+  // Asset-bundled audio pre-warm
+  // -----------------------------------------------------------------------
+
+  /// Loads audio files bundled as assets (under `assets/audio/`) into the
+  /// in-memory cache. The manifest file `assets/audio/manifest.json` maps
+  /// SHA1 keys to their original prompt strings.
+  ///
+  /// Call once at app startup, **before** [preloadAll], so that asset-bundled
+  /// audio takes priority over any persistent storage entries.
+  ///
+  /// Returns the number of entries loaded. Returns `0` silently if the
+  /// manifest is missing (e.g. no assets have been pre-warmed yet).
+  Future<int> preloadFromAssets() async {
+    try {
+      final manifestStr =
+          await rootBundle.loadString('assets/audio/manifest.json');
+      final manifestMap =
+          jsonDecode(manifestStr) as Map<String, dynamic>;
+      // manifest.json: { "sha1hex": "original prompt string", ... }
+      final sha1ToPrompt =
+          manifestMap.map((k, v) => MapEntry(k, v as String));
+
+      var loaded = 0;
+      for (final entry in sha1ToPrompt.entries) {
+        final sha1Key = entry.key;
+        final prompt = entry.value;
+
+        // Skip if already in memory (e.g. from a previous call).
+        if (_memory.containsKey(prompt)) continue;
+
+        final bytes =
+            await rootBundle.load('assets/audio/$sha1Key.mp3');
+        _memory[prompt] = bytes.buffer.asUint8List();
+        _sha1ToPrompt[sha1Key] = prompt;
+        loaded++;
+      }
+
+      debugPrint(
+        '[AudioCache] preloadFromAssets: $loaded entries loaded '
+        '(${_memory.length} total in-memory)',
+      );
+      return loaded;
+    } catch (e) {
+      // Manifest missing or unreadable — not an error, just no bundled audio.
+      debugPrint('[AudioCache] preloadFromAssets: no bundled audio ($e)');
+      return 0;
+    }
+  }
+
+  // -----------------------------------------------------------------------
+  // Startup pre-warm (persistent storage)
   // -----------------------------------------------------------------------
 
   /// Scans persistent storage and loads **every** cached audio file into the

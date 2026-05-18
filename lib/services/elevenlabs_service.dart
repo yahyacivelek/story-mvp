@@ -60,7 +60,7 @@ class ElevenLabsService {
   /// Set to `true` automatically in debug builds so that every debug run
   /// is guaranteed to be API-free.  Set to `false` only when you explicitly
   /// want to generate ("pre-warm") a new asset.
-  bool offlineMode = false;
+  bool offlineMode = true;
 
   /// Fetches (or returns cached) audio bytes for [prompt].
   ///

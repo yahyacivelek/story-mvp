@@ -9,8 +9,13 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: '.env');
 
-  // Pre-warm the audio cache: loads all previously generated audio
-  // from persistent storage into memory so debug runs never hit the API.
+  // Pre-warm the audio cache from bundled assets first (works on every
+  // platform including Chrome debug — no IndexedDB dependency).
+  final assetLoaded = await AudioCacheService.instance.preloadFromAssets();
+  debugPrint('[main] Audio cache from assets: $assetLoaded entries');
+
+  // Then load any additional entries from persistent storage (IndexedDB /
+  // filesystem) that aren't already in memory from assets.
   final loaded = await AudioCacheService.instance.preloadAll();
   debugPrint('[main] Audio cache pre-warmed: $loaded entries');
 
