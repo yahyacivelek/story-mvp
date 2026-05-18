@@ -319,6 +319,16 @@ class AudioController extends StateNotifier<AudioState> {
     state = state.copyWith(ambienceStatus: AmbienceStatus.idle);
   }
 
+  /// Fully stops ambience, clears the audio source and resets state.
+  Future<void> stopAmbience() async {
+    await _ambiencePlayer.stop();
+    state = state.copyWith(
+      ambienceStatus: AmbienceStatus.idle,
+      ambiencePrompt: null,
+      ambienceError: null,
+    );
+  }
+
   /// Resumes paused ambience.
   Future<void> resumeAmbience() async {
     await _ambiencePlayer.play();

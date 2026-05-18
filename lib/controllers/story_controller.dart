@@ -141,8 +141,8 @@ class StoryController extends StateNotifier<StoryState> {
     await stopListening();
     _durationTimer?.cancel();
     _scrollEndTimer?.cancel();
-    _ref.read(audioControllerProvider.notifier).pauseAmbience();
-    _ref.read(audioControllerProvider.notifier).stopMusic();
+    await _ref.read(audioControllerProvider.notifier).stopAmbience();
+    await _ref.read(audioControllerProvider.notifier).stopMusic();
 
     state = state.copyWith(
       currentStoryEntry: entry,
