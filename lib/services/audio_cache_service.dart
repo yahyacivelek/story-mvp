@@ -5,7 +5,12 @@ import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
 
 // Conditional imports — resolved at compile time per platform.
-import 'audio_cache_io.dart' if (dart.library.html) 'audio_cache_web.dart' as platform;
+// dart.library.html  → JS-compiled web (dart:html available)
+// dart.library.wasm   → Wasm-compiled web (dart:js_interop available)
+import 'audio_cache_io.dart'
+    if (dart.library.html) 'audio_cache_web.dart'
+    if (dart.library.wasm) 'audio_cache_web.dart'
+    as platform;
 
 /// Two-tier audio byte cache:
 ///   1. In-memory `Map<String, Uint8List>` (hot, per-session).

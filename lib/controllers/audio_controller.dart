@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:audio_session/audio_session.dart';
@@ -101,13 +103,13 @@ class AudioController extends StateNotifier<AudioState> {
       if (event.begin) {
         // Duck on all transient interruptions (STT, notifications).
         // Never pause — we hold permanent GAIN focus so this is just courtesy.
-        await _ambiencePlayer.setVolume(0.08);
+        await _ambienceLooper.setVolume(0.08);
         debugPrint('[AudioController] Ducked ambience for interruption');
       } else {
         // Focus returned — restore volume.
         if (state.ambienceStatus == AmbienceStatus.playing) {
           final intensity = _currentIntensity;
-          await _ambiencePlayer.setVolume(_intensityToVolume(intensity));
+          await _ambienceLooper.setVolume(_intensityToVolume(intensity));
           debugPrint('[AudioController] Audio focus restored, volume reset');
         }
       }
@@ -118,11 +120,10 @@ class AudioController extends StateNotifier<AudioState> {
 
   String _currentIntensity = 'medium';
 
-  /// Dedicated player for infinitely-looping background ambience.
-  /// handleAudioSessionActivation=false: we manage AudioFocus ourselves via
-  /// audio_session so just_audio does NOT pause on AudioFocus loss.
-  final AudioPlayer _ambiencePlayer = AudioPlayer(
-    handleAudioSessionActivation: false,
+  /// Seamless looper for background ambience — crossfades between two
+  /// players to eliminate the click/pop at loop boundaries.
+  final _SeamlessLooper _ambienceLooper = _SeamlessLooper(
+    crossfadeDuration: const Duration(seconds: 2),
   );
 
   /// Dedicated player for foreground one-shot SFX.
@@ -130,9 +131,10 @@ class AudioController extends StateNotifier<AudioState> {
     handleAudioSessionActivation: false,
   );
 
-  /// Dedicated player for looping background music layer.
-  final AudioPlayer _musicPlayer = AudioPlayer(
-    handleAudioSessionActivation: false,
+  /// Seamless looper for background music — crossfades between two
+  /// players to eliminate the click/pop at loop boundaries.
+  final _SeamlessLooper _musicLooper = _SeamlessLooper(
+    crossfadeDuration: const Duration(seconds: 3),
   );
 
   final ElevenLabsService _api = ElevenLabsService.instance;
@@ -227,11 +229,11 @@ class AudioController extends StateNotifier<AudioState> {
 
       // Fade out current ambience over half the transition duration.
       final fadeOutMs = (durationSeconds * 500).round();
-      await _ambiencePlayer.setVolume(0);
-      await _ambiencePlayer.stop();
+      await _ambienceLooper.setVolume(0);
+      await _ambienceLooper.stop();
 
-      // Start new ambience.
-      await _playAmbienceFromBytes(result.bytes, profile.intensity);
+      // Start new ambience at silence, then fade in.
+      await _playAmbienceFromBytes(result.bytes, profile.intensity, initialVolume: 0);
 
       // Fade in from silence over the other half.
       final targetVolume = _intensityToVolume(profile.intensity);
@@ -239,7 +241,7 @@ class AudioController extends StateNotifier<AudioState> {
       final stepMs = (fadeOutMs / fadeInSteps).round();
       for (var i = 1; i <= fadeInSteps; i++) {
         await Future.delayed(Duration(milliseconds: stepMs));
-        await _ambiencePlayer.setVolume(targetVolume * (i / fadeInSteps));
+        await _ambienceLooper.setVolume(targetVolume * (i / fadeInSteps));
       }
 
       state = state.copyWith(ambienceStatus: AmbienceStatus.playing);
@@ -297,31 +299,28 @@ class AudioController extends StateNotifier<AudioState> {
 
   Future<void> _playAmbienceFromBytes(
     Uint8List bytes,
-    String intensity,
-  ) async {
-    await _ambiencePlayer.stop();
+    String intensity, {
+    double? initialVolume,
+  }) async {
+    await _ambienceLooper.stop();
 
     final volume = _intensityToVolume(intensity);
     debugPrint('[AudioController] Setting ambience volume: $volume (intensity: $intensity)');
 
     _currentIntensity = intensity;
-    final byteSource = _BytesAudioSource(bytes);
-    await _ambiencePlayer.setLoopMode(LoopMode.one);
-    await _ambiencePlayer.setAudioSource(byteSource);
-    await _ambiencePlayer.setVolume(volume);
-    await _ambiencePlayer.play();
-    debugPrint('[AudioController] _ambiencePlayer.play() called');
+    await _ambienceLooper.play(bytes, volume, initialVolume: initialVolume);
+    debugPrint('[AudioController] _ambienceLooper.play() called');
   }
 
   /// Pauses the ambience without disposing the player.
   Future<void> pauseAmbience() async {
-    await _ambiencePlayer.pause();
+    await _ambienceLooper.pause();
     state = state.copyWith(ambienceStatus: AmbienceStatus.idle);
   }
 
   /// Fully stops ambience, clears the audio source and resets state.
   Future<void> stopAmbience() async {
-    await _ambiencePlayer.stop();
+    await _ambienceLooper.stop();
     state = state.copyWith(
       ambienceStatus: AmbienceStatus.idle,
       ambiencePrompt: null,
@@ -331,7 +330,7 @@ class AudioController extends StateNotifier<AudioState> {
 
   /// Resumes paused ambience.
   Future<void> resumeAmbience() async {
-    await _ambiencePlayer.play();
+    await _ambienceLooper.resume();
     state = state.copyWith(ambienceStatus: AmbienceStatus.playing);
   }
 
@@ -339,26 +338,12 @@ class AudioController extends StateNotifier<AudioState> {
   Future<void> setAmbienceEnabled(bool enabled) async {
     state = state.copyWith(ambienceEnabled: enabled);
     if (!enabled) {
-      await _ambiencePlayer.pause();
+      await _ambienceLooper.pause();
       state = state.copyWith(ambienceStatus: AmbienceStatus.idle);
     } else {
-      if (_ambiencePlayer.audioSource != null) {
-        await _ambiencePlayer.play();
+      if (_ambienceLooper.hasSource) {
+        await _ambienceLooper.resume();
         state = state.copyWith(ambienceStatus: AmbienceStatus.playing);
-      }
-    }
-  }
-
-  /// Enables or disables the music layer.
-  Future<void> setMusicEnabled(bool enabled) async {
-    state = state.copyWith(musicEnabled: enabled);
-    if (!enabled) {
-      await _musicPlayer.pause();
-      state = state.copyWith(musicStatus: MusicStatus.idle);
-    } else {
-      if (_musicPlayer.audioSource != null) {
-        await _musicPlayer.play();
-        state = state.copyWith(musicStatus: MusicStatus.playing);
       }
     }
   }
@@ -410,23 +395,33 @@ class AudioController extends StateNotifier<AudioState> {
   }
 
   Future<void> _playMusicFromBytes(Uint8List bytes, String intensity) async {
-    await _musicPlayer.stop();
+    await _musicLooper.stop();
 
     final volume = _intensityToVolume(intensity) * 0.6; // Music sits below ambience
     debugPrint('[AudioController] Setting music volume: $volume (intensity: $intensity)');
 
-    final byteSource = _BytesAudioSource(bytes);
-    await _musicPlayer.setLoopMode(LoopMode.one);
-    await _musicPlayer.setAudioSource(byteSource);
-    await _musicPlayer.setVolume(volume);
-    await _musicPlayer.play();
-    debugPrint('[AudioController] _musicPlayer.play() called');
+    await _musicLooper.play(bytes, volume);
+    debugPrint('[AudioController] _musicLooper.play() called');
   }
 
   /// Stops the music layer.
   Future<void> stopMusic() async {
-    await _musicPlayer.stop();
+    await _musicLooper.stop();
     state = state.copyWith(musicStatus: MusicStatus.idle, musicTheme: null);
+  }
+
+  /// Enables or disables the music layer.
+  Future<void> setMusicEnabled(bool enabled) async {
+    state = state.copyWith(musicEnabled: enabled);
+    if (!enabled) {
+      await _musicLooper.pause();
+      state = state.copyWith(musicStatus: MusicStatus.idle);
+    } else {
+      if (_musicLooper.hasSource) {
+        await _musicLooper.resume();
+        state = state.copyWith(musicStatus: MusicStatus.playing);
+      }
+    }
   }
 
   // -------------------------------------------------------------------------
@@ -474,10 +469,164 @@ class AudioController extends StateNotifier<AudioState> {
 
   @override
   void dispose() {
-    _ambiencePlayer.dispose();
+    _ambienceLooper.dispose();
     _sfxPlayer.dispose();
-    _musicPlayer.dispose();
+    _musicLooper.dispose();
     super.dispose();
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Seamless looper — dual-player crossfade for click-free looping
+// ---------------------------------------------------------------------------
+
+/// Manages two [AudioPlayer] instances and crossfades between them near the
+/// end of each cycle, producing seamless loops without the click/pop artefact
+/// that occurs when [LoopMode.one] restarts a clip from its boundary.
+///
+/// Uses an equal-power crossfade curve (`cos`/`sin`) so the perceived
+/// loudness stays constant throughout the transition.
+class _SeamlessLooper {
+  final AudioPlayer _playerA;
+  final AudioPlayer _playerB;
+  final Duration crossfadeDuration;
+  final int _crossfadeSteps;
+
+  StreamSubscription<Duration>? _positionSub;
+  bool _activeIsA = true;
+  bool _crossfading = false;
+  bool _disposed = false;
+  double _targetVolume = 1.0;
+  Uint8List? _currentBytes;
+
+  _SeamlessLooper({
+    this.crossfadeDuration = const Duration(seconds: 2),
+    int crossfadeSteps = 30,
+  })  : _playerA = AudioPlayer(handleAudioSessionActivation: false),
+        _playerB = AudioPlayer(handleAudioSessionActivation: false),
+        _crossfadeSteps = crossfadeSteps;
+
+  AudioPlayer get _active => _activeIsA ? _playerA : _playerB;
+  AudioPlayer get _standby => _activeIsA ? _playerB : _playerA;
+
+  /// Whether a source has been loaded (i.e. [play] was called successfully).
+  bool get hasSource => _currentBytes != null;
+
+  /// Starts playback from [bytes] at [volume].
+  ///
+  /// Set [initialVolume] to start at a different volume (e.g. `0` for a
+  /// fade-in); defaults to [volume] when omitted.
+  Future<void> play(Uint8List bytes, double volume, {double? initialVolume}) async {
+    _currentBytes = bytes;
+    _targetVolume = volume;
+    _crossfading = false;
+
+    await _playerA.stop();
+    await _playerB.stop();
+
+    // Set LoopMode.one as safety net — the looper crossfades before the
+    // clip ends, but if a crossfade is delayed the player keeps going
+    // instead of stopping dead.
+    await _playerA.setLoopMode(LoopMode.one);
+    await _playerB.setLoopMode(LoopMode.one);
+
+    final startVol = initialVolume ?? volume;
+    await _playerA.setAudioSource(_BytesAudioSource(bytes));
+    await _playerA.setVolume(startVol);
+    await _playerA.play();
+    _activeIsA = true;
+
+    _startPositionMonitoring();
+  }
+
+  void _startPositionMonitoring() {
+    _positionSub?.cancel();
+    _positionSub = _active.positionStream.listen(_onPositionUpdate);
+  }
+
+  void _onPositionUpdate(Duration position) {
+    if (_disposed || _crossfading) return;
+    final duration = _active.duration;
+    if (duration == null || duration <= crossfadeDuration) return;
+
+    final triggerPoint = duration - crossfadeDuration;
+    if (position >= triggerPoint) {
+      _crossfading = true; // Guard immediately to prevent re-entry.
+      _positionSub?.cancel();
+      _initiateCrossfade(); // Fire-and-forget; _crossfading guards.
+    }
+  }
+
+  Future<void> _initiateCrossfade() async {
+    if (_currentBytes == null || _disposed) return;
+    // _crossfading already set to true by _onPositionUpdate.
+
+    final outgoing = _active;
+    final incoming = _standby;
+
+    // Prepare incoming player at zero volume.
+    await incoming.setAudioSource(_BytesAudioSource(_currentBytes!));
+    await incoming.setVolume(0);
+    await incoming.seek(Duration.zero);
+    await incoming.play();
+
+    // Equal-power crossfade: cos/sin curve keeps perceived loudness constant.
+    final stepMs = crossfadeDuration.inMilliseconds ~/ _crossfadeSteps;
+    for (var i = 1; i <= _crossfadeSteps; i++) {
+      if (_disposed || _currentBytes == null) return;
+      await Future.delayed(Duration(milliseconds: stepMs));
+      final t = i / _crossfadeSteps;
+      final outVol = _targetVolume * cos(pi / 2 * t);
+      final inVol = _targetVolume * sin(pi / 2 * t);
+      await outgoing.setVolume(outVol);
+      await incoming.setVolume(inVol);
+    }
+
+    // Reset outgoing player for the next cycle.
+    await outgoing.pause();
+    await outgoing.seek(Duration.zero);
+
+    _activeIsA = !_activeIsA;
+    _crossfading = false;
+
+    if (!_disposed) _startPositionMonitoring();
+  }
+
+  /// Sets the target volume. During a crossfade the new target is picked up
+  /// by subsequent crossfade steps; outside a crossfade it is applied
+  /// immediately to the active player.
+  Future<void> setVolume(double volume) async {
+    _targetVolume = volume;
+    if (!_crossfading) {
+      await _active.setVolume(volume);
+    }
+  }
+
+  Future<void> pause() async {
+    _positionSub?.cancel();
+    _crossfading = false;
+    await _playerA.pause();
+    await _playerB.pause();
+  }
+
+  Future<void> resume() async {
+    await _active.play();
+    _startPositionMonitoring();
+  }
+
+  Future<void> stop() async {
+    _positionSub?.cancel();
+    _crossfading = false;
+    await _playerA.stop();
+    await _playerB.stop();
+    _currentBytes = null;
+  }
+
+  void dispose() {
+    _disposed = true;
+    _positionSub?.cancel();
+    _playerA.dispose();
+    _playerB.dispose();
   }
 }
 
