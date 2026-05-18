@@ -124,24 +124,54 @@ class StoryScreen extends ConsumerWidget {
 // Story body — the hero of the screen
 // ---------------------------------------------------------------------------
 
-class _StoryBody extends StatelessWidget {
+class _StoryBody extends ConsumerStatefulWidget {
   final Scene scene;
   final List<StoryPage> pages;
 
   const _StoryBody({required this.scene, required this.pages});
 
   @override
+  ConsumerState<_StoryBody> createState() => _StoryBodyState();
+}
+
+class _StoryBodyState extends ConsumerState<_StoryBody> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_onScroll);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    if (!_scrollController.hasClients) return;
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    if (maxScroll <= 0) return;
+    final progress = _scrollController.offset / maxScroll;
+    ref.read(storyControllerProvider.notifier).onScrollProgress(progress);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scrollbar(
       radius: const Radius.circular(4),
+      controller: _scrollController,
       child: SingleChildScrollView(
+        controller: _scrollController,
         padding: const EdgeInsets.fromLTRB(24, 24, 24, 100),
         child: Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 680),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: pages.map((page) {
+              children: widget.pages.map((page) {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 48),
                   child: Column(
@@ -151,7 +181,7 @@ class _StoryBody extends StatelessWidget {
                       const SizedBox(height: 20),
                       InteractiveTextWidget(
                         fullText: page.fullText,
-                        opportunities: scene.audioOpportunities,
+                        opportunities: widget.scene.audioOpportunities,
                       ),
                     ],
                   ),

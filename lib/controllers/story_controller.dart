@@ -21,6 +21,12 @@ class StoryState {
   final bool isListening;
   final String lastHeardText;
 
+  /// 0.0–1.0 — how far the user has scrolled through the current scene.
+  final double readingProgress;
+
+  /// Whether an automatic scene transition is pending (brief countdown).
+  final bool isAutoTransitioning;
+
   const StoryState({
     this.storyData,
     this.activeSceneIndex = 0,
@@ -28,6 +34,8 @@ class StoryState {
     this.error,
     this.isListening = false,
     this.lastHeardText = '',
+    this.readingProgress = 0.0,
+    this.isAutoTransitioning = false,
   });
 
   Scene? get activeScene =>
@@ -51,6 +59,8 @@ class StoryState {
     String? error,
     bool? isListening,
     String? lastHeardText,
+    double? readingProgress,
+    bool? isAutoTransitioning,
   }) {
     return StoryState(
       storyData: storyData ?? this.storyData,
@@ -59,6 +69,8 @@ class StoryState {
       error: error,
       isListening: isListening ?? this.isListening,
       lastHeardText: lastHeardText ?? this.lastHeardText,
+      readingProgress: readingProgress ?? this.readingProgress,
+      isAutoTransitioning: isAutoTransitioning ?? this.isAutoTransitioning,
     );
   }
 }
@@ -83,6 +95,18 @@ class StoryController extends StateNotifier<StoryState> {
   /// Cooldown per audio opportunity: stores last trigger time by id.
   final Map<String, DateTime> _lastTriggered = {};
 
+  /// Timestamp of last scene transition — prevents rapid re-transitions.
+  DateTime? _lastTransitionAt;
+
+  /// Minimum seconds between automatic scene transitions.
+  static const int _transitionCooldownSeconds = 10;
+
+  /// Timer for duration-based auto-transition.
+  Timer? _durationTimer;
+
+  /// Timer for scroll-end auto-transition (brief delay after reaching bottom).
+  Timer? _scrollEndTimer;
+
   Future<void> _init() async {
     try {
       final jsonString = await rootBundle.loadString('assets/story.json');
@@ -100,6 +124,7 @@ class StoryController extends StateNotifier<StoryState> {
             .read(audioControllerProvider.notifier)
             .loadAndPlayAmbience(firstScene);
         _ref.read(audioControllerProvider.notifier).loadAndPlayMusic(firstScene);
+        _startDurationTimer(firstScene);
       }
 
       // Start listening in the story's language.
@@ -235,31 +260,40 @@ class StoryController extends StateNotifier<StoryState> {
 
   void _matchSceneTransition(String transcript, StoryData data) {
     final scenes = data.sceneGraph;
-    final currentIndex = state.activeSceneIndex;
+    final currentScene = state.activeScene!;
+    final transition = currentScene.sceneTransition;
 
-    // Only try the immediately next scene (narrative order).
-    final nextIndex = currentIndex + 1;
-    if (nextIndex >= scenes.length) return;
+    // No next scene — end of story.
+    if (transition.nextSceneId == 'none') return;
+
+    // Enforce cooldown between automatic transitions.
+    if (_lastTransitionAt != null &&
+        DateTime.now().difference(_lastTransitionAt!).inSeconds <
+            _transitionCooldownSeconds) {
+      return;
+    }
+
+    // Find the next scene by its scene_id (not just index + 1).
+    final nextIndex = scenes.indexWhere(
+        (s) => s.sceneId == transition.nextSceneId);
+    if (nextIndex < 0) return;
 
     final nextScene = scenes[nextIndex];
-    final activation = nextScene.sceneActivation;
-    final threshold = activation.activationConfidenceThreshold;
+    final threshold = nextScene.sceneActivation.activationConfidenceThreshold;
 
-    // Build keyword lists from entry_cues — the JSON stores them as nested
-    // objects; we already parsed only the flat fields so we use scene_summary
-    // keywords as a fallback plus scene_id tokens.
-    //
-    // primary_keywords / secondary_keywords come from the activation map
-    // but our model stores only the flat fields. We derive keywords from
-    // scene_summary words as secondary support, and use the current page
-    // texts' key phrases as primary.
-    final currentScene = scenes[currentIndex];
-    final exitKeywords = _exitKeywordsForScene(currentScene);
+    // Build keyword lists from structured exit_cues + entry_cues in JSON.
+    final exitKeywords = _cueKeywordsForScene(currentScene, isExit: true);
+    final entryKeywords = _cueKeywordsForScene(nextScene, isExit: false);
+
+    // Combine: exit cues from current scene (primary) + entry cues from next
+    // scene (secondary) — matching either signals a transition.
+    final primary = [...exitKeywords.primary, ...entryKeywords.primary];
+    final secondary = [...exitKeywords.secondary, ...entryKeywords.secondary];
 
     final hit = FuzzyMatcher.matches(
       transcript: transcript,
-      primaryKeywords: exitKeywords.primary,
-      secondaryKeywords: exitKeywords.secondary,
+      primaryKeywords: primary,
+      secondaryKeywords: secondary,
       threshold: threshold,
     );
 
@@ -271,12 +305,25 @@ class StoryController extends StateNotifier<StoryState> {
     }
   }
 
-  /// Extracts likely exit keywords from a scene's pages text.
+  /// Builds keyword lists from a scene's structured exit_cues or entry_cues.
   ///
-  /// Since the JSON `scene_activation.exit_cues` contains keyword arrays
-  /// that the model doesn't deeply parse, we derive them from the last page
-  /// of the scene and the scene_summary.
-  _Keywords _exitKeywordsForScene(Scene scene) {
+  /// Falls back to deriving keywords from page text when cues are empty.
+  _Keywords _cueKeywordsForScene(Scene scene, {required bool isExit}) {
+    final cues = isExit
+        ? scene.sceneActivation.exitCues
+        : scene.sceneActivation.entryCues;
+
+    if (cues.isNotEmpty) {
+      final primary = cues
+          .expand((c) => c.primaryKeywords)
+          .toList();
+      final secondary = cues
+          .expand((c) => c.secondaryKeywords)
+          .toList();
+      return _Keywords(primary: primary, secondary: secondary);
+    }
+
+    // Fallback: derive from last page text when no structured cues.
     final data = state.storyData!;
     final pageNums = scene.pages.toSet();
     final pages = data.pages
@@ -284,7 +331,6 @@ class StoryController extends StateNotifier<StoryState> {
         .toList()
       ..sort((a, b) => a.pageNumber.compareTo(b.pageNumber));
 
-    // Last page text words (>4 chars) as secondary.
     final lastPageWords = pages.isNotEmpty
         ? pages.last.fullText
             .toLowerCase()
@@ -294,7 +340,6 @@ class StoryController extends StateNotifier<StoryState> {
             .toList()
         : <String>[];
 
-    // Scene summary words as primary.
     final summaryWords = scene.sceneSummary
         .toLowerCase()
         .split(RegExp(r'\s+'))
@@ -307,16 +352,98 @@ class StoryController extends StateNotifier<StoryState> {
 
   void _transitionToScene(int index) {
     final data = state.storyData!;
-    state = state.copyWith(activeSceneIndex: index);
+    final currentScene = state.activeScene!;
+    final transition = currentScene.sceneTransition;
+    final nextScene = data.sceneGraph[index];
+
+    // Cancel pending timers.
+    _durationTimer?.cancel();
+    _scrollEndTimer?.cancel();
+
+    state = state.copyWith(
+      activeSceneIndex: index,
+      readingProgress: 0.0,
+      isAutoTransitioning: false,
+    );
+    _lastTransitionAt = DateTime.now();
     // Clear transcript buffer on scene change to avoid re-triggering.
     _transcriptBuffer.clear();
     _lastTriggered.clear();
 
-    final scene = data.sceneGraph[index];
+    // Use crossfade transition when the JSON specifies it.
     _ref
         .read(audioControllerProvider.notifier)
-        .loadAndPlayAmbience(scene);
-    _ref.read(audioControllerProvider.notifier).loadAndPlayMusic(scene);
+        .transitionToScene(nextScene, transition: transition);
+
+    // Start duration timer for the new scene.
+    _startDurationTimer(nextScene);
+  }
+
+  // -------------------------------------------------------------------------
+  // Scroll-based auto-transition
+  // -------------------------------------------------------------------------
+
+  /// Called from the UI when scroll position changes.
+  void onScrollProgress(double progress) {
+    state = state.copyWith(readingProgress: progress);
+
+    // When user scrolls past 90% of the scene content, schedule a transition.
+    if (progress >= 0.9 && _scrollEndTimer == null && !_isInCooldown()) {
+      final scene = state.activeScene;
+      if (scene == null || scene.sceneTransition.nextSceneId == 'none') return;
+
+      state = state.copyWith(isAutoTransitioning: true);
+      debugPrint('[StoryController] Scroll-end reached, scheduling auto-transition');
+
+      // Brief 3-second pause so the user can finish reading, then transition.
+      _scrollEndTimer = Timer(const Duration(seconds: 3), () {
+        _scrollEndTimer = null;
+        _autoTransitionToNextScene();
+      });
+    }
+  }
+
+  // -------------------------------------------------------------------------
+  // Duration-based auto-transition
+  // -------------------------------------------------------------------------
+
+  /// Starts a countdown based on `scene_duration_estimate_seconds`.
+  void _startDurationTimer(Scene scene) {
+    _durationTimer?.cancel();
+
+    final seconds = scene.sceneDurationEstimateSeconds;
+    debugPrint('[StoryController] Duration timer: ${seconds}s for ${scene.sceneId}');
+
+    _durationTimer = Timer(Duration(seconds: seconds), () {
+      // Only fire if user hasn't already scrolled to end (scroll handler
+      // will have already transitioned in that case).
+      if (state.readingProgress < 0.9 && !_isInCooldown()) {
+        debugPrint('[StoryController] Duration timer expired, auto-transitioning');
+        _autoTransitionToNextScene();
+      }
+    });
+  }
+
+  /// Performs the automatic transition to the next scene.
+  void _autoTransitionToNextScene() {
+    final scene = state.activeScene;
+    if (scene == null) return;
+
+    final nextSceneId = scene.sceneTransition.nextSceneId;
+    if (nextSceneId == 'none') return;
+
+    final data = state.storyData!;
+    final nextIndex = data.sceneGraph.indexWhere((s) => s.sceneId == nextSceneId);
+    if (nextIndex < 0) return;
+
+    debugPrint('[StoryController] Auto-transition: ${scene.sceneId} → $nextSceneId');
+    _transitionToScene(nextIndex);
+  }
+
+  bool _isInCooldown() {
+    if (_lastTransitionAt == null) return false;
+    return DateTime.now().difference(_lastTransitionAt!).inSeconds <
+        _transitionCooldownSeconds;
   }
 
   // -------------------------------------------------------------------------
@@ -325,6 +452,8 @@ class StoryController extends StateNotifier<StoryState> {
   void dispose() {
     _speechSub?.cancel();
     _speech.stopListening();
+    _durationTimer?.cancel();
+    _scrollEndTimer?.cancel();
     super.dispose();
   }
 }

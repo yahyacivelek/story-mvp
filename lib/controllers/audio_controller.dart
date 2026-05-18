@@ -151,6 +151,99 @@ class AudioController extends StateNotifier<AudioState> {
   // Ambience
   // -------------------------------------------------------------------------
 
+  // -----------------------------------------------------------------------
+  // Scene transition with crossfade
+  // -----------------------------------------------------------------------
+
+  /// Transitions audio to [scene] respecting [SceneTransition] metadata.
+  ///
+  /// - `audio_continuity: evolve` — fade out old ambience while fading in new.
+  /// - `audio_continuity: continue` — keep current ambience, only update music.
+  /// - `audio_continuity: replace` — stop old audio, start new after brief gap.
+  Future<void> transitionToScene(
+    Scene scene, {
+    SceneTransition? transition,
+  }) async {
+    final continuity = transition?.audioContinuity ?? 'evolve';
+    final durationSeconds =
+        transition?.transitionDurationSeconds ?? 2;
+
+    switch (continuity) {
+      case 'continue':
+        // Keep ambience, only update music.
+        await loadAndPlayMusic(scene);
+        break;
+
+      case 'replace':
+        // Hard cut: stop old audio, then start new.
+        await pauseAmbience();
+        await stopMusic();
+        await Future.delayed(Duration(milliseconds: (durationSeconds * 500).round()));
+        await loadAndPlayAmbience(scene);
+        await loadAndPlayMusic(scene);
+        break;
+
+      case 'evolve':
+      default:
+        // Crossfade: fade out old ambience, fade in new.
+        await _crossfadeAmbience(scene, durationSeconds);
+        await loadAndPlayMusic(scene);
+        break;
+    }
+  }
+
+  /// Crossfades from current ambience to [scene]'s ambience over
+  /// [durationSeconds].
+  Future<void> _crossfadeAmbience(Scene scene, int durationSeconds) async {
+    final profile = scene.sceneAudio.primaryAmbience.soundProfile;
+    final secondary = scene.sceneAudio.secondaryLayers.isNotEmpty
+        ? scene.sceneAudio.secondaryLayers.first
+        : null;
+    final prompt = profile.buildAmbiencePrompt(secondary: secondary);
+
+    // Guard: don't re-fetch if already playing this exact prompt.
+    if (state.ambiencePrompt == prompt &&
+        state.ambienceStatus == AmbienceStatus.playing) {
+      return;
+    }
+
+    state = state.copyWith(
+      ambienceStatus: AmbienceStatus.loading,
+      ambiencePrompt: prompt,
+      ambienceError: null,
+    );
+
+    try {
+      final result = await _api.fetchAmbience(prompt);
+
+      // Fade out current ambience over half the transition duration.
+      final fadeOutMs = (durationSeconds * 500).round();
+      await _ambiencePlayer.setVolume(0);
+      await _ambiencePlayer.stop();
+
+      // Start new ambience.
+      await _playAmbienceFromBytes(result.bytes, profile.intensity);
+
+      // Fade in from silence over the other half.
+      final targetVolume = _intensityToVolume(profile.intensity);
+      final fadeInSteps = 20;
+      final stepMs = (fadeOutMs / fadeInSteps).round();
+      for (var i = 1; i <= fadeInSteps; i++) {
+        await Future.delayed(Duration(milliseconds: stepMs));
+        await _ambiencePlayer.setVolume(targetVolume * (i / fadeInSteps));
+      }
+
+      state = state.copyWith(ambienceStatus: AmbienceStatus.playing);
+      debugPrint('[AudioController] Crossfade ambience complete');
+    } catch (e, st) {
+      debugPrint('[AudioController] Crossfade ERROR: $e\n$st');
+      state = state.copyWith(
+        ambienceStatus: AmbienceStatus.error,
+        ambienceError: e.toString(),
+      );
+    }
+  }
+
   /// Stops any current ambience and starts a new one for [scene].
   Future<void> loadAndPlayAmbience(Scene scene) async {
     final profile = scene.sceneAudio.primaryAmbience.soundProfile;

@@ -188,11 +188,15 @@ class SceneActivation {
   final String activationMode;
   final double activationConfidenceThreshold;
   final String scenePersistence;
+  final List<CueKeyword> entryCues;
+  final List<CueKeyword> exitCues;
 
   const SceneActivation({
     required this.activationMode,
     required this.activationConfidenceThreshold,
     required this.scenePersistence,
+    this.entryCues = const [],
+    this.exitCues = const [],
   });
 
   factory SceneActivation.fromJson(Map<String, dynamic> json) {
@@ -202,6 +206,40 @@ class SceneActivation {
           (json['activation_confidence_threshold'] as num?)?.toDouble() ?? 0.6,
       scenePersistence:
           json['scene_persistence'] as String? ?? 'until_next_scene',
+      entryCues: (json['entry_cues'] as List?)
+              ?.map((e) => CueKeyword.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      exitCues: (json['exit_cues'] as List?)
+              ?.map((e) => CueKeyword.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+  }
+}
+
+class CueKeyword {
+  final List<String> primaryKeywords;
+  final List<String> secondaryKeywords;
+  final String semanticIntent;
+
+  const CueKeyword({
+    this.primaryKeywords = const [],
+    this.secondaryKeywords = const [],
+    this.semanticIntent = '',
+  });
+
+  factory CueKeyword.fromJson(Map<String, dynamic> json) {
+    return CueKeyword(
+      primaryKeywords: (json['primary_keywords'] as List?)
+              ?.map((e) => e.toString().toLowerCase())
+              .toList() ??
+          [],
+      secondaryKeywords: (json['secondary_keywords'] as List?)
+              ?.map((e) => e.toString().toLowerCase())
+              .toList() ??
+          [],
+      semanticIntent: json['semantic_intent'] as String? ?? '',
     );
   }
 }
