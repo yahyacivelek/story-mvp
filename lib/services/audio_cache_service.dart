@@ -1,122 +1,96 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
-import 'package:path_provider/path_provider.dart';
+
+// Conditional imports — resolved at compile time per platform.
+import 'audio_cache_io.dart' if (dart.library.html) 'audio_cache_web.dart' as platform;
 
 /// Two-tier audio byte cache:
 ///   1. In-memory `Map<String, Uint8List>` (hot, per-session).
-///   2. Persistent on-disk files under the app's documents directory.
+///   2. Persistent storage (native: on-disk files; web: IndexedDB).
 ///
-/// Keys are the exact ElevenLabs prompt string. On disk, the filename is
-/// `sha1(prompt).mp3` so the cache survives app restarts and hot reloads —
-/// you generate each sound once and reuse it across every debug session.
+/// Keys are the exact ElevenLabs prompt string. On native the filename is
+/// `sha1(prompt).mp3`; on web the key is stored in IndexedDB. The cache
+/// survives app restarts and hot reloads — you generate each sound once and
+/// reuse it across every debug session.
 class AudioCacheService {
   AudioCacheService._();
 
   static final AudioCacheService instance = AudioCacheService._();
 
-  static const String _subdir = 'elevenlabs_cache';
+  static const String _storeName = 'elevenlabs_cache';
 
   final Map<String, Uint8List> _memory = {};
-  Future<Directory>? _dirFuture;
 
-  Future<Directory> _ensureDir() {
-    return _dirFuture ??= () async {
-      final docs = await getApplicationDocumentsDirectory();
-      final dir = Directory('${docs.path}/$_subdir');
-      if (!await dir.exists()) {
-        await dir.create(recursive: true);
-      }
-      debugPrint('[AudioCache] persistent dir: ${dir.path}');
-      return dir;
-    }();
-  }
-
-  String _filenameFor(String prompt) {
+  String _keyFor(String prompt) {
     final digest = sha1.convert(utf8.encode(prompt));
-    return '$digest.mp3';
+    return '$digest';
   }
 
-  Future<File> _fileFor(String prompt) async {
-    final dir = await _ensureDir();
-    return File('${dir.path}/${_filenameFor(prompt)}');
-  }
-
-  /// Returns the cached bytes for [prompt] (memory first, then disk),
+  /// Returns the cached bytes for [prompt] (memory first, then persistent),
   /// or `null` if not cached anywhere.
   Future<Uint8List?> get(String prompt) async {
     final mem = _memory[prompt];
     if (mem != null) return mem;
 
     try {
-      final file = await _fileFor(prompt);
-      if (await file.exists()) {
-        final bytes = await file.readAsBytes();
+      final key = _keyFor(prompt);
+      final bytes = await platform.read(key, _storeName);
+      if (bytes != null) {
         _memory[prompt] = bytes;
-        debugPrint(
-          '[AudioCache] disk hit (${bytes.length}B) ${_filenameFor(prompt)}',
-        );
+        debugPrint('[AudioCache] persistent hit (${bytes.length}B) $key');
         return bytes;
       }
     } catch (e) {
-      debugPrint('[AudioCache] disk read failed: $e');
+      debugPrint('[AudioCache] persistent read failed: $e');
     }
     return null;
   }
 
-  /// Stores [bytes] under [prompt] in both memory and on disk.
+  /// Stores [bytes] under [prompt] in both memory and persistent storage.
   Future<void> put(String prompt, Uint8List bytes) async {
     _memory[prompt] = bytes;
     try {
-      final file = await _fileFor(prompt);
-      await file.writeAsBytes(bytes, flush: true);
-      debugPrint(
-        '[AudioCache] persisted (${bytes.length}B) ${_filenameFor(prompt)}',
-      );
+      final key = _keyFor(prompt);
+      await platform.write(key, bytes, _storeName);
+      debugPrint('[AudioCache] persisted (${bytes.length}B) $key');
     } catch (e) {
-      debugPrint('[AudioCache] disk write failed: $e');
+      debugPrint('[AudioCache] persistent write failed: $e');
     }
   }
 
-  /// Returns `true` if audio for [prompt] is cached in memory or on disk.
+  /// Returns `true` if audio for [prompt] is cached in memory or persistent storage.
   Future<bool> contains(String prompt) async {
     if (_memory.containsKey(prompt)) return true;
     try {
-      final file = await _fileFor(prompt);
-      return file.exists();
+      final key = _keyFor(prompt);
+      return await platform.exists(key, _storeName);
     } catch (_) {
       return false;
     }
   }
 
-  /// Number of in-memory entries (does not scan disk).
+  /// Number of in-memory entries (does not scan persistent storage).
   int get size => _memory.length;
 
-  /// Clears both the in-memory map and the on-disk directory.
+  /// Clears both the in-memory map and persistent storage.
   Future<void> clear() async {
     _memory.clear();
     try {
-      final dir = await _ensureDir();
-      if (await dir.exists()) {
-        await dir.delete(recursive: true);
-        _dirFuture = null;
-      }
+      await platform.clear(_storeName);
     } catch (e) {
       debugPrint('[AudioCache] clear failed: $e');
     }
   }
 
-  /// Removes a single entry from memory and disk.
+  /// Removes a single entry from memory and persistent storage.
   Future<void> evict(String prompt) async {
     _memory.remove(prompt);
     try {
-      final file = await _fileFor(prompt);
-      if (await file.exists()) {
-        await file.delete();
-      }
+      final key = _keyFor(prompt);
+      await platform.delete(key, _storeName);
     } catch (e) {
       debugPrint('[AudioCache] evict failed: $e');
     }
