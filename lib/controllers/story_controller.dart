@@ -109,9 +109,6 @@ class StoryController extends StateNotifier<StoryState> {
   /// Minimum seconds between automatic scene transitions.
   static const int _transitionCooldownSeconds = 10;
 
-  /// Timer for duration-based auto-transition.
-  Timer? _durationTimer;
-
   /// Timer for scroll-end auto-transition (brief delay after reaching bottom).
   Timer? _scrollEndTimer;
 
@@ -139,7 +136,6 @@ class StoryController extends StateNotifier<StoryState> {
   Future<void> loadStory(StoryEntry entry) async {
     // Stop current audio and speech before switching.
     await stopListening();
-    _durationTimer?.cancel();
     _scrollEndTimer?.cancel();
     await _ref.read(audioControllerProvider.notifier).stopAmbience();
     await _ref.read(audioControllerProvider.notifier).stopMusic();
@@ -169,7 +165,6 @@ class StoryController extends StateNotifier<StoryState> {
             .read(audioControllerProvider.notifier)
             .loadAndPlayAmbience(firstScene);
         _ref.read(audioControllerProvider.notifier).loadAndPlayMusic(firstScene);
-        _startDurationTimer(firstScene);
       }
 
       // Start listening in the story's language.
@@ -402,7 +397,6 @@ class StoryController extends StateNotifier<StoryState> {
     final nextScene = data.sceneGraph[index];
 
     // Cancel pending timers.
-    _durationTimer?.cancel();
     _scrollEndTimer?.cancel();
 
     state = state.copyWith(
@@ -420,8 +414,6 @@ class StoryController extends StateNotifier<StoryState> {
         .read(audioControllerProvider.notifier)
         .transitionToScene(nextScene, transition: transition);
 
-    // Start duration timer for the new scene.
-    _startDurationTimer(nextScene);
   }
 
   // -------------------------------------------------------------------------
@@ -449,25 +441,8 @@ class StoryController extends StateNotifier<StoryState> {
   }
 
   // -------------------------------------------------------------------------
-  // Duration-based auto-transition
+  // Auto-transition helper
   // -------------------------------------------------------------------------
-
-  /// Starts a countdown based on `scene_duration_estimate_seconds`.
-  void _startDurationTimer(Scene scene) {
-    _durationTimer?.cancel();
-
-    final seconds = scene.sceneDurationEstimateSeconds;
-    debugPrint('[StoryController] Duration timer: ${seconds}s for ${scene.sceneId}');
-
-    _durationTimer = Timer(Duration(seconds: seconds), () {
-      // Only fire if user hasn't already scrolled to end (scroll handler
-      // will have already transitioned in that case).
-      if (state.readingProgress < 0.9 && !_isInCooldown()) {
-        debugPrint('[StoryController] Duration timer expired, auto-transitioning');
-        _autoTransitionToNextScene();
-      }
-    });
-  }
 
   /// Performs the automatic transition to the next scene.
   void _autoTransitionToNextScene() {
@@ -497,7 +472,6 @@ class StoryController extends StateNotifier<StoryState> {
   void dispose() {
     _speechSub?.cancel();
     _speech.stopListening();
-    _durationTimer?.cancel();
     _scrollEndTimer?.cancel();
     super.dispose();
   }
