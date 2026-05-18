@@ -3,10 +3,17 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'screens/story_screen.dart';
+import 'services/audio_cache_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: '.env');
+
+  // Pre-warm the audio cache: loads all previously generated audio
+  // from persistent storage into memory so debug runs never hit the API.
+  final loaded = await AudioCacheService.instance.preloadAll();
+  debugPrint('[main] Audio cache pre-warmed: $loaded entries');
+
   runApp(const ProviderScope(child: StoryApp()));
 }
 

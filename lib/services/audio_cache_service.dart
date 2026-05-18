@@ -12,6 +12,10 @@ import 'audio_cache_io.dart'
     if (dart.library.wasm) 'audio_cache_web.dart'
     as platform;
 
+// Reverse-lookup index: sha1 hex → original prompt string.
+// Populated by [put] and restored from persistent storage by [preloadAll].
+Map<String, String> _sha1ToPrompt = {};
+
 /// Two-tier audio byte cache:
 ///   1. In-memory `Map<String, Uint8List>` (hot, per-session).
 ///   2. Persistent storage (native: on-disk files; web: IndexedDB).
@@ -59,7 +63,10 @@ class AudioCacheService {
     _memory[prompt] = bytes;
     try {
       final key = _keyFor(prompt);
+      _sha1ToPrompt[key] = prompt;
       await platform.write(key, bytes, _storeName);
+      // Persist the reverse index so it survives app restarts.
+      await platform.writeIndex(_storeName, _sha1ToPrompt);
       debugPrint('[AudioCache] persisted (${bytes.length}B) $key');
     } catch (e) {
       debugPrint('[AudioCache] persistent write failed: $e');
@@ -95,9 +102,60 @@ class AudioCacheService {
     _memory.remove(prompt);
     try {
       final key = _keyFor(prompt);
+      _sha1ToPrompt.remove(key);
       await platform.delete(key, _storeName);
+      await platform.writeIndex(_storeName, _sha1ToPrompt);
     } catch (e) {
       debugPrint('[AudioCache] evict failed: $e');
     }
   }
+
+  // -----------------------------------------------------------------------
+  // Startup pre-warm
+  // -----------------------------------------------------------------------
+
+  /// Scans persistent storage and loads **every** cached audio file into the
+  /// in-memory map so that subsequent [get] calls are instant cache hits
+  /// without any disk I/O or API calls.
+  ///
+  /// Also restores the prompt→sha1 reverse index from persistent storage
+  /// so that preloaded entries are keyed by their original prompt string.
+  ///
+  /// Call once at app startup (e.g. in `main()` before `runApp`).
+  Future<int> preloadAll() async {
+    try {
+      // 1. Restore the reverse index first (sha1 → prompt).
+      _sha1ToPrompt = await platform.readIndex(_storeName);
+
+      // 2. Load all cached audio files into memory.
+      final entries = await platform.listEntries(_storeName);
+
+      var loaded = 0;
+      for (final entry in entries) {
+        final sha1Key = entry.key;
+        final bytes = entry.bytes;
+        // Prefer known prompt from reverse index; fall back to sha1 key itself.
+        final prompt = _sha1ToPrompt[sha1Key] ?? sha1Key;
+        _memory[prompt] = bytes;
+        loaded++;
+      }
+
+      debugPrint(
+        '[AudioCache] preloadAll: $loaded entries loaded into memory '
+        '(${_memory.length} total in-memory, '
+        '${_sha1ToPrompt.length} index entries)',
+      );
+      return loaded;
+    } catch (e) {
+      debugPrint('[AudioCache] preloadAll failed: $e');
+      return 0;
+    }
+  }
+
+  /// Returns a diagnostic snapshot of the cache state.
+  Map<String, dynamic> get status => {
+        'inMemoryCount': _memory.length,
+        'inMemoryBytes': _memory.values.fold<int>(0, (sum, b) => sum + b.length),
+        'knownPrompts': _sha1ToPrompt.length,
+      };
 }

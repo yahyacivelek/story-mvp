@@ -227,13 +227,22 @@ class AudioController extends StateNotifier<AudioState> {
     try {
       final result = await _api.fetchAmbience(prompt);
 
+      if (result.isMissing) {
+        debugPrint('[AudioController] Crossfade SKIP: ambience not cached (offline mode)');
+        state = state.copyWith(
+          ambienceStatus: AmbienceStatus.error,
+          ambienceError: 'Audio not cached – run with offlineMode=false once to generate',
+        );
+        return;
+      }
+
       // Fade out current ambience over half the transition duration.
       final fadeOutMs = (durationSeconds * 500).round();
       await _ambienceLooper.setVolume(0);
       await _ambienceLooper.stop();
 
       // Start new ambience at silence, then fade in.
-      await _playAmbienceFromBytes(result.bytes, profile.intensity, initialVolume: 0);
+      await _playAmbienceFromBytes(result.bytes!, profile.intensity, initialVolume: 0);
 
       // Fade in from silence over the other half.
       final targetVolume = _intensityToVolume(profile.intensity);
@@ -281,11 +290,21 @@ class AudioController extends StateNotifier<AudioState> {
 
     try {
       final result = await _api.fetchAmbience(prompt);
+
+      if (result.isMissing) {
+        debugPrint('[AudioController] Ambience SKIP: not cached (offline mode)');
+        state = state.copyWith(
+          ambienceStatus: AmbienceStatus.error,
+          ambienceError: 'Audio not cached – run with offlineMode=false once to generate',
+        );
+        return;
+      }
+
       debugPrint(
-        '[AudioController] Ambience fetched: ${result.bytes.length} bytes '
+        '[AudioController] Ambience fetched: ${result.bytes!.length} bytes '
         '(fromCache: ${result.fromCache})',
       );
-      await _playAmbienceFromBytes(result.bytes, profile.intensity);
+      await _playAmbienceFromBytes(result.bytes!, profile.intensity);
       state = state.copyWith(ambienceStatus: AmbienceStatus.playing);
       debugPrint('[AudioController] Ambience playing');
     } catch (e, st) {
@@ -378,11 +397,21 @@ class AudioController extends StateNotifier<AudioState> {
 
     try {
       final result = await _api.fetchMusic(theme);
+
+      if (result.isMissing) {
+        debugPrint('[AudioController] Music SKIP: not cached (offline mode)');
+        state = state.copyWith(
+          musicStatus: MusicStatus.error,
+          musicError: 'Audio not cached – run with offlineMode=false once to generate',
+        );
+        return;
+      }
+
       debugPrint(
-        '[AudioController] Music fetched: ${result.bytes.length} bytes '
+        '[AudioController] Music fetched: ${result.bytes!.length} bytes '
         '(fromCache: ${result.fromCache})',
       );
-      await _playMusicFromBytes(result.bytes, musicLayer.intensity);
+      await _playMusicFromBytes(result.bytes!, musicLayer.intensity);
       state = state.copyWith(musicStatus: MusicStatus.playing);
       debugPrint('[AudioController] Music playing');
     } catch (e, st) {
@@ -444,7 +473,11 @@ class AudioController extends StateNotifier<AudioState> {
 
     try {
       final result = await _api.fetchSfx(prompt);
-      await _playSfxFromBytes(result.bytes, opportunity.mixLevel);
+      if (result.isMissing) {
+        debugPrint('[AudioController] SFX SKIP: not cached (offline mode) – $prompt');
+        return;
+      }
+      await _playSfxFromBytes(result.bytes!, opportunity.mixLevel);
     } finally {
       // Clear loading flag whether success or error.
       final updated = Map<String, bool>.from(state.sfxLoadingStates)

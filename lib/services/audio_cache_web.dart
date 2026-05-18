@@ -4,6 +4,7 @@
 library;
 
 import 'dart:async';
+import 'dart:convert';
 import 'dart:js_interop';
 import 'dart:typed_data';
 
@@ -118,4 +119,70 @@ Future<void> clear(String storeName) async {
   } catch (e) {
     debugPrint('[AudioCache/Web] clear failed: $e');
   }
+}
+
+/// Lists all cached entries in IndexedDB using getAllKeys/getAll.
+Future<List<CacheEntry>> listEntries(String storeName) async {
+  try {
+    final db = await _openDb(storeName);
+    final tx = db.transaction(storeName.toJS, 'readonly');
+    final store = tx.objectStore(storeName);
+
+    final keysRaw = await _idbRequest<JSAny?>(store.getAllKeys());
+    final valsRaw = await _idbRequest<JSAny?>(store.getAll());
+
+    final keys = (keysRaw as JSArray).toDart;
+    final vals = (valsRaw as JSArray).toDart;
+
+    final results = <CacheEntry>[];
+    for (var i = 0; i < keys.length && i < vals.length; i++) {
+      final keyStr = (keys[i] as JSString).toDart;
+      // Skip internal index entries (e.g. "_index").
+      if (keyStr.startsWith('_')) continue;
+      final bytes = _jsToBytes(vals[i]);
+      results.add(CacheEntry(key: keyStr, bytes: bytes));
+    }
+    return results;
+  } catch (e) {
+    debugPrint('[AudioCache/Web] listEntries failed: $e');
+    return [];
+  }
+}
+
+/// Reads the prompt→sha1 reverse-index from IndexedDB.
+Future<Map<String, String>> readIndex(String storeName) async {
+  try {
+    final db = await _openDb(storeName);
+    final tx = db.transaction(storeName.toJS, 'readonly');
+    final store = tx.objectStore(storeName);
+    final result = await _idbRequest<JSAny?>(store.get('_index'.toJS));
+    if (result == null) return {};
+    final json = (result as JSString).toDart;
+    final map = (jsonDecode(json) as Map<String, dynamic>)
+        .map((k, v) => MapEntry(k, v as String));
+    return map;
+  } catch (e) {
+    debugPrint('[AudioCache/Web] readIndex failed: $e');
+    return {};
+  }
+}
+
+/// Writes the prompt→sha1 reverse-index to IndexedDB.
+Future<void> writeIndex(String storeName, Map<String, String> index) async {
+  try {
+    final db = await _openDb(storeName);
+    final tx = db.transaction(storeName.toJS, 'readwrite');
+    final store = tx.objectStore(storeName);
+    final json = jsonEncode(index);
+    await _idbRequest<JSAny?>(store.put(json.toJS, '_index'.toJS));
+  } catch (e) {
+    debugPrint('[AudioCache/Web] writeIndex failed: $e');
+  }
+}
+
+/// A single cached audio entry returned by [listEntries].
+class CacheEntry {
+  final String key;
+  final Uint8List bytes;
+  const CacheEntry({required this.key, required this.bytes});
 }
