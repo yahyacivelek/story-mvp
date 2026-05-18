@@ -1,6 +1,50 @@
 import 'dart:convert';
 
 // ---------------------------------------------------------------------------
+// Story manifest — lists available stories from assets/stories/manifest.json
+// ---------------------------------------------------------------------------
+
+class StoryEntry {
+  final String id;
+  final String title;
+  final String language;
+  final String assetPath;
+
+  const StoryEntry({
+    required this.id,
+    required this.title,
+    required this.language,
+    required this.assetPath,
+  });
+
+  factory StoryEntry.fromJson(Map<String, dynamic> json) {
+    return StoryEntry(
+      id: json['id'] as String,
+      title: json['title'] as String,
+      language: json['language'] as String? ?? 'en',
+      assetPath: json['asset_path'] as String,
+    );
+  }
+}
+
+class StoryManifest {
+  final List<StoryEntry> stories;
+
+  const StoryManifest({required this.stories});
+
+  factory StoryManifest.fromJson(Map<String, dynamic> json) {
+    return StoryManifest(
+      stories: (json['stories'] as List)
+          .map((e) => StoryEntry.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
+
+  static StoryManifest fromJsonString(String source) =>
+      StoryManifest.fromJson(jsonDecode(source) as Map<String, dynamic>);
+}
+
+// ---------------------------------------------------------------------------
 // Top-level story container
 // ---------------------------------------------------------------------------
 

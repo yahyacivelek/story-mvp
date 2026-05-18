@@ -14,6 +14,8 @@ import 'audio_controller.dart';
 // ---------------------------------------------------------------------------
 
 class StoryState {
+  final StoryManifest? manifest;
+  final StoryEntry? currentStoryEntry;
   final StoryData? storyData;
   final int activeSceneIndex;
   final bool isLoading;
@@ -28,6 +30,8 @@ class StoryState {
   final bool isAutoTransitioning;
 
   const StoryState({
+    this.manifest,
+    this.currentStoryEntry,
     this.storyData,
     this.activeSceneIndex = 0,
     this.isLoading = true,
@@ -53,6 +57,8 @@ class StoryState {
   }
 
   StoryState copyWith({
+    StoryManifest? manifest,
+    StoryEntry? currentStoryEntry,
     StoryData? storyData,
     int? activeSceneIndex,
     bool? isLoading,
@@ -63,6 +69,8 @@ class StoryState {
     bool? isAutoTransitioning,
   }) {
     return StoryState(
+      manifest: manifest ?? this.manifest,
+      currentStoryEntry: currentStoryEntry ?? this.currentStoryEntry,
       storyData: storyData ?? this.storyData,
       activeSceneIndex: activeSceneIndex ?? this.activeSceneIndex,
       isLoading: isLoading ?? this.isLoading,
@@ -109,7 +117,44 @@ class StoryController extends StateNotifier<StoryState> {
 
   Future<void> _init() async {
     try {
-      final jsonString = await rootBundle.loadString('assets/story.json');
+      // 1. Load the story manifest.
+      final manifestJson =
+          await rootBundle.loadString('assets/stories/manifest.json');
+      final manifest = StoryManifest.fromJsonString(manifestJson);
+
+      state = state.copyWith(manifest: manifest);
+
+      // 2. Load the first story automatically.
+      if (manifest.stories.isNotEmpty) {
+        await loadStory(manifest.stories.first);
+      } else {
+        state = state.copyWith(isLoading: false, error: 'No stories found');
+      }
+    } catch (e) {
+      state = state.copyWith(isLoading: false, error: e.toString());
+    }
+  }
+
+  /// Loads a specific story by its [StoryEntry] and resets all state.
+  Future<void> loadStory(StoryEntry entry) async {
+    // Stop current audio and speech before switching.
+    await stopListening();
+    _durationTimer?.cancel();
+    _scrollEndTimer?.cancel();
+    _ref.read(audioControllerProvider.notifier).pauseAmbience();
+    _ref.read(audioControllerProvider.notifier).stopMusic();
+
+    state = state.copyWith(
+      currentStoryEntry: entry,
+      isLoading: true,
+      error: null,
+      activeSceneIndex: 0,
+      readingProgress: 0.0,
+      isAutoTransitioning: false,
+    );
+
+    try {
+      final jsonString = await rootBundle.loadString(entry.assetPath);
       final data = StoryData.fromJsonString(jsonString);
 
       state = state.copyWith(
@@ -129,7 +174,7 @@ class StoryController extends StateNotifier<StoryState> {
 
       // Start listening in the story's language.
       await startListening(languageCode: data.book.language);
-      debugPrint('[StoryController] STT language: ${data.book.language}');
+      debugPrint('[StoryController] Loaded story: ${entry.title} (lang: ${data.book.language})');
     } catch (e) {
       state = state.copyWith(isLoading: false, error: e.toString());
     }

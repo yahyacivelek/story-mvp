@@ -75,14 +75,17 @@ class SceneSidebarSheet extends ConsumerWidget {
   }
 }
 
-class _SheetHeader extends StatelessWidget {
+class _SheetHeader extends ConsumerWidget {
   final StoryData storyData;
 
   const _SheetHeader({required this.storyData});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colorScheme = Theme.of(context).colorScheme;
+    final storyState = ref.watch(storyControllerProvider);
+    final displayName = storyState.currentStoryEntry?.title ?? storyData.title;
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
       child: Row(
@@ -95,7 +98,7 @@ class _SheetHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  storyData.title,
+                  displayName,
                   style: Theme.of(context).textTheme.titleSmall!.copyWith(
                         color: colorScheme.onSurface,
                         fontWeight: FontWeight.w600,

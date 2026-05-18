@@ -59,14 +59,18 @@ class SceneHeader extends ConsumerWidget {
                                   fontWeight: FontWeight.w600,
                                 ),
                           ),
-                          Text(
-                            '${scene.sceneMood} · ${scene.sceneEnergy} energy',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall!
-                                .copyWith(
-                                  color: colorScheme.onSurfaceVariant,
-                                ),
+                          Row(
+                            children: [
+                              Text(
+                                '${scene.sceneMood} · ${scene.sceneEnergy} energy',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelSmall!
+                                    .copyWith(
+                                      color: colorScheme.onSurfaceVariant,
+                                    ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -74,6 +78,13 @@ class SceneHeader extends ConsumerWidget {
                   ],
                 ),
               ),
+              // Story picker chip
+              if (storyState.manifest != null &&
+                  storyState.manifest!.stories.length > 1)
+                _StoryPickerChip(
+                  currentEntry: storyState.currentStoryEntry,
+                  stories: storyState.manifest!.stories,
+                ),
               const SizedBox(width: 12),
               // Compact audio pills
               _AudioPills(
@@ -301,6 +312,250 @@ class _HeardStrip extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Story picker chip — taps to open story selection sheet
+// ---------------------------------------------------------------------------
+
+class _StoryPickerChip extends ConsumerWidget {
+  final StoryEntry? currentEntry;
+  final List<StoryEntry> stories;
+
+  const _StoryPickerChip({
+    required this.currentEntry,
+    required this.stories,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Tooltip(
+      message: 'Switch story',
+      child: GestureDetector(
+        onTap: () => _showStorySheet(context),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          decoration: BoxDecoration(
+            color: colorScheme.tertiaryContainer.withValues(alpha: 0.5),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.menu_book_rounded,
+                  size: 14, color: colorScheme.onTertiaryContainer),
+              const SizedBox(width: 5),
+              Text(
+                currentEntry?.title ?? 'Select',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                      color: colorScheme.onTertiaryContainer,
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+              const SizedBox(width: 2),
+              Icon(Icons.swap_horiz_rounded,
+                  size: 12, color: colorScheme.onTertiaryContainer),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showStorySheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => StoryPickerSheet(
+        currentEntry: currentEntry,
+        stories: stories,
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Story picker bottom sheet
+// ---------------------------------------------------------------------------
+
+class StoryPickerSheet extends ConsumerWidget {
+  final StoryEntry? currentEntry;
+  final List<StoryEntry> stories;
+
+  const StoryPickerSheet({
+    super.key,
+    required this.currentEntry,
+    required this.stories,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Container(
+      constraints: BoxConstraints(
+        maxHeight: MediaQuery.of(context).size.height * 0.5,
+      ),
+      decoration: BoxDecoration(
+        color: colorScheme.surfaceContainerHigh,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Drag handle
+          Center(
+            child: Container(
+              margin: const EdgeInsets.only(top: 12, bottom: 4),
+              width: 32,
+              height: 4,
+              decoration: BoxDecoration(
+                color: colorScheme.onSurfaceVariant.withValues(alpha: 0.3),
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+          ),
+          // Header
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
+            child: Row(
+              children: [
+                Icon(Icons.menu_book_rounded,
+                    color: colorScheme.primary, size: 22),
+                const SizedBox(width: 10),
+                Text(
+                  'Choose a Story',
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: colorScheme.onSurface,
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
+              ],
+            ),
+          ),
+          // Story list
+          Flexible(
+            child: ListView.builder(
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              itemCount: stories.length,
+              itemBuilder: (context, index) {
+                final entry = stories[index];
+                final isActive = currentEntry?.id == entry.id;
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: _StoryCard(
+                    entry: entry,
+                    isActive: isActive,
+                    onTap: () {
+                      if (!isActive) {
+                        ref
+                            .read(storyControllerProvider.notifier)
+                            .loadStory(entry);
+                      }
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                );
+              },
+            ),
+          ),
+          const SizedBox(height: 16),
+        ],
+      ),
+    );
+  }
+}
+
+class _StoryCard extends StatelessWidget {
+  final StoryEntry entry;
+  final bool isActive;
+  final VoidCallback onTap;
+
+  const _StoryCard({
+    required this.entry,
+    required this.isActive,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Material(
+      color: isActive
+          ? colorScheme.primaryContainer.withValues(alpha: 0.4)
+          : colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+      borderRadius: BorderRadius.circular(16),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: isActive
+                      ? colorScheme.primary.withValues(alpha: 0.2)
+                      : colorScheme.surfaceContainerHigh,
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: isActive
+                      ? Icon(Icons.auto_stories_rounded,
+                          size: 20, color: colorScheme.primary)
+                      : Icon(Icons.menu_book_outlined,
+                          size: 20, color: colorScheme.onSurfaceVariant),
+                ),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      entry.title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(
+                            color: isActive
+                                ? colorScheme.primary
+                                : colorScheme.onSurface,
+                            fontWeight: isActive
+                                ? FontWeight.w600
+                                : FontWeight.w500,
+                          ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      entry.language.toUpperCase(),
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                            color: colorScheme.onSurfaceVariant,
+                          ),
+                    ),
+                  ],
+                ),
+              ),
+              if (isActive)
+                Icon(Icons.check_circle_rounded,
+                    size: 20, color: colorScheme.primary),
+            ],
+          ),
+        ),
       ),
     );
   }

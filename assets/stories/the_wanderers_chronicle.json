@@ -1,0 +1,451 @@
+{
+  "book": {
+    "detected_title": "The Wanderer's Chronicle",
+    "language": "en",
+    "analysis_confidence": 0.92
+  },
+  "page_ordering": {
+    "ordering_method": "narrative_inference",
+    "confidence": 0.95
+  },
+  "pages": [
+    {
+      "page_id": "page_1",
+      "page_number": 1,
+      "order_index": 1,
+      "order_confidence": 1,
+      "full_text": "The Wanderer's Chronicle\nBy the Fireside Collective\nIllustrated by wanderlust.studio",
+      "primary_scene_hint": "cover",
+      "dominant_visual": "A lone traveller on a misty mountain path at dawn.",
+      "mood": "mysterious"
+    },
+    {
+      "page_id": "page_2",
+      "page_number": 2,
+      "order_index": 2,
+      "order_confidence": 0.98,
+      "full_text": "The forest breathed softly as Kael stepped between the ancient oaks. Moss clung to every surface, and the air tasted of rain and forgotten spells. A narrow trail wound deeper into the green, vanishing into a curtain of silver fog. Somewhere ahead, a stream murmured its endless song over smooth stones.",
+      "primary_scene_hint": "forest_path",
+      "dominant_visual": "A misty forest path with moss-covered oaks and silver fog.",
+      "mood": "mysterious"
+    },
+    {
+      "page_id": "page_3",
+      "page_number": 3,
+      "order_index": 3,
+      "order_confidence": 0.98,
+      "full_text": "Kael paused at the stream's edge and knelt to drink. The water was ice-cold and clear as glass. As he cupped his hands, a flash of blue light darted beneath the surface — a spirit-fish, rare and elusive. It circled his fingers once, twice, then vanished downstream. The old stories said that seeing a spirit-fish meant the forest had accepted you.",
+      "primary_scene_hint": "stream_spirit",
+      "dominant_visual": "Kael kneeling by a stream, a blue glow beneath the water's surface.",
+      "mood": "awe"
+    },
+    {
+      "page_id": "page_4",
+      "page_number": 4,
+      "order_index": 4,
+      "order_confidence": 0.98,
+      "full_text": "Beyond the stream the trees thinned, and Kael emerged onto a hillside meadow bathed in golden afternoon light. Wildflowers swayed in the breeze — lupines and daisies and crown-anemones stretching to the horizon. In the distance, smoke curled from a cluster of stone rooftops. A village. After three days alone in the wild, the sight of chimneys and hearth-fires made his heart lift.",
+      "primary_scene_hint": "meadow_village",
+      "dominant_visual": "A golden meadow with wildflowers and a distant village with smoking chimneys.",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_5",
+      "page_number": 5,
+      "order_index": 5,
+      "order_confidence": 0.98,
+      "full_text": "The village of Thornhaven was small but welcoming. A blacksmith's hammer rang in steady rhythm, children chased a dog through the square, and the smell of fresh bread drifted from the baker's open door. An old woman sitting by the well looked up as Kael approached. 'Traveller,' she said, 'you carry the forest's blessing. The spirit-fish must have shown itself to you.' She smiled knowingly and offered him a cup of warm cider.",
+      "primary_scene_hint": "village_arrival",
+      "dominant_visual": "A cozy village square with a stone well, blacksmith, and an old woman offering cider.",
+      "mood": "cozy"
+    },
+    {
+      "page_id": "page_6",
+      "page_number": 6,
+      "order_index": 6,
+      "order_confidence": 0.98,
+      "full_text": "That night the wind changed. Kael woke to the rattle of shutters and a low, insistent howl that was not quite wind. He stepped outside and saw the eastern sky churning with black clouds lit from within by veins of violet lightning. The old woman was already in the square, her face pale. 'The Storm That Walks,' she whispered. 'It has found us.'",
+      "primary_scene_hint": "storm_approaches",
+      "dominant_visual": "A dark storm approaching the village with violet lightning inside the clouds.",
+      "mood": "tense"
+    },
+    {
+      "page_id": "page_7",
+      "page_number": 7,
+      "order_index": 7,
+      "order_confidence": 0.98,
+      "full_text": "The storm struck with fury. Rain lashed the rooftops, and the violet lightning cracked so close that the air smelled of burning stone. But the village held — its old walls and iron-bound doors stood firm. Kael helped the villagers bar the gates and carry the animals inside. When the worst of it passed, they gathered around the great hearth in the common hall, wrapped in blankets, listening to the thunder roll away into the mountains.",
+      "primary_scene_hint": "storm_battle",
+      "dominant_visual": "Villagers sheltering in a stone hall around a great hearth while the storm rages outside.",
+      "mood": "dramatic"
+    }
+  ],
+  "scene_graph": [
+    {
+      "scene_id": "scene_forest",
+      "pages": [2, 3],
+      "scene_summary": "Kael walks through an ancient mossy forest and encounters a spirit-fish in the stream.",
+      "scene_type": "other",
+      "scene_mood": "mysterious",
+      "scene_energy": "low",
+      "narrative_phase": "intro",
+      "scene_duration_estimate_seconds": 60,
+      "scene_activation": {
+        "activation_mode": "hybrid",
+        "entry_cues": [
+          {
+            "primary_keywords": ["forest", "stepped", "oaks"],
+            "secondary_keywords": ["moss", "fog"],
+            "semantic_intent": "forest_entry"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": ["spirit-fish", "accepted"],
+            "semantic_intent": "blessing_received"
+          }
+        ],
+        "activation_confidence_threshold": 0.6,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_village",
+        "transition_style": "crossfade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 3
+      },
+      "likely_next_scene": "scene_village",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "forest",
+            "variant": "mysterious",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [
+          {
+            "sound_profile": {
+              "primary_sound": "stream",
+              "variant": "gentle",
+              "intensity": "low",
+              "texture": "natural",
+              "play_style": "loop"
+            }
+          }
+        ],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "mystery",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "ao_stream_murmur",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": { "active_scene_only": true },
+          "trigger_anchor": { "type": "phrase", "value": "stream murmured" },
+          "trigger_structure": {
+            "primary_keywords": ["stream", "murmured", "stones"],
+            "secondary_keywords": ["water", "song"],
+            "semantic_intent": "water_flowing"
+          },
+          "activation_window": { "start_progress": 0.1, "end_progress": 0.5 },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "Gentle babbling brook over smooth river stones.",
+          "sound_category": "environment",
+          "sound_profile": {
+            "primary_sound": "stream",
+            "variant": "gentle",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "ao_spirit_fish",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": { "active_scene_only": true },
+          "trigger_anchor": { "type": "phrase", "value": "blue light darted" },
+          "trigger_structure": {
+            "primary_keywords": ["blue", "light", "spirit-fish"],
+            "secondary_keywords": ["circled", "vanished"],
+            "semantic_intent": "magical_creature"
+          },
+          "activation_window": { "start_progress": 0.4, "end_progress": 0.8 },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "A shimmering, ethereal chime of magical energy.",
+          "sound_category": "magic",
+          "sound_profile": {
+            "primary_sound": "other",
+            "variant": "ethereal",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "awe"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_village",
+      "pages": [4, 5],
+      "scene_summary": "Kael discovers a golden meadow and arrives at the welcoming village of Thornhaven.",
+      "scene_type": "other",
+      "scene_mood": "cozy",
+      "scene_energy": "low",
+      "narrative_phase": "build_up",
+      "scene_duration_estimate_seconds": 80,
+      "scene_activation": {
+        "activation_mode": "hybrid",
+        "entry_cues": [
+          {
+            "primary_keywords": ["meadow", "golden", "light"],
+            "secondary_keywords": ["village", "chimneys"],
+            "semantic_intent": "village_approach"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": ["cider", "blessing"],
+            "semantic_intent": "welcomed"
+          }
+        ],
+        "activation_confidence_threshold": 0.6,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_storm",
+        "transition_style": "darken",
+        "audio_continuity": "replace",
+        "transition_duration_seconds": 4
+      },
+      "likely_next_scene": "scene_storm",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "garden_breeze",
+            "variant": "warm",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [
+          {
+            "sound_profile": {
+              "primary_sound": "birds",
+              "variant": "light",
+              "intensity": "low",
+              "texture": "airy",
+              "play_style": "loop"
+            }
+          }
+        ],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "comfort",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "ao_blacksmith",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": { "active_scene_only": true },
+          "trigger_anchor": { "type": "phrase", "value": "blacksmith's hammer" },
+          "trigger_structure": {
+            "primary_keywords": ["hammer", "blacksmith", "rhythm"],
+            "secondary_keywords": ["rang", "steady"],
+            "semantic_intent": "metalworking"
+          },
+          "activation_window": { "start_progress": 0.3, "end_progress": 0.7 },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "Rhythmic hammer strikes on a metal anvil.",
+          "sound_category": "craft",
+          "sound_profile": {
+            "primary_sound": "other",
+            "variant": "metallic",
+            "intensity": "medium",
+            "texture": "sharp",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "ao_dog_bark",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": { "active_scene_only": true },
+          "trigger_anchor": { "type": "phrase", "value": "chased a dog" },
+          "trigger_structure": {
+            "primary_keywords": ["dog", "children", "chased"],
+            "secondary_keywords": ["square", "running"],
+            "semantic_intent": "playful_chase"
+          },
+          "activation_window": { "start_progress": 0.3, "end_progress": 0.6 },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "A happy dog barking while children laugh and play.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "dog_bark",
+            "variant": "playful",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 1,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "joyful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_storm",
+      "pages": [6, 7],
+      "scene_summary": "A magical storm strikes the village, but the community holds strong together.",
+      "scene_type": "other",
+      "scene_mood": "dramatic",
+      "scene_energy": "high",
+      "narrative_phase": "action",
+      "scene_duration_estimate_seconds": 70,
+      "scene_activation": {
+        "activation_mode": "hybrid",
+        "entry_cues": [
+          {
+            "primary_keywords": ["wind", "changed", "howl"],
+            "secondary_keywords": ["storm", "walking"],
+            "semantic_intent": "storm_approach"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": ["thunder", "mountains", "rolled"],
+            "semantic_intent": "storm_passing"
+          }
+        ],
+        "activation_confidence_threshold": 0.6,
+        "scene_persistence": "timeout"
+      },
+      "scene_transition": {
+        "next_scene_id": "none",
+        "transition_style": "fade",
+        "audio_continuity": "continue",
+        "transition_duration_seconds": 5
+      },
+      "likely_next_scene": "none",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "wind",
+            "variant": "mysterious",
+            "intensity": "high",
+            "texture": "dark",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [
+          {
+            "sound_profile": {
+              "primary_sound": "rain",
+              "variant": "heavy",
+              "intensity": "high",
+              "texture": "dark",
+              "play_style": "fade_in"
+            }
+          }
+        ],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "mystery",
+          "intensity": "high"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "ao_lightning",
+          "layer_role": "event",
+          "source": "both",
+          "trigger_scope": { "active_scene_only": true },
+          "trigger_anchor": { "type": "word", "value": "violet lightning" },
+          "trigger_structure": {
+            "primary_keywords": ["lightning", "cracked", "violet"],
+            "secondary_keywords": ["sky", "burning"],
+            "semantic_intent": "magical_storm"
+          },
+          "activation_window": { "start_progress": 0.1, "end_progress": 0.5 },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 10,
+          "event_summary": "A rolling, cinematic crack of magical thunder.",
+          "sound_category": "weather",
+          "sound_profile": {
+            "primary_sound": "other",
+            "variant": "mysterious",
+            "intensity": "high",
+            "texture": "dark",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.95,
+          "mix_level": "prominent",
+          "emotional_tone": "tense"
+        },
+        {
+          "id": "ao_hearth",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": { "active_scene_only": true },
+          "trigger_anchor": { "type": "phrase", "value": "great hearth" },
+          "trigger_structure": {
+            "primary_keywords": ["hearth", "blankets", "gathered"],
+            "secondary_keywords": ["warm", "safe"],
+            "semantic_intent": "shelter_warmth"
+          },
+          "activation_window": { "start_progress": 0.6, "end_progress": 0.9 },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "Crackling warm fireplace with popping embers.",
+          "sound_category": "environment",
+          "sound_profile": {
+            "primary_sound": "fireplace",
+            "variant": "warm",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "medium",
+          "emotional_tone": "cozy"
+        }
+      ]
+    }
+  ]
+}

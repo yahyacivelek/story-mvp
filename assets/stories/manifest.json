@@ -1,0 +1,16 @@
+{
+  "stories": [
+    {
+      "id": "ginger_the_giraffe",
+      "title": "Ginger the Giraffe",
+      "language": "tr",
+      "asset_path": "assets/stories/ginger_the_giraffe.json"
+    },
+    {
+      "id": "the_wanderers_chronicle",
+      "title": "The Wanderer's Chronicle",
+      "language": "en",
+      "asset_path": "assets/stories/the_wanderers_chronicle.json"
+    }
+  ]
+}

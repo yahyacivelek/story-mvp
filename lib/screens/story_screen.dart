@@ -248,13 +248,15 @@ class _ScenePickerFab extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colorScheme = Theme.of(context).colorScheme;
+    final storyState = ref.watch(storyControllerProvider);
+    final storyName = storyState.currentStoryEntry?.title ?? 'Story';
 
     return FloatingActionButton.extended(
       backgroundColor: colorScheme.secondaryContainer,
       foregroundColor: colorScheme.onSecondaryContainer,
       elevation: 3,
       icon: const Icon(Icons.auto_stories_rounded, size: 20),
-      label: Text('Scene ${activeIndex + 1}/$sceneCount'),
+      label: Text('$storyName · Scene ${activeIndex + 1}/$sceneCount'),
       onPressed: () => _showSceneSheet(context, ref),
     );
   }
