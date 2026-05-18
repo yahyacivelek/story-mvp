@@ -119,6 +119,7 @@ class AudioController extends StateNotifier<AudioState> {
   }
 
   String _currentIntensity = 'medium';
+  String? _currentMusicIntensity;
 
   /// Seamless looper for background ambience — crossfades between two
   /// players to eliminate the click/pop at loop boundaries.
@@ -144,17 +145,17 @@ class AudioController extends StateNotifier<AudioState> {
   // -------------------------------------------------------------------------
 
   static double _intensityToVolume(String intensity) => switch (intensity) {
-        'low' => 0.50,
-        'medium' => 0.70,
-        'high' => 1.00,
-        _ => 0.70,
+        'low' => 0.20,
+        'medium' => 0.35,
+        'high' => 0.50,
+        _ => 0.35,
       };
 
   static double _mixLevelToVolume(String mixLevel) => switch (mixLevel) {
-        'subtle' => 0.30,
-        'medium' => 0.60,
-        'prominent' => 0.90,
-        _ => 0.60,
+        'subtle' => 0.40,
+        'medium' => 0.70,
+        'prominent' => 1.00,
+        _ => 0.70,
       };
 
   // -------------------------------------------------------------------------
@@ -426,7 +427,8 @@ class AudioController extends StateNotifier<AudioState> {
   Future<void> _playMusicFromBytes(Uint8List bytes, String intensity) async {
     await _musicLooper.stop();
 
-    final volume = _intensityToVolume(intensity) * 0.6; // Music sits below ambience
+    _currentMusicIntensity = intensity;
+    final volume = _intensityToVolume(intensity) * 0.5; // Music sits well below ambience
     debugPrint('[AudioController] Setting music volume: $volume (intensity: $intensity)');
 
     await _musicLooper.play(bytes, volume);
@@ -459,7 +461,8 @@ class AudioController extends StateNotifier<AudioState> {
 
   /// Fetches and plays a sound effect for [opportunity].
   ///
-  /// Ambience continues uninterrupted.
+  /// Ducks ambience and music while the SFX plays so the effect is
+  /// clearly audible, then restores them afterwards.
   Future<void> playSfx(AudioOpportunity opportunity) async {
     final prompt = opportunity.eventSummary;
 
@@ -477,7 +480,7 @@ class AudioController extends StateNotifier<AudioState> {
         debugPrint('[AudioController] SFX SKIP: not cached (offline mode) – $prompt');
         return;
       }
-      await _playSfxFromBytes(result.bytes!, opportunity.mixLevel);
+      await _duckAndPlaySfx(result.bytes!, opportunity.mixLevel);
     } finally {
       // Clear loading flag whether success or error.
       final updated = Map<String, bool>.from(state.sfxLoadingStates)
@@ -486,14 +489,69 @@ class AudioController extends StateNotifier<AudioState> {
     }
   }
 
-  Future<void> _playSfxFromBytes(Uint8List bytes, String mixLevel) async {
-    // Stop any previously playing SFX (but not the ambience).
-    await _sfxPlayer.stop();
+  // -----------------------------------------------------------------------
+  // SFX ducking — lowers ambience/music while an effect plays
+  // -----------------------------------------------------------------------
 
+  /// Volume the background layers are ducked to while an SFX plays.
+  static const double _duckVolume = 0.05;
+
+  /// Duration to fade background back in after an SFX finishes.
+  static const Duration _unduckFadeDuration = Duration(seconds: 2);
+
+  /// Steps used for the fade-in restore.
+  static const int _unduckSteps = 20;
+
+  StreamSubscription<ProcessingState>? _sfxCompletionSub;
+
+  /// Ducks ambience & music, plays the SFX, then restores backgrounds.
+  Future<void> _duckAndPlaySfx(Uint8List bytes, String mixLevel) async {
+    // Cancel any pending restore from a previous SFX.
+    await _sfxCompletionSub?.cancel();
+    _sfxCompletionSub = null;
+
+    // 1. Duck ambience and music immediately.
+    await _ambienceLooper.setVolume(_duckVolume);
+    await _musicLooper.setVolume(_duckVolume);
+
+    // 2. Play the SFX.
+    await _sfxPlayer.stop();
     final byteSource = _BytesAudioSource(bytes);
     await _sfxPlayer.setAudioSource(byteSource);
     await _sfxPlayer.setVolume(_mixLevelToVolume(mixLevel));
     await _sfxPlayer.play();
+
+    // 3. Listen for SFX completion to restore background volumes.
+    _sfxCompletionSub = _sfxPlayer.processingStateStream
+        .where((s) => s == ProcessingState.completed)
+        .take(1)
+        .listen((_) {
+      _sfxCompletionSub?.cancel();
+      _sfxCompletionSub = null;
+      _unduckBackgrounds();
+    });
+  }
+
+  /// Gradually restores ambience and music to their normal volumes.
+  Future<void> _unduckBackgrounds() async {
+    final ambienceTarget = _intensityToVolume(_currentIntensity);
+    final musicTarget = _currentMusicIntensity != null
+        ? _intensityToVolume(_currentMusicIntensity!) * 0.5
+        : 0.25;
+
+    final stepMs =
+        _unduckFadeDuration.inMilliseconds ~/ _unduckSteps;
+
+    for (var i = 1; i <= _unduckSteps; i++) {
+      await Future.delayed(Duration(milliseconds: stepMs));
+      final t = i / _unduckSteps;
+      await _ambienceLooper.setVolume(
+        _duckVolume + (ambienceTarget - _duckVolume) * t,
+      );
+      await _musicLooper.setVolume(
+        _duckVolume + (musicTarget - _duckVolume) * t,
+      );
+    }
   }
 
   // -------------------------------------------------------------------------
@@ -502,6 +560,7 @@ class AudioController extends StateNotifier<AudioState> {
 
   @override
   void dispose() {
+    _sfxCompletionSub?.cancel();
     _ambienceLooper.dispose();
     _sfxPlayer.dispose();
     _musicLooper.dispose();
