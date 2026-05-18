@@ -81,6 +81,14 @@ class SceneHeader extends ConsumerWidget {
                 musicStatus: audioState.musicStatus,
                 musicTheme: audioState.musicTheme,
                 isListening: storyState.isListening,
+                ambienceEnabled: audioState.ambienceEnabled,
+                musicEnabled: audioState.musicEnabled,
+                onToggleAmbience: () => ref
+                    .read(audioControllerProvider.notifier)
+                    .setAmbienceEnabled(!audioState.ambienceEnabled),
+                onToggleMusicEnabled: () => ref
+                    .read(audioControllerProvider.notifier)
+                    .setMusicEnabled(!audioState.musicEnabled),
               ),
             ],
           ),
@@ -116,29 +124,62 @@ class _AudioPills extends StatelessWidget {
   final MusicStatus musicStatus;
   final String? musicTheme;
   final bool isListening;
+  final bool ambienceEnabled;
+  final bool musicEnabled;
+  final VoidCallback onToggleAmbience;
+  final VoidCallback onToggleMusicEnabled;
 
   const _AudioPills({
     required this.ambienceStatus,
     required this.musicStatus,
     this.musicTheme,
     required this.isListening,
+    required this.ambienceEnabled,
+    required this.musicEnabled,
+    required this.onToggleAmbience,
+    required this.onToggleMusicEnabled,
   });
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _StatusPill(
-          icon: _ambienceIcon(ambienceStatus),
-          color: _ambienceColor(ambienceStatus, context),
-          isLoading: ambienceStatus == AmbienceStatus.loading,
+        Tooltip(
+          message: ambienceEnabled ? 'Disable ambience' : 'Enable ambience',
+          child: GestureDetector(
+            onTap: onToggleAmbience,
+            child: _StatusPill(
+              icon: ambienceEnabled
+                  ? _ambienceIcon(ambienceStatus)
+                  : Icons.volume_off_rounded,
+              color: ambienceEnabled
+                  ? _ambienceColor(ambienceStatus, context)
+                  : cs.onSurfaceVariant.withValues(alpha: 0.4),
+              isLoading:
+                  ambienceEnabled && ambienceStatus == AmbienceStatus.loading,
+              isActive: ambienceEnabled,
+            ),
+          ),
         ),
         const SizedBox(width: 6),
-        _StatusPill(
-          icon: _musicIcon(musicStatus),
-          color: _musicColor(musicStatus, context),
-          isLoading: musicStatus == MusicStatus.loading,
+        Tooltip(
+          message: musicEnabled ? 'Disable music' : 'Enable music',
+          child: GestureDetector(
+            onTap: onToggleMusicEnabled,
+            child: _StatusPill(
+              icon: musicEnabled
+                  ? _musicIcon(musicStatus)
+                  : Icons.music_off_rounded,
+              color: musicEnabled
+                  ? _musicColor(musicStatus, context)
+                  : cs.onSurfaceVariant.withValues(alpha: 0.4),
+              isLoading:
+                  musicEnabled && musicStatus == MusicStatus.loading,
+              isActive: musicEnabled,
+            ),
+          ),
         ),
         const SizedBox(width: 6),
         _StatusPill(

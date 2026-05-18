@@ -23,6 +23,8 @@ class AudioState {
   final MusicStatus musicStatus;
   final String? musicTheme;
   final String? musicError;
+  final bool ambienceEnabled;
+  final bool musicEnabled;
 
   /// Keys are [AudioOpportunity.eventSummary]; value is `true` while loading.
   final Map<String, bool> sfxLoadingStates;
@@ -34,6 +36,8 @@ class AudioState {
     this.musicStatus = MusicStatus.idle,
     this.musicTheme,
     this.musicError,
+    this.ambienceEnabled = true,
+    this.musicEnabled = true,
     this.sfxLoadingStates = const {},
   });
 
@@ -44,6 +48,8 @@ class AudioState {
     MusicStatus? musicStatus,
     String? musicTheme,
     String? musicError,
+    bool? ambienceEnabled,
+    bool? musicEnabled,
     Map<String, bool>? sfxLoadingStates,
   }) {
     return AudioState(
@@ -53,6 +59,8 @@ class AudioState {
       musicStatus: musicStatus ?? this.musicStatus,
       musicTheme: musicTheme ?? this.musicTheme,
       musicError: musicError ?? this.musicError,
+      ambienceEnabled: ambienceEnabled ?? this.ambienceEnabled,
+      musicEnabled: musicEnabled ?? this.musicEnabled,
       sfxLoadingStates: sfxLoadingStates ?? this.sfxLoadingStates,
     );
   }
@@ -195,6 +203,7 @@ class AudioController extends StateNotifier<AudioState> {
   /// Crossfades from current ambience to [scene]'s ambience over
   /// [durationSeconds].
   Future<void> _crossfadeAmbience(Scene scene, int durationSeconds) async {
+    if (!state.ambienceEnabled) return;
     final profile = scene.sceneAudio.primaryAmbience.soundProfile;
     final secondary = scene.sceneAudio.secondaryLayers.isNotEmpty
         ? scene.sceneAudio.secondaryLayers.first
@@ -246,6 +255,7 @@ class AudioController extends StateNotifier<AudioState> {
 
   /// Stops any current ambience and starts a new one for [scene].
   Future<void> loadAndPlayAmbience(Scene scene) async {
+    if (!state.ambienceEnabled) return;
     final profile = scene.sceneAudio.primaryAmbience.soundProfile;
     final secondary = scene.sceneAudio.secondaryLayers.isNotEmpty
         ? scene.sceneAudio.secondaryLayers.first
@@ -315,12 +325,41 @@ class AudioController extends StateNotifier<AudioState> {
     state = state.copyWith(ambienceStatus: AmbienceStatus.playing);
   }
 
+  /// Enables or disables background ambience.
+  Future<void> setAmbienceEnabled(bool enabled) async {
+    state = state.copyWith(ambienceEnabled: enabled);
+    if (!enabled) {
+      await _ambiencePlayer.pause();
+      state = state.copyWith(ambienceStatus: AmbienceStatus.idle);
+    } else {
+      if (_ambiencePlayer.audioSource != null) {
+        await _ambiencePlayer.play();
+        state = state.copyWith(ambienceStatus: AmbienceStatus.playing);
+      }
+    }
+  }
+
+  /// Enables or disables the music layer.
+  Future<void> setMusicEnabled(bool enabled) async {
+    state = state.copyWith(musicEnabled: enabled);
+    if (!enabled) {
+      await _musicPlayer.pause();
+      state = state.copyWith(musicStatus: MusicStatus.idle);
+    } else {
+      if (_musicPlayer.audioSource != null) {
+        await _musicPlayer.play();
+        state = state.copyWith(musicStatus: MusicStatus.playing);
+      }
+    }
+  }
+
   // -------------------------------------------------------------------------
   // Music layer
   // -------------------------------------------------------------------------
 
   /// Loads and plays the music layer for [scene] if enabled.
   Future<void> loadAndPlayMusic(Scene scene) async {
+    if (!state.musicEnabled) return;
     final musicLayer = scene.sceneAudio.musicLayer;
     if (musicLayer == null || !musicLayer.enabled) {
       await stopMusic();

@@ -88,3 +88,29 @@ StoryScreen
 - **No code generation for providers**: providers are hand-written `StateNotifierProvider`s (not `@riverpod` annotated), so `build_runner` is only needed if you add new generated providers.
 - **Bytes-in-memory audio**: `_BytesAudioSource` (in `audio_controller.dart`) wraps `Uint8List` as a `StreamAudioSource` so `just_audio` can play API-fetched audio without temp files.
 - **AudioFocus**: `handleAudioSessionActivation: false` on both players — the app holds permanent `GAIN` focus via `audio_session` and manually ducks the ambience player during STT interruptions rather than pausing.
+
+---
+
+## READY FOR HANDOVER (2026-05-18)
+
+### Current state
+All core features are working and committed (`38fc5e0 improve`). Working tree is clean. **No git remote is configured** — the repo is local only, no push has been done.
+
+### What was in progress this session (INCOMPLETE — not saved to disk)
+The ambience/music on/off toggle feature was designed and partially coded but **Edit tool writes did not persist**. The stash (`git stash@{0}`) contains the `audio_controller.dart` half of the change. `scene_header.dart` toggle UI is not in the stash — must be written fresh.
+
+### Next session must do first
+1. `git stash pop` — apply the audio_controller toggle changes
+2. Complete `scene_header.dart`: make the ambience + music status pills tappable `GestureDetector` toggles (full spec in `TODO.md` §1)
+3. Fix STT `error_busy` loop in `SpeechService` (treat `error_busy` same as `error_client` for backoff)
+4. `git add -p && git commit` the toggle feature with a proper message
+5. Configure a git remote and push
+
+### Open decisions
+See `TOBEDECIDED.md`: toggle pause-vs-stop behaviour, scene JSON `enabled` flag vs user toggle priority, SharedPreferences persistence for toggle state.
+
+### Tracking files
+- `TODO.md` — prioritised next steps
+- `DONE.md` — completed feature list
+- `CHANGELOG.md` — per-commit history
+- `TOBEDECIDED.md` — open design questions
