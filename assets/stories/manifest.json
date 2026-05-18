@@ -11,6 +11,12 @@
       "title": "The Wanderer's Chronicle",
       "language": "en",
       "asset_path": "assets/stories/the_wanderers_chronicle.json"
+    },
+    {
+      "id": "little_blue",
+      "title": "Küçük Kaplumbağa Mavi",
+      "language": "tr",
+      "asset_path": "assets/stories/little_blue.json"
     }
   ]
 }

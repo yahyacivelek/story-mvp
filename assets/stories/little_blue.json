@@ -1,0 +1,840 @@
+{
+  "book": {
+    "detected_title": "Küçük Kaplumbağa Mavi",
+    "language": "tr",
+    "analysis_confidence": 0.96
+  },
+  "page_ordering": {
+    "ordering_method": "narrative_inference",
+    "confidence": 0.99
+  },
+  "pages": [
+    {
+      "page_id": "page_1",
+      "page_number": 1,
+      "order_index": 1,
+      "order_confidence": 1,
+      "full_text": "Küçük Kaplumbağa Mavi\nYazan: L. Demir\nResimleyen: hayalstudios.com",
+      "primary_scene_hint": "cover",
+      "dominant_visual": "A small turtle standing near the sea under a glowing moon.",
+      "mood": "magical"
+    },
+    {
+      "page_id": "page_2",
+      "page_number": 2,
+      "order_index": 2,
+      "order_confidence": 0.99,
+      "full_text": "Bir varmış bir yokmuş, Mavi adında küçük bir kaplumbağa varmış. Mavi, sıcak denizlerin kıyısındaki küçük bir adada yaşarmış. Sabahları sahilde yürümeyi, dalgaların sesini dinlemeyi çok severmiş. En büyük hayali ise denizin ötesindeki gizemli ışığı görmekmiş.",
+      "primary_scene_hint": "intro",
+      "dominant_visual": "A tiny turtle walking happily along a sandy beach at sunrise.",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_3",
+      "page_number": 3,
+      "order_index": 3,
+      "order_confidence": 0.99,
+      "full_text": "Bir gece Mavi, denizin üzerinde parlayan tuhaf bir ışık gördü. Gökyüzü yıldızlarla doluydu ama bu ışık diğerlerinden çok daha parlaktı. Mavi heyecanlandı ve arkadaşları Yengeç Koko ile Martı Lina'ya haber vermek için koştu.",
+      "primary_scene_hint": "mysterious_light",
+      "dominant_visual": "A glowing light shining across the dark ocean while Mavi watches.",
+      "mood": "mysterious"
+    },
+    {
+      "page_id": "page_4",
+      "page_number": 4,
+      "order_index": 4,
+      "order_confidence": 0.98,
+      "full_text": "'Bunu gördünüz mü?' diye sordu Mavi heyecanla. Koko gözlerini kısıp denize baktı. Lina ise kanatlarını çırparak gökyüzünde kısa bir tur attı. 'Belki de eski deniz feneridir,' dedi Lina. 'Ya da gizli bir hazine!' diye bağırdı Koko.",
+      "primary_scene_hint": "friends_discuss",
+      "dominant_visual": "The turtle, crab, and seagull discussing near the shore.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_5",
+      "page_number": 5,
+      "order_index": 5,
+      "order_confidence": 0.98,
+      "full_text": "Ertesi sabah üç arkadaş küçük bir sal hazırladı. Dalgalar sakindi ve hafif bir rüzgâr esiyordu. Mavi biraz korkuyordu ama merakı daha büyüktü. Böylece denizin ortasına doğru yolculuklarına başladılar.",
+      "primary_scene_hint": "journey_start",
+      "dominant_visual": "Three animal friends sailing on a tiny wooden raft.",
+      "mood": "adventurous"
+    },
+    {
+      "page_id": "page_6",
+      "page_number": 6,
+      "order_index": 6,
+      "order_confidence": 0.98,
+      "full_text": "Bir süre sonra gökyüzü kararmaya başladı. Güçlü rüzgârlar çıktı ve dalgalar yükseldi. Sal bir sağa bir sola sallanıyordu. 'Sıkı tutunun!' diye bağırdı Lina. Mavi korkuyla kabuğuna çekildi.",
+      "primary_scene_hint": "storm",
+      "dominant_visual": "A storm shaking the raft in the middle of the sea.",
+      "mood": "suspenseful"
+    },
+    {
+      "page_id": "page_7",
+      "page_number": 7,
+      "order_index": 7,
+      "order_confidence": 0.98,
+      "full_text": "Tam o sırada uzakta yeniden o parlak ışık göründü. Ama bu kez ışık onlara doğru yaklaşıyordu! Koko korkudan saklandı. Lina dikkatlice baktı ve sonra gülmeye başladı. 'Bu bir deniz feneri değil!' dedi.",
+      "primary_scene_hint": "light_returns",
+      "dominant_visual": "A bright glowing object approaching through the storm.",
+      "mood": "mysterious"
+    },
+    {
+      "page_id": "page_8",
+      "page_number": 8,
+      "order_index": 8,
+      "order_confidence": 0.98,
+      "full_text": "Işık yaklaşınca gerçeği gördüler. Bu, başında parlayan bir kabuk taşıyan dev bir deniz kaplumbağasıydı! Yaşlı kaplumbağa gülümsedi. 'Korkmayın küçük dostlar,' dedi. 'Ben Deniz Bilgesi'yim.'",
+      "primary_scene_hint": "wise_turtle",
+      "dominant_visual": "A giant glowing sea turtle rising from the ocean.",
+      "mood": "magical"
+    },
+    {
+      "page_id": "page_9",
+      "page_number": 9,
+      "order_index": 9,
+      "order_confidence": 0.98,
+      "full_text": "Deniz Bilgesi onları sırtına aldı ve fırtınadan uzaklaştırdı. Kısa süre sonra sakin bir koya ulaştılar. Gökyüzü yeniden açıldı ve yıldızlar parlamaya başladı. Mavi hayranlıkla etrafına bakıyordu.",
+      "primary_scene_hint": "safe_cove",
+      "dominant_visual": "The giant turtle carrying the friends safely through calm waters.",
+      "mood": "warm"
+    },
+    {
+      "page_id": "page_10",
+      "page_number": 10,
+      "order_index": 10,
+      "order_confidence": 0.98,
+      "full_text": "'Gerçek cesaret korkmamak değildir,' dedi Deniz Bilgesi. 'Korksan bile yoluna devam etmektir.' Mavi bu sözleri hiç unutmadı. O gece arkadaşlarıyla birlikte yıldızların altında mutlu bir şekilde uyudu.",
+      "primary_scene_hint": "lesson",
+      "dominant_visual": "The friends listening to the wise turtle under the stars.",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_11",
+      "page_number": 11,
+      "order_index": 11,
+      "order_confidence": 0.98,
+      "full_text": "Sabah olduğunda Deniz Bilgesi ortadan kaybolmuştu. Ama denizin üzerinde hâlâ yumuşak bir ışık parlıyordu. Mavi gülümsedi. Çünkü artık maceraların yalnızca cesur olanlara göründüğünü biliyordu.",
+      "primary_scene_hint": "ending",
+      "dominant_visual": "A peaceful ocean glowing at sunrise.",
+      "mood": "magical"
+    }
+  ],
+  "scene_graph": [
+    {
+      "scene_id": "scene_intro",
+      "pages": [
+        2
+      ],
+      "scene_summary": "Introduction to Mavi the little turtle and her dreams beside the sea.",
+      "scene_type": "other",
+      "scene_mood": "calm",
+      "scene_energy": "low",
+      "narrative_phase": "intro",
+      "scene_duration_estimate_seconds": 40,
+      "scene_activation": {
+        "activation_mode": "hybrid",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "Bir varmış",
+              "kaplumbağa",
+              "Mavi"
+            ],
+            "secondary_keywords": [
+              "ada",
+              "deniz"
+            ],
+            "semantic_intent": "story_start"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "gizemli ışık",
+              "hayal"
+            ],
+            "semantic_intent": "dream_setup"
+          }
+        ],
+        "activation_confidence_threshold": 0.6,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_light_discovery",
+        "transition_style": "crossfade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 3
+      },
+      "likely_next_scene": "scene_light_discovery",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "ocean_waves",
+            "variant": "warm",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [
+          {
+            "sound_profile": {
+              "primary_sound": "birds",
+              "variant": "light",
+              "intensity": "low",
+              "texture": "airy",
+              "play_style": "loop"
+            }
+          }
+        ],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "calm",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "ao_wave_sound",
+          "layer_role": "environment",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "dalgaların sesini"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "dalga",
+              "sahil"
+            ],
+            "secondary_keywords": [
+              "deniz",
+              "yürümek"
+            ],
+            "semantic_intent": "ocean_relaxation"
+          },
+          "activation_window": {
+            "start_progress": 0.3,
+            "end_progress": 0.8
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "Gentle ocean waves rolling onto the shore.",
+          "sound_category": "environment",
+          "sound_profile": {
+            "primary_sound": "waves",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 1,
+          "confidence": 0.9,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_light_discovery",
+      "pages": [
+        3,
+        4
+      ],
+      "scene_summary": "Mavi and her friends discover a mysterious glowing light in the sea.",
+      "scene_type": "other",
+      "scene_mood": "mysterious",
+      "scene_energy": "medium",
+      "narrative_phase": "build_up",
+      "scene_duration_estimate_seconds": 60,
+      "scene_activation": {
+        "activation_mode": "hybrid",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "parlayan ışık",
+              "gece"
+            ],
+            "secondary_keywords": [
+              "yıldız",
+              "deniz"
+            ],
+            "semantic_intent": "mystery_begins"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "gizli hazine",
+              "sal"
+            ],
+            "semantic_intent": "journey_preparation"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_ocean_journey",
+        "transition_style": "fade",
+        "audio_continuity": "continue",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_ocean_journey",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "night_wind",
+            "variant": "mysterious",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [
+          {
+            "sound_profile": {
+              "primary_sound": "water",
+              "variant": "soft",
+              "intensity": "low",
+              "texture": "natural",
+              "play_style": "loop"
+            }
+          }
+        ],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "mystery",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "ao_light_appears",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "parlayan ışık"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "ışık",
+              "parlak"
+            ],
+            "secondary_keywords": [
+              "gizemli",
+              "deniz"
+            ],
+            "semantic_intent": "magic_appearance"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.5
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "A magical shimmering sound rising softly.",
+          "sound_category": "magic",
+          "sound_profile": {
+            "primary_sound": "other",
+            "variant": "sparkly",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.88,
+          "mix_level": "medium",
+          "emotional_tone": "mysterious"
+        }
+      ]
+    },
+
+  {
+    "scene_id": "scene_ocean_journey",
+    "pages": [
+      5,
+      6
+    ],
+    "scene_summary": "Mavi and her friends begin their sea journey and face a dangerous storm.",
+    "scene_type": "other",
+    "scene_mood": "adventurous",
+    "scene_energy": "high",
+    "narrative_phase": "build_up",
+    "scene_duration_estimate_seconds": 75,
+    "scene_activation": {
+      "activation_mode": "hybrid",
+      "entry_cues": [
+        {
+          "primary_keywords": [
+            "küçük bir sal",
+            "yolculuk"
+          ],
+          "secondary_keywords": [
+            "deniz",
+            "arkadaş"
+          ],
+          "semantic_intent": "journey_begins"
+        }
+      ],
+      "exit_cues": [
+        {
+          "keywords": [
+            "kabuğuna çekildi",
+            "ışık"
+          ],
+          "semantic_intent": "danger_peaks"
+        }
+      ],
+      "activation_confidence_threshold": 0.7,
+      "scene_persistence": "until_next_scene"
+    },
+    "scene_transition": {
+      "next_scene_id": "scene_wise_turtle",
+      "transition_style": "darken",
+      "audio_continuity": "replace",
+      "transition_duration_seconds": 3
+    },
+    "likely_next_scene": "scene_wise_turtle",
+    "scene_audio": {
+      "primary_ambience": {
+        "sound_profile": {
+          "primary_sound": "ocean_wind",
+          "variant": "stormy",
+          "intensity": "high",
+          "texture": "rough",
+          "play_style": "loop"
+        }
+      },
+      "secondary_layers": [
+        {
+          "sound_profile": {
+            "primary_sound": "waves",
+            "variant": "strong",
+            "intensity": "high",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        }
+      ],
+      "music_layer": {
+        "enabled": true,
+        "music_theme": "adventure",
+        "intensity": "medium"
+      }
+    },
+    "audio_opportunities": [
+      {
+        "id": "ao_storm_waves",
+        "layer_role": "environment",
+        "source": "text",
+        "trigger_scope": {
+          "active_scene_only": true
+        },
+        "trigger_anchor": {
+          "type": "phrase",
+          "value": "dalgalar yükseldi"
+        },
+        "trigger_structure": {
+          "primary_keywords": [
+            "dalgalar",
+            "fırtına"
+          ],
+          "secondary_keywords": [
+            "rüzgâr",
+            "sal"
+          ],
+          "semantic_intent": "storm_intensifies"
+        },
+        "activation_window": {
+          "start_progress": 0.3,
+          "end_progress": 0.7
+        },
+        "trigger_once_per_scene": true,
+        "trigger_cooldown_seconds": 5,
+        "event_summary": "Large storm waves crashing against a wooden raft.",
+        "sound_category": "weather",
+        "sound_profile": {
+          "primary_sound": "waves",
+          "variant": "storm",
+          "intensity": "high",
+          "texture": "rough",
+          "play_style": "single"
+        },
+        "playback_type": "oneshot",
+        "importance": 3,
+        "confidence": 0.92,
+        "mix_level": "prominent",
+        "emotional_tone": "suspenseful"
+      }
+    ]
+  },
+  {
+    "scene_id": "scene_wise_turtle",
+    "pages": [
+      7,
+      8
+    ],
+    "scene_summary": "The mysterious light reveals the ancient sea turtle called Deniz Bilgesi.",
+    "scene_type": "other",
+    "scene_mood": "magical",
+    "scene_energy": "medium",
+    "narrative_phase": "revelation",
+    "scene_duration_estimate_seconds": 60,
+    "scene_activation": {
+      "activation_mode": "hybrid",
+      "entry_cues": [
+        {
+          "primary_keywords": [
+            "parlak ışık",
+            "yaklaşıyordu"
+          ],
+          "secondary_keywords": [
+            "korku",
+            "deniz"
+          ],
+          "semantic_intent": "mystery_returns"
+        }
+      ],
+      "exit_cues": [
+        {
+          "keywords": [
+            "Deniz Bilgesi",
+            "korkmayın"
+          ],
+          "semantic_intent": "mentor_revealed"
+        }
+      ],
+      "activation_confidence_threshold": 0.7,
+      "scene_persistence": "until_next_scene"
+    },
+    "scene_transition": {
+      "next_scene_id": "scene_safe_cove",
+      "transition_style": "crossfade",
+      "audio_continuity": "evolve",
+      "transition_duration_seconds": 2
+    },
+    "likely_next_scene": "scene_safe_cove",
+    "scene_audio": {
+      "primary_ambience": {
+        "sound_profile": {
+          "primary_sound": "water",
+          "variant": "mystical",
+          "intensity": "medium",
+          "texture": "sparkly",
+          "play_style": "loop"
+        }
+      },
+      "secondary_layers": [
+        {
+          "sound_profile": {
+            "primary_sound": "other",
+            "variant": "glow",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "fade_in"
+          }
+        }
+      ],
+      "music_layer": {
+        "enabled": true,
+        "music_theme": "wonder",
+        "intensity": "medium"
+      }
+    },
+    "audio_opportunities": [
+      {
+        "id": "ao_magic_turtle",
+        "layer_role": "event",
+        "source": "text",
+        "trigger_scope": {
+          "active_scene_only": true
+        },
+        "trigger_anchor": {
+          "type": "phrase",
+          "value": "dev bir deniz kaplumbağası"
+        },
+        "trigger_structure": {
+          "primary_keywords": [
+            "dev",
+            "kaplumbağa"
+          ],
+          "secondary_keywords": [
+            "ışık",
+            "Deniz Bilgesi"
+          ],
+          "semantic_intent": "ancient_guardian"
+        },
+        "activation_window": {
+          "start_progress": 0.4,
+          "end_progress": 0.8
+        },
+        "trigger_once_per_scene": true,
+        "trigger_cooldown_seconds": 0,
+        "event_summary": "A deep magical hum as the giant turtle emerges.",
+        "sound_category": "magic",
+        "sound_profile": {
+          "primary_sound": "other",
+          "variant": "deep",
+          "intensity": "medium",
+          "texture": "glowing",
+          "play_style": "single"
+        },
+        "playback_type": "oneshot",
+        "importance": 3,
+        "confidence": 0.91,
+        "mix_level": "medium",
+        "emotional_tone": "wonder"
+      }
+    ]
+  },
+  {
+    "scene_id": "scene_safe_cove",
+    "pages": [
+      9,
+      10
+    ],
+    "scene_summary": "Deniz Bilgesi rescues the friends and teaches Mavi about courage.",
+    "scene_type": "other",
+    "scene_mood": "warm",
+    "scene_energy": "low",
+    "narrative_phase": "resolution",
+    "scene_duration_estimate_seconds": 65,
+    "scene_activation": {
+      "activation_mode": "hybrid",
+      "entry_cues": [
+        {
+          "primary_keywords": [
+            "sırtına aldı",
+            "fırtınadan"
+          ],
+          "secondary_keywords": [
+            "koy",
+            "yıldızlar"
+          ],
+          "semantic_intent": "rescued"
+        }
+      ],
+      "exit_cues": [
+        {
+          "keywords": [
+            "yoluna devam",
+            "unutmadı"
+          ],
+          "semantic_intent": "lesson_complete"
+        }
+      ],
+      "activation_confidence_threshold": 0.65,
+      "scene_persistence": "until_next_scene"
+    },
+    "scene_transition": {
+      "next_scene_id": "scene_finale",
+      "transition_style": "fade",
+      "audio_continuity": "continue",
+      "transition_duration_seconds": 3
+    },
+    "likely_next_scene": "scene_finale",
+    "scene_audio": {
+      "primary_ambience": {
+        "sound_profile": {
+          "primary_sound": "calm_water",
+          "variant": "gentle",
+          "intensity": "low",
+          "texture": "soft",
+          "play_style": "loop"
+        }
+      },
+      "secondary_layers": [
+        {
+          "sound_profile": {
+            "primary_sound": "night_birds",
+            "variant": "warm",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "loop"
+          }
+        }
+      ],
+      "music_layer": {
+        "enabled": true,
+        "music_theme": "comfort",
+        "intensity": "low"
+      }
+    },
+    "audio_opportunities": [
+      {
+        "id": "ao_calm_cove",
+        "layer_role": "environment",
+        "source": "text",
+        "trigger_scope": {
+          "active_scene_only": true
+        },
+        "trigger_anchor": {
+          "type": "phrase",
+          "value": "sakin bir koya"
+        },
+        "trigger_structure": {
+          "primary_keywords": [
+            "sakin",
+            "koy"
+          ],
+          "secondary_keywords": [
+            "yıldızlar",
+            "gökyüzü"
+          ],
+          "semantic_intent": "peaceful_arrival"
+        },
+        "activation_window": {
+          "start_progress": 0.2,
+          "end_progress": 0.5
+        },
+        "trigger_once_per_scene": true,
+        "trigger_cooldown_seconds": 0,
+        "event_summary": "Gentle water and soft nighttime ambience.",
+        "sound_category": "environment",
+        "sound_profile": {
+          "primary_sound": "water",
+          "variant": "calm",
+          "intensity": "low",
+          "texture": "soft",
+          "play_style": "single"
+        },
+        "playback_type": "oneshot",
+        "importance": 1,
+        "confidence": 0.87,
+        "mix_level": "subtle",
+        "emotional_tone": "warm"
+      }
+    ]
+  },
+  {
+    "scene_id": "scene_finale",
+    "pages": [
+      11
+    ],
+    "scene_summary": "Mavi returns wiser and understands the meaning of courage and adventure.",
+    "scene_type": "other",
+    "scene_mood": "magical",
+    "scene_energy": "low",
+    "narrative_phase": "ending",
+    "scene_duration_estimate_seconds": 35,
+    "scene_activation": {
+      "activation_mode": "hybrid",
+      "entry_cues": [
+        {
+          "primary_keywords": [
+            "sabah",
+            "ışık"
+          ],
+          "secondary_keywords": [
+            "Deniz Bilgesi",
+            "kaybolmuştu"
+          ],
+          "semantic_intent": "peaceful_ending"
+        }
+      ],
+      "exit_cues": [
+        {
+          "keywords": [
+            "cesur",
+            "maceralar"
+          ],
+          "semantic_intent": "story_end"
+        }
+      ],
+      "activation_confidence_threshold": 0.6,
+      "scene_persistence": "timeout"
+    },
+    "scene_transition": {
+      "next_scene_id": "none",
+      "transition_style": "fade",
+      "audio_continuity": "continue",
+      "transition_duration_seconds": 4
+    },
+    "likely_next_scene": "none",
+    "scene_audio": {
+      "primary_ambience": {
+        "sound_profile": {
+          "primary_sound": "morning_ocean",
+          "variant": "gentle",
+          "intensity": "low",
+          "texture": "airy",
+          "play_style": "loop"
+        }
+      },
+      "secondary_layers": [
+        {
+          "sound_profile": {
+            "primary_sound": "birds",
+            "variant": "morning",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "fade_in"
+          }
+        }
+      ],
+      "music_layer": {
+        "enabled": true,
+        "music_theme": "wonder",
+        "intensity": "low"
+      }
+    },
+    "audio_opportunities": [
+      {
+        "id": "ao_final_glow",
+        "layer_role": "event",
+        "source": "text",
+        "trigger_scope": {
+          "active_scene_only": true
+        },
+        "trigger_anchor": {
+          "type": "phrase",
+          "value": "yumuşak bir ışık"
+        },
+        "trigger_structure": {
+          "primary_keywords": [
+            "ışık",
+            "parlıyordu"
+          ],
+          "secondary_keywords": [
+            "deniz",
+            "gülümsedi"
+          ],
+          "semantic_intent": "hopeful_end"
+        },
+        "activation_window": {
+          "start_progress": 0.2,
+          "end_progress": 0.6
+        },
+        "trigger_once_per_scene": true,
+        "trigger_cooldown_seconds": 0,
+        "event_summary": "A soft magical shimmer fading into calm ocean sounds.",
+        "sound_category": "magic",
+        "sound_profile": {
+          "primary_sound": "other",
+          "variant": "sparkly",
+          "intensity": "low",
+          "texture": "soft",
+          "play_style": "single"
+        },
+        "playback_type": "oneshot",
+        "importance": 2,
+        "confidence": 0.85,
+        "mix_level": "subtle",
+        "emotional_tone": "magical"
+      }
+    ]
+  }
+
+  ]
+}
