@@ -244,11 +244,17 @@ class AudioController extends StateNotifier<AudioState> {
       default:
         if (kIsWeb) {
           // Web: skip volume-0 crossfade (often inaudible / leaves volume at 0).
-          await loadAndPlayAmbience(scene);
-          await loadAndPlayMusic(scene);
+          await Future.wait([
+            loadAndPlayAmbience(scene),
+            loadAndPlayMusic(scene),
+          ]);
         } else {
-          await _crossfadeAmbience(scene, durationSeconds);
-          await loadAndPlayMusic(scene);
+          // Fetch + start music while ambience crossfades — avoids waiting
+          // for the full fade-in before music begins.
+          await Future.wait([
+            _crossfadeAmbience(scene, durationSeconds),
+            loadAndPlayMusic(scene),
+          ]);
         }
         break;
     }
