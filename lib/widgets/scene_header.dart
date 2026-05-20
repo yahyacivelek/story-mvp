@@ -94,12 +94,24 @@ class SceneHeader extends ConsumerWidget {
                 isListening: storyState.isListening,
                 ambienceEnabled: audioState.ambienceEnabled,
                 musicEnabled: audioState.musicEnabled,
-                onToggleAmbience: () => ref
-                    .read(audioControllerProvider.notifier)
-                    .setAmbienceEnabled(!audioState.ambienceEnabled),
-                onToggleMusicEnabled: () => ref
-                    .read(audioControllerProvider.notifier)
-                    .setMusicEnabled(!audioState.musicEnabled),
+                onToggleAmbience: () {
+                  final notifier =
+                      ref.read(audioControllerProvider.notifier);
+                  final enabling = !audioState.ambienceEnabled;
+                  notifier.setAmbienceEnabled(
+                    enabling,
+                    scene: enabling ? scene : null,
+                  );
+                },
+                onToggleMusicEnabled: () {
+                  final notifier =
+                      ref.read(audioControllerProvider.notifier);
+                  final enabling = !audioState.musicEnabled;
+                  notifier.setMusicEnabled(
+                    enabling,
+                    scene: enabling ? scene : null,
+                  );
+                },
               ),
             ],
           ),

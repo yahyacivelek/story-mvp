@@ -161,10 +161,9 @@ class StoryController extends StateNotifier<StoryState> {
 
       if (data.sceneGraph.isNotEmpty) {
         final firstScene = data.sceneGraph.first;
-        _ref
+        await _ref
             .read(audioControllerProvider.notifier)
-            .loadAndPlayAmbience(firstScene);
-        _ref.read(audioControllerProvider.notifier).loadAndPlayMusic(firstScene);
+            .startSceneAudio(firstScene);
       }
 
       // Start listening in the story's language.

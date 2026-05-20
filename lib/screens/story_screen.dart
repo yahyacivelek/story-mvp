@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../controllers/audio_controller.dart';
 import '../controllers/story_controller.dart';
 import '../models/story_models.dart';
 import '../widgets/interactive_text_widget.dart';
@@ -82,12 +83,19 @@ class StoryScreen extends ConsumerWidget {
     }
 
     final scene = storyState.activeScene;
+    final audioState = ref.watch(audioControllerProvider);
+    final needsAudioUnlock = !audioState.playbackUnlocked;
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
       body: scene == null
           ? const SizedBox.shrink()
-          : Stack(
+          : GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () => ref
+                  .read(audioControllerProvider.notifier)
+                  .unlockPlayback(scene: scene),
+              child: Stack(
               children: [
                 // Main scrollable content
                 SafeArea(
@@ -103,6 +111,18 @@ class StoryScreen extends ConsumerWidget {
                     ],
                   ),
                 ),
+
+                if (needsAudioUnlock)
+                  Positioned(
+                    left: 16,
+                    right: 16,
+                    bottom: 88,
+                    child: _AudioUnlockBanner(
+                      onTap: () => ref
+                          .read(audioControllerProvider.notifier)
+                          .unlockPlayback(scene: scene),
+                    ),
+                  ),
 
                 // Next-scene transition button (visible when near scroll end)
                 if (storyState.isAutoTransitioning ||
@@ -129,6 +149,45 @@ class StoryScreen extends ConsumerWidget {
                 ),
               ],
             ),
+          ),
+    );
+  }
+}
+
+class _AudioUnlockBanner extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const _AudioUnlockBanner({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    return Material(
+      color: cs.primaryContainer.withValues(alpha: 0.95),
+      borderRadius: BorderRadius.circular(12),
+      elevation: 4,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Row(
+            children: [
+              Icon(Icons.touch_app_rounded, color: cs.onPrimaryContainer),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  'Tap to enable ambience & music',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: cs.onPrimaryContainer,
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

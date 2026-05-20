@@ -28,6 +28,9 @@ class AudioState {
   final bool ambienceEnabled;
   final bool musicEnabled;
 
+  /// False on web until the user taps (browser autoplay policy).
+  final bool playbackUnlocked;
+
   /// Keys are [AudioOpportunity.eventSummary]; value is `true` while loading.
   final Map<String, bool> sfxLoadingStates;
 
@@ -40,6 +43,7 @@ class AudioState {
     this.musicError,
     this.ambienceEnabled = true,
     this.musicEnabled = true,
+    this.playbackUnlocked = true,
     this.sfxLoadingStates = const {},
   });
 
@@ -52,6 +56,7 @@ class AudioState {
     String? musicError,
     bool? ambienceEnabled,
     bool? musicEnabled,
+    bool? playbackUnlocked,
     Map<String, bool>? sfxLoadingStates,
   }) {
     return AudioState(
@@ -63,6 +68,7 @@ class AudioState {
       musicError: musicError ?? this.musicError,
       ambienceEnabled: ambienceEnabled ?? this.ambienceEnabled,
       musicEnabled: musicEnabled ?? this.musicEnabled,
+      playbackUnlocked: playbackUnlocked ?? this.playbackUnlocked,
       sfxLoadingStates: sfxLoadingStates ?? this.sfxLoadingStates,
     );
   }
@@ -76,8 +82,41 @@ class AudioState {
 // ---------------------------------------------------------------------------
 
 class AudioController extends StateNotifier<AudioState> {
-  AudioController() : super(const AudioState()) {
+  AudioController()
+      : super(AudioState(playbackUnlocked: !kIsWeb)) {
+    _playbackUnlocked = !kIsWeb;
     _initAudioSession();
+  }
+
+  /// Browsers block [play] until a user gesture; toggles / taps set this.
+  bool _playbackUnlocked = !kIsWeb;
+
+  static bool _isAutoplayBlocked(Object e) {
+    final msg = e.toString();
+    return msg.contains('NotAllowedError') ||
+        msg.contains("didn't interact");
+  }
+
+  /// Call from a user gesture (tap on story UI or audio pill).
+  Future<void> unlockPlayback({Scene? scene}) async {
+    if (_playbackUnlocked) return;
+    _playbackUnlocked = true;
+    state = state.copyWith(
+      playbackUnlocked: true,
+      ambienceError: null,
+      musicError: null,
+    );
+    debugPrint('[AudioController] Playback unlocked (user gesture)');
+    if (scene != null) await startSceneAudio(scene);
+  }
+
+  /// Starts ambience + music for [scene] when enabled.
+  Future<void> startSceneAudio(Scene scene) async {
+    if (kIsWeb && !_playbackUnlocked) return;
+    await Future.wait([
+      if (state.ambienceEnabled) loadAndPlayAmbience(scene),
+      if (state.musicEnabled) loadAndPlayMusic(scene),
+    ]);
   }
 
   /// Configures Android AudioFocus and handles interruptions.
@@ -126,6 +165,7 @@ class AudioController extends StateNotifier<AudioState> {
   /// players to eliminate the click/pop at loop boundaries.
   final _SeamlessLooper _ambienceLooper = _SeamlessLooper(
     crossfadeDuration: const Duration(seconds: 2),
+    label: 'AmbienceLooper',
   );
 
   /// Dedicated player for foreground one-shot SFX.
@@ -137,6 +177,7 @@ class AudioController extends StateNotifier<AudioState> {
   /// players to eliminate the click/pop at loop boundaries.
   final _SeamlessLooper _musicLooper = _SeamlessLooper(
     crossfadeDuration: const Duration(seconds: 3),
+    label: 'MusicLooper',
   );
 
   final ElevenLabsService _api = ElevenLabsService.instance;
@@ -182,8 +223,10 @@ class AudioController extends StateNotifier<AudioState> {
 
     switch (continuity) {
       case 'continue':
-        // Keep ambience, only update music.
+        // Keep ambience bed, update music — recover stalled loopers + volume.
         await loadAndPlayMusic(scene);
+        await _ensureAmbiencePlaying(scene);
+        await _ensureMusicPlaying(scene);
         break;
 
       case 'replace':
@@ -199,11 +242,14 @@ class AudioController extends StateNotifier<AudioState> {
 
       case 'evolve':
       default:
-        // Crossfade: fade out old ambience, fade in new — ambience & music in parallel.
-        await Future.wait([
-          _crossfadeAmbience(scene, durationSeconds),
-          loadAndPlayMusic(scene),
-        ]);
+        if (kIsWeb) {
+          // Web: skip volume-0 crossfade (often inaudible / leaves volume at 0).
+          await loadAndPlayAmbience(scene);
+          await loadAndPlayMusic(scene);
+        } else {
+          await _crossfadeAmbience(scene, durationSeconds);
+          await loadAndPlayMusic(scene);
+        }
         break;
     }
   }
@@ -212,6 +258,7 @@ class AudioController extends StateNotifier<AudioState> {
   /// [durationSeconds].
   Future<void> _crossfadeAmbience(Scene scene, int durationSeconds) async {
     if (!state.ambienceEnabled) return;
+    if (kIsWeb && !_playbackUnlocked) return;
     final profile = scene.sceneAudio.primaryAmbience.soundProfile;
     final secondary = scene.sceneAudio.secondaryLayers.isNotEmpty
         ? scene.sceneAudio.secondaryLayers.first
@@ -253,20 +300,29 @@ class AudioController extends StateNotifier<AudioState> {
       state = state.copyWith(ambienceStatus: AmbienceStatus.playing);
       debugPrint('[AudioController] Crossfade ambience started, fading in');
 
-      // Fire-and-forget fade-in — don't block the caller (music can start sooner).
-      _fadeInAmbience(_intensityToVolume(profile.intensity), fadeOutMs);
+      await _fadeInAmbience(_intensityToVolume(profile.intensity), fadeOutMs);
     } catch (e, st) {
       debugPrint('[AudioController] Crossfade ERROR: $e\n$st');
-      state = state.copyWith(
-        ambienceStatus: AmbienceStatus.error,
-        ambienceError: e.toString(),
-      );
+      if (_isAutoplayBlocked(e)) {
+        _playbackUnlocked = false;
+        state = state.copyWith(
+          playbackUnlocked: false,
+          ambienceStatus: AmbienceStatus.idle,
+          ambienceError: 'Tap the story to enable audio',
+        );
+      } else {
+        state = state.copyWith(
+          ambienceStatus: AmbienceStatus.error,
+          ambienceError: e.toString(),
+        );
+      }
     }
   }
 
   /// Stops any current ambience and starts a new one for [scene].
   Future<void> loadAndPlayAmbience(Scene scene) async {
     if (!state.ambienceEnabled) return;
+    if (kIsWeb && !_playbackUnlocked) return;
     final profile = scene.sceneAudio.primaryAmbience.soundProfile;
     final secondary = scene.sceneAudio.secondaryLayers.isNotEmpty
         ? scene.sceneAudio.secondaryLayers.first
@@ -309,10 +365,19 @@ class AudioController extends StateNotifier<AudioState> {
       debugPrint('[AudioController] Ambience playing');
     } catch (e, st) {
       debugPrint('[AudioController] Ambience ERROR: $e\n$st');
-      state = state.copyWith(
-        ambienceStatus: AmbienceStatus.error,
-        ambienceError: e.toString(),
-      );
+      if (_isAutoplayBlocked(e)) {
+        _playbackUnlocked = false;
+        state = state.copyWith(
+          playbackUnlocked: false,
+          ambienceStatus: AmbienceStatus.idle,
+          ambienceError: 'Tap the story to enable audio',
+        );
+      } else {
+        state = state.copyWith(
+          ambienceStatus: AmbienceStatus.error,
+          ambienceError: e.toString(),
+        );
+      }
     }
   }
 
@@ -338,12 +403,19 @@ class AudioController extends StateNotifier<AudioState> {
   Future<void> _fadeInAmbience(double targetVolume, int durationMs) async {
     final token = ++_fadeToken;
     final fadeInSteps = 20;
-    final stepMs = (durationMs / fadeInSteps).round();
-    for (var i = 1; i <= fadeInSteps; i++) {
-      if (_fadeToken != token) return; // Cancelled by a newer transition.
-      await Future.delayed(Duration(milliseconds: stepMs));
-      if (_fadeToken != token) return;
-      await _ambienceLooper.setVolume(targetVolume * (i / fadeInSteps));
+    final stepMs = (durationMs / fadeInSteps).round().clamp(1, 500);
+    try {
+      for (var i = 1; i <= fadeInSteps; i++) {
+        if (_fadeToken != token) return;
+        await Future.delayed(Duration(milliseconds: stepMs));
+        if (_fadeToken != token) return;
+        await _ambienceLooper.setVolume(targetVolume * (i / fadeInSteps));
+      }
+    } finally {
+      // If a newer transition cancelled the fade, don't leave volume at 0.
+      if (_fadeToken == token) {
+        await _ambienceLooper.setVolume(targetVolume);
+      }
     }
   }
 
@@ -370,16 +442,54 @@ class AudioController extends StateNotifier<AudioState> {
   }
 
   /// Enables or disables background ambience.
-  Future<void> setAmbienceEnabled(bool enabled) async {
+  ///
+  /// Pass [scene] when re-enabling so ambience can be reloaded if the looper
+  /// has no source (e.g. after a failed crossfade).
+  Future<void> setAmbienceEnabled(bool enabled, {Scene? scene}) async {
+    if (enabled) await unlockPlayback(scene: scene);
     state = state.copyWith(ambienceEnabled: enabled);
     if (!enabled) {
       await _ambienceLooper.pause();
       state = state.copyWith(ambienceStatus: AmbienceStatus.idle);
     } else {
       if (_ambienceLooper.hasSource) {
+        await _ambienceLooper.setVolume(_intensityToVolume(_currentIntensity));
         await _ambienceLooper.resume();
         state = state.copyWith(ambienceStatus: AmbienceStatus.playing);
+      } else if (scene != null) {
+        await loadAndPlayAmbience(scene);
       }
+    }
+  }
+
+  /// Keeps ambience running on `continue` transitions, or restarts it if the
+  /// seamless looper stalled (e.g. after a failed loop crossfade).
+  Future<void> _ensureAmbiencePlaying(Scene scene) async {
+    if (!state.ambienceEnabled) return;
+    if (kIsWeb && !_playbackUnlocked) return;
+    if (!_ambienceLooper.hasSource ||
+        state.ambienceStatus != AmbienceStatus.playing) {
+      await loadAndPlayAmbience(scene);
+    } else {
+      await _ambienceLooper.setVolume(_intensityToVolume(_currentIntensity));
+      await _ambienceLooper.resume();
+    }
+  }
+
+  /// Same as [_ensureAmbiencePlaying] but for the music looper.
+  Future<void> _ensureMusicPlaying(Scene scene) async {
+    if (!state.musicEnabled) return;
+    if (kIsWeb && !_playbackUnlocked) return;
+    final musicLayer = scene.sceneAudio.musicLayer;
+    if (musicLayer == null || !musicLayer.enabled) return;
+
+    if (!_musicLooper.hasSource ||
+        state.musicStatus != MusicStatus.playing) {
+      await loadAndPlayMusic(scene);
+    } else {
+      final vol = _intensityToVolume(musicLayer.intensity) * 0.5;
+      await _musicLooper.setVolume(vol);
+      await _musicLooper.resume();
     }
   }
 
@@ -390,6 +500,7 @@ class AudioController extends StateNotifier<AudioState> {
   /// Loads and plays the music layer for [scene] if enabled.
   Future<void> loadAndPlayMusic(Scene scene) async {
     if (!state.musicEnabled) return;
+    if (kIsWeb && !_playbackUnlocked) return;
     final musicLayer = scene.sceneAudio.musicLayer;
     if (musicLayer == null || !musicLayer.enabled) {
       await stopMusic();
@@ -432,10 +543,19 @@ class AudioController extends StateNotifier<AudioState> {
       debugPrint('[AudioController] Music playing');
     } catch (e, st) {
       debugPrint('[AudioController] Music ERROR: $e\n$st');
-      state = state.copyWith(
-        musicStatus: MusicStatus.error,
-        musicError: e.toString(),
-      );
+      if (_isAutoplayBlocked(e)) {
+        _playbackUnlocked = false;
+        state = state.copyWith(
+          playbackUnlocked: false,
+          musicStatus: MusicStatus.idle,
+          musicError: 'Tap the story to enable audio',
+        );
+      } else {
+        state = state.copyWith(
+          musicStatus: MusicStatus.error,
+          musicError: e.toString(),
+        );
+      }
     }
   }
 
@@ -458,15 +578,22 @@ class AudioController extends StateNotifier<AudioState> {
   }
 
   /// Enables or disables the music layer.
-  Future<void> setMusicEnabled(bool enabled) async {
+  Future<void> setMusicEnabled(bool enabled, {Scene? scene}) async {
+    if (enabled) await unlockPlayback(scene: scene);
     state = state.copyWith(musicEnabled: enabled);
     if (!enabled) {
       await _musicLooper.pause();
       state = state.copyWith(musicStatus: MusicStatus.idle);
     } else {
       if (_musicLooper.hasSource) {
+        final vol = _currentMusicIntensity != null
+            ? _intensityToVolume(_currentMusicIntensity!) * 0.5
+            : 0.25;
+        await _musicLooper.setVolume(vol);
         await _musicLooper.resume();
         state = state.copyWith(musicStatus: MusicStatus.playing);
+      } else if (scene != null) {
+        await loadAndPlayMusic(scene);
       }
     }
   }
@@ -599,18 +726,25 @@ class _SeamlessLooper {
   final AudioPlayer _playerB;
   final Duration crossfadeDuration;
   final int _crossfadeSteps;
+  final String _label;
 
   StreamSubscription<Duration>? _positionSub;
+  StreamSubscription<ProcessingState>? _processingSub;
   bool _activeIsA = true;
   bool _crossfading = false;
   bool _disposed = false;
+  bool _bothPlayersLoaded = false;
   double _targetVolume = 1.0;
   Uint8List? _currentBytes;
+  _BytesAudioSource? _sourceA;
+  _BytesAudioSource? _sourceB;
 
   _SeamlessLooper({
     this.crossfadeDuration = const Duration(seconds: 2),
     int crossfadeSteps = 30,
-  })  : _playerA = AudioPlayer(handleAudioSessionActivation: false),
+    String label = 'SeamlessLooper',
+  })  : _label = label,
+        _playerA = AudioPlayer(handleAudioSessionActivation: false),
         _playerB = AudioPlayer(handleAudioSessionActivation: false),
         _crossfadeSteps = crossfadeSteps;
 
@@ -628,23 +762,32 @@ class _SeamlessLooper {
     _currentBytes = bytes;
     _targetVolume = volume;
     _crossfading = false;
+    _positionSub?.cancel();
 
-    // Stop and configure both players in parallel to reduce latency.
     await Future.wait([
       _playerA.stop(),
       _playerB.stop(),
     ]);
 
-    // Set LoopMode.one as safety net — the looper crossfades before the
-    // clip ends, but if a crossfade is delayed the player keeps going
-    // instead of stopping dead.
+    // LoopMode.one is a safety net if a crossfade is delayed.
     await Future.wait([
       _playerA.setLoopMode(LoopMode.one),
       _playerB.setLoopMode(LoopMode.one),
     ]);
 
+    // Load both players once — loop crossfades only swap play/volume, never
+    // call setAudioSource again (avoids platform dispose churn / errors).
+    _sourceA = _BytesAudioSource(bytes);
+    _sourceB = _BytesAudioSource(bytes);
+    await Future.wait([
+      _playerA.setAudioSource(_sourceA!),
+      _playerB.setAudioSource(_sourceB!),
+    ]);
+    _bothPlayersLoaded = true;
+
     final startVol = initialVolume ?? volume;
-    await _playerA.setAudioSource(_BytesAudioSource(bytes));
+    await _playerB.setVolume(0);
+    await _playerB.pause();
     await _playerA.setVolume(startVol);
     await _playerA.play();
     _activeIsA = true;
@@ -654,55 +797,96 @@ class _SeamlessLooper {
 
   void _startPositionMonitoring() {
     _positionSub?.cancel();
+    _processingSub?.cancel();
+
+    if (kIsWeb) {
+      // Web: duration/position-based crossfade is unreliable — restart on end.
+      _processingSub = _active.processingStateStream.listen((ps) {
+        if (_disposed || _crossfading || _currentBytes == null) return;
+        if (ps == ProcessingState.completed) {
+          unawaited(_restartActiveFromStart());
+        }
+      });
+      return;
+    }
+
     _positionSub = _active.positionStream.listen(_onPositionUpdate);
   }
 
+  Future<void> _restartActiveFromStart() async {
+    try {
+      await _active.seek(Duration.zero);
+      await _active.play();
+    } catch (e) {
+      debugPrint('[$_label] Loop restart failed: $e');
+    }
+  }
+
   void _onPositionUpdate(Duration position) {
-    if (_disposed || _crossfading) return;
+    if (_disposed || _crossfading || kIsWeb) return;
     final duration = _active.duration;
     if (duration == null || duration <= crossfadeDuration) return;
 
     final triggerPoint = duration - crossfadeDuration;
     if (position >= triggerPoint) {
-      _crossfading = true; // Guard immediately to prevent re-entry.
+      _crossfading = true;
       _positionSub?.cancel();
-      _initiateCrossfade(); // Fire-and-forget; _crossfading guards.
+      _initiateCrossfade();
     }
   }
 
   Future<void> _initiateCrossfade() async {
-    if (_currentBytes == null || _disposed) return;
-    // _crossfading already set to true by _onPositionUpdate.
+    if (_currentBytes == null || _disposed || !_bothPlayersLoaded) {
+      _crossfading = false;
+      return;
+    }
 
     final outgoing = _active;
     final incoming = _standby;
 
-    // Prepare incoming player at zero volume.
-    await incoming.setAudioSource(_BytesAudioSource(_currentBytes!));
-    await incoming.setVolume(0);
-    await incoming.seek(Duration.zero);
-    await incoming.play();
+    try {
+      // Standby already has the same source from [play] — no setAudioSource.
+      await incoming.setVolume(0);
+      await incoming.seek(Duration.zero);
+      await incoming.play();
 
-    // Equal-power crossfade: cos/sin curve keeps perceived loudness constant.
-    final stepMs = crossfadeDuration.inMilliseconds ~/ _crossfadeSteps;
-    for (var i = 1; i <= _crossfadeSteps; i++) {
-      if (_disposed || _currentBytes == null) return;
-      await Future.delayed(Duration(milliseconds: stepMs));
-      final t = i / _crossfadeSteps;
-      final outVol = _targetVolume * cos(pi / 2 * t);
-      final inVol = _targetVolume * sin(pi / 2 * t);
-      await outgoing.setVolume(outVol);
-      await incoming.setVolume(inVol);
+      final stepMs = crossfadeDuration.inMilliseconds ~/ _crossfadeSteps;
+      for (var i = 1; i <= _crossfadeSteps; i++) {
+        if (_disposed || _currentBytes == null) return;
+        await Future.delayed(Duration(milliseconds: stepMs));
+        final t = i / _crossfadeSteps;
+        final outVol = _targetVolume * cos(pi / 2 * t);
+        final inVol = _targetVolume * sin(pi / 2 * t);
+        await outgoing.setVolume(outVol);
+        await incoming.setVolume(inVol);
+      }
+
+      await outgoing.pause();
+      await outgoing.seek(Duration.zero);
+      _activeIsA = !_activeIsA;
+    } catch (e, st) {
+      debugPrint(
+        '[$_label] Crossfade failed, restarting active player: $e\n$st',
+      );
+      await _recoverFromCrossfadeFailure();
+    } finally {
+      _crossfading = false;
+      if (!_disposed && _currentBytes != null) {
+        _startPositionMonitoring();
+      }
     }
+  }
 
-    // Reset outgoing player for the next cycle.
-    await outgoing.pause();
-    await outgoing.seek(Duration.zero);
-
-    _activeIsA = !_activeIsA;
-    _crossfading = false;
-
-    if (!_disposed) _startPositionMonitoring();
+  Future<void> _recoverFromCrossfadeFailure() async {
+    try {
+      await _standby.pause();
+      await _standby.setVolume(0);
+      await _active.setVolume(_targetVolume);
+      await _active.seek(Duration.zero);
+      await _active.play();
+    } catch (e) {
+      debugPrint('[$_label] Recovery failed: $e');
+    }
   }
 
   /// Sets the target volume. During a crossfade the new target is picked up
@@ -717,6 +901,7 @@ class _SeamlessLooper {
 
   Future<void> pause() async {
     _positionSub?.cancel();
+    _processingSub?.cancel();
     _crossfading = false;
     await _playerA.pause();
     await _playerB.pause();
@@ -729,15 +914,20 @@ class _SeamlessLooper {
 
   Future<void> stop() async {
     _positionSub?.cancel();
+    _processingSub?.cancel();
     _crossfading = false;
+    _bothPlayersLoaded = false;
     await _playerA.stop();
     await _playerB.stop();
     _currentBytes = null;
+    _sourceA = null;
+    _sourceB = null;
   }
 
   void dispose() {
     _disposed = true;
     _positionSub?.cancel();
+    _processingSub?.cancel();
     _playerA.dispose();
     _playerB.dispose();
   }
