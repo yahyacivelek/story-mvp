@@ -17,6 +17,12 @@
       "title": "Küçük Kaplumbağa Mavi",
       "language": "tr",
       "asset_path": "assets/stories/little_blue.json"
+    },
+    {
+      "id": "cenk",
+      "title": "CENK'İN SIRADIŞI SERÜVENLERİ - MARSLILARA Şekerleme",
+      "language": "tr",
+      "asset_path": "assets/stories/cenk.json"
     }
   ]
 }

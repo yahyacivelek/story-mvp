@@ -1,0 +1,601 @@
+{
+    "book": {
+        "detected_title": "CENK'İN SIRADIŞI SERÜVENLERİ - MARSLILARA Şekerleme",
+        "language": "tr",
+        "analysis_confidence": 0.95
+    },
+    "page_ordering": {"ordering_method": "mixed", "confidence": 0.98},
+    "pages": [
+        {
+            "page_id": "page_1",
+            "page_number": 1,
+            "order_index": 1,
+            "order_confidence": 0.99,
+            "full_text": "CENK'IN SIRADIŞI SERÜVENLERİ MARSLILARA Şekerleme Adam ve Charlotte Guillain - Lee Wildish Çeviren: Derin Erkan 1001 CICEK kitaplar",
+            "primary_scene_hint": "Book cover",
+            "dominant_visual": "Boy riding a rocket with an alien holding a candy",
+            "mood": "adventurous"
+        },
+        {
+            "page_id": "page_2",
+            "page_number": 2,
+            "order_index": 2,
+            "order_confidence": 0.99,
+            "full_text": "Bir gece yıldızları uzun uzun seyrederken, Cenk denen çocuğun aklına geldi bir fikir, rüyalara dalarken. 'Gidip Marslıların en çok hangi şekerlemeyi sevdiğini öğreneceğim.' Böylece ilk Mars görevini planladı odasında yatarken. MARS EMC ROKET PLANARI UZAY UFO LOKUM UZAYLILAR ŞEKER YILDIZLAR",
+            "primary_scene_hint": "Bedroom planning",
+            "dominant_visual": "Boy in bed surrounded by space toys and diagrams",
+            "mood": "cozy"
+        },
+        {
+            "page_id": "page_3",
+            "page_number": 3,
+            "order_index": 3,
+            "order_confidence": 0.98,
+            "full_text": "Cenk bir uzay gemisi hazırladı kendine ve doldurdu çantasına bir uzay haritası ile bolca şekerleme. Olunca çantası patlayacak gibi, Attı öğle yemeğini, koydu şekerleri. CENK'IN UZAY GEMİSİ G1/01 TELESKOP RADYO ALICISI AKÜ ÜST ÖZEL PANELLER SÜPER FENER ÇANTA ASKISI ÖN KAPI",
+            "primary_scene_hint": "Building rocket in garden",
+            "dominant_visual": "Scrap-built rocket ship with labels",
+            "mood": "playful"
+        },
+        {
+            "page_id": "page_4",
+            "page_number": 4,
+            "order_index": 4,
+            "order_confidence": 0.98,
+            "full_text": "Cenk çantasına lolipoplar, bonbonlar ve çikolatalı drajelerden koydu. Limonlu olanlarından koysa mı koymasa mı bilemedi bir süre. Ne de olsa koymuştu bir sürü jöleli şeker, akide ve nanelisinden, ve tabii ki bolca lokum, en sevdiğinden. MARŞMELOV ŞEKER",
+            "primary_scene_hint": "Packing candies in garden",
+            "dominant_visual": "Boy putting candies into a space helmet bag",
+            "mood": "playful"
+        },
+        {
+            "page_id": "page_5",
+            "page_number": 5,
+            "order_index": 5,
+            "order_confidence": 0.95,
+            "full_text": "3 2 1 Fırlatma Zamanı!",
+            "primary_scene_hint": "Rocket launch sequence",
+            "dominant_visual": "Countdown numbers 3, 2, 1 with blast smoke",
+            "mood": "adventurous"
+        },
+        {
+            "page_id": "page_6",
+            "page_number": 6,
+            "order_index": 6,
+            "order_confidence": 0.95,
+            "full_text": "Roketi göğe yükselir ve uzaya doğru yol alırken, Cenk yıldız haritasına baktı. Pencereden dışarı göz gezdirdi ve sola yöneldi, dosdoğru Mars'a kırdı dümeni. BAŞLA",
+            "primary_scene_hint": "Flying through space",
+            "dominant_visual": "Rocket flying out of Earth's atmosphere",
+            "mood": "magical"
+        },
+        {
+            "page_id": "page_7",
+            "page_number": 7,
+            "order_index": 7,
+            "order_confidence": 0.95,
+            "full_text": "Uyduları geçti, kuyruklu yıldızları geçti ve boş boş uzayda dolanan türlü şeyleri... Ama hiçbirine çarpmadı, kıvrıldı aralarından rahatça, adeta yolu bilir gibi.",
+            "primary_scene_hint": "Navigating space debris",
+            "dominant_visual": "Rocket dodging space obstacles and planets",
+            "mood": "adventurous"
+        },
+        {
+            "page_id": "page_8",
+            "page_number": 8,
+            "order_index": 8,
+            "order_confidence": 0.95,
+            "full_text": "Sonra, en sonunda Kırmızı Gezegen göründü ve... Cenk indi zemine, çıkararak feci bir GÜM! sesi",
+            "primary_scene_hint": "Landing on Mars",
+            "dominant_visual": "Text focusing on loud landing bang",
+            "mood": "suspenseful"
+        },
+        {
+            "page_id": "page_9",
+            "page_number": 9,
+            "order_index": 9,
+            "order_confidence": 0.95,
+            "full_text": "Kırmızı bir toz bulutunun arasından uzay gemisinin kapısını açtı Cenk Dışarı attı kendini ve etrafına bakındı. İlk başta uzaylılara dair hiçbir işaret görmüyordu ama sonra çok kuvvetli bir ses duydu.",
+            "primary_scene_hint": "Stepping out onto Mars",
+            "dominant_visual": "Boy in space suit opening rocket door on red planet",
+            "mood": "mysterious"
+        },
+        {
+            "page_id": "page_10",
+            "page_number": 10,
+            "order_index": 10,
+            "order_confidence": 0.95,
+            "full_text": "Sesi takip ederek bir kayanın tepesine çıktı Cenk. Kafasını eğip aşağı bakınca karşısında ne görse beğenirsiniz?...",
+            "primary_scene_hint": "Investigating loud noise",
+            "dominant_visual": "Boy looking over the edge of a crater",
+            "mood": "suspenseful"
+        },
+        {
+            "page_id": "page_11",
+            "page_number": 11,
+            "order_index": 11,
+            "order_confidence": 0.95,
+            "full_text": "Bir Uzaylı şöleni! MODELLİLER",
+            "primary_scene_hint": "Discovering alien party",
+            "dominant_visual": "Funny singing aliens with musical instruments",
+            "mood": "playful"
+        },
+        {
+            "page_id": "page_12",
+            "page_number": 12,
+            "order_index": 12,
+            "order_confidence": 0.95,
+            "full_text": "Üzerlerindeki kıyafetler gerçekten tuhaftı ama asıl rahatsız edici olan garip garip bağırtılarıydı. ŞEF 'Bakar mısınız?' dedi Cenk, kayanın üzerinden aşağı atlayarak. 'Sizler Marslı mısınız?' diye sordu gülümseyerek. 'Bizler Yodel'den gelen Yodellileriz,' diye yanıt verdi liderleri. 'Ve epeydir de bir şey yemedik.'",
+            "primary_scene_hint": "Talking to the alien chief",
+            "dominant_visual": "Cenk greeting the large alien chief",
+            "mood": "warm"
+        }
+    ],
+    "scene_graph": [
+        {
+            "scene_id": "scene_1",
+            "pages": [1, 2],
+            "scene_summary": "Introduction and Cenk dreaming of Mars in his bedroom.",
+            "scene_type": "bedroom",
+            "scene_mood": "cozy",
+            "scene_energy": "low",
+            "narrative_phase": "intro",
+            "scene_duration_estimate_seconds": 30,
+            "scene_activation": {
+                "activation_mode": "hybrid",
+                "entry_cues": [
+                    {
+                        "primary_keywords": ["Cenk", "yıldızları"],
+                        "secondary_keywords": ["gece", "rüyalara"],
+                        "semantic_intent": "Start of story in bedroom"
+                    }
+                ],
+                "exit_cues": [
+                    {
+                        "keywords": ["uzay gemisi", "hazırladı"],
+                        "semantic_intent": "Moving to building phase"
+                    }
+                ],
+                "activation_confidence_threshold": 0.6,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "scene_2",
+                "transition_style": "crossfade",
+                "audio_continuity": "evolve",
+                "transition_duration_seconds": 4
+            },
+            "likely_next_scene": "scene_2",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "night_crickets",
+                        "variant": "soft",
+                        "intensity": "low",
+                        "texture": "cozy",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [
+                    {
+                        "sound_profile": {
+                            "primary_sound": "magic_ambience",
+                            "variant": "light",
+                            "intensity": "low",
+                            "texture": "sparkly",
+                            "play_style": "loop"
+                        }
+                    }
+                ],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "sleepy",
+                    "intensity": "low"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "ao1",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "phrase", "value": "rüyalara dalarken"},
+                    "trigger_structure": {
+                        "primary_keywords": ["rüyalara"],
+                        "secondary_keywords": ["dalarken", "fikir"],
+                        "semantic_intent": "Getting an idea"
+                    },
+                    "activation_window": {"start_progress": 0.0, "end_progress": 1.0},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 5,
+                    "event_summary": "Magical idea sparkle",
+                    "sound_category": "magic",
+                    "sound_profile": {
+                        "primary_sound": "magic_chime",
+                        "variant": "soft",
+                        "intensity": "medium",
+                        "texture": "sparkly",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 1,
+                    "confidence": 0.9,
+                    "mix_level": "prominent",
+                    "emotional_tone": "wonder"
+                }
+            ]
+        },
+        {
+            "scene_id": "scene_2",
+            "pages": [3, 4],
+            "scene_summary": "Cenk building his rocket and packing up candies.",
+            "scene_type": "garden",
+            "scene_mood": "playful",
+            "scene_energy": "medium",
+            "narrative_phase": "build_up",
+            "scene_duration_estimate_seconds": 40,
+            "scene_activation": {
+                "activation_mode": "voice",
+                "entry_cues": [
+                    {
+                        "primary_keywords": ["uzay gemisi", "hazırladı"],
+                        "secondary_keywords": ["çanta", "şekerleme"],
+                        "semantic_intent": "Building rocket and packing"
+                    }
+                ],
+                "exit_cues": [
+                    {
+                        "keywords": ["Fırlatma Zamanı"],
+                        "semantic_intent": "Countdown to launch"
+                    }
+                ],
+                "activation_confidence_threshold": 0.7,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "scene_3",
+                "transition_style": "fade",
+                "audio_continuity": "replace",
+                "transition_duration_seconds": 3
+            },
+            "likely_next_scene": "scene_3",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "garden_breeze",
+                        "variant": "playful",
+                        "intensity": "medium",
+                        "texture": "natural",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [
+                    {
+                        "sound_profile": {
+                            "primary_sound": "birds",
+                            "variant": "soft",
+                            "intensity": "low",
+                            "texture": "airy",
+                            "play_style": "loop"
+                        }
+                    }
+                ],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "adventure",
+                    "intensity": "low"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "ao2",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "phrase", "value": "drajelerden koydu"},
+                    "trigger_structure": {
+                        "primary_keywords": ["lolipoplar", "koydu"],
+                        "secondary_keywords": ["bonbonlar", "drajelerden"],
+                        "semantic_intent": "Packing candies"
+                    },
+                    "activation_window": {"start_progress": 0.0, "end_progress": 1.0},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 3,
+                    "event_summary": "Candy rattling sound",
+                    "sound_category": "object",
+                    "sound_profile": {
+                        "primary_sound": "other",
+                        "variant": "playful",
+                        "intensity": "low",
+                        "texture": "soft",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 1,
+                    "confidence": 0.8,
+                    "mix_level": "subtle",
+                    "emotional_tone": "playful"
+                }
+            ]
+        },
+        {
+            "scene_id": "scene_3",
+            "pages": [5, 6, 7],
+            "scene_summary": "Countdown, rocket launch, and flight through space.",
+            "scene_type": "space",
+            "scene_mood": "adventurous",
+            "scene_energy": "high",
+            "narrative_phase": "action",
+            "scene_duration_estimate_seconds": 45,
+            "scene_activation": {
+                "activation_mode": "voice",
+                "entry_cues": [
+                    {
+                        "primary_keywords": ["Fırlatma", "Zamanı"],
+                        "secondary_keywords": ["Roketi", "göğe"],
+                        "semantic_intent": "Taking off"
+                    }
+                ],
+                "exit_cues": [
+                    {
+                        "keywords": ["bilir", "gibi"],
+                        "semantic_intent": "Landing impact"
+                    }
+                ],
+                "activation_confidence_threshold": 0.7,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "scene_4",
+                "transition_style": "hard_cut",
+                "audio_continuity": "replace",
+                "transition_duration_seconds": 1
+            },
+            "likely_next_scene": "scene_4",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "magic_ambience",
+                        "variant": "mysterious",
+                        "intensity": "medium",
+                        "texture": "airy",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "adventure",
+                    "intensity": "medium"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "ao3",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "phrase", "value": "Fırlatma Zamanı"},
+                    "trigger_structure": {
+                        "primary_keywords": ["Fırlatma", "Zamanı"],
+                        "secondary_keywords": ["3", "2", "1"],
+                        "semantic_intent": "Rocket launch whoosh"
+                    },
+                    "activation_window": {"start_progress": 0.0, "end_progress": 1.0},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 10,
+                    "event_summary": "Rocket launch sound",
+                    "sound_category": "movement",
+                    "sound_profile": {
+                        "primary_sound": "magic_whoosh",
+                        "variant": "playful",
+                        "intensity": "high",
+                        "texture": "airy",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 1,
+                    "confidence": 0.95,
+                    "mix_level": "prominent",
+                    "emotional_tone": "excited"
+                }
+            ]
+        },
+        {
+            "scene_id": "scene_4",
+            "pages": [8, 9, 10],
+            "scene_summary": "Landing on Mars, stepping out, and investigating a sound.",
+            "scene_type": "other",
+            "scene_mood": "suspenseful",
+            "scene_energy": "medium",
+            "narrative_phase": "transition",
+            "scene_duration_estimate_seconds": 45,
+            "scene_activation": {
+                "activation_mode": "voice",
+                "entry_cues": [
+                    {
+                        "primary_keywords": ["GÜM", "Kırmızı Gezegen"],
+                        "secondary_keywords": ["indi", "zemine"],
+                        "semantic_intent": "Crashing/landing on planet"
+                    }
+                ],
+                "exit_cues": [
+                    {
+                        "keywords": ["Uzaylı", "şöleni"],
+                        "semantic_intent": "Finding the aliens"
+                    }
+                ],
+                "activation_confidence_threshold": 0.7,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "scene_5",
+                "transition_style": "crossfade",
+                "audio_continuity": "evolve",
+                "transition_duration_seconds": 3
+            },
+            "likely_next_scene": "scene_5",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "wind",
+                        "variant": "mysterious",
+                        "intensity": "medium",
+                        "texture": "dark",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "mystery",
+                    "intensity": "medium"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "ao4",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "word", "value": "GÜM"},
+                    "trigger_structure": {
+                        "primary_keywords": ["GÜM"],
+                        "secondary_keywords": ["sesi", "feci"],
+                        "semantic_intent": "Loud landing bump"
+                    },
+                    "activation_window": {"start_progress": 0.0, "end_progress": 1.0},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 5,
+                    "event_summary": "Soft comedic boom",
+                    "sound_category": "movement",
+                    "sound_profile": {
+                        "primary_sound": "other",
+                        "variant": "playful",
+                        "intensity": "high",
+                        "texture": "natural",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 1,
+                    "confidence": 0.95,
+                    "mix_level": "prominent",
+                    "emotional_tone": "suspenseful"
+                },
+                {
+                    "id": "ao5",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "phrase", "value": "kapısını açtı"},
+                    "trigger_structure": {
+                        "primary_keywords": ["kapısını", "açtı"],
+                        "secondary_keywords": ["uzay gemisinin"],
+                        "semantic_intent": "Opening spacecraft door"
+                    },
+                    "activation_window": {"start_progress": 0.0, "end_progress": 1.0},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 5,
+                    "event_summary": "Door creaking open",
+                    "sound_category": "object",
+                    "sound_profile": {
+                        "primary_sound": "door_creak",
+                        "variant": "mysterious",
+                        "intensity": "medium",
+                        "texture": "wooden",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 1,
+                    "confidence": 0.85,
+                    "mix_level": "medium",
+                    "emotional_tone": "mysterious"
+                }
+            ]
+        },
+        {
+            "scene_id": "scene_5",
+            "pages": [11, 12],
+            "scene_summary": "Meeting the musical Yodel aliens and offering candies.",
+            "scene_type": "other",
+            "scene_mood": "playful",
+            "scene_energy": "medium",
+            "narrative_phase": "calm",
+            "scene_duration_estimate_seconds": 45,
+            "scene_activation": {
+                "activation_mode": "voice",
+                "entry_cues": [
+                    {
+                        "primary_keywords": ["Uzaylı", "şöleni"],
+                        "secondary_keywords": ["MODELLİLER"],
+                        "semantic_intent": "Seeing the alien party"
+                    }
+                ],
+                "exit_cues": [],
+                "activation_confidence_threshold": 0.7,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "none",
+                "transition_style": "fade",
+                "audio_continuity": "continue",
+                "transition_duration_seconds": 5
+            },
+            "likely_next_scene": "none",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "wind",
+                        "variant": "soft",
+                        "intensity": "low",
+                        "texture": "airy",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [
+                    {
+                        "sound_profile": {
+                            "primary_sound": "other",
+                            "variant": "playful",
+                            "intensity": "medium",
+                            "texture": "soft",
+                            "play_style": "loop"
+                        }
+                    }
+                ],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "wonder",
+                    "intensity": "low"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "ao6",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "phrase", "value": "bağırtılarıydı"},
+                    "trigger_structure": {
+                        "primary_keywords": ["bağırtılarıydı", "garip"],
+                        "secondary_keywords": ["rahatsız", "edici"],
+                        "semantic_intent": "Funny alien noises"
+                    },
+                    "activation_window": {"start_progress": 0.0, "end_progress": 1.0},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 5,
+                    "event_summary": "Alien chatter vocalization",
+                    "sound_category": "emotion",
+                    "sound_profile": {
+                        "primary_sound": "other",
+                        "variant": "playful",
+                        "intensity": "medium",
+                        "texture": "soft",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 1,
+                    "confidence": 0.8,
+                    "mix_level": "medium",
+                    "emotional_tone": "playful"
+                }
+            ]
+        }
+    ]
+}

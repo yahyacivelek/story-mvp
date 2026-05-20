@@ -1,0 +1,577 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://story.app/schemas/story.json",
+  "title": "StoryData",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["book", "page_ordering", "pages", "scene_graph"],
+  "properties": {
+    "book": { "$ref": "#/$defs/book" },
+    "page_ordering": { "$ref": "#/$defs/page_ordering" },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/page" }
+    },
+    "scene_graph": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/scene" }
+    }
+  },
+  "$defs": {
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "mood": {
+      "type": "string",
+      "enum": [
+        "cozy",
+        "magical",
+        "playful",
+        "warm",
+        "calm",
+        "suspenseful",
+        "adventurous",
+        "mysterious"
+      ]
+    },
+    "book": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["language", "analysis_confidence"],
+      "properties": {
+        "detected_title": { "type": ["string", "null"] },
+        "language": { "type": "string", "minLength": 2 },
+        "analysis_confidence": { "$ref": "#/$defs/confidence" }
+      }
+    },
+    "page_ordering": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ordering_method", "confidence"],
+      "properties": {
+        "ordering_method": {
+          "type": "string",
+          "enum": [
+            "page_numbers",
+            "capture_order",
+            "narrative_inference",
+            "mixed"
+          ]
+        },
+        "confidence": { "$ref": "#/$defs/confidence" }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "page_id",
+        "page_number",
+        "order_index",
+        "order_confidence",
+        "full_text",
+        "primary_scene_hint",
+        "dominant_visual",
+        "mood"
+      ],
+      "properties": {
+        "page_id": { "type": "string", "minLength": 1 },
+        "page_number": { "type": "integer", "minimum": 1 },
+        "order_index": { "type": "integer", "minimum": 1 },
+        "order_confidence": { "$ref": "#/$defs/confidence" },
+        "full_text": { "type": "string" },
+        "primary_scene_hint": { "type": "string" },
+        "dominant_visual": { "type": "string" },
+        "mood": { "$ref": "#/$defs/mood" }
+      }
+    },
+    "entry_cue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary_keywords"],
+      "properties": {
+        "primary_keywords": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "secondary_keywords": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "semantic_intent": { "type": "string" }
+      }
+    },
+    "exit_cue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["keywords"],
+      "properties": {
+        "keywords": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "semantic_intent": { "type": "string" }
+      }
+    },
+    "ambience_sound_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_sound",
+        "variant",
+        "intensity",
+        "texture",
+        "play_style"
+      ],
+      "properties": {
+        "primary_sound": {
+          "type": "string",
+          "enum": [
+            "forest",
+            "rain",
+            "wind",
+            "ocean",
+            "night_crickets",
+            "birds",
+            "fireplace",
+            "village_day",
+            "cave_drip",
+            "garden_breeze",
+            "magic_ambience",
+            "other"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "soft",
+            "warm",
+            "gentle",
+            "cozy",
+            "light",
+            "mysterious",
+            "playful"
+          ]
+        },
+        "intensity": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "texture": {
+          "type": "string",
+          "enum": ["airy", "natural", "soft", "cozy", "sparkly", "dark"]
+        },
+        "play_style": {
+          "type": "string",
+          "enum": ["loop", "fade_in", "fade_out"]
+        }
+      }
+    },
+    "free_sound_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_sound",
+        "variant",
+        "intensity",
+        "texture",
+        "play_style"
+      ],
+      "properties": {
+        "primary_sound": { "type": "string", "minLength": 1 },
+        "variant": { "type": "string", "minLength": 1 },
+        "intensity": { "type": "string", "minLength": 1 },
+        "texture": { "type": "string", "minLength": 1 },
+        "play_style": { "type": "string", "minLength": 1 }
+      }
+    },
+    "sfx_sound_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_sound",
+        "variant",
+        "intensity",
+        "texture",
+        "play_style"
+      ],
+      "properties": {
+        "primary_sound": {
+          "type": "string",
+          "enum": [
+            "bird_chirp",
+            "owl_hoot",
+            "frog_croak",
+            "lion_roar_soft",
+            "wolf_howl_soft",
+            "monkey_chatter",
+            "bear_breathing",
+            "cat_purr",
+            "dog_bark_soft",
+            "horse_gallop",
+            "duck_quack",
+            "whale_call",
+            "bee_buzz",
+            "footsteps_grass",
+            "footsteps_wood",
+            "door_creak",
+            "magic_chime",
+            "magic_whoosh",
+            "water_splash",
+            "other"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "enum": [
+            "soft",
+            "playful",
+            "warm",
+            "gentle",
+            "mysterious",
+            "light",
+            "calm",
+            "cozy"
+          ]
+        },
+        "intensity": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "texture": {
+          "type": "string",
+          "enum": [
+            "airy",
+            "sparkly",
+            "wooden",
+            "soft",
+            "natural",
+            "cozy",
+            "dark",
+            "gentle"
+          ]
+        },
+        "play_style": {
+          "type": "string",
+          "enum": ["single", "repeat", "loop", "fade_in", "fade_out"]
+        }
+      }
+    },
+    "scene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scene_id",
+        "pages",
+        "scene_summary",
+        "scene_type",
+        "scene_mood",
+        "scene_energy",
+        "narrative_phase",
+        "scene_duration_estimate_seconds",
+        "scene_activation",
+        "scene_transition",
+        "likely_next_scene",
+        "scene_audio",
+        "audio_opportunities"
+      ],
+      "properties": {
+        "scene_id": { "type": "string", "minLength": 1 },
+        "pages": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 1 },
+          "minItems": 1
+        },
+        "scene_summary": { "type": "string" },
+        "scene_type": {
+          "type": "string",
+          "enum": [
+            "forest",
+            "bedroom",
+            "village",
+            "ocean",
+            "castle",
+            "cave",
+            "garden",
+            "space",
+            "school",
+            "other"
+          ]
+        },
+        "scene_mood": { "$ref": "#/$defs/mood" },
+        "scene_energy": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "narrative_phase": {
+          "type": "string",
+          "enum": [
+            "intro",
+            "build_up",
+            "action",
+            "calm",
+            "transition",
+            "ending"
+          ]
+        },
+        "scene_duration_estimate_seconds": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "scene_activation": { "$ref": "#/$defs/scene_activation" },
+        "scene_transition": { "$ref": "#/$defs/scene_transition" },
+        "likely_next_scene": { "type": "string" },
+        "scene_audio": { "$ref": "#/$defs/scene_audio" },
+        "audio_opportunities": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/audio_opportunity" }
+        }
+      }
+    },
+    "scene_activation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "activation_mode",
+        "entry_cues",
+        "exit_cues",
+        "activation_confidence_threshold",
+        "scene_persistence"
+      ],
+      "properties": {
+        "activation_mode": {
+          "type": "string",
+          "enum": ["manual", "voice", "hybrid"]
+        },
+        "entry_cues": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/entry_cue" }
+        },
+        "exit_cues": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/exit_cue" }
+        },
+        "activation_confidence_threshold": { "$ref": "#/$defs/confidence" },
+        "scene_persistence": {
+          "type": "string",
+          "enum": ["until_next_scene", "manual", "timeout"]
+        }
+      }
+    },
+    "scene_transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "next_scene_id",
+        "transition_style",
+        "audio_continuity",
+        "transition_duration_seconds"
+      ],
+      "properties": {
+        "next_scene_id": { "type": "string" },
+        "transition_style": {
+          "type": "string",
+          "enum": [
+            "fade",
+            "crossfade",
+            "darken",
+            "brighten",
+            "hard_cut",
+            "none"
+          ]
+        },
+        "audio_continuity": {
+          "type": "string",
+          "enum": ["continue", "evolve", "replace"]
+        },
+        "transition_duration_seconds": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "scene_audio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary_ambience", "secondary_layers", "music_layer"],
+      "properties": {
+        "primary_ambience": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sound_profile"],
+          "properties": {
+            "sound_profile": { "$ref": "#/$defs/ambience_sound_profile" }
+          }
+        },
+        "secondary_layers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["sound_profile"],
+            "properties": {
+              "sound_profile": { "$ref": "#/$defs/free_sound_profile" }
+            }
+          }
+        },
+        "music_layer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabled", "music_theme", "intensity"],
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "music_theme": {
+              "type": "string",
+              "enum": [
+                "wonder",
+                "calm",
+                "cozy",
+                "mystery",
+                "adventure",
+                "comfort",
+                "sleepy"
+              ]
+            },
+            "intensity": {
+              "type": "string",
+              "enum": ["low", "medium", "high"]
+            }
+          }
+        }
+      }
+    },
+    "audio_opportunity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "layer_role",
+        "source",
+        "trigger_scope",
+        "trigger_anchor",
+        "trigger_structure",
+        "activation_window",
+        "trigger_once_per_scene",
+        "trigger_cooldown_seconds",
+        "event_summary",
+        "sound_category",
+        "sound_profile",
+        "playback_type",
+        "importance",
+        "confidence",
+        "mix_level",
+        "emotional_tone"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "layer_role": {
+          "type": "string",
+          "enum": [
+            "secondary_detail",
+            "event",
+            "animal_presence",
+            "animal_vocalization",
+            "emotional_music"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "enum": ["text", "image", "both"]
+        },
+        "trigger_scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["active_scene_only"],
+          "properties": {
+            "active_scene_only": { "type": "boolean" }
+          }
+        },
+        "trigger_anchor": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "value"],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["word", "phrase", "scene", "page_start", "page_end"]
+            },
+            "value": { "type": "string" }
+          }
+        },
+        "trigger_structure": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["primary_keywords", "secondary_keywords", "semantic_intent"],
+          "properties": {
+            "primary_keywords": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "secondary_keywords": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "semantic_intent": { "type": "string" }
+          }
+        },
+        "activation_window": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["start_progress", "end_progress"],
+          "properties": {
+            "start_progress": { "$ref": "#/$defs/confidence" },
+            "end_progress": { "$ref": "#/$defs/confidence" }
+          }
+        },
+        "trigger_once_per_scene": { "type": "boolean" },
+        "trigger_cooldown_seconds": { "type": "integer", "minimum": 0 },
+        "event_summary": { "type": "string" },
+        "sound_category": {
+          "type": "string",
+          "enum": [
+            "animal",
+            "weather",
+            "magic",
+            "movement",
+            "environment",
+            "emotion",
+            "object",
+            "music",
+            "night",
+            "other"
+          ]
+        },
+        "sound_profile": { "$ref": "#/$defs/sfx_sound_profile" },
+        "playback_type": {
+          "type": "string",
+          "enum": ["oneshot", "ambience_loop", "musical_cue"]
+        },
+        "importance": { "type": "integer", "minimum": 1 },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "mix_level": {
+          "type": "string",
+          "enum": ["subtle", "medium", "prominent"]
+        },
+        "emotional_tone": {
+          "type": "string",
+          "enum": [
+            "cozy",
+            "wonder",
+            "playful",
+            "warm",
+            "mysterious",
+            "calm",
+            "excited",
+            "suspenseful"
+          ]
+        }
+      }
+    }
+  }
+}
