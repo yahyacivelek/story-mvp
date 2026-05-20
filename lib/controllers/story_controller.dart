@@ -23,12 +23,6 @@ class StoryState {
   final bool isListening;
   final String lastHeardText;
 
-  /// 0.0–1.0 — how far the user has scrolled through the current scene.
-  final double readingProgress;
-
-  /// Whether an automatic scene transition is pending (brief countdown).
-  final bool isAutoTransitioning;
-
   const StoryState({
     this.manifest,
     this.currentStoryEntry,
@@ -38,8 +32,6 @@ class StoryState {
     this.error,
     this.isListening = false,
     this.lastHeardText = '',
-    this.readingProgress = 0.0,
-    this.isAutoTransitioning = false,
   });
 
   Scene? get activeScene =>
@@ -65,8 +57,6 @@ class StoryState {
     String? error,
     bool? isListening,
     String? lastHeardText,
-    double? readingProgress,
-    bool? isAutoTransitioning,
   }) {
     return StoryState(
       manifest: manifest ?? this.manifest,
@@ -77,8 +67,6 @@ class StoryState {
       error: error,
       isListening: isListening ?? this.isListening,
       lastHeardText: lastHeardText ?? this.lastHeardText,
-      readingProgress: readingProgress ?? this.readingProgress,
-      isAutoTransitioning: isAutoTransitioning ?? this.isAutoTransitioning,
     );
   }
 }
@@ -109,9 +97,6 @@ class StoryController extends StateNotifier<StoryState> {
   /// Minimum seconds between automatic scene transitions.
   static const int _transitionCooldownSeconds = 10;
 
-  /// Timer for scroll-end auto-transition (brief delay after reaching bottom).
-  Timer? _scrollEndTimer;
-
   Future<void> _init() async {
     try {
       // 1. Load the story manifest.
@@ -136,7 +121,6 @@ class StoryController extends StateNotifier<StoryState> {
   Future<void> loadStory(StoryEntry entry) async {
     // Stop current audio and speech before switching.
     await stopListening();
-    _scrollEndTimer?.cancel();
     await _ref.read(audioControllerProvider.notifier).stopAmbience();
     await _ref.read(audioControllerProvider.notifier).stopMusic();
 
@@ -145,8 +129,6 @@ class StoryController extends StateNotifier<StoryState> {
       isLoading: true,
       error: null,
       activeSceneIndex: 0,
-      readingProgress: 0.0,
-      isAutoTransitioning: false,
     );
 
     try {
@@ -424,14 +406,7 @@ class StoryController extends StateNotifier<StoryState> {
     final transition = currentScene.sceneTransition;
     final nextScene = data.sceneGraph[index];
 
-    // Cancel pending timers.
-    _scrollEndTimer?.cancel();
-
-    state = state.copyWith(
-      activeSceneIndex: index,
-      readingProgress: 0.0,
-      isAutoTransitioning: false,
-    );
+    state = state.copyWith(activeSceneIndex: index);
     _lastTransitionAt = DateTime.now();
     // Clear transcript buffer on scene change to avoid re-triggering.
     _transcriptBuffer.clear();
@@ -444,63 +419,10 @@ class StoryController extends StateNotifier<StoryState> {
 
   }
 
-  // -------------------------------------------------------------------------
-  // Scroll-based auto-transition
-  // -------------------------------------------------------------------------
-
-  /// Called from the UI when scroll position changes.
-  void onScrollProgress(double progress) {
-    state = state.copyWith(readingProgress: progress);
-
-    // When user scrolls past 90% of the scene content, schedule a transition.
-    if (progress >= 0.9 && _scrollEndTimer == null && !_isInCooldown()) {
-      final scene = state.activeScene;
-      if (scene == null || scene.sceneTransition.nextSceneId == 'none') return;
-
-      state = state.copyWith(isAutoTransitioning: true);
-      debugPrint('[StoryController] Scroll-end reached, scheduling auto-transition');
-
-      // Brief 3-second pause so the user can finish reading, then transition.
-      _scrollEndTimer = Timer(const Duration(seconds: 3), () {
-        _scrollEndTimer = null;
-        _autoTransitionToNextScene();
-      });
-    }
-  }
-
-  // -------------------------------------------------------------------------
-  // Auto-transition helper
-  // -------------------------------------------------------------------------
-
-  /// Performs the automatic transition to the next scene.
-  void _autoTransitionToNextScene() {
-    final scene = state.activeScene;
-    if (scene == null) return;
-
-    final nextSceneId = scene.sceneTransition.nextSceneId;
-    if (nextSceneId == 'none') return;
-
-    final data = state.storyData!;
-    final nextIndex = data.sceneGraph.indexWhere((s) => s.sceneId == nextSceneId);
-    if (nextIndex < 0) return;
-
-    debugPrint('[StoryController] Auto-transition: ${scene.sceneId} → $nextSceneId');
-    _transitionToScene(nextIndex);
-  }
-
-  bool _isInCooldown() {
-    if (_lastTransitionAt == null) return false;
-    return DateTime.now().difference(_lastTransitionAt!).inSeconds <
-        _transitionCooldownSeconds;
-  }
-
-  // -------------------------------------------------------------------------
-
   @override
   void dispose() {
     _speechSub?.cancel();
     _speech.stopListening();
-    _scrollEndTimer?.cancel();
     super.dispose();
   }
 }

@@ -124,19 +124,6 @@ class StoryScreen extends ConsumerWidget {
                     ),
                   ),
 
-                // Next-scene transition button (visible when near scroll end)
-                if (storyState.isAutoTransitioning ||
-                    storyState.readingProgress >= 0.85)
-                  Positioned(
-                    right: 20,
-                    bottom: 90,
-                    child: _NextSceneFab(
-                      nextSceneId: scene.sceneTransition.nextSceneId,
-                      currentIndex: storyState.activeSceneIndex,
-                      sceneGraph: storyState.storyData?.sceneGraph ?? [],
-                    ),
-                  ),
-
                 // Floating scene picker button
                 Positioned(
                   right: 20,
@@ -210,24 +197,9 @@ class _StoryBodyState extends ConsumerState<_StoryBody> {
   final ScrollController _scrollController = ScrollController();
 
   @override
-  void initState() {
-    super.initState();
-    _scrollController.addListener(_onScroll);
-  }
-
-  @override
   void dispose() {
-    _scrollController.removeListener(_onScroll);
     _scrollController.dispose();
     super.dispose();
-  }
-
-  void _onScroll() {
-    if (!_scrollController.hasClients) return;
-    final maxScroll = _scrollController.position.maxScrollExtent;
-    if (maxScroll <= 0) return;
-    final progress = _scrollController.offset / maxScroll;
-    ref.read(storyControllerProvider.notifier).onScrollProgress(progress);
   }
 
   @override
@@ -307,40 +279,6 @@ class _PageDivider extends StatelessWidget {
 // ---------------------------------------------------------------------------
 // Floating scene picker
 // ---------------------------------------------------------------------------
-
-class _NextSceneFab extends ConsumerWidget {
-  final String nextSceneId;
-  final int currentIndex;
-  final List<Scene> sceneGraph;
-
-  const _NextSceneFab({
-    required this.nextSceneId,
-    required this.currentIndex,
-    required this.sceneGraph,
-  });
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    if (nextSceneId == 'none') return const SizedBox.shrink();
-
-    final colorScheme = Theme.of(context).colorScheme;
-    final nextIndex =
-        sceneGraph.indexWhere((s) => s.sceneId == nextSceneId);
-    if (nextIndex < 0) return const SizedBox.shrink();
-
-    return FloatingActionButton.extended(
-      heroTag: 'next_scene',
-      backgroundColor: colorScheme.primary,
-      foregroundColor: colorScheme.onPrimary,
-      elevation: 4,
-      icon: const Icon(Icons.skip_next_rounded, size: 20),
-      label: const Text('Sonraki Sahne'),
-      onPressed: () {
-        ref.read(storyControllerProvider.notifier).selectScene(nextIndex);
-      },
-    );
-  }
-}
 
 class _ScenePickerFab extends ConsumerWidget {
   final int sceneCount;
