@@ -274,15 +274,22 @@ class CueKeyword {
   });
 
   factory CueKeyword.fromJson(Map<String, dynamic> json) {
+    // exit_cues use "keywords" (flat list), entry_cues use "primary_keywords".
+    // Normalise both into primaryKeywords so the matcher always has data.
+    final primary = (json['primary_keywords'] as List?)
+            ?.map((e) => e.toString().toLowerCase())
+            .toList() ??
+        (json['keywords'] as List?)
+            ?.map((e) => e.toString().toLowerCase())
+            .toList() ??
+        [];
+    final secondary = (json['secondary_keywords'] as List?)
+            ?.map((e) => e.toString().toLowerCase())
+            .toList() ??
+        [];
     return CueKeyword(
-      primaryKeywords: (json['primary_keywords'] as List?)
-              ?.map((e) => e.toString().toLowerCase())
-              .toList() ??
-          [],
-      secondaryKeywords: (json['secondary_keywords'] as List?)
-              ?.map((e) => e.toString().toLowerCase())
-              .toList() ??
-          [],
+      primaryKeywords: primary,
+      secondaryKeywords: secondary,
       semanticIntent: json['semantic_intent'] as String? ?? '',
     );
   }

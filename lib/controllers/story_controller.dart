@@ -360,7 +360,11 @@ class StoryController extends StateNotifier<StoryState> {
       final secondary = cues
           .expand((c) => c.secondaryKeywords)
           .toList();
-      return _Keywords(primary: primary, secondary: secondary);
+      // Only return if keywords actually survived parsing; otherwise fall
+      // through to text-derived fallback so the matcher isn't handed empties.
+      if (primary.isNotEmpty || secondary.isNotEmpty) {
+        return _Keywords(primary: primary, secondary: secondary);
+      }
     }
 
     // Fallback: derive from last page text when no structured cues.
