@@ -157,13 +157,13 @@
         "entry_cues": [
           {
             "primary_keywords": [
-              "Once",
-              "time",
-              "giraffe"
+              "bir varmış",
+              "ginger",
+              "zürafa"
             ],
             "secondary_keywords": [
-              "Ginger",
-              "Kenya"
+              "kenya",
+              "savan"
             ],
             "semantic_intent": "story_start"
           }
@@ -171,8 +171,10 @@
         "exit_cues": [
           {
             "keywords": [
-              "new buds",
-              "trees"
+              "çok severmiş",
+              "yapraklarını",
+              "tomurcuklarını",
+              "severmiş"
             ],
             "semantic_intent": "page_end"
           }
@@ -279,12 +281,13 @@
         "entry_cues": [
           {
             "primary_keywords": [
-              "One day",
-              "busy"
+              "bir gün",
+              "yaprakları yemekle",
+              "güneşli"
             ],
             "secondary_keywords": [
-              "eating",
-              "giraffes"
+              "kuruydu",
+              "yağmur yağmamıştı"
             ],
             "semantic_intent": "scene_start"
           }
@@ -292,8 +295,9 @@
         "exit_cues": [
           {
             "keywords": [
-              "Are you going",
-              "with them"
+              "gidecek misin",
+              "onlarla",
+              "uzun bir yolculuk"
             ],
             "semantic_intent": "questioning_future"
           }
@@ -443,12 +447,13 @@
         "entry_cues": [
           {
             "primary_keywords": [
-              "don't know",
-              "Mickey"
+              "bilmiyorum",
+              "ne yapmalıyız",
+              "leo ile"
             ],
             "secondary_keywords": [
-              "think",
-              "do"
+              "akıllı hayvan",
+              "mickey"
             ],
             "semantic_intent": "discussion_starts"
           }
@@ -456,7 +461,9 @@
         "exit_cues": [
           {
             "keywords": [
-              "Mickey saw"
+              "ne gördüler",
+              "tahmin edin",
+              "ağaçlara doğru"
             ],
             "semantic_intent": "cliffhanger_discovery"
           }
@@ -560,12 +567,13 @@
         "entry_cues": [
           {
             "primary_keywords": [
-              "already",
-              "gathered"
+              "toplanmış",
+              "bekliyordu",
+              "neden hepiniz"
             ],
             "secondary_keywords": [
-              "animals",
-              "waiting"
+              "hayvanlar",
+              "ormana yürümeye"
             ],
             "semantic_intent": "group_meeting"
           }
@@ -573,7 +581,9 @@
         "exit_cues": [
           {
             "keywords": [
-              "your friend"
+              "arkadaşınızım",
+              "yardım ederim",
+              "tabii ki"
             ],
             "semantic_intent": "promise_to_help"
           }
@@ -678,12 +688,13 @@
         "entry_cues": [
           {
             "primary_keywords": [
-              "started",
-              "journey"
+              "yolculuklarına başladılar",
+              "ormanın",
+              "güneş çok sıcaktı"
             ],
             "secondary_keywords": [
-              "big",
-              "sun"
+              "savanı geçerek",
+              "yiyecek yoktu"
             ],
             "semantic_intent": "journey_commences"
           }
@@ -691,8 +702,9 @@
         "exit_cues": [
           {
             "keywords": [
-              "all there",
-              "looked around"
+              "hepsi oradaydı",
+              "herkes burada",
+              "güvende"
             ],
             "semantic_intent": "safety_reached"
           }
@@ -840,12 +852,13 @@
         "entry_cues": [
           {
             "primary_keywords": [
-              "wonderful",
-              "happened"
+              "en harika şey",
+              "damla hissettim",
+              "yağmurdu"
             ],
             "secondary_keywords": [
-              "drop",
-              "zebra"
+              "zebra",
+              "sonunda"
             ],
             "semantic_intent": "miracle_rain"
           }
@@ -853,9 +866,9 @@
         "exit_cues": [
           {
             "keywords": [
-              "leaves",
-              "buds",
-              "munch"
+              "yemeye devam",
+              "geri döndü",
+              "tomurcukları"
             ],
             "semantic_intent": "story_end"
           }

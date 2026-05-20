@@ -329,31 +329,45 @@ class StoryController extends StateNotifier<StoryState> {
     if (nextIndex < 0) return;
 
     final nextScene = scenes[nextIndex];
-    final threshold = nextScene.sceneActivation.activationConfidenceThreshold;
 
     // Build keyword lists from structured exit_cues + entry_cues in JSON.
     final exitKeywords = _cueKeywordsForScene(currentScene, isExit: true);
     final entryKeywords = _cueKeywordsForScene(nextScene, isExit: false);
 
-    // Combine: exit cues from current scene (primary) + entry cues from next
-    // scene (secondary) — matching either signals a transition.
-    final primary = [...exitKeywords.primary, ...entryKeywords.primary];
-    final secondary = [...exitKeywords.secondary, ...entryKeywords.secondary];
+    // Evaluate exit and entry cues separately (OR). Combining them inflated
+    // maxPoints so a single end-of-scene phrase (e.g. "severmiş") scored
+    // ~0.14 against the next scene's 0.7 activation threshold — never firing.
+    // 0.6 ≈ two primary hits in a 3-keyword cue list (4/6), or one strong
+    // phrase plus overlap; stricter than SFX (0.28) to limit false transitions.
+    const transitionThreshold = 0.6;
 
-    final hit = FuzzyMatcher.matches(
-      transcript: transcript,
-      primaryKeywords: primary,
-      secondaryKeywords: secondary,
-      threshold: threshold,
-    );
+    final exitHit = _cueKeywordsNonEmpty(exitKeywords) &&
+        FuzzyMatcher.matches(
+          transcript: transcript,
+          primaryKeywords: exitKeywords.primary,
+          secondaryKeywords: exitKeywords.secondary,
+          threshold: transitionThreshold,
+        );
 
-    if (hit) {
+    final entryHit = _cueKeywordsNonEmpty(entryKeywords) &&
+        FuzzyMatcher.matches(
+          transcript: transcript,
+          primaryKeywords: entryKeywords.primary,
+          secondaryKeywords: entryKeywords.secondary,
+          threshold: transitionThreshold,
+        );
+
+    if (exitHit || entryHit) {
       debugPrint(
-        '[StoryController] Scene transition: ${currentScene.sceneId} → ${nextScene.sceneId}',
+        '[StoryController] Scene transition: ${currentScene.sceneId} → '
+        '${nextScene.sceneId} (exit=$exitHit entry=$entryHit)',
       );
       _transitionToScene(nextIndex);
     }
   }
+
+  bool _cueKeywordsNonEmpty(_Keywords k) =>
+      k.primary.isNotEmpty || k.secondary.isNotEmpty;
 
   /// Builds keyword lists from a scene's structured exit_cues or entry_cues.
   ///
