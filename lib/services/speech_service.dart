@@ -47,6 +47,7 @@ class SpeechService {
 
   int _consecutiveErrors = 0;
   bool _useOnDevice = false;
+  bool _lastErrorWasBusy = false;
 
   // Prevents counting multiple errors that fire for the same listen session
   // (e.g. error_client + error_speech_timeout both fire when the online STT
@@ -66,15 +67,21 @@ class SpeechService {
     // Silence events (timeout, no_match) are NOT engine failures — they happen
     // whenever the user pauses between sentences. Don't apply any backoff;
     // let the loop restart immediately at 120ms.
-    //
-    // error_busy / error_recognizer_busy → real contention; apply backoff so
-    // the previous session has time to release the mic, but don't fall back to
-    // online since it's transient.
-    // error_client → hard engine failure; backoff + online fallback after 2.
     const silenceErrors = ['error_speech_timeout', 'error_no_match'];
-    if (silenceErrors.any((t) => msg.contains(t))) return;
+    if (silenceErrors.any((t) => msg.contains(t))) {
+      _lastErrorWasBusy = false;
+      return;
+    }
 
     _consecutiveErrors++;
+    _lastErrorWasBusy = msg.contains('error_busy') ||
+        msg.contains('error_recognizer_busy');
+
+    // On-device packs often fail under background audio; fall back to online.
+    if (msg.contains('error_client') && _useOnDevice) {
+      _useOnDevice = false;
+      debugPrint('[Speech] error_client — switching to online recognizer');
+    }
 
     // Non-silence errors may not trigger 'done' status with cancelOnError: false.
     // Force-stop the dead session and schedule a restart to keep the loop alive.
@@ -107,10 +114,11 @@ class SpeechService {
     _localeId = await _resolveLocale(languageCode);
     debugPrint('[Speech] resolved locale: $_localeId');
 
-    // Only try on-device for English — most devices lack offline models for
-    // other languages and error_client will fire on every attempt.
-    _useOnDevice = (languageCode == 'en');
+    // Always use online STT — looping ambience drowns the mic and on-device
+    // packs time out with no partial results on Android.
+    _useOnDevice = false;
     _consecutiveErrors = 0;
+    _lastErrorWasBusy = false;
 
     _isListening = true;
     _listenLoop();
@@ -173,6 +181,7 @@ class SpeechService {
   /// Stops the continuous loop and the current STT session.
   Future<void> stopListening() async {
     _isListening = false;
+    _restartTimer?.cancel();
     await _stt.stop();
     debugPrint('[Speech] stopped');
   }
@@ -228,6 +237,7 @@ class SpeechService {
           // Real recognition happened — engine is healthy, clear the
           // fallback counter.
           _consecutiveErrors = 0;
+          _lastErrorWasBusy = false;
           _wordController.add(text);
         }
       },
@@ -243,10 +253,6 @@ class SpeechService {
         listenMode: ListenMode.dictation,
         partialResults: true,
         cancelOnError: false,
-        // Prefer on-device (no system chime, no online round-trip). If the
-        // first attempts fail with `error_client`, `_onError` flips this off
-        // and we fall back to the online recognizer for the rest of the
-        // session.
         onDevice: _useOnDevice,
         autoPunctuation: false,
       ),
@@ -257,9 +263,13 @@ class SpeechService {
   /// errors keep firing so a misconfigured recognizer can't burn the CPU
   /// and the audio stack with hundreds of restarts per minute.
   void _scheduleRestart() {
+    if (!_isListening) return;
     _restartTimer?.cancel();
     final Duration delay;
-    if (_consecutiveErrors == 0) {
+    if (_lastErrorWasBusy) {
+      // Mic still held by a previous session — wait before retrying.
+      delay = const Duration(seconds: 2);
+    } else if (_consecutiveErrors == 0) {
       // Healthy path: tiny gap so the user perceives continuous listening.
       delay = const Duration(milliseconds: 120);
     } else if (_consecutiveErrors < 3) {

@@ -132,7 +132,9 @@ class AudioController extends StateNotifier<AudioState> {
         usage: AndroidAudioUsage.media,
         flags: AndroidAudioFlags.none,
       ),
-      androidAudioFocusGainType: AndroidAudioFocusGainType.gain,
+      // gainTransientMayDuck: STT can take the mic without error_busy loops.
+      androidAudioFocusGainType:
+          AndroidAudioFocusGainType.gainTransientMayDuck,
       androidWillPauseWhenDucked: false,
     ));
 
@@ -160,6 +162,33 @@ class AudioController extends StateNotifier<AudioState> {
   String _currentIntensity = 'medium';
   String? _currentMusicIntensity;
   int _fadeToken = 0;
+
+  /// Near-silent playback while STT is active so the mic isn't flooded by
+  /// looping ambience/music (prevents error_speech_timeout with no results).
+  static const double _speechCaptureVolume = 0.02;
+  bool _speechCaptureDucking = false;
+
+  /// Lowers background audio while speech recognition is listening.
+  Future<void> setSpeechCaptureDucking(bool active) async {
+    if (_speechCaptureDucking == active) return;
+    _speechCaptureDucking = active;
+    if (active) {
+      await Future.wait([
+        _ambienceLooper.setVolume(_speechCaptureVolume),
+        _musicLooper.setVolume(_speechCaptureVolume),
+      ]);
+      debugPrint('[AudioController] Speech capture ducking ON');
+      return;
+    }
+    if (state.ambienceStatus == AmbienceStatus.playing && state.ambienceEnabled) {
+      await _ambienceLooper.setVolume(_intensityToVolume(_currentIntensity));
+    }
+    if (state.musicStatus == MusicStatus.playing && state.musicEnabled) {
+      final intensity = _currentMusicIntensity ?? 'medium';
+      await _musicLooper.setVolume(_intensityToVolume(intensity));
+    }
+    debugPrint('[AudioController] Speech capture ducking OFF');
+  }
 
   /// Seamless looper for background ambience — crossfades between two
   /// players to eliminate the click/pop at loop boundaries.

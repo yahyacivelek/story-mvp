@@ -191,8 +191,16 @@ class StoryController extends StateNotifier<StoryState> {
   // -------------------------------------------------------------------------
 
   Future<void> startListening({String languageCode = 'en'}) async {
+    await _ref
+        .read(audioControllerProvider.notifier)
+        .setSpeechCaptureDucking(true);
     final ok = await _speech.startListening(languageCode: languageCode);
-    if (!ok) return;
+    if (!ok) {
+      await _ref
+          .read(audioControllerProvider.notifier)
+          .setSpeechCaptureDucking(false);
+      return;
+    }
 
     state = state.copyWith(isListening: true);
 
@@ -202,6 +210,9 @@ class StoryController extends StateNotifier<StoryState> {
 
   Future<void> stopListening() async {
     await _speech.stopListening();
+    await _ref
+        .read(audioControllerProvider.notifier)
+        .setSpeechCaptureDucking(false);
     await _speechSub?.cancel();
     _speechSub = null;
     state = state.copyWith(isListening: false);
