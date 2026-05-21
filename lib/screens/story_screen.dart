@@ -7,6 +7,7 @@ import '../models/story_models.dart';
 import '../widgets/interactive_text_widget.dart';
 import '../widgets/scene_header.dart';
 import '../widgets/scene_sidebar.dart';
+import 'book_creator_screen.dart';
 
 /// Immersive full-screen story reader.
 ///
@@ -132,6 +133,20 @@ class StoryScreen extends ConsumerWidget {
                     sceneCount:
                         storyState.storyData?.sceneGraph.length ?? 0,
                     activeIndex: storyState.activeSceneIndex,
+                  ),
+                ),
+
+                // Book Scanner button
+                Positioned(
+                  left: 20,
+                  bottom: 28,
+                  child: FloatingActionButton(
+                    heroTag: 'scanner_fab',
+                    backgroundColor: colorScheme.primaryContainer,
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => const BookCreatorScreen()));
+                    },
+                    child: Icon(Icons.document_scanner, color: colorScheme.onPrimaryContainer),
                   ),
                 ),
               ],

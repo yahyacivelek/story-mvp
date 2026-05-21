@@ -9,12 +9,14 @@ class StoryEntry {
   final String title;
   final String language;
   final String assetPath;
+  final bool isLocal;
 
   const StoryEntry({
     required this.id,
     required this.title,
     required this.language,
     required this.assetPath,
+    this.isLocal = false,
   });
 
   factory StoryEntry.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class StoryEntry {
       title: json['title'] as String,
       language: json['language'] as String? ?? 'en',
       assetPath: json['asset_path'] as String,
+      isLocal: json['is_local'] as bool? ?? false,
     );
   }
 }

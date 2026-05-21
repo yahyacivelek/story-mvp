@@ -42,6 +42,11 @@ dependencies:
   crypto: ^3.0.3
   idb_shim: ^2.9.2
   web: ^1.1.0
+  cunning_document_scanner: ^1.2.3
+  google_generative_ai: ^0.4.7
+  image: ^4.8.0
+  path: ^1.9.1
+  json_schema: ^5.2.2
 
 dev_dependencies:
   flutter_test:
@@ -57,4 +62,4 @@ flutter:
   assets:
     - assets/stories/
     - assets/audio/
-    - .env
+    - assets/schemas/

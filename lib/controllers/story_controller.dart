@@ -3,6 +3,10 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:io';
+import 'dart:convert';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart' as path;
 
 import '../models/story_models.dart';
 import '../services/speech_service.dart';
@@ -99,16 +103,47 @@ class StoryController extends StateNotifier<StoryState> {
 
   Future<void> _init() async {
     try {
-      // 1. Load the story manifest.
       final manifestJson =
           await rootBundle.loadString('assets/stories/manifest.json');
       final manifest = StoryManifest.fromJsonString(manifestJson);
 
-      state = state.copyWith(manifest: manifest);
+      // Fetch local generated books
+      final appDocDir = await getApplicationDocumentsDirectory();
+      final booksDir = Directory(path.join(appDocDir.path, 'scanned_books'));
+      final localStories = <StoryEntry>[];
+      
+      if (await booksDir.exists()) {
+        final indexFile = File(path.join(booksDir.path, 'books_index.json'));
+        if (await indexFile.exists()) {
+          try {
+             final content = await indexFile.readAsString();
+             final List<dynamic> jsonList = jsonDecode(content);
+             for(var item in jsonList) {
+               if (item['generatedStoryJsonPath'] != null) {
+                 localStories.add(StoryEntry(
+                   id: item['id'],
+                   title: item['title'],
+                   language: 'tr', // Default for generated
+                   assetPath: item['generatedStoryJsonPath'],
+                   isLocal: true,
+                 ));
+               }
+             }
+          } catch(e) {
+             debugPrint('Error reading local stories index: \$e');
+          }
+        }
+      }
+
+      final combinedManifest = StoryManifest(
+        stories: [...manifest.stories, ...localStories]
+      );
+
+      state = state.copyWith(manifest: combinedManifest);
 
       // 2. Load the first story automatically.
-      if (manifest.stories.isNotEmpty) {
-        await loadStory(manifest.stories.first);
+      if (combinedManifest.stories.isNotEmpty) {
+        await loadStory(combinedManifest.stories.first);
       } else {
         state = state.copyWith(isLoading: false, error: 'No stories found');
       }
@@ -132,7 +167,9 @@ class StoryController extends StateNotifier<StoryState> {
     );
 
     try {
-      final jsonString = await rootBundle.loadString(entry.assetPath);
+      final jsonString = entry.isLocal 
+          ? await File(entry.assetPath).readAsString()
+          : await rootBundle.loadString(entry.assetPath);
       final data = StoryData.fromJsonString(jsonString);
 
       state = state.copyWith(

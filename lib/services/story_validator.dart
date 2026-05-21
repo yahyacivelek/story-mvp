@@ -63,24 +63,9 @@ class StoryValidator {
   }
 
   static List<String> _formatErrors(ValidationResults result) {
-    final messages = <String>[];
-    void walk(ValidationResults node, String path) {
-      for (final error in node.errors) {
-        final location = path.isEmpty ? error.path : '$path${error.path}';
-        messages.add(
-          location.isEmpty ? error.message : '$location: ${error.message}',
-        );
-      }
-      for (final entry in node.nestedSchemas.entries) {
-        final childPath =
-            path.isEmpty ? entry.key.path : '$path${entry.key.path}';
-        walk(entry.value, childPath);
-      }
+    if (result.errors.isEmpty) {
+      return ['Unknown validation error'];
     }
-
-    walk(result, '');
-    return messages.isEmpty
-        ? ['Unknown validation error']
-        : messages;
+    return result.errors.map((e) => '${e.instancePath}: ${e.message}').toList();
   }
 }

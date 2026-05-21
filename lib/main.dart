@@ -3,11 +3,26 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'screens/story_screen.dart';
+import 'services/api_key_service.dart';
 import 'services/audio_cache_service.dart';
+import 'services/story_validator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: '.env');
+  try {
+    await dotenv.load(fileName: '.env');
+  } catch (e) {
+    debugPrint('[main] .env file not found, relying on local config and dart-define.');
+  }
+  await ApiKeyService.instance.initialize();
+  
+  // Pre-warm the story validator schema
+  try {
+    await StoryValidator.init();
+    debugPrint('[main] StoryValidator schema initialized.');
+  } catch (e) {
+    debugPrint('[main] Failed to pre-warm StoryValidator schema: $e');
+  }
 
   // Pre-warm the audio cache from bundled assets first (works on every
   // platform including Chrome debug — no IndexedDB dependency).

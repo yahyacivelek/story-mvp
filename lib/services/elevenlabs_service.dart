@@ -2,8 +2,7 @@ import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
+import 'api_key_service.dart';
 import 'audio_cache_service.dart';
 
 /// Result wrapper so callers know whether bytes came from cache or API.
@@ -34,15 +33,10 @@ class ElevenLabsService {
   final AudioCacheService _cache = AudioCacheService.instance;
 
   static Dio _buildDio() {
-    final apiKey = dotenv.env['ELEVENLABS_API_KEY'] ?? '';
-    debugPrint(
-      '[ElevenLabs] API key: ${apiKey.isEmpty ? "MISSING!" : "${apiKey.substring(0, 8)}..."}',
-    );
-    return Dio(
+    final dio = Dio(
       BaseOptions(
         baseUrl: _baseUrl,
         headers: {
-          'xi-api-key': apiKey,
           'Content-Type': 'application/json',
           'Accept': 'audio/mpeg',
         },
@@ -51,6 +45,20 @@ class ElevenLabsService {
         receiveTimeout: const Duration(seconds: 60),
       ),
     );
+
+    dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) {
+        final apiKey = ApiKeyService.instance.elevenlabsApiKey;
+        if (apiKey.isEmpty) {
+          debugPrint('[ElevenLabs] WARNING: API key is MISSING!');
+        } else {
+          options.headers['xi-api-key'] = apiKey;
+        }
+        return handler.next(options);
+      },
+    ));
+
+    return dio;
   }
 
   /// When `true`, [fetchAudio] will **never** call the ElevenLabs API.
