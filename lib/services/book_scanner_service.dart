@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:cunning_document_scanner/cunning_document_scanner.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image/image.dart' as img;
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 
@@ -13,6 +14,32 @@ final bookScannerProvider =
     StateNotifierProvider<BookScannerService, List<ScannedBook>>((ref) {
   return BookScannerService();
 });
+
+Future<void> _optimizeAndSaveImage(Map<String, String> args) async {
+  final sourcePath = args['source']!;
+  final destPath = args['dest']!;
+  
+  try {
+    final bytes = await File(sourcePath).readAsBytes();
+    img.Image? image = img.decodeImage(bytes);
+    if (image != null) {
+      if (image.width > 1600 || image.height > 1600) {
+        if (image.width > image.height) {
+          image = img.copyResize(image, width: 1600);
+        } else {
+          image = img.copyResize(image, height: 1600);
+        }
+      }
+      final optimizedBytes = img.encodeJpg(image, quality: 85);
+      await File(destPath).writeAsBytes(optimizedBytes);
+    } else {
+      await File(sourcePath).copy(destPath);
+    }
+  } catch (e) {
+    print('Image optimization failed: $e');
+    await File(sourcePath).copy(destPath);
+  }
+}
 
 class BookScannerService extends StateNotifier<List<ScannedBook>> {
   BookScannerService() : super([]) {
@@ -62,9 +89,14 @@ class BookScannerService extends StateNotifier<List<ScannedBook>> {
       final List<String> localPaths = [];
       for (int i = 0; i < pictures.length; i++) {
         final sourceFile = File(pictures[i]);
-        final ext = path.extension(sourceFile.path).isNotEmpty ? path.extension(sourceFile.path) : '.jpg';
-        final destFile = File(path.join(bookDir.path, 'page_$i$ext'));
-        await sourceFile.copy(destFile.path);
+        // Always save as .jpg since we encode it as JPEG
+        final destFile = File(path.join(bookDir.path, 'page_$i.jpg'));
+        
+        await compute(_optimizeAndSaveImage, {
+          'source': sourceFile.path,
+          'dest': destFile.path,
+        });
+        
         localPaths.add(destFile.path);
       }
 
