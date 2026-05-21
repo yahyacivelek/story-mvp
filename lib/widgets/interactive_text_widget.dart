@@ -59,10 +59,16 @@ class InteractiveTextWidget extends ConsumerWidget {
       ..sort((a, b) => b.length.compareTo(a.length));
 
     final pattern = sortedAnchors.map(RegExp.escape).join('|');
-    final regex = RegExp(pattern);
+    // Case-insensitive match, allow optional trailing punctuation
+    final regex = RegExp('($pattern)[\\s\\p{P}]*', caseSensitive: false);
 
     final spans = <InlineSpan>[];
     int cursor = 0;
+
+    // Build case-insensitive lookup
+    final lowerAnchors = <String, AudioOpportunity>{
+      for (final entry in anchors.entries) entry.key.toLowerCase(): entry.value,
+    };
 
     for (final match in regex.allMatches(fullText)) {
       // Text before the match.
@@ -70,13 +76,16 @@ class InteractiveTextWidget extends ConsumerWidget {
         spans.add(TextSpan(text: fullText.substring(cursor, match.start)));
       }
 
-      final anchor = match.group(0)!;
-      final opportunity = anchors[anchor]!;
+      final matchedText = match.group(0)!;  // Full match including punctuation
+      final anchorKey = match.group(1)!;    // Just the anchor part (group 1)
+      final opportunity = lowerAnchors[anchorKey.toLowerCase()]!;
+      // Use matchedText for display (includes trailing punctuation that was in the text)
+      final displayText = matchedText.trimRight();
       final isLoading = audioState.isSfxLoading(opportunity.eventSummary);
 
       spans.add(
         _buildTriggerSpan(
-          anchor: anchor,
+          anchor: displayText,
           opportunity: opportunity,
           isLoading: isLoading,
           ref: ref,

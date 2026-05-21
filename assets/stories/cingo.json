@@ -1,0 +1,428 @@
+{
+    "book": {
+        "detected_title": "Cingo: Ben İnsan Değil miyim?",
+        "language": "tr",
+        "analysis_confidence": 0.95
+    },
+    "page_ordering": {"ordering_method": "mixed", "confidence": 0.98},
+    "pages": [
+        {
+            "page_id": "page_1",
+            "page_number": 3,
+            "order_index": 1,
+            "order_confidence": 0.9,
+            "full_text": "20 sayfa okudum\nCİNGO\nBEN İNSAN DEĞİL MİYİM?\nŞERMİN YAŞAR\nResimleyen Elif Balta Parks\nDoğan Çocuk Okumak Gelecektir",
+            "primary_scene_hint": "Title page introducing the book and characters.",
+            "dominant_visual": "Stylized text of the title with small paw prints.",
+            "mood": "playful"
+        },
+        {
+            "page_id": "page_2",
+            "page_number": 4,
+            "order_index": 2,
+            "order_confidence": 0.95,
+            "full_text": "Köpekler ikiye ayrılır: İnsanların kendileri gibi olduğunu düşünenler ve kendilerini insan zannedenler. Cingo, kendini insan zannedenlerdendi...",
+            "primary_scene_hint": "Opening premise introducing the main dog character's mindset.",
+            "dominant_visual": "Plain white page with centered text.",
+            "mood": "playful"
+        },
+        {
+            "page_id": "page_3",
+            "page_number": 5,
+            "order_index": 3,
+            "order_confidence": 0.95,
+            "full_text": "NE ALAKASI VAR YAAAA?!",
+            "primary_scene_hint": "Introduction of Cingo protesting the narrator's statement.",
+            "dominant_visual": "A cute white puppy wearing a brown bowtie, looking up indignantly with a speech bubble.",
+            "mood": "playful"
+        },
+        {
+            "page_id": "page_4",
+            "page_number": 8,
+            "order_index": 4,
+            "order_confidence": 0.98,
+            "full_text": "CANDO. Doğum günü hediyem arabadan düştü. O gün arabaya bindiğimizde, ön koltuğa, babamın yanına oturdum ve kemerimi bağladım. Hiç kimse artık beni arka koltuğa oturtamaz. Çünkü büyüdüm ve hayatımın tamamını zaten arka koltukta geçirdim. Düşünsene, tam on iki yıl boyunca arka koltukta, babamın ensesini izleyerek yolculuk yaptım. Okula giderken babamın ensesi, alışverişe giderken babamın ensesi, sinemaya giderken babamın ensesi... Bazı günler sağ tarafa oturduğumda manzaram biraz değişiyordu. O zaman annemin topuzunu görüyordum. Tatile falan gittiğimiz uzun yolculuklarda ya babamın ensesi ya da annemin topuzu... Babamın saçlarının dökülmesine aşırı derecede şahit oldum. On iki yılda tepesinde bir",
+            "primary_scene_hint": "A boy named Cango in the front seat of a car describing his past experiences riding in the back.",
+            "dominant_visual": "Illustration of a smiling young boy with messy black hair and an orange striped shirt.",
+            "mood": "cozy"
+        },
+        {
+            "page_id": "page_5",
+            "page_number": 9,
+            "order_index": 5,
+            "order_confidence": 0.98,
+            "full_text": "tutam saç kalmadı. Ve on iki yaş doğum günü hediyesi olarak onlardan tek bir şey istedim. Yolculuklarda sadece yola bakmak! Dümdüz, tam karşıya... Kafamı sağa ya da sola çevirmeden sadece karşıya bakmak... Sanırım pahalı bir şey isteyeceğimi düşünmüşlerdi, şaşırdılar. Yeni bir bilgisayar, son model bir tablet, havalı bir bisiklet falan hayal etmişlerdi herhalde. İsteğimin sadece ön koltukta oturmak olduğunu öğrenince hemen kabul ettiler, bilseydim on bir yaş doğum günümde isterdim bunu. Böylece babamın ensesini bir sene daha az görmüş olurdum... Ama on bir yaş doğum günümde başka bir şey istemiştim, çok daha önemli bir hediye... Babam arabanın anahtarını çevirdi ve okul yolunda ilerlemeye başladık. Ana caddeye çıkmadan önce bir anda arkadan mıııııyyyk diye bir ses ve hemen arkasından paaaat diye bir gürültü duyuldu. Babam ani bir frenle arabayı durdurdu. İkimiz de başımızı çevirip arka koltuğa baktık. Yoktu! On bir yaş doğum günü hediyem yerinde yoktu!",
+            "primary_scene_hint": "Car journey interrupted by a sudden noise and realizing the dog has fallen out.",
+            "dominant_visual": "Text focusing on the sudden dramatic event in the car.",
+            "mood": "suspenseful"
+        },
+        {
+            "page_id": "page_6",
+            "page_number": 10,
+            "order_index": 6,
+            "order_confidence": 0.98,
+            "full_text": "Tüm çocukların hayali bir köpek sahibi olmaktır. Benim de öyleydi. Babamı ikna etmek zor olmadı, ama annem çok dirençli çıktı. Yaklaşık üç bin kez 'Bir köpeğimiz eksikti,' dedi. Ortalama iki bin beş yüz defa 'Ben sana zor bakıyorum yaaaa, ne köpeği?' dedi. Kaç kere 'Sizin dağınıklığınız bana yetip artıyor,' dediğini saymadım bile. Ama on bir yaş doğum günümde ne hediye istediğimi sorduklarında, hiçbir şey istemediğimi söyledim. Hiçbir şey! Evet, hiçbir şey! Ve almadılar. Sonraki bir ay boyunca boynum bükük gezdim. 'Neyin var?' diye sorduklarında yüzlerine hüzünlü gözlerle baktım. Aslında keyfim gayet yerindeydi ama okulda da mutsuzluğum öğretmenlerimin dikkatinden kaçmadı. Tam da istediğim buydu. Sonunda rehber öğretmen, annem ve babam birlikte aynı odaya kapanıp derdime derman aramaya başladılar. Görünürde bir sorun yoktu onlara göre. Fakat üçü de aynı sorunun cevabını arıyordu: 'Ne oldu bu çocuğa böyle?' Tüm bilgi, birikim ve deneyimlerine rağmen sorunun cevabını bulamadılar ve aslında en başında yapmaları gereken şeyi yaptılar: Bana sordular.",
+            "primary_scene_hint": "Flashback to the boy masterminding a plan to guilt his parents into getting a dog.",
+            "dominant_visual": "Plain text explaining the manipulative but humorous plan.",
+            "mood": "mysterious"
+        },
+        {
+            "page_id": "page_7",
+            "page_number": 11,
+            "order_index": 7,
+            "order_confidence": 0.98,
+            "full_text": "Boynumu bir kademe daha eğip şunları söyledim: 'Çok canım sıkılıyor. Keşke bir kardeşim olsaydı... Keşkeeeeee!' Rehber öğretmenin bana acıyan ve ebeveynlerimi suçlayan bakışları ile annemin babamın 'Ne yaptık biz böyle?' bakışları karşılaştı ve bakışlar, 'Evladım başka bir şey iste bizden,' olarak bana geri döndü. On bir yıl sonra huzura ermiş bir anne babadan kardeş istemek, onlardan çok şey istemekti. Uykusuz geceler, yerlerdeki oyuncaklar, durmadan ağlayan bir bebek, annemin kolundaki bebek çantası, babamın şiş gözleri, masanın üzerindeki ateş ölçer, emzik ve biberon ikisinin de gözlerinin önünden film şeridi gibi geçti. Hüzünlü gözlerle, 'Yalvarırım başka bir şey iste,' der gibi baktılar yüzüme. Sesimi kıstım, dudağımı büktüm ve gözlerimi uzaklara dikip vurucu cümlemi kurdum: 'Ya da en azından bir evcil hayvan... Mesela bir köpek!' Annem ve babam bir hafta boyunca bana çeşitli önerilerle geldiler. Balık? Kuş? En olmadı, kedi? Olmadı. Kabul etmedim. Niye edeyim ki? Hedefime adım adım ilerlerken hiçbir pazarlığa tahammülüm yoktu.",
+            "primary_scene_hint": "The boy drops the fake desire for a sibling to force a compromise for a dog.",
+            "dominant_visual": "Text describing the parents' panicked reaction to wanting a baby.",
+            "mood": "mysterious"
+        },
+        {
+            "page_id": "page_8",
+            "page_number": 12,
+            "order_index": 8,
+            "order_confidence": 0.95,
+            "full_text": "Aşırı direnç gösterdim. Günlerce salonun bir köşesinde sessizce oturdum. Anne babalar çocuklarının uslu durmasını, sakin ve uysal olmasını isterler. Hatta içlerinde, 'Keşke şu çocuğun bir kapatma düğmesi olsa da arada kapatıp açabilsek,' diye",
+            "primary_scene_hint": "The boy sitting silently while his exhausted parents consult the counselor.",
+            "dominant_visual": "Black and white sketch of a tired-looking mother and father sitting on chairs, talking to a counselor, while the boy stands in the background looking smug.",
+            "mood": "calm"
+        },
+        {
+            "page_id": "page_9",
+            "page_number": 13,
+            "order_index": 9,
+            "order_confidence": 0.98,
+            "full_text": "düşünenler bile vardır. Ama yine de çocukları hasta olduğunda, mutsuz olduğunda, boynunu büktüğünde dayanamazlar; eski haline geri dönsün diye dua ederler. Biliyorum bunu. Bizimkiler de dayanamadılar. İki hafta sonra isteğimi kabul ettiler. Ve sonunda, çişi geldiğinde arabanın koltuğuna işemeyecek kadar akıllı ama hareket ederken camından dışarı atlayacak kadar şapşal bir köpeğim oldu. Biz ona Cingo dedik.",
+            "primary_scene_hint": "The resolution of the flashback where they finally get the dog, Cingo.",
+            "dominant_visual": "Text concluding the flashback story, with small paw prints at the bottom corner.",
+            "mood": "warm"
+        },
+        {
+            "page_id": "page_10",
+            "page_number": 14,
+            "order_index": 10,
+            "order_confidence": 0.95,
+            "full_text": "CİNGO Keyfimizden mi atladık? Dur bir dakika, giden arabanın camından keyfimizden atlamıyoruz herhalde. Böyle bir şeyi kim bilerek, isteyerek yapar ki? Baştan başlayalım... Sizin eve geldiğimde henüz çişimi tutmayı bilmiyordum, tamam mı? Ne bekliyordunuz ki? Evinize üç aylık bir köpek alacaksınız ve çişi geldiğinde kapıdan çıkıp çişini yapacak, sonra patilerini temizleyip tekrar eve gelecek... Bu ancak filmlerde olur Cango! Ya da rüyanda! Her çişimi yaptığımda annen oflayıp pufladı. Yerleri silerken beni bakışlarıyla yedi bitirdi. Tutamıyorum kardeşim, kaslarım çalışmıyor. Konuşabilseydim annenin karşısına geçip 'Sevgili Binnur Gocukoğlu, eğer bir bebeğiniz olsaydı o da çişini tutamayacaktı, onun da çişini kakasını böyle temizleyecektiniz. Bu bana has'",
+            "primary_scene_hint": "Perspective shifts to the dog defending himself for jumping out of the car.",
+            "dominant_visual": "Illustration of the white puppy with a bowtie, looking slightly defensive with a speech bubble 'Keyfimizden mi atladık?'.",
+            "mood": "playful"
+        }
+    ],
+    "scene_graph": [
+        {
+            "scene_id": "scene_1_intro",
+            "pages": [3],
+            "scene_summary": "Introduction to the book and the quirky premise that Cingo thinks he is human.",
+            "scene_type": "other",
+            "scene_mood": "playful",
+            "scene_energy": "low",
+            "narrative_phase": "intro",
+            "scene_duration_estimate_seconds": 30,
+            "scene_activation": {
+                "activation_mode": "manual",
+                "entry_cues": [
+                    {
+                        "primary_keywords": ["CİNGO", "İNSAN", "DEĞİL"],
+                        "semantic_intent": "Title read aloud"
+                    }
+                ],
+                "exit_cues": [],
+                "activation_confidence_threshold": 0.7,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "scene_2_car_ride",
+                "transition_style": "crossfade",
+                "audio_continuity": "evolve",
+                "transition_duration_seconds": 3
+            },
+            "likely_next_scene": "scene_2_car_ride",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "magic_ambience",
+                        "variant": "playful",
+                        "intensity": "low",
+                        "texture": "sparkly",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "cozy",
+                    "intensity": "low"
+                }
+            },
+            "audio_opportunities": []
+        },
+        {
+            "scene_id": "scene_2_car_ride",
+            "pages": [4, 5],
+            "scene_summary": "Cango enjoying sitting in the front seat until a sudden stop reveals the dog fell out.",
+            "scene_type": "other",
+            "scene_mood": "suspenseful",
+            "scene_energy": "medium",
+            "narrative_phase": "action",
+            "scene_duration_estimate_seconds": 80,
+            "scene_activation": {
+                "activation_mode": "hybrid",
+                "entry_cues": [
+                    {
+                        "primary_keywords": ["arabaya", "bindiğimizde", "koltuğa"],
+                        "semantic_intent": "Getting into the car"
+                    }
+                ],
+                "exit_cues": [],
+                "activation_confidence_threshold": 0.8,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "scene_3_flashback",
+                "transition_style": "hard_cut",
+                "audio_continuity": "replace",
+                "transition_duration_seconds": 1
+            },
+            "likely_next_scene": "scene_3_flashback",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "other",
+                        "variant": "warm",
+                        "intensity": "medium",
+                        "texture": "natural",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "adventure",
+                    "intensity": "medium"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "dog_protest",
+                    "layer_role": "animal_vocalization",
+                    "source": "both",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {
+                        "type": "phrase",
+                        "value": "NE ALAKASI VAR YAAAA"
+                    },
+                    "trigger_structure": {
+                        "primary_keywords": ["ALAKASI", "YAAAA"],
+                        "secondary_keywords": ["NE", "VAR"],
+                        "semantic_intent": "Dog acting indignant"
+                    },
+                    "activation_window": {"start_progress": 0.0, "end_progress": 1.0},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 5,
+                    "event_summary": "A soft, comedic dog bark synced with the text",
+                    "sound_category": "animal",
+                    "sound_profile": {
+                        "primary_sound": "dog_bark_soft",
+                        "variant": "playful",
+                        "intensity": "medium",
+                        "texture": "natural",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 2,
+                    "confidence": 0.9,
+                    "mix_level": "prominent",
+                    "emotional_tone": "playful"
+                }
+            ]
+        },
+        {
+            "scene_id": "scene_3_flashback",
+            "pages": [8, 9, 11, 12, 13],
+            "scene_summary": "A flashback detailing the boy's manipulative scheme to force his parents into getting a dog by asking for a sibling first.",
+            "scene_type": "bedroom",
+            "scene_mood": "mysterious",
+            "scene_energy": "low",
+            "narrative_phase": "build_up",
+            "scene_duration_estimate_seconds": 150,
+            "scene_activation": {
+                "activation_mode": "hybrid",
+                "entry_cues": [
+                    {
+                        "primary_keywords": ["hayali", "köpek", "sahibi"],
+                        "semantic_intent": "Starting the backstory"
+                    }
+                ],
+                "exit_cues": [],
+                "activation_confidence_threshold": 0.8,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "scene_4_cingo_speaks",
+                "transition_style": "crossfade",
+                "audio_continuity": "evolve",
+                "transition_duration_seconds": 4
+            },
+            "likely_next_scene": "scene_4_cingo_speaks",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "fireplace",
+                        "variant": "cozy",
+                        "intensity": "low",
+                        "texture": "cozy",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "mystery",
+                    "intensity": "low"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "car_brake",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "phrase", "value": "ani bir frenle"},
+                    "trigger_structure": {
+                        "primary_keywords": ["ani", "frenle", "durdurdu"],
+                        "secondary_keywords": ["arabayı"],
+                        "semantic_intent": "Sudden stop of the vehicle"
+                    },
+                    "activation_window": {"start_progress": 0.0, "end_progress": 0.5},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 10,
+                    "event_summary": "Comedic tire screech or brake sound",
+                    "sound_category": "movement",
+                    "sound_profile": {
+                        "primary_sound": "other",
+                        "variant": "playful",
+                        "intensity": "medium",
+                        "texture": "natural",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 1,
+                    "confidence": 0.9,
+                    "mix_level": "prominent",
+                    "emotional_tone": "suspenseful"
+                },
+                {
+                    "id": "parents_sigh",
+                    "layer_role": "secondary_detail",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {
+                        "type": "phrase",
+                        "value": "Ne yaptık biz böyle"
+                    },
+                    "trigger_structure": {
+                        "primary_keywords": ["yaptık", "biz", "böyle"],
+                        "secondary_keywords": ["bakışları"],
+                        "semantic_intent": "Parents feeling exhausted or panicked"
+                    },
+                    "activation_window": {"start_progress": 0.0, "end_progress": 1.0},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 10,
+                    "event_summary": "Soft comedic sound indicating exhaustion",
+                    "sound_category": "emotion",
+                    "sound_profile": {
+                        "primary_sound": "other",
+                        "variant": "soft",
+                        "intensity": "low",
+                        "texture": "airy",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 3,
+                    "confidence": 0.8,
+                    "mix_level": "subtle",
+                    "emotional_tone": "playful"
+                }
+            ]
+        },
+        {
+            "scene_id": "scene_4_cingo_speaks",
+            "pages": [10, 14],
+            "scene_summary": "The narrative perspective shifts to the dog, Cingo, defending himself for why he fell out of the car.",
+            "scene_type": "other",
+            "scene_mood": "playful",
+            "scene_energy": "medium",
+            "narrative_phase": "transition",
+            "scene_duration_estimate_seconds": 50,
+            "scene_activation": {
+                "activation_mode": "hybrid",
+                "entry_cues": [
+                    {
+                        "primary_keywords": ["Keyfimizden", "mi", "atladık"],
+                        "semantic_intent": "Dog begins to speak"
+                    }
+                ],
+                "exit_cues": [],
+                "activation_confidence_threshold": 0.8,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "end",
+                "transition_style": "fade",
+                "audio_continuity": "continue",
+                "transition_duration_seconds": 3
+            },
+            "likely_next_scene": "end",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "other",
+                        "variant": "playful",
+                        "intensity": "low",
+                        "texture": "airy",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "cozy",
+                    "intensity": "medium"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "cingo_defense_bark",
+                    "layer_role": "animal_vocalization",
+                    "source": "both",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {
+                        "type": "phrase",
+                        "value": "Keyfimizden mi atladık"
+                    },
+                    "trigger_structure": {
+                        "primary_keywords": ["Keyfimizden", "atladık"],
+                        "secondary_keywords": ["Dur", "dakika"],
+                        "semantic_intent": "Dog asserting his point"
+                    },
+                    "activation_window": {"start_progress": 0.0, "end_progress": 0.5},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "A soft, cute dog vocalization as he argues",
+                    "sound_category": "animal",
+                    "sound_profile": {
+                        "primary_sound": "dog_bark_soft",
+                        "variant": "playful",
+                        "intensity": "medium",
+                        "texture": "natural",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 1,
+                    "confidence": 0.95,
+                    "mix_level": "prominent",
+                    "emotional_tone": "playful"
+                }
+            ]
+        }
+    ]
+}

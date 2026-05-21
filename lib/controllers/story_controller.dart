@@ -107,30 +107,31 @@ class StoryController extends StateNotifier<StoryState> {
           await rootBundle.loadString('assets/stories/manifest.json');
       final manifest = StoryManifest.fromJsonString(manifestJson);
 
-      // Fetch local generated books
-      final appDocDir = await getApplicationDocumentsDirectory();
-      final booksDir = Directory(path.join(appDocDir.path, 'scanned_books'));
+      // Fetch local generated books (not supported on web)
       final localStories = <StoryEntry>[];
-      
-      if (await booksDir.exists()) {
-        final indexFile = File(path.join(booksDir.path, 'books_index.json'));
-        if (await indexFile.exists()) {
-          try {
-             final content = await indexFile.readAsString();
-             final List<dynamic> jsonList = jsonDecode(content);
-             for(var item in jsonList) {
-               if (item['generatedStoryJsonPath'] != null) {
-                 localStories.add(StoryEntry(
-                   id: item['id'],
-                   title: item['title'],
-                   language: 'tr', // Default for generated
-                   assetPath: item['generatedStoryJsonPath'],
-                   isLocal: true,
-                 ));
+      if (!kIsWeb) {
+        final appDocDir = await getApplicationDocumentsDirectory();
+        final booksDir = Directory(path.join(appDocDir.path, 'scanned_books'));
+        if (await booksDir.exists()) {
+          final indexFile = File(path.join(booksDir.path, 'books_index.json'));
+          if (await indexFile.exists()) {
+            try {
+               final content = await indexFile.readAsString();
+               final List<dynamic> jsonList = jsonDecode(content);
+               for(var item in jsonList) {
+                 if (item['generatedStoryJsonPath'] != null) {
+                   localStories.add(StoryEntry(
+                     id: item['id'],
+                     title: item['title'],
+                     language: 'tr', // Default for generated
+                     assetPath: item['generatedStoryJsonPath'],
+                     isLocal: true,
+                   ));
+                 }
                }
-             }
-          } catch(e) {
-             debugPrint('Error reading local stories index: \$e');
+            } catch(e) {
+               debugPrint('Error reading local stories index: $e');
+            }
           }
         }
       }
@@ -167,7 +168,7 @@ class StoryController extends StateNotifier<StoryState> {
     );
 
     try {
-      final jsonString = entry.isLocal 
+      final jsonString = (!kIsWeb && entry.isLocal)
           ? await File(entry.assetPath).readAsString()
           : await rootBundle.loadString(entry.assetPath);
       final data = StoryData.fromJsonString(jsonString);
