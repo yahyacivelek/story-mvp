@@ -84,6 +84,12 @@ class BookScannerService extends StateNotifier<List<ScannedBook>> {
     }
   }
 
+  /// Add an imported book to the state and save
+  Future<void> importScannedBook(ScannedBook book) async {
+    state = [...state, book];
+    await _saveIndex();
+  }
+
   /// Reorder a page in a book
   Future<void> reorderPage(String bookId, int oldIndex, int newIndex) async {
     final bookIndex = state.indexWhere((b) => b.id == bookId);

@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 
 import '../services/book_scanner_service.dart';
+import '../services/book_sharing_service.dart';
 import '../services/gemini_analyzer_service.dart';
 
 class BookEditorScreen extends ConsumerStatefulWidget {
@@ -98,6 +99,29 @@ class _BookEditorScreenState extends ConsumerState<BookEditorScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(book.title),
+        actions: [
+          IconButton(
+            tooltip: 'Kitabı Paylaş',
+            icon: const Icon(Icons.share),
+            onPressed: () async {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Kitap paylaşılmak için paketleniyor...'),
+                  duration: Duration(seconds: 1),
+                ),
+              );
+              try {
+                await BookSharingService.instance.exportBook(book);
+              } catch (e) {
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Paylaşım sırasında hata: $e')),
+                  );
+                }
+              }
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [
