@@ -31,6 +31,7 @@ class ApiKeyService {
     if (envEleven.isNotEmpty) _elevenLabsApiKey = envEleven;
 
     // 3. Yüksek öncelik: Lokal cihaz private storage (Kullanıcı tarafından uygulama içinden girilen)
+    if (kIsWeb) return;
     try {
       final file = await _getLocalFile();
       if (await file.exists()) {
@@ -52,7 +53,7 @@ class ApiKeyService {
   Future<void> saveKeys({required String geminiKey, required String elevenLabsKey}) async {
     _geminiApiKey = geminiKey;
     _elevenLabsApiKey = elevenLabsKey;
-    
+    if (kIsWeb) return;
     try {
       final file = await _getLocalFile();
       final data = {

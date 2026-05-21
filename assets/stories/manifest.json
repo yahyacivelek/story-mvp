@@ -23,6 +23,12 @@
       "title": "CENK'İN SIRADIŞI SERÜVENLERİ - MARSLILARA Şekerleme",
       "language": "tr",
       "asset_path": "assets/stories/cenk.json"
+    },
+    {
+      "id": "cingo",
+      "title": "Cingo - Ben İnsan Değil miyim?",
+      "language": "tr",
+      "asset_path": "assets/stories/cingo.json"
     }
   ]
 }
