@@ -88,9 +88,10 @@ class StoryController extends StateNotifier<StoryState> {
   final SpeechService _speech = SpeechService.instance;
   StreamSubscription<String>? _speechSub;
 
-  /// Rolling transcript window — keeps last ~60 words for matching.
+  /// Rolling transcript window — keeps last ~120 words for matching.
+  /// Increased from 60 to handle longer pages where exit cues are at the end.
   final List<String> _transcriptBuffer = [];
-  static const int _bufferWordLimit = 60;
+  static const int _bufferWordLimit = 120;
 
   /// Cooldown per audio opportunity: stores last trigger time by id.
   final Map<String, DateTime> _lastTriggered = {};
@@ -99,7 +100,8 @@ class StoryController extends StateNotifier<StoryState> {
   DateTime? _lastTransitionAt;
 
   /// Minimum seconds between automatic scene transitions.
-  static const int _transitionCooldownSeconds = 10;
+  /// Reduced to 5s for faster-paced storytelling.
+  static const int _transitionCooldownSeconds = 5;
 
   Future<void> _init() async {
     try {
@@ -244,14 +246,20 @@ class StoryController extends StateNotifier<StoryState> {
 
   void _onWords(String chunk) {
     // Accumulate into rolling buffer.
-    _transcriptBuffer.addAll(chunk.split(' ').where((w) => w.isNotEmpty));
+    final newWords = chunk.split(' ').where((w) => w.isNotEmpty).toList();
+    _transcriptBuffer.addAll(newWords);
     if (_transcriptBuffer.length > _bufferWordLimit) {
-      _transcriptBuffer.removeRange(
-          0, _transcriptBuffer.length - _bufferWordLimit);
+      final removedCount = _transcriptBuffer.length - _bufferWordLimit;
+      _transcriptBuffer.removeRange(0, removedCount);
     }
 
     final transcript = _transcriptBuffer.join(' ');
     state = state.copyWith(lastHeardText: chunk);
+
+    debugPrint(
+      '[StoryController] Heard: "${chunk.substring(0, chunk.length.clamp(0, 40))}..." '
+      'bufferSize=${_transcriptBuffer.length}/${_bufferWordLimit}',
+    );
 
     final data = state.storyData;
     if (data == null) return;
@@ -330,23 +338,34 @@ class StoryController extends StateNotifier<StoryState> {
 
   void _matchSceneTransition(String transcript, StoryData data) {
     final scenes = data.sceneGraph;
-    final currentScene = state.activeScene!;
+    final currentScene = state.activeScene;
+    if (currentScene == null) return;
     final transition = currentScene.sceneTransition;
 
     // No next scene — end of story.
     if (transition.nextSceneId == 'none') return;
 
     // Enforce cooldown between automatic transitions.
-    if (_lastTransitionAt != null &&
-        DateTime.now().difference(_lastTransitionAt!).inSeconds <
-            _transitionCooldownSeconds) {
-      return;
+    if (_lastTransitionAt != null) {
+      final secondsSinceLast = DateTime.now().difference(_lastTransitionAt!).inSeconds;
+      if (secondsSinceLast < _transitionCooldownSeconds) {
+        debugPrint(
+          '[StoryController] Scene transition blocked: cooldown active '
+          '(${secondsSinceLast}s / ${_transitionCooldownSeconds}s)',
+        );
+        return;
+      }
     }
 
     // Find the next scene by its scene_id (not just index + 1).
     final nextIndex = scenes.indexWhere(
         (s) => s.sceneId == transition.nextSceneId);
-    if (nextIndex < 0) return;
+    if (nextIndex < 0) {
+      debugPrint(
+        '[StoryController] Scene transition blocked: next scene "${transition.nextSceneId}" not found',
+      );
+      return;
+    }
 
     final nextScene = scenes[nextIndex];
 
@@ -354,33 +373,46 @@ class StoryController extends StateNotifier<StoryState> {
     final exitKeywords = _cueKeywordsForScene(currentScene, isExit: true);
     final entryKeywords = _cueKeywordsForScene(nextScene, isExit: false);
 
+    debugPrint(
+      '[StoryController] Scene "${currentScene.sceneId}" → "${nextScene.sceneId}": '
+      'exitPrimary=${exitKeywords.primary}, exitSecondary=${exitKeywords.secondary} | '
+      'entryPrimary=${entryKeywords.primary}, entrySecondary=${entryKeywords.secondary}',
+    );
+
     // Evaluate exit and entry cues separately (OR). Combining them inflated
     // maxPoints so a single end-of-scene phrase (e.g. "severmiş") scored
     // ~0.14 against the next scene's 0.7 activation threshold — never firing.
-    // 0.6 ≈ two primary hits in a 3-keyword cue list (4/6), or one strong
-    // phrase plus overlap; stricter than SFX (0.28) to limit false transitions.
-    const transitionThreshold = 0.6;
+    // 0.5 = one primary hit in a 2-keyword cue list (2/4), or two in a 4-keyword list.
+    // Lowered from 0.6 to improve detection of partial cue matches.
+    const transitionThreshold = 0.5;
 
-    final exitHit = _cueKeywordsNonEmpty(exitKeywords) &&
-        FuzzyMatcher.matches(
-          transcript: transcript,
-          primaryKeywords: exitKeywords.primary,
-          secondaryKeywords: exitKeywords.secondary,
-          threshold: transitionThreshold,
-        );
+    final exitScore = _cueKeywordsNonEmpty(exitKeywords)
+        ? FuzzyMatcher.score(
+            transcript: transcript,
+            primaryKeywords: exitKeywords.primary,
+            secondaryKeywords: exitKeywords.secondary,
+          )
+        : 0.0;
+    final exitHit = exitScore >= transitionThreshold;
 
-    final entryHit = _cueKeywordsNonEmpty(entryKeywords) &&
-        FuzzyMatcher.matches(
-          transcript: transcript,
-          primaryKeywords: entryKeywords.primary,
-          secondaryKeywords: entryKeywords.secondary,
-          threshold: transitionThreshold,
-        );
+    final entryScore = _cueKeywordsNonEmpty(entryKeywords)
+        ? FuzzyMatcher.score(
+            transcript: transcript,
+            primaryKeywords: entryKeywords.primary,
+            secondaryKeywords: entryKeywords.secondary,
+          )
+        : 0.0;
+    final entryHit = entryScore >= transitionThreshold;
+
+    debugPrint(
+      '[StoryController] Matching transcript: "${transcript.substring(0, transcript.length.clamp(0, 80))}..." '
+      'exitScore=${exitScore.toStringAsFixed(2)} entryScore=${entryScore.toStringAsFixed(2)}',
+    );
 
     if (exitHit || entryHit) {
       debugPrint(
         '[StoryController] Scene transition: ${currentScene.sceneId} → '
-        '${nextScene.sceneId} (exit=$exitHit entry=$entryHit)',
+        '${nextScene.sceneId} (exit=$exitHit, entry=$entryHit, exitScore=${exitScore.toStringAsFixed(2)}, entryScore=${entryScore.toStringAsFixed(2)})',
       );
       _transitionToScene(nextIndex);
     }
