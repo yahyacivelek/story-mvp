@@ -50,6 +50,7 @@ dependencies:
   share_plus: ^10.0.0
   archive: ^4.0.9
   file_picker: ^11.0.0
+  wakelock_plus: ^1.2.10
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,6 +10,7 @@ import 'services/story_validator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  WakelockPlus.enable();
   try {
     await dotenv.load(fileName: '.env');
   } catch (e) {
