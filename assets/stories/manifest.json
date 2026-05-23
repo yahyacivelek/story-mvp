@@ -29,6 +29,12 @@
       "title": "Cingo - Ben İnsan Değil miyim?",
       "language": "tr",
       "asset_path": "assets/stories/cingo.json"
+    },
+    {
+      "id": "baykut",
+      "title": "Bay Küt",
+      "language": "tr",
+      "asset_path": "assets/stories/baykut.json"
     }
   ]
 }

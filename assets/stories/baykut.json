@@ -1,0 +1,1556 @@
+{
+    "book": {
+        "detected_title": "Bay Küt",
+        "language": "tr",
+        "analysis_confidence": 0.95
+    },
+    "page_ordering": {"ordering_method": "capture_order", "confidence": 0.97},
+    "pages": [
+        {
+            "page_id": "p1",
+            "page_number": 1,
+            "order_index": 1,
+            "order_confidence": 0.97,
+            "full_text": "Bu, Bay Küt'ün acı dolu hikâyesi... Bay Küt sürekli ufak tefek kazalar yapar. Etrafta çarpabileceği bir şey varsa, Bay Küt mutlaka gidip ona çarpar! Mesela... Bay Küt kaldırımda yürürken karşısına bir direk çıksa ne olur dersin?",
+            "primary_scene_hint": "intro_bay_kut",
+            "dominant_visual": "text_page_introduction",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p2",
+            "page_number": 2,
+            "order_index": 2,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "intro_bay_kut",
+            "dominant_visual": "Bay Küt blue round character walking on sidewalk approaching a green lamp post smiling",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p3",
+            "page_number": 3,
+            "order_index": 3,
+            "order_confidence": 0.97,
+            "full_text": "Bay Küt, evinde de böyleydi. Çok güzel bir evi vardı ama küçük ev kazası yapmadığı bir gün bile geçmezdi.",
+            "primary_scene_hint": "home_accidents",
+            "dominant_visual": "text_page_home_intro",
+            "mood": "warm"
+        },
+        {
+            "page_id": "p4",
+            "page_number": 4,
+            "order_index": 4,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "home_accidents",
+            "dominant_visual": "Bay Küt's cozy house with red roof white fence yellow sun garden trees",
+            "mood": "cozy"
+        },
+        {
+            "page_id": "p5",
+            "page_number": 5,
+            "order_index": 5,
+            "order_confidence": 0.97,
+            "full_text": "Mesela... Bir sabah bahçeye çıkınca, evinin bacasında bir sorun olduğunu fark etti. Bir gece önceki fırtına yüzünden baca borusu gevşemişti. \"Düşmemesi için sağlamlaştırmalıyım,\" dedi. Hemen koşup bir merdiven buldu. Ne kadar da uzun bir merdivendi bu!",
+            "primary_scene_hint": "home_accidents",
+            "dominant_visual": "text_page_ladder_chimney",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p6",
+            "page_number": 6,
+            "order_index": 6,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "home_accidents",
+            "dominant_visual": "Bay Küt carrying long ladder through garden with brick wall and flowers",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p7",
+            "page_number": 7,
+            "order_index": 7,
+            "order_confidence": 0.97,
+            "full_text": "Bay Küt, merdiveni omzuna alıp bahçede yürümeye başladı. Tam köşeyi dönmüştü ki... \"ŞANGIRT!\" Salonun camı kırıldı. \"Tüh!\" dedi Bay Küt. Ne olduğuna bakmak için dönünce, bir \"ŞANGIRT!\" sesi daha duyuldu! Bu kez mutfak camı kırılmıştı. \"Tüh!\" dedi yine Bay Küt ve çatıya çıkıp bacaya bakmak için merdiveni duvara yaslamak istedi. Ve bir kere daha... \"ŞANGIRT!\" Yatak odasının camı da kırıldı!",
+            "primary_scene_hint": "home_accidents",
+            "dominant_visual": "text_page_shangyrt_windows_breaking",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p8",
+            "page_number": 8,
+            "order_index": 8,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "home_accidents",
+            "dominant_visual": "ladder crashed through green window with broken glass star crack on house exterior",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p9",
+            "page_number": 9,
+            "order_index": 9,
+            "order_confidence": 0.97,
+            "full_text": "Bay Küt'ün başına neler geldiğini görüyorsun ya... Bu yüzden Bay Küt, girdiği hiçbir işte uzun süre çalışamıyordu. Ne zaman bir şey kaybolsa ya da kırılsa ya da bozulsa ya da dağılsa ya da yırtılsa ya da yansa ya da patlasa ya da çatlasa ya da kesilse ya da ufalansa, suçlu hep Bay Küt oluyordu.",
+            "primary_scene_hint": "jobs_accidents",
+            "dominant_visual": "text_page_bay_kut_blamed_for_everything",
+            "mood": "warm"
+        },
+        {
+            "page_id": "p10",
+            "page_number": 10,
+            "order_index": 10,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "jobs_accidents",
+            "dominant_visual": "Bay Küt sad looking holding broom and brush indoors",
+            "mood": "calm"
+        },
+        {
+            "page_id": "p11",
+            "page_number": 11,
+            "order_index": 11,
+            "order_confidence": 0.97,
+            "full_text": "Mesela... Bay Küt bir keresinde çiftlikte çalışmıştı. Çiftçinin karısına süt götürmesi lazımdı. Ama sütü taşırken ayağı köpeğe takılmış ve süt yere dökülmüştü. Kedi de sütün tamamını yalayıp yutmuştu!",
+            "primary_scene_hint": "jobs_accidents",
+            "dominant_visual": "text_page_farm_milk_spill",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p12",
+            "page_number": 12,
+            "order_index": 12,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "jobs_accidents",
+            "dominant_visual": "Bay Küt fallen on farm ground spilling milk jug dog running away farm background",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p13",
+            "page_number": 13,
+            "order_index": 13,
+            "order_confidence": 0.97,
+            "full_text": "Mesela... Bay Küt bir keresinde postacılık yapmıştı. Ama mektupları dağıtırken elini posta kutusuna sıkıştırdı. Bay Küt'ün elini oradan çıkarabilmek için itfaiye çağırmak zorunda kalmışlardı!",
+            "primary_scene_hint": "jobs_accidents",
+            "dominant_visual": "text_page_postman_hand_stuck",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p14",
+            "page_number": 14,
+            "order_index": 14,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "jobs_accidents",
+            "dominant_visual": "Bay Küt head stuck inside red British postbox letter box sunny day",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p15",
+            "page_number": 15,
+            "order_index": 15,
+            "order_confidence": 0.97,
+            "full_text": "Mesela... Bay Küt bir keresinde bir otobüste biletçi olarak çalışmıştı. Ama yolculara bilet satarken otobüsten düşmüş, sonra da otobüse yetişememişti! O gün otobüse binen hiçbir yolcu, bilet parası vermemişti.",
+            "primary_scene_hint": "jobs_accidents",
+            "dominant_visual": "text_page_bus_conductor_fall",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p16",
+            "page_number": 16,
+            "order_index": 16,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "jobs_accidents",
+            "dominant_visual": "Bay Küt as bus conductor chasing red bus at bus stop sign DURAK",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p17",
+            "page_number": 17,
+            "order_index": 17,
+            "order_confidence": 0.97,
+            "full_text": "Mesela... Bay Küt bir keresinde marangozluk yapmıştı. Ama çekiciyle çivileri değil, parmaklarını çakmıştı!",
+            "primary_scene_hint": "jobs_accidents",
+            "dominant_visual": "text_page_carpenter_hammer_finger",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p18",
+            "page_number": 18,
+            "order_index": 18,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "jobs_accidents",
+            "dominant_visual": "Bay Küt close up sad face with bandaged thumb holding hammer indoors",
+            "mood": "warm"
+        },
+        {
+            "page_id": "p19",
+            "page_number": 19,
+            "order_index": 19,
+            "order_confidence": 0.97,
+            "full_text": "Bay Küt bu talihsizliklerden bıkıp usanmıştı. Çareyi tatile çıkmakta buldu. Böylece hem kimseciklere dert olmayacak hem de nasıl bir işte çalışabileceğini düşünecekti. Deniz kenarına giden trene binmek üzere istasyona doğru yola koyuldu.",
+            "primary_scene_hint": "holiday_departure",
+            "dominant_visual": "text_page_holiday_decision",
+            "mood": "adventurous"
+        },
+        {
+            "page_id": "p20",
+            "page_number": 20,
+            "order_index": 20,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "holiday_departure",
+            "dominant_visual": "Bay Küt walking with brown suitcase white fence red sun hopeful expression",
+            "mood": "adventurous"
+        },
+        {
+            "page_id": "p21",
+            "page_number": 21,
+            "order_index": 21,
+            "order_confidence": 0.97,
+            "full_text": "Bay Küt tatildeyken pek çok şey oldu. Mesela... Bir gün tekneden düştü! Cankurtaran sandalının gelip onu kurtarması gerekti.",
+            "primary_scene_hint": "seaside_holiday",
+            "dominant_visual": "text_page_fell_off_boat",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p22",
+            "page_number": 22,
+            "order_index": 22,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "seaside_holiday",
+            "dominant_visual": "Bay Küt falling off boat into sea sunny day clouds yellow sun",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p23",
+            "page_number": 23,
+            "order_index": 23,
+            "order_confidence": 0.97,
+            "full_text": "Mesela... Bir gün sahilde sakin sakin yürüyüş yaparken, bir kovaya bastı ve ayağı sıkıştı! Saatlerce bir ayağında kovayla yürümek zorunda kaldı.",
+            "primary_scene_hint": "seaside_holiday",
+            "dominant_visual": "text_page_bucket_foot",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p24",
+            "page_number": 24,
+            "order_index": 24,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "seaside_holiday",
+            "dominant_visual": "Bay Küt on beach with red bucket stuck on foot yellow sand blue sea bright sun",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p25",
+            "page_number": 25,
+            "order_index": 25,
+            "order_confidence": 0.97,
+            "full_text": "Mesela... Bir gün, deniz kenarındaki bir kum çukuruna düşüverdi! Çukur o kadar derindi ki kendi başına çıkamadı ve tüm geceyi orada geçirdi. Tüm bu kazalara rağmen Bay Küt, tatile çıktığı için yine de memnundu. Yapabileceği harika bir iş fikri gelmişti aklına! Bay Küt'ün şimdiye kadar bulduğu en iyi fikirdi bu. Harika bir fikirdi, harika!",
+            "primary_scene_hint": "seaside_holiday",
+            "dominant_visual": "text_page_sandpit_idea",
+            "mood": "magical"
+        },
+        {
+            "page_id": "p26",
+            "page_number": 26,
+            "order_index": 26,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "seaside_holiday",
+            "dominant_visual": "Bay Küt hand sticking out of sandy pit at night crescent moon blue night sky",
+            "mood": "mysterious"
+        },
+        {
+            "page_id": "p27",
+            "page_number": 27,
+            "order_index": 27,
+            "order_confidence": 0.97,
+            "full_text": "Bay Küt'ün işi elma toplamak. Ama bunu, diğer çalışanlar gibi merdivene çıkarak yapmıyor. Onun elma toplama yöntemi çok daha iyi. Sadece... Yürüyor! Yürürken de (doğal olarak) çok geçmeden bir ağaca çarpıveriyor. KÜT!",
+            "primary_scene_hint": "apple_orchard_job",
+            "dominant_visual": "text_page_apple_collecting_method",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p28",
+            "page_number": 28,
+            "order_index": 28,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "apple_orchard_job",
+            "dominant_visual": "large apple tree full of red apples wooden fence yellow sun orchard",
+            "mood": "warm"
+        },
+        {
+            "page_id": "p29",
+            "page_number": 29,
+            "order_index": 29,
+            "order_confidence": 0.97,
+            "full_text": "İşte, bir elma düştü bile! Bay Küt hemen yakalar. Bu yöntemle elma toplamak çok kolay! Bay Küt yeni işini çok seviyor. Elma bahçesinin sahibi de yeni elma toplayıcısını çok beğeniyor. Bay Küt'ün acı dolu hikâyesi hiç de acıklı bitmedi, öyle değil mi? Peki, sen de Bay Küt gibi bir yerlere çarparsan ne yapmalısın?",
+            "primary_scene_hint": "apple_orchard_job",
+            "dominant_visual": "text_page_happy_ending_apple",
+            "mood": "warm"
+        },
+        {
+            "page_id": "p30",
+            "page_number": 30,
+            "order_index": 30,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "apple_orchard_job",
+            "dominant_visual": "Bay Küt bumped into apple tree upside down in green apple bushes red apples smiling dazed",
+            "mood": "playful"
+        },
+        {
+            "page_id": "p31",
+            "page_number": 31,
+            "order_index": 31,
+            "order_confidence": 0.97,
+            "full_text": "Hemen Bay Küt'ün topladığı elmalardan bir tane ye! Canının yandığını unutursun böylece.",
+            "primary_scene_hint": "warm_ending",
+            "dominant_visual": "text_page_eat_an_apple_advice",
+            "mood": "warm"
+        },
+        {
+            "page_id": "p32",
+            "page_number": 32,
+            "order_index": 32,
+            "order_confidence": 0.97,
+            "full_text": "",
+            "primary_scene_hint": "warm_ending",
+            "dominant_visual": "Bay Küt happy smiling face close up reaching for a red apple in apple tree",
+            "mood": "warm"
+        },
+        {
+            "page_id": "p33",
+            "page_number": 33,
+            "order_index": 33,
+            "order_confidence": 0.97,
+            "full_text": "Bir daha bir yere çarptığında, hemen bunu hatırla!",
+            "primary_scene_hint": "warm_ending",
+            "dominant_visual": "text_page_final_message",
+            "mood": "cozy"
+        }
+    ],
+    "scene_graph": [
+        {
+            "scene_id": "intro_bay_kut",
+            "pages": [1, 2],
+            "scene_summary": "Introduction of Bay Küt, a clumsy blue round character who bumps into everything. He walks happily on the sidewalk about to hit a lamp post.",
+            "scene_type": "village",
+            "scene_mood": "playful",
+            "scene_energy": "medium",
+            "narrative_phase": "intro",
+            "scene_duration_estimate_seconds": 35,
+            "scene_activation": {
+                "activation_mode": "hybrid",
+                "entry_cues": [
+                    {
+                        "primary_keywords": ["Bay Küt", "hikâyesi", "kazalar"],
+                        "secondary_keywords": ["çarpar", "direk", "kaldırım"],
+                        "semantic_intent": "story introduction of clumsy character"
+                    },
+                    {
+                        "primary_keywords": ["acı dolu"],
+                        "secondary_keywords": ["ufak tefek"],
+                        "semantic_intent": "opening narrator hook"
+                    }
+                ],
+                "exit_cues": [
+                    {
+                        "keywords": ["evinde de böyleydi", "evinde"],
+                        "semantic_intent": "transition to home scene"
+                    }
+                ],
+                "activation_confidence_threshold": 0.7,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "home_accidents",
+                "transition_style": "crossfade",
+                "audio_continuity": "evolve",
+                "transition_duration_seconds": 3
+            },
+            "likely_next_scene": "home_accidents",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "village_street_daytime",
+                        "variant": "warm",
+                        "intensity": "low",
+                        "texture": "natural",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [
+                    {
+                        "sound_profile": {
+                            "primary_sound": "light_footsteps_on_pavement",
+                            "variant": "gentle",
+                            "intensity": "low",
+                            "texture": "soft",
+                            "play_style": "loop"
+                        }
+                    }
+                ],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "wonder",
+                    "intensity": "low"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "ao_intro_lamp_post_bump",
+                    "layer_role": "event",
+                    "source": "both",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {
+                        "type": "phrase",
+                        "value": "direk çıksa ne olur"
+                    },
+                    "trigger_structure": {
+                        "primary_keywords": ["direk", "çarpar"],
+                        "secondary_keywords": ["kaldırım", "çıksa"],
+                        "semantic_intent": "Bay Küt about to bump into lamp post"
+                    },
+                    "activation_window": {"start_progress": 0.6, "end_progress": 1.0},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "Bay Küt bumps into lamp post on the street",
+                    "sound_category": "movement",
+                    "sound_profile": {
+                        "primary_sound": "cartoon_bump_thud",
+                        "variant": "playful",
+                        "intensity": "medium",
+                        "texture": "soft",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 3,
+                    "confidence": 0.9,
+                    "mix_level": "medium",
+                    "emotional_tone": "playful"
+                }
+            ]
+        },
+        {
+            "scene_id": "home_accidents",
+            "pages": [3, 4, 5, 6, 7, 8],
+            "scene_summary": "Bay Küt's cozy home exterior is shown. He spots a loose chimney pipe after a storm, fetches a very long ladder, and proceeds to smash three windows in sequence while carrying it through the garden.",
+            "scene_type": "village",
+            "scene_mood": "playful",
+            "scene_energy": "medium",
+            "narrative_phase": "build_up",
+            "scene_duration_estimate_seconds": 110,
+            "scene_activation": {
+                "activation_mode": "hybrid",
+                "entry_cues": [
+                    {
+                        "primary_keywords": ["evinde", "ev kazası"],
+                        "secondary_keywords": ["güzel ev", "böyleydi"],
+                        "semantic_intent": "Bay Küt at home has accidents every day"
+                    },
+                    {
+                        "primary_keywords": ["bahçeye çıkınca", "baca", "fırtına"],
+                        "secondary_keywords": ["merdiven", "sağlamlaştırmalıyım"],
+                        "semantic_intent": "chimney problem discovered morning garden"
+                    }
+                ],
+                "exit_cues": [
+                    {
+                        "keywords": ["uzun süre çalışamıyordu", "suçlu hep Bay Küt"],
+                        "semantic_intent": "narrative shift to work accidents summary"
+                    }
+                ],
+                "activation_confidence_threshold": 0.65,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "jobs_accidents",
+                "transition_style": "crossfade",
+                "audio_continuity": "evolve",
+                "transition_duration_seconds": 3
+            },
+            "likely_next_scene": "jobs_accidents",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "garden_morning_birds",
+                        "variant": "warm",
+                        "intensity": "low",
+                        "texture": "natural",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [
+                    {
+                        "sound_profile": {
+                            "primary_sound": "gentle_breeze_leaves",
+                            "variant": "soft",
+                            "intensity": "low",
+                            "texture": "airy",
+                            "play_style": "loop"
+                        }
+                    },
+                    {
+                        "sound_profile": {
+                            "primary_sound": "distant_bird_chirps",
+                            "variant": "gentle",
+                            "intensity": "low",
+                            "texture": "natural",
+                            "play_style": "loop"
+                        }
+                    }
+                ],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "cozy",
+                    "intensity": "low"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "ao_home_ladder_carry",
+                    "layer_role": "event",
+                    "source": "both",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "phrase", "value": "merdiven buldu"},
+                    "trigger_structure": {
+                        "primary_keywords": ["merdiven", "koşup"],
+                        "secondary_keywords": ["uzun", "buldu"],
+                        "semantic_intent": "Bay Küt fetches very long ladder"
+                    },
+                    "activation_window": {"start_progress": 0.3, "end_progress": 0.5},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 5,
+                    "event_summary": "Bay Küt carrying a long ladder through the garden",
+                    "sound_category": "object",
+                    "sound_profile": {
+                        "primary_sound": "wooden_ladder_scrape",
+                        "variant": "gentle",
+                        "intensity": "low",
+                        "texture": "wooden",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 2,
+                    "confidence": 0.85,
+                    "mix_level": "subtle",
+                    "emotional_tone": "playful"
+                },
+                {
+                    "id": "ao_home_window_break_1",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "word", "value": "ŞANGIRT"},
+                    "trigger_structure": {
+                        "primary_keywords": ["ŞANGIRT", "camı kırıldı"],
+                        "secondary_keywords": ["salon", "sesi"],
+                        "semantic_intent": "first window smash sound effect"
+                    },
+                    "activation_window": {"start_progress": 0.5, "end_progress": 0.65},
+                    "trigger_once_per_scene": false,
+                    "trigger_cooldown_seconds": 4,
+                    "event_summary": "Salon window shatters as ladder swings around",
+                    "sound_category": "object",
+                    "sound_profile": {
+                        "primary_sound": "cartoon_glass_break",
+                        "variant": "playful",
+                        "intensity": "medium",
+                        "texture": "airy",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 5,
+                    "confidence": 0.97,
+                    "mix_level": "prominent",
+                    "emotional_tone": "playful"
+                },
+                {
+                    "id": "ao_home_window_break_2",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {
+                        "type": "phrase",
+                        "value": "mutfak camı kırılmıştı"
+                    },
+                    "trigger_structure": {
+                        "primary_keywords": ["mutfak camı", "ŞANGIRT"],
+                        "secondary_keywords": ["dönünce", "sesi daha"],
+                        "semantic_intent": "second window kitchen smash"
+                    },
+                    "activation_window": {"start_progress": 0.65, "end_progress": 0.78},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 4,
+                    "event_summary": "Kitchen window shatters second time",
+                    "sound_category": "object",
+                    "sound_profile": {
+                        "primary_sound": "cartoon_glass_break",
+                        "variant": "playful",
+                        "intensity": "medium",
+                        "texture": "airy",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 4,
+                    "confidence": 0.95,
+                    "mix_level": "prominent",
+                    "emotional_tone": "playful"
+                },
+                {
+                    "id": "ao_home_window_break_3",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {
+                        "type": "phrase",
+                        "value": "yatak odasının camı da kırıldı"
+                    },
+                    "trigger_structure": {
+                        "primary_keywords": ["yatak odası", "camı da kırıldı"],
+                        "secondary_keywords": ["kere daha", "ŞANGIRT"],
+                        "semantic_intent": "third bedroom window smashes"
+                    },
+                    "activation_window": {"start_progress": 0.78, "end_progress": 0.95},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "Bedroom window shatters third time",
+                    "sound_category": "object",
+                    "sound_profile": {
+                        "primary_sound": "cartoon_glass_break",
+                        "variant": "playful",
+                        "intensity": "medium",
+                        "texture": "airy",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 4,
+                    "confidence": 0.95,
+                    "mix_level": "prominent",
+                    "emotional_tone": "playful"
+                }
+            ]
+        },
+        {
+            "scene_id": "jobs_accidents",
+            "pages": [9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+            "scene_summary": "Summary of Bay Küt being blamed for every mishap, followed by three failed job episodes: farm milk spill with dog, postman hand stuck in letterbox requiring firefighters, bus conductor falling off bus, carpenter hitting own fingers with hammer.",
+            "scene_type": "village",
+            "scene_mood": "playful",
+            "scene_energy": "medium",
+            "narrative_phase": "build_up",
+            "scene_duration_estimate_seconds": 180,
+            "scene_activation": {
+                "activation_mode": "hybrid",
+                "entry_cues": [
+                    {
+                        "primary_keywords": [
+                            "uzun süre çalışamıyordu",
+                            "suçlu hep Bay Küt"
+                        ],
+                        "secondary_keywords": ["kaybolsa", "kırılsa", "bozulsa"],
+                        "semantic_intent": "Bay Küt always blamed whenever anything breaks"
+                    },
+                    {
+                        "primary_keywords": ["çiftlikte çalışmıştı"],
+                        "secondary_keywords": ["süt", "köpeğe takılmış"],
+                        "semantic_intent": "farm job episode begins"
+                    }
+                ],
+                "exit_cues": [
+                    {
+                        "keywords": ["tatile çıkmakta buldu", "istasyona doğru"],
+                        "semantic_intent": "Bay Küt decides to go on holiday"
+                    }
+                ],
+                "activation_confidence_threshold": 0.65,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "holiday_departure",
+                "transition_style": "crossfade",
+                "audio_continuity": "replace",
+                "transition_duration_seconds": 4
+            },
+            "likely_next_scene": "holiday_departure",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "cheerful_village_ambience",
+                        "variant": "warm",
+                        "intensity": "low",
+                        "texture": "natural",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [
+                    {
+                        "sound_profile": {
+                            "primary_sound": "distant_farm_sounds",
+                            "variant": "gentle",
+                            "intensity": "low",
+                            "texture": "natural",
+                            "play_style": "loop"
+                        }
+                    }
+                ],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "cozy",
+                    "intensity": "low"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "ao_jobs_dog_bark",
+                    "layer_role": "animal_vocalization",
+                    "source": "both",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {
+                        "type": "phrase",
+                        "value": "ayağı köpeğe takılmış"
+                    },
+                    "trigger_structure": {
+                        "primary_keywords": ["köpek", "takılmış"],
+                        "secondary_keywords": ["süt", "dökülmüştü"],
+                        "semantic_intent": "dog trips Bay Küt spilling milk"
+                    },
+                    "activation_window": {"start_progress": 0.15, "end_progress": 0.3},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 8,
+                    "event_summary": "Dog runs past Bay Küt causing milk spill",
+                    "sound_category": "animal",
+                    "sound_profile": {
+                        "primary_sound": "playful_dog_bark",
+                        "variant": "playful",
+                        "intensity": "low",
+                        "texture": "natural",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 4,
+                    "confidence": 0.92,
+                    "mix_level": "medium",
+                    "emotional_tone": "playful"
+                },
+                {
+                    "id": "ao_jobs_milk_spill",
+                    "layer_role": "event",
+                    "source": "both",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {
+                        "type": "phrase",
+                        "value": "süt yere dökülmüştü"
+                    },
+                    "trigger_structure": {
+                        "primary_keywords": ["süt", "dökülmüştü"],
+                        "secondary_keywords": ["yalayıp yutmuştu", "kedi"],
+                        "semantic_intent": "milk spills on ground cat laps it up"
+                    },
+                    "activation_window": {"start_progress": 0.2, "end_progress": 0.32},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 5,
+                    "event_summary": "Milk jug crashes to ground and cat laps it all up",
+                    "sound_category": "object",
+                    "sound_profile": {
+                        "primary_sound": "liquid_splash_cartoon",
+                        "variant": "playful",
+                        "intensity": "low",
+                        "texture": "soft",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 3,
+                    "confidence": 0.9,
+                    "mix_level": "subtle",
+                    "emotional_tone": "playful"
+                },
+                {
+                    "id": "ao_jobs_cat_purr",
+                    "layer_role": "animal_vocalization",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {
+                        "type": "phrase",
+                        "value": "kedi de sütün tamamını"
+                    },
+                    "trigger_structure": {
+                        "primary_keywords": ["kedi", "yalayıp"],
+                        "secondary_keywords": ["sütün tamamını", "yutmuştu"],
+                        "semantic_intent": "cat happily laps up all the milk"
+                    },
+                    "activation_window": {"start_progress": 0.28, "end_progress": 0.38},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "Cat purrs and laps up spilled milk",
+                    "sound_category": "animal",
+                    "sound_profile": {
+                        "primary_sound": "cat_happy_meow",
+                        "variant": "playful",
+                        "intensity": "low",
+                        "texture": "soft",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 2,
+                    "confidence": 0.88,
+                    "mix_level": "subtle",
+                    "emotional_tone": "warm"
+                },
+                {
+                    "id": "ao_jobs_fire_truck",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {
+                        "type": "phrase",
+                        "value": "itfaiye çağırmak zorunda"
+                    },
+                    "trigger_structure": {
+                        "primary_keywords": ["itfaiye", "çağırmak"],
+                        "secondary_keywords": ["elini çıkarabilmek", "posta kutusu"],
+                        "semantic_intent": "fire brigade called to free Bay Küt's hand from letterbox"
+                    },
+                    "activation_window": {"start_progress": 0.42, "end_progress": 0.55},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 10,
+                    "event_summary": "Fire truck siren as brigade arrives to rescue Bay Küt",
+                    "sound_category": "environment",
+                    "sound_profile": {
+                        "primary_sound": "distant_fire_truck_siren",
+                        "variant": "gentle",
+                        "intensity": "low",
+                        "texture": "natural",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 3,
+                    "confidence": 0.85,
+                    "mix_level": "subtle",
+                    "emotional_tone": "playful"
+                },
+                {
+                    "id": "ao_jobs_bus_engine",
+                    "layer_role": "event",
+                    "source": "both",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "phrase", "value": "otobüsten düşmüş"},
+                    "trigger_structure": {
+                        "primary_keywords": ["otobüs", "düşmüş"],
+                        "secondary_keywords": ["biletçi", "yetişememişti"],
+                        "semantic_intent": "Bay Küt falls from moving bus"
+                    },
+                    "activation_window": {"start_progress": 0.56, "end_progress": 0.68},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 5,
+                    "event_summary": "Bus drives away leaving Bay Küt behind",
+                    "sound_category": "environment",
+                    "sound_profile": {
+                        "primary_sound": "cartoon_bus_rumble_departure",
+                        "variant": "playful",
+                        "intensity": "low",
+                        "texture": "natural",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 3,
+                    "confidence": 0.87,
+                    "mix_level": "subtle",
+                    "emotional_tone": "playful"
+                },
+                {
+                    "id": "ao_jobs_hammer_ouch",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {
+                        "type": "phrase",
+                        "value": "parmaklarını çakmıştı"
+                    },
+                    "trigger_structure": {
+                        "primary_keywords": ["parmaklarını", "çakmıştı"],
+                        "secondary_keywords": ["çekici", "çivileri değil"],
+                        "semantic_intent": "hammer hits fingers instead of nail"
+                    },
+                    "activation_window": {"start_progress": 0.75, "end_progress": 0.87},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "Cartoon hammer bonk sound as Bay Küt hits his own fingers",
+                    "sound_category": "object",
+                    "sound_profile": {
+                        "primary_sound": "cartoon_hammer_bonk",
+                        "variant": "playful",
+                        "intensity": "medium",
+                        "texture": "wooden",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 4,
+                    "confidence": 0.93,
+                    "mix_level": "medium",
+                    "emotional_tone": "playful"
+                }
+            ]
+        },
+        {
+            "scene_id": "holiday_departure",
+            "pages": [19, 20],
+            "scene_summary": "Tired of accidents and failures, Bay Küt decides to take a holiday at the seaside. He sets off happily with his suitcase toward the train station.",
+            "scene_type": "village",
+            "scene_mood": "adventurous",
+            "scene_energy": "medium",
+            "narrative_phase": "transition",
+            "scene_duration_estimate_seconds": 40,
+            "scene_activation": {
+                "activation_mode": "hybrid",
+                "entry_cues": [
+                    {
+                        "primary_keywords": ["tatile çıkmakta", "tatile çıkmak"],
+                        "secondary_keywords": [
+                            "bıkıp usanmıştı",
+                            "deniz kenarı",
+                            "istasyon"
+                        ],
+                        "semantic_intent": "Bay Küt decides holiday will solve his problems"
+                    },
+                    {
+                        "primary_keywords": ["istasyona doğru", "trene binmek"],
+                        "secondary_keywords": ["yola koyuldu", "deniz"],
+                        "semantic_intent": "Bay Küt walks to train station with suitcase"
+                    }
+                ],
+                "exit_cues": [
+                    {
+                        "keywords": ["tatildeyken", "pek çok şey oldu"],
+                        "semantic_intent": "holiday begins and new incidents unfold"
+                    }
+                ],
+                "activation_confidence_threshold": 0.7,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "seaside_holiday",
+                "transition_style": "brighten",
+                "audio_continuity": "replace",
+                "transition_duration_seconds": 4
+            },
+            "likely_next_scene": "seaside_holiday",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "cheerful_walking_street",
+                        "variant": "light",
+                        "intensity": "low",
+                        "texture": "airy",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [
+                    {
+                        "sound_profile": {
+                            "primary_sound": "distant_train_whistle",
+                            "variant": "gentle",
+                            "intensity": "low",
+                            "texture": "natural",
+                            "play_style": "fade_in"
+                        }
+                    }
+                ],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "adventure",
+                    "intensity": "low"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "ao_departure_suitcase",
+                    "layer_role": "event",
+                    "source": "image",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "page_start", "value": "p20"},
+                    "trigger_structure": {
+                        "primary_keywords": ["yola koyuldu", "istasyon"],
+                        "secondary_keywords": ["trene binmek", "tatil"],
+                        "semantic_intent": "Bay Küt walks out gate with suitcase hopeful"
+                    },
+                    "activation_window": {"start_progress": 0.0, "end_progress": 0.4},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "Light footstep sounds as Bay Küt sets off on holiday",
+                    "sound_category": "movement",
+                    "sound_profile": {
+                        "primary_sound": "light_footsteps_on_path",
+                        "variant": "playful",
+                        "intensity": "low",
+                        "texture": "soft",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 2,
+                    "confidence": 0.82,
+                    "mix_level": "subtle",
+                    "emotional_tone": "excited"
+                },
+                {
+                    "id": "ao_departure_train_whistle",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "phrase", "value": "istasyona doğru"},
+                    "trigger_structure": {
+                        "primary_keywords": ["istasyon", "trene binmek"],
+                        "secondary_keywords": ["deniz kenarı", "yola koyuldu"],
+                        "semantic_intent": "train station destination signal"
+                    },
+                    "activation_window": {"start_progress": 0.5, "end_progress": 0.9},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "Distant train whistle heard as Bay Küt approaches station",
+                    "sound_category": "environment",
+                    "sound_profile": {
+                        "primary_sound": "distant_steam_train_whistle",
+                        "variant": "warm",
+                        "intensity": "low",
+                        "texture": "natural",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 3,
+                    "confidence": 0.87,
+                    "mix_level": "subtle",
+                    "emotional_tone": "excited"
+                }
+            ]
+        },
+        {
+            "scene_id": "seaside_holiday",
+            "pages": [21, 22, 23, 24, 25, 26],
+            "scene_summary": "At the seaside Bay Küt falls off a boat and needs rescue, steps in a bucket at the beach, and falls into a deep sandpit spending the entire night there. Despite everything he has a wonderful idea for a new job.",
+            "scene_type": "ocean",
+            "scene_mood": "playful",
+            "scene_energy": "medium",
+            "narrative_phase": "action",
+            "scene_duration_estimate_seconds": 140,
+            "scene_activation": {
+                "activation_mode": "hybrid",
+                "entry_cues": [
+                    {
+                        "primary_keywords": ["tatildeyken", "tekneden düştü"],
+                        "secondary_keywords": ["cankurtaran", "pek çok şey oldu"],
+                        "semantic_intent": "holiday begins with boat accident"
+                    },
+                    {
+                        "primary_keywords": ["sahilde", "kovaya bastı"],
+                        "secondary_keywords": ["ayağı sıkıştı", "yürüyüş"],
+                        "semantic_intent": "beach walk bucket accident"
+                    }
+                ],
+                "exit_cues": [
+                    {
+                        "keywords": ["harika bir fikir", "en iyi fikir"],
+                        "semantic_intent": "Bay Küt has brilliant new job idea"
+                    }
+                ],
+                "activation_confidence_threshold": 0.65,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "apple_orchard_job",
+                "transition_style": "brighten",
+                "audio_continuity": "replace",
+                "transition_duration_seconds": 5
+            },
+            "likely_next_scene": "apple_orchard_job",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "ocean_waves_gentle",
+                        "variant": "soft",
+                        "intensity": "low",
+                        "texture": "natural",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [
+                    {
+                        "sound_profile": {
+                            "primary_sound": "seagull_calls_distant",
+                            "variant": "gentle",
+                            "intensity": "low",
+                            "texture": "airy",
+                            "play_style": "loop"
+                        }
+                    },
+                    {
+                        "sound_profile": {
+                            "primary_sound": "beach_sand_wind",
+                            "variant": "soft",
+                            "intensity": "low",
+                            "texture": "airy",
+                            "play_style": "loop"
+                        }
+                    }
+                ],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "adventure",
+                    "intensity": "low"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "ao_sea_boat_splash",
+                    "layer_role": "event",
+                    "source": "both",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "phrase", "value": "tekneden düştü"},
+                    "trigger_structure": {
+                        "primary_keywords": ["tekneden düştü", "tekne"],
+                        "secondary_keywords": ["cankurtaran", "kurtarması"],
+                        "semantic_intent": "Bay Küt falls off boat into sea splash"
+                    },
+                    "activation_window": {"start_progress": 0.05, "end_progress": 0.2},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 8,
+                    "event_summary": "Big cartoon splash as Bay Küt falls overboard",
+                    "sound_category": "weather",
+                    "sound_profile": {
+                        "primary_sound": "cartoon_water_splash",
+                        "variant": "playful",
+                        "intensity": "medium",
+                        "texture": "natural",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 5,
+                    "confidence": 0.95,
+                    "mix_level": "prominent",
+                    "emotional_tone": "playful"
+                },
+                {
+                    "id": "ao_sea_seagull_overhead",
+                    "layer_role": "animal_presence",
+                    "source": "image",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "page_start", "value": "p22"},
+                    "trigger_structure": {
+                        "primary_keywords": ["deniz", "güneş", "sahil"],
+                        "secondary_keywords": ["tekneden", "düştü"],
+                        "semantic_intent": "seagulls flying over sea scene"
+                    },
+                    "activation_window": {"start_progress": 0.0, "end_progress": 0.35},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "Gentle seagull calls over the sunny sea",
+                    "sound_category": "animal",
+                    "sound_profile": {
+                        "primary_sound": "seagull_gentle_call",
+                        "variant": "gentle",
+                        "intensity": "low",
+                        "texture": "airy",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 2,
+                    "confidence": 0.88,
+                    "mix_level": "subtle",
+                    "emotional_tone": "calm"
+                },
+                {
+                    "id": "ao_sea_bucket_clank",
+                    "layer_role": "event",
+                    "source": "both",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "phrase", "value": "kovaya bastı"},
+                    "trigger_structure": {
+                        "primary_keywords": ["kova", "bastı", "ayağı sıkıştı"],
+                        "secondary_keywords": ["sahil", "yürüyüş"],
+                        "semantic_intent": "Bay Küt steps into plastic bucket on beach"
+                    },
+                    "activation_window": {"start_progress": 0.35, "end_progress": 0.52},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 5,
+                    "event_summary": "Hollow clank of bucket getting stuck on foot",
+                    "sound_category": "object",
+                    "sound_profile": {
+                        "primary_sound": "hollow_plastic_bucket_clank",
+                        "variant": "playful",
+                        "intensity": "low",
+                        "texture": "soft",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 4,
+                    "confidence": 0.92,
+                    "mix_level": "medium",
+                    "emotional_tone": "playful"
+                },
+                {
+                    "id": "ao_sea_night_crickets",
+                    "layer_role": "secondary_detail",
+                    "source": "image",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {
+                        "type": "phrase",
+                        "value": "tüm geceyi orada geçirdi"
+                    },
+                    "trigger_structure": {
+                        "primary_keywords": ["gece", "geceyi orada"],
+                        "secondary_keywords": ["kum çukuru", "çıkamadı"],
+                        "semantic_intent": "Bay Küt stranded in sandpit all night under crescent moon"
+                    },
+                    "activation_window": {"start_progress": 0.68, "end_progress": 0.85},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "Nighttime crickets as Bay Küt waits alone in the sandpit under moon",
+                    "sound_category": "night",
+                    "sound_profile": {
+                        "primary_sound": "nighttime_crickets_soft",
+                        "variant": "gentle",
+                        "intensity": "low",
+                        "texture": "natural",
+                        "play_style": "loop"
+                    },
+                    "playback_type": "ambience_loop",
+                    "importance": 4,
+                    "confidence": 0.93,
+                    "mix_level": "subtle",
+                    "emotional_tone": "mysterious"
+                },
+                {
+                    "id": "ao_sea_idea_sparkle",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "phrase", "value": "harika bir fikir"},
+                    "trigger_structure": {
+                        "primary_keywords": ["harika", "fikir"],
+                        "secondary_keywords": ["en iyi", "şimdiye kadar"],
+                        "semantic_intent": "Bay Küt has a wonderful new idea"
+                    },
+                    "activation_window": {"start_progress": 0.82, "end_progress": 0.97},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "Magical twinkle sound as Bay Küt gets brilliant idea",
+                    "sound_category": "magic",
+                    "sound_profile": {
+                        "primary_sound": "magical_idea_chime",
+                        "variant": "gentle",
+                        "intensity": "low",
+                        "texture": "sparkly",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 4,
+                    "confidence": 0.9,
+                    "mix_level": "medium",
+                    "emotional_tone": "wonder"
+                }
+            ]
+        },
+        {
+            "scene_id": "apple_orchard_job",
+            "pages": [27, 28, 29, 30],
+            "scene_summary": "Bay Küt's perfect job: apple collecting in an orchard. Instead of using a ladder he simply walks into apple trees (KÜT!), apples fall and he catches them. The orchard owner loves him.",
+            "scene_type": "garden",
+            "scene_mood": "warm",
+            "scene_energy": "medium",
+            "narrative_phase": "calm",
+            "scene_duration_estimate_seconds": 90,
+            "scene_activation": {
+                "activation_mode": "hybrid",
+                "entry_cues": [
+                    {
+                        "primary_keywords": [
+                            "elma toplamak",
+                            "merdivene çıkarak yapmıyor"
+                        ],
+                        "secondary_keywords": ["yöntemi çok daha iyi", "yürüyor"],
+                        "semantic_intent": "Bay Küt apple collecting method revealed"
+                    },
+                    {
+                        "primary_keywords": ["ağaca çarpıveriyor", "KÜT"],
+                        "secondary_keywords": ["elma düştü", "yakalar"],
+                        "semantic_intent": "Bay Küt bumps tree and apple falls"
+                    }
+                ],
+                "exit_cues": [
+                    {
+                        "keywords": [
+                            "Bay Küt'ün topladığı elmalardan",
+                            "canının yandığını unutursun"
+                        ],
+                        "semantic_intent": "warm closing message to reader"
+                    }
+                ],
+                "activation_confidence_threshold": 0.7,
+                "scene_persistence": "until_next_scene"
+            },
+            "scene_transition": {
+                "next_scene_id": "warm_ending",
+                "transition_style": "brighten",
+                "audio_continuity": "evolve",
+                "transition_duration_seconds": 3
+            },
+            "likely_next_scene": "warm_ending",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "orchard_birdsong_breeze",
+                        "variant": "warm",
+                        "intensity": "low",
+                        "texture": "natural",
+                        "play_style": "loop"
+                    }
+                },
+                "secondary_layers": [
+                    {
+                        "sound_profile": {
+                            "primary_sound": "gentle_leaves_rustling",
+                            "variant": "soft",
+                            "intensity": "low",
+                            "texture": "airy",
+                            "play_style": "loop"
+                        }
+                    }
+                ],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "comfort",
+                    "intensity": "low"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "ao_orchard_bird_chirp",
+                    "layer_role": "animal_presence",
+                    "source": "image",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "page_start", "value": "p28"},
+                    "trigger_structure": {
+                        "primary_keywords": ["elma bahçesi", "elma ağacı"],
+                        "secondary_keywords": ["orchard", "kırmızı elma"],
+                        "semantic_intent": "birds in orchard scene ambient presence"
+                    },
+                    "activation_window": {"start_progress": 0.0, "end_progress": 0.3},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "Warm birdsong in sunny apple orchard",
+                    "sound_category": "animal",
+                    "sound_profile": {
+                        "primary_sound": "cheerful_bird_chirps_orchard",
+                        "variant": "warm",
+                        "intensity": "low",
+                        "texture": "natural",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 2,
+                    "confidence": 0.87,
+                    "mix_level": "subtle",
+                    "emotional_tone": "warm"
+                },
+                {
+                    "id": "ao_orchard_tree_bump",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "word", "value": "KÜT"},
+                    "trigger_structure": {
+                        "primary_keywords": ["KÜT", "ağaca çarpıveriyor"],
+                        "secondary_keywords": ["yürüyor", "çok geçmeden"],
+                        "semantic_intent": "Bay Küt bumps into apple tree with signature sound"
+                    },
+                    "activation_window": {"start_progress": 0.25, "end_progress": 0.45},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "Dull thud as Bay Küt walks into apple tree trunk",
+                    "sound_category": "movement",
+                    "sound_profile": {
+                        "primary_sound": "dull_tree_trunk_thud",
+                        "variant": "soft",
+                        "intensity": "medium",
+                        "texture": "wooden",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 5,
+                    "confidence": 0.97,
+                    "mix_level": "prominent",
+                    "emotional_tone": "playful"
+                },
+                {
+                    "id": "ao_orchard_apple_fall",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {
+                        "type": "phrase",
+                        "value": "bir elma düştü bile"
+                    },
+                    "trigger_structure": {
+                        "primary_keywords": ["elma düştü", "yakalar"],
+                        "secondary_keywords": ["yöntemle", "çok kolay"],
+                        "semantic_intent": "apple drops from tree and Bay Küt catches it"
+                    },
+                    "activation_window": {"start_progress": 0.42, "end_progress": 0.6},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "Soft thump of apple landing followed by happy catch",
+                    "sound_category": "object",
+                    "sound_profile": {
+                        "primary_sound": "apple_drop_soft_thump",
+                        "variant": "warm",
+                        "intensity": "low",
+                        "texture": "soft",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 4,
+                    "confidence": 0.93,
+                    "mix_level": "medium",
+                    "emotional_tone": "warm"
+                }
+            ]
+        },
+        {
+            "scene_id": "warm_ending",
+            "pages": [31, 32, 33],
+            "scene_summary": "The narrator wraps up: Bay Küt's story didn't end sadly after all. The reader is asked what to do when they bump into something — the answer: eat one of Bay Küt's apples and forget the pain! A warm cozy close.",
+            "scene_type": "garden",
+            "scene_mood": "cozy",
+            "scene_energy": "low",
+            "narrative_phase": "ending",
+            "scene_duration_estimate_seconds": 45,
+            "scene_activation": {
+                "activation_mode": "hybrid",
+                "entry_cues": [
+                    {
+                        "primary_keywords": [
+                            "Bay Küt'ün topladığı elmalardan",
+                            "bir tane ye"
+                        ],
+                        "secondary_keywords": ["canının yandığını unutursun"],
+                        "semantic_intent": "narrator offers apple as comfort advice"
+                    },
+                    {
+                        "primary_keywords": ["acı dolu hikâyesi hiç de acıklı bitmedi"],
+                        "secondary_keywords": ["öyle değil mi", "ne yapmalısın"],
+                        "semantic_intent": "story conclusion warm wrap up"
+                    }
+                ],
+                "exit_cues": [
+                    {
+                        "keywords": ["hemen bunu hatırla", "Bir daha"],
+                        "semantic_intent": "final message to child reader"
+                    }
+                ],
+                "activation_confidence_threshold": 0.7,
+                "scene_persistence": "manual"
+            },
+            "scene_transition": {
+                "next_scene_id": "",
+                "transition_style": "fade",
+                "audio_continuity": "replace",
+                "transition_duration_seconds": 5
+            },
+            "likely_next_scene": "",
+            "scene_audio": {
+                "primary_ambience": {
+                    "sound_profile": {
+                        "primary_sound": "warm_orchard_breeze",
+                        "variant": "cozy",
+                        "intensity": "low",
+                        "texture": "natural",
+                        "play_style": "fade_out"
+                    }
+                },
+                "secondary_layers": [
+                    {
+                        "sound_profile": {
+                            "primary_sound": "soft_birds_distant",
+                            "variant": "gentle",
+                            "intensity": "low",
+                            "texture": "airy",
+                            "play_style": "fade_out"
+                        }
+                    }
+                ],
+                "music_layer": {
+                    "enabled": true,
+                    "music_theme": "sleepy",
+                    "intensity": "low"
+                }
+            },
+            "audio_opportunities": [
+                {
+                    "id": "ao_end_apple_crunch",
+                    "layer_role": "event",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "phrase", "value": "bir tane ye"},
+                    "trigger_structure": {
+                        "primary_keywords": ["elmalardan", "bir tane ye"],
+                        "secondary_keywords": ["canının yandığını", "unutursun"],
+                        "semantic_intent": "child invited to imagine eating a crunchy apple"
+                    },
+                    "activation_window": {"start_progress": 0.1, "end_progress": 0.4},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "Satisfying apple crunch sound effect as reader imagines eating an apple",
+                    "sound_category": "object",
+                    "sound_profile": {
+                        "primary_sound": "apple_bite_crunch",
+                        "variant": "warm",
+                        "intensity": "low",
+                        "texture": "soft",
+                        "play_style": "single"
+                    },
+                    "playback_type": "oneshot",
+                    "importance": 4,
+                    "confidence": 0.88,
+                    "mix_level": "medium",
+                    "emotional_tone": "warm"
+                },
+                {
+                    "id": "ao_end_closing_music",
+                    "layer_role": "emotional_music",
+                    "source": "text",
+                    "trigger_scope": {"active_scene_only": true},
+                    "trigger_anchor": {"type": "phrase", "value": "hemen bunu hatırla"},
+                    "trigger_structure": {
+                        "primary_keywords": ["hatırla", "bir daha"],
+                        "secondary_keywords": ["çarptığında", "bunu"],
+                        "semantic_intent": "final closing warm musical swell"
+                    },
+                    "activation_window": {"start_progress": 0.6, "end_progress": 1.0},
+                    "trigger_once_per_scene": true,
+                    "trigger_cooldown_seconds": 0,
+                    "event_summary": "Gentle warm closing musical cue as story ends",
+                    "sound_category": "music",
+                    "sound_profile": {
+                        "primary_sound": "soft_closing_lullaby_swell",
+                        "variant": "gentle",
+                        "intensity": "low",
+                        "texture": "soft",
+                        "play_style": "fade_out"
+                    },
+                    "playback_type": "musical_cue",
+                    "importance": 3,
+                    "confidence": 0.85,
+                    "mix_level": "subtle",
+                    "emotional_tone": "warm"
+                }
+            ]
+        }
+    ]
+}
