@@ -1,0 +1,2292 @@
+{
+  "book": {
+    "language": "tr",
+    "analysis_confidence": 0.95,
+    "detected_title": "Bay Küt"
+  },
+  "page_ordering": {
+    "ordering_method": "capture_order",
+    "confidence": 0.98
+  },
+  "pages": [
+    {
+      "page_id": "page_0",
+      "page_number": 1,
+      "order_index": 1,
+      "order_confidence": 1.0,
+      "full_text": "Bu, Bay Küt'ün acı dolu hikâyesi... Bay Küt sürekli ufak tefek kazalar yapar. Etrafta çarpabileceği bir şey varsa, Bay Küt mutlaka gidip ona çarpar! Mesela... Bay Küt kaldırımda yürürken karşısına bir direk çıksa ne olur dersin?",
+      "primary_scene_hint": "Introduction to Mr. Bump's clumsiness",
+      "dominant_visual": "Text only",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_1",
+      "page_number": 2,
+      "order_index": 2,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump walking towards a pole",
+      "dominant_visual": "Mr. Bump with bandages walking on a sidewalk next to a green pole",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_2",
+      "page_number": 3,
+      "order_index": 3,
+      "order_confidence": 1.0,
+      "full_text": "Bay Küt, evinde de böyleydi. Çok güzel bir evi vardı ama küçük ev kazaları yapmadığı bir gün bile geçmezdi.",
+      "primary_scene_hint": "Mr. Bump's clumsiness at home",
+      "dominant_visual": "Text only",
+      "mood": "warm"
+    },
+    {
+      "page_id": "page_3",
+      "page_number": 4,
+      "order_index": 4,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump's house",
+      "dominant_visual": "A cozy house with a red roof and green garden",
+      "mood": "cozy"
+    },
+    {
+      "page_id": "page_4",
+      "page_number": 5,
+      "order_index": 5,
+      "order_confidence": 1.0,
+      "full_text": "Mesela... Bir sabah bahçeye çıkınca, evinin bacasında bir sorun olduğunu fark etti. Bir gece önceki fırtına yüzünden baca borusu gevşemişti. \"Düşmemesi için sağlamlaştırmalıyım,\" dedi. Hemen koşup bir merdiven buldu. Ne kadar da uzun bir merdivendi bu!",
+      "primary_scene_hint": "Mr. Bump finds a problem with the chimney",
+      "dominant_visual": "Text only",
+      "mood": "adventurous"
+    },
+    {
+      "page_id": "page_5",
+      "page_number": 6,
+      "order_index": 6,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump carrying a ladder",
+      "dominant_visual": "Mr. Bump carrying a long ladder in a garden",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_6",
+      "page_number": 7,
+      "order_index": 7,
+      "order_confidence": 1.0,
+      "full_text": "Bay Küt, merdiveni omzuna alıp bahçede yürümeye başladı. Tam köşeyi dönmüştü ki... \"ŞANGIRTI!\" Salonun camı kırıldı. \"Tüh!\" dedi Bay Küt. Ne olduğuna bakmak için dönünce, bir \"ŞANGIRTI!\" sesi daha duyuldu! Bu kez mutfak camı kırılmıştı. \"Tüh!\" dedi yine Bay Küt ve çatıya çıkıp bacaya bakmak için merdiveni duvara yaslamak istedi. Ve bir kere daha... \"ŞANGIRTI!\" Yatak odasının camı da kırıldı!",
+      "primary_scene_hint": "Mr. Bump breaks windows with the ladder",
+      "dominant_visual": "Text only",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_7",
+      "page_number": 8,
+      "order_index": 8,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Broken window with a ladder",
+      "dominant_visual": "A broken window with a ladder leaning against the house",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_8",
+      "page_number": 9,
+      "order_index": 9,
+      "order_confidence": 1.0,
+      "full_text": "Bay Küt'ün başına neler geldiğini görüyorsun ya... Bu yüzden Bay Küt, girdiği hiçbir işte uzun süre çalışamıyordu. Ne zaman bir şey kaybolsa ya da kırılsa ya da bozulsa ya da dağılsa ya da yırtılsa ya da yansa ya da patlasa ya da çatlasa ya da kesilse ya da ufalansa, suçlu hep Bay Küt oluyordu.",
+      "primary_scene_hint": "Mr. Bump's general bad luck at jobs",
+      "dominant_visual": "Text only",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_9",
+      "page_number": 10,
+      "order_index": 10,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump cleaning up a mess",
+      "dominant_visual": "Mr. Bump holding a broom and dustpan, looking surprised",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_10",
+      "page_number": 11,
+      "order_index": 11,
+      "order_confidence": 1.0,
+      "full_text": "Mesela... Bay Küt bir keresinde çiftlikte çalışmıştı. Çiftçinin karısına süt götürmesi lazımdı. Ama sütü taşırken ayağı köpeğe takılmış ve süt yere dökülmüştü. Kedi de sütün tamamını yalayıp yutmuştu!",
+      "primary_scene_hint": "Mr. Bump's farm accident",
+      "dominant_visual": "Text only",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_11",
+      "page_number": 12,
+      "order_index": 12,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump falling with spilled milk and a dog",
+      "dominant_visual": "Mr. Bump fallen, spilled milk, and a dog looking on",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_12",
+      "page_number": 13,
+      "order_index": 13,
+      "order_confidence": 1.0,
+      "full_text": "Mesela... Bay Küt bir keresinde postacılık yapmıştı. Ama mektupları dağıtırken elini posta kutusuna sıkıştırdı. Bay Küt'ün elini oradan çıkarabilmek için itfaiye çağırmak zorunda kalmışlardı!",
+      "primary_scene_hint": "Mr. Bump's postman accident",
+      "dominant_visual": "Text only",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_13",
+      "page_number": 14,
+      "order_index": 14,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump's hand stuck in a mailbox",
+      "dominant_visual": "Mr. Bump with his hand stuck in a red mailbox",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_14",
+      "page_number": 15,
+      "order_index": 15,
+      "order_confidence": 1.0,
+      "full_text": "Mesela... Bay Küt bir keresinde bir otobüste biletçi olarak çalışmıştı. Ama yolculara bilet satarken otobüsten düşmüş, sonra da otobüse yetişememişti! O gün otobüse binen hiçbir yolcu, bilet parası vermemişti.",
+      "primary_scene_hint": "Mr. Bump's bus conductor accident",
+      "dominant_visual": "Text only",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_15",
+      "page_number": 16,
+      "order_index": 16,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump missed the bus",
+      "dominant_visual": "Mr. Bump at a bus stop, bus driving away",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_16",
+      "page_number": 17,
+      "order_index": 17,
+      "order_confidence": 1.0,
+      "full_text": "Mesela... Bay Küt bir keresinde marangozluk yapmıştı. Ama çekiciyle çivileri değil, parmaklarını çakmıştı!",
+      "primary_scene_hint": "Mr. Bump's carpentry accident",
+      "dominant_visual": "Text only",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_17",
+      "page_number": 18,
+      "order_index": 18,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump's injured finger",
+      "dominant_visual": "Mr. Bump's bandaged finger next to a nail",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_18",
+      "page_number": 19,
+      "order_index": 19,
+      "order_confidence": 1.0,
+      "full_text": "Bay Küt bu talihsizliklerden bıkıp usanmıştı. Çareyi tatile çıkmakta buldu. Böylece hem kimseciklere dert olmayacak hem de nasıl bir işte çalışabileceğini düşünecekti. Deniz kenarına giden trene binmek üzere istasyona doğru yola koyuldu.",
+      "primary_scene_hint": "Mr. Bump decides to go on vacation",
+      "dominant_visual": "Text only",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_19",
+      "page_number": 20,
+      "order_index": 20,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump going on vacation with a suitcase",
+      "dominant_visual": "Mr. Bump walking with a suitcase",
+      "mood": "hopeful"
+    },
+    {
+      "page_id": "page_20",
+      "page_number": 21,
+      "order_index": 21,
+      "order_confidence": 1.0,
+      "full_text": "Bay Küt tatildeyken pek çok şey oldu. Mesela... Bir gün tekneden düştü! Cankurtaran sandalının gelip onu kurtarması gerekti.",
+      "primary_scene_hint": "Mr. Bump's boat accident",
+      "dominant_visual": "Text only",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_21",
+      "page_number": 22,
+      "order_index": 22,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump falling into the water",
+      "dominant_visual": "Mr. Bump falling into the ocean from a boat",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_22",
+      "page_number": 23,
+      "order_index": 23,
+      "order_confidence": 1.0,
+      "full_text": "Mesela... Bir gün sahilde sakin sakin yürüyüş yaparken, bir kovaya bastı ve ayağı sıkıştı! Saatlerce bir ayağında kovayla yürümek zorunda kaldı.",
+      "primary_scene_hint": "Mr. Bump's bucket accident",
+      "dominant_visual": "Text only",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_23",
+      "page_number": 24,
+      "order_index": 24,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump with a bucket on his foot",
+      "dominant_visual": "Mr. Bump walking on a beach with a bucket stuck on his foot",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_24",
+      "page_number": 25,
+      "order_index": 25,
+      "order_confidence": 1.0,
+      "full_text": "Mesela... Bir gün, deniz kenarındaki bir kum çukuruna düşüverdi! Çukur o kadar derindi ki kendi başına çıkamadı ve tüm geceyi orada geçirdi. Tüm bu kazalara rağmen Bay Küt, tatile çıktığı için yine de memnundu. Yapabileceği harika bir iş fikri gelmişti aklına! Bay Küt'ün şimdiye kadar bulduğu en iyi fikirdi bu. Harika bir fikirdi, harika!",
+      "primary_scene_hint": "Mr. Bump falls into a sand pit but gets an idea",
+      "dominant_visual": "Text only",
+      "mood": "mysterious"
+    },
+    {
+      "page_id": "page_25",
+      "page_number": 26,
+      "order_index": 26,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump stuck in a sand pit at night",
+      "dominant_visual": "Mr. Bump's hand sticking out of a sand pit at night",
+      "mood": "mysterious"
+    },
+    {
+      "page_id": "page_26",
+      "page_number": 27,
+      "order_index": 27,
+      "order_confidence": 1.0,
+      "full_text": "Bay Küt'ün işi elma toplamak. Ama bunu, diğer çalışanlar gibi merdivene çıkarak yapmıyor. Onun elma toplama yöntemi çok daha iyi. Sadece... Yürüyor! Yürürken de (doğal olarak) çok geçmeden bir ağaca çarpıveriyor. KÜT!",
+      "primary_scene_hint": "Mr. Bump's new job: apple picking by bumping into trees",
+      "dominant_visual": "Text only",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_27",
+      "page_number": 28,
+      "order_index": 28,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump approaching an apple tree",
+      "dominant_visual": "Mr. Bump walking towards an apple tree",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_28",
+      "page_number": 29,
+      "order_index": 29,
+      "order_confidence": 1.0,
+      "full_text": "İşte, bir elma düştü bile! Bay Küt hemen yakalar. Bu yöntemle elma toplamak çok kolay! Bay Küt yeni işini çok seviyor. Elma bahçesinin sahibi de yeni elma toplayıcısını çok beğeniyor.",
+      "primary_scene_hint": "Mr. Bump successfully picks apples",
+      "dominant_visual": "Text only",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_29",
+      "page_number": 30,
+      "order_index": 30,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump in an apple tree",
+      "dominant_visual": "Mr. Bump upside down in an apple tree, smiling",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_30",
+      "page_number": 31,
+      "order_index": 31,
+      "order_confidence": 1.0,
+      "full_text": "Hemen Bay Küt'ün topladığı elmalardan bir tane ye! Canının yandığını unutursun böylece.",
+      "primary_scene_hint": "Advice to eat an apple after bumping",
+      "dominant_visual": "Text only",
+      "mood": "warm"
+    },
+    {
+      "page_id": "page_31",
+      "page_number": 32,
+      "order_index": 32,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Bump holding an apple",
+      "dominant_visual": "Mr. Bump smiling and holding an apple",
+      "mood": "warm"
+    },
+    {
+      "page_id": "page_32",
+      "page_number": 33,
+      "order_index": 33,
+      "order_confidence": 1.0,
+      "full_text": "Bir daha bir yere çarptığında, hemen bunu hatırla!",
+      "primary_scene_hint": "Concluding advice",
+      "dominant_visual": "Text only",
+      "mood": "calm"
+    }
+  ],
+  "scene_graph": [
+    {
+      "scene_id": "scene_1_intro_clumsiness",
+      "pages": [
+        1,
+        2
+      ],
+      "scene_summary": "Introduces Mr. Bump and his tendency to bump into things, showing him walking towards a pole.",
+      "scene_type": "other",
+      "scene_mood": "playful",
+      "scene_energy": "low",
+      "narrative_phase": "intro",
+      "scene_duration_estimate_seconds": 25,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "Bu",
+              "Bay Küt'ün",
+              "hikâyesi"
+            ],
+            "semantic_intent": "start of story introduction"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "direk",
+              "çıksa",
+              "dersin"
+            ],
+            "semantic_intent": "transition to specific example"
+          }
+        ],
+        "activation_confidence_threshold": 0.8,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_2_home_accidents",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_2_home_accidents",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "city_park_day",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "wonder",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_bump_intro",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "ufak tefek kazalar yapar"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "kazalar",
+              "yapar"
+            ],
+            "secondary_keywords": [
+              "ufak",
+              "tefek"
+            ],
+            "semantic_intent": "Mr. Bump's minor accidents"
+          },
+          "activation_window": {
+            "start_progress": 0.2,
+            "end_progress": 0.5
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Subtle bump sound when Mr. Bump's accidents are mentioned.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "bump_impact",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "subtle",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_footsteps_sidewalk",
+          "layer_role": "secondary_detail",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "kaldırımda yürürken"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "yürürken"
+            ],
+            "secondary_keywords": [
+              "kaldırımda"
+            ],
+            "semantic_intent": "Mr. Bump walking on sidewalk"
+          },
+          "activation_window": {
+            "start_progress": 0.7,
+            "end_progress": 0.9
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Light footsteps on a sidewalk.",
+          "sound_category": "movement",
+          "sound_profile": {
+            "primary_sound": "footsteps",
+            "variant": "cartoon_light",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_pole_presence",
+          "layer_role": "secondary_detail",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "2"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "direk",
+              "pole"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "visual of a pole"
+          },
+          "activation_window": {
+            "start_progress": 0.9,
+            "end_progress": 1.0
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "Subtle sound indicating the presence of a pole Mr. Bump might hit.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "pole_impact",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "wooden",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 1,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "playful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_2_home_accidents",
+      "pages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "scene_summary": "Mr. Bump's clumsiness at home, specifically breaking windows while trying to fix the chimney.",
+      "scene_type": "garden",
+      "scene_mood": "playful",
+      "scene_energy": "medium",
+      "narrative_phase": "build_up",
+      "scene_duration_estimate_seconds": 50,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "Bay Küt",
+              "evinde",
+              "böyleydi"
+            ],
+            "semantic_intent": "Mr. Bump's home life"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "Yatak odasının",
+              "camı",
+              "kırıldı"
+            ],
+            "semantic_intent": "final window breaking event"
+          }
+        ],
+        "activation_confidence_threshold": 0.8,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_3_unfortunate_jobs",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_3_unfortunate_jobs",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "suburban_garden_day",
+            "variant": "gentle",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "playful",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_bird_chirp_house",
+          "layer_role": "animal_vocalization",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "4"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "house",
+              "garden"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "visual of a house and garden"
+          },
+          "activation_window": {
+            "start_progress": 0.0,
+            "end_progress": 0.1
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "Gentle bird chirps in the garden.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "bird_chirp",
+            "variant": "gentle",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 1,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_wind_storm_distant",
+          "layer_role": "secondary_detail",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "fırtına yüzünden"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "fırtına"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "mention of a storm"
+          },
+          "activation_window": {
+            "start_progress": 0.2,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Subtle distant wind sound from a past storm.",
+          "sound_category": "weather",
+          "sound_profile": {
+            "primary_sound": "wind",
+            "variant": "gentle_distant",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "mysterious"
+        },
+        {
+          "id": "sfx_ladder_drag",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "merdiven buldu"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "merdiven",
+              "buldu"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump finds a ladder"
+          },
+          "activation_window": {
+            "start_progress": 0.3,
+            "end_progress": 0.4
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of a ladder being dragged.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "ladder_drag",
+            "variant": "light",
+            "intensity": "low",
+            "texture": "wooden",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "adventurous"
+        },
+        {
+          "id": "sfx_glass_break_1",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "ŞANGIRTI!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "ŞANGIRTI"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "sound of glass breaking"
+          },
+          "activation_window": {
+            "start_progress": 0.5,
+            "end_progress": 0.6
+          },
+          "trigger_once_per_scene": false,
+          "trigger_cooldown_seconds": 3,
+          "event_summary": "Sound of glass breaking when the first window is mentioned.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "glass_break",
+            "variant": "small",
+            "intensity": "medium",
+            "texture": "sparkly",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.95,
+          "mix_level": "prominent",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_glass_break_2",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "bir \"ŞANGIRTI!\" sesi daha duyuldu!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "ŞANGIRTI",
+              "sesi",
+              "duyuldu"
+            ],
+            "secondary_keywords": [
+              "daha"
+            ],
+            "semantic_intent": "another sound of glass breaking"
+          },
+          "activation_window": {
+            "start_progress": 0.6,
+            "end_progress": 0.7
+          },
+          "trigger_once_per_scene": false,
+          "trigger_cooldown_seconds": 3,
+          "event_summary": "Sound of glass breaking when the second window is mentioned.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "glass_break",
+            "variant": "small",
+            "intensity": "medium",
+            "texture": "sparkly",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.95,
+          "mix_level": "prominent",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_ladder_lean",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "merdiveni duvara yaslamak istedi"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "merdiveni",
+              "duvara",
+              "yaslamak"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump leaning the ladder against the wall"
+          },
+          "activation_window": {
+            "start_progress": 0.7,
+            "end_progress": 0.8
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of a wooden ladder leaning against a wall.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "ladder_lean",
+            "variant": "wood",
+            "intensity": "low",
+            "texture": "wooden",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_glass_break_3",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "ŞANGIRTI!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "ŞANGIRTI"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "sound of glass breaking again"
+          },
+          "activation_window": {
+            "start_progress": 0.8,
+            "end_progress": 0.9
+          },
+          "trigger_once_per_scene": false,
+          "trigger_cooldown_seconds": 3,
+          "event_summary": "Sound of glass breaking when the third window is mentioned.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "glass_break",
+            "variant": "small",
+            "intensity": "medium",
+            "texture": "sparkly",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.95,
+          "mix_level": "prominent",
+          "emotional_tone": "playful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_3_unfortunate_jobs",
+      "pages": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "scene_summary": "A montage of Mr. Bump's various job-related accidents (farm, postman, bus conductor, carpenter).",
+      "scene_type": "other",
+      "scene_mood": "playful",
+      "scene_energy": "medium",
+      "narrative_phase": "build_up",
+      "scene_duration_estimate_seconds": 80,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "Bay Küt'ün",
+              "başına",
+              "neler",
+              "geldiğini"
+            ],
+            "semantic_intent": "summary of Mr. Bump's misfortunes"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "parmaklarını",
+              "çakmıştı"
+            ],
+            "semantic_intent": "end of carpentry accident example"
+          }
+        ],
+        "activation_confidence_threshold": 0.8,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_4_vacation_woes",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_4_vacation_woes",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "village_day",
+            "variant": "playful",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "adventure",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_broom_sweep",
+          "layer_role": "secondary_detail",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "10"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "broom",
+              "cleaning"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "visual of Mr. Bump with a broom"
+          },
+          "activation_window": {
+            "start_progress": 0.0,
+            "end_progress": 0.05
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "Subtle broom sweeping sound.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "broom_sweep",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 1,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_farm_animals",
+          "layer_role": "animal_presence",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "çiftlikte çalışmıştı"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "çiftlikte",
+              "çalışmıştı"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump working on a farm"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.2
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Distant farm animal sounds.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "farm_animal",
+            "variant": "distant",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_dog_whimper",
+          "layer_role": "animal_vocalization",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "ayağı köpeğe takılmış"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "köpeğe",
+              "takılmış"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump tripping over a dog"
+          },
+          "activation_window": {
+            "start_progress": 0.2,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Playful dog whimper.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "dog_whimper",
+            "variant": "playful",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_milk_spill",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "süt yere dökülmüştü"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "süt",
+              "dökülmüştü"
+            ],
+            "secondary_keywords": [
+              "yere"
+            ],
+            "semantic_intent": "milk spilling on the ground"
+          },
+          "activation_window": {
+            "start_progress": 0.3,
+            "end_progress": 0.4
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of liquid spilling.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "liquid_spill",
+            "variant": "small",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "unfortunate"
+        },
+        {
+          "id": "sfx_cat_lick",
+          "layer_role": "animal_vocalization",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "Kedi de sütün tamamını yalayıp yutmuştu!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "Kedi",
+              "yalayıp",
+              "yutmuştu"
+            ],
+            "secondary_keywords": [
+              "sütün"
+            ],
+            "semantic_intent": "cat licking spilled milk"
+          },
+          "activation_window": {
+            "start_progress": 0.4,
+            "end_progress": 0.5
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Soft cat licking sound.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "cat_lick",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_mailbox_clunk",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "elini posta kutusuna sıkıştırdı"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "elini",
+              "posta kutusuna",
+              "sıkıştırdı"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump's hand stuck in mailbox"
+          },
+          "activation_window": {
+            "start_progress": 0.5,
+            "end_progress": 0.6
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of a mailbox clunking.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "mailbox_clunk",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "metal",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "unfortunate"
+        },
+        {
+          "id": "sfx_siren_distant",
+          "layer_role": "environment",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "itfaiye çağırmak zorunda kalmışlardı!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "itfaiye",
+              "çağırmak"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "firefighters being called"
+          },
+          "activation_window": {
+            "start_progress": 0.6,
+            "end_progress": 0.7
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Distant siren sound.",
+          "sound_category": "environment",
+          "sound_profile": {
+            "primary_sound": "siren",
+            "variant": "distant_short",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "suspenseful"
+        },
+        {
+          "id": "sfx_bus_engine_idle",
+          "layer_role": "environment",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "otobüste biletçi olarak çalışmıştı"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "otobüste",
+              "biletçi"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump working as a bus conductor"
+          },
+          "activation_window": {
+            "start_progress": 0.7,
+            "end_progress": 0.75
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Subtle bus engine idling sound.",
+          "sound_category": "environment",
+          "sound_profile": {
+            "primary_sound": "bus_engine",
+            "variant": "idle_distant",
+            "intensity": "low",
+            "texture": "metal",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_bus_horn",
+          "layer_role": "event",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "16"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "bus",
+              "driving",
+              "away"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "visual of bus driving away"
+          },
+          "activation_window": {
+            "start_progress": 0.75,
+            "end_progress": 0.8
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Short bus horn as the bus drives away.",
+          "sound_category": "environment",
+          "sound_profile": {
+            "primary_sound": "bus_horn",
+            "variant": "short",
+            "intensity": "low",
+            "texture": "metal",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "unfortunate"
+        },
+        {
+          "id": "sfx_hammer_tap",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "marangozluk yapmıştı"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "marangozluk",
+              "yapmıştı"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump doing carpentry"
+          },
+          "activation_window": {
+            "start_progress": 0.8,
+            "end_progress": 0.9
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Light hammer tapping sound.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "hammer_tap",
+            "variant": "light",
+            "intensity": "low",
+            "texture": "wooden",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_ow_cartoon",
+          "layer_role": "emotion",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "parmaklarını çakmıştı!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "parmaklarını",
+              "çakmıştı"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump hitting his fingers"
+          },
+          "activation_window": {
+            "start_progress": 0.9,
+            "end_progress": 1.0
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Cartoon 'ow' sound.",
+          "sound_category": "emotion",
+          "sound_profile": {
+            "primary_sound": "ow_sound",
+            "variant": "cartoon",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "playful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_4_vacation_woes",
+      "pages": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "scene_summary": "Mr. Bump goes on vacation to escape his bad luck, but still has accidents (falling from boat, bucket on foot, sand pit). He then gets a brilliant idea.",
+      "scene_type": "ocean",
+      "scene_mood": "calm",
+      "scene_energy": "medium",
+      "narrative_phase": "transition",
+      "scene_duration_estimate_seconds": 70,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "Bay Küt",
+              "talihsizliklerden",
+              "bıkıp",
+              "usanmıştı"
+            ],
+            "semantic_intent": "Mr. Bump tired of misfortunes"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "Harika",
+              "fikirdi"
+            ],
+            "semantic_intent": "Mr. Bump's great idea"
+          }
+        ],
+        "activation_confidence_threshold": 0.8,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_5_apple_picker",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_5_apple_picker",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "ocean_waves",
+            "variant": "gentle",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "comfort",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_train_whistle_distant",
+          "layer_role": "environment",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "trene binmek üzere"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "trene",
+              "binmek"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump going to take a train"
+          },
+          "activation_window": {
+            "start_progress": 0.0,
+            "end_progress": 0.1
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Distant train whistle sound.",
+          "sound_category": "environment",
+          "sound_profile": {
+            "primary_sound": "train_whistle",
+            "variant": "distant",
+            "intensity": "low",
+            "texture": "metal",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "hopeful"
+        },
+        {
+          "id": "sfx_splash_small",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "tekneden düştü!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "tekneden",
+              "düştü"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump falling from a boat"
+          },
+          "activation_window": {
+            "start_progress": 0.2,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Small splash sound.",
+          "sound_category": "movement",
+          "sound_profile": {
+            "primary_sound": "splash",
+            "variant": "small",
+            "intensity": "medium",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "unfortunate"
+        },
+        {
+          "id": "sfx_boat_oar_rowing",
+          "layer_role": "movement",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "Cankurtaran sandalının gelip onu kurtarması gerekti."
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "Cankurtaran",
+              "sandalının",
+              "gelip",
+              "kurtarması"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "lifeguard boat coming to rescue"
+          },
+          "activation_window": {
+            "start_progress": 0.3,
+            "end_progress": 0.4
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of boat oars rowing.",
+          "sound_category": "movement",
+          "sound_profile": {
+            "primary_sound": "boat_oar",
+            "variant": "rowing",
+            "intensity": "low",
+            "texture": "wooden",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_footsteps_sand",
+          "layer_role": "movement",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "sahilde sakin sakin yürüyüş yaparken"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "sahilde",
+              "yürüyüş",
+              "yaparken"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump walking on the beach"
+          },
+          "activation_window": {
+            "start_progress": 0.4,
+            "end_progress": 0.5
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Soft footsteps on sand.",
+          "sound_category": "movement",
+          "sound_profile": {
+            "primary_sound": "footsteps_sand",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_bucket_clunk_foot",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "bir kovaya bastı ve ayağı sıkıştı!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "kovaya",
+              "bastı",
+              "ayağı",
+              "sıkıştı"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump stepping on a bucket"
+          },
+          "activation_window": {
+            "start_progress": 0.5,
+            "end_progress": 0.6
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of a bucket clunking on a foot.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "bucket_clunk",
+            "variant": "foot",
+            "intensity": "low",
+            "texture": "metal",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "unfortunate"
+        },
+        {
+          "id": "sfx_sand_fall_soft",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "kum çukuruna düşüverdi!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "kum",
+              "çukuruna",
+              "düşüverdi"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump falling into a sand pit"
+          },
+          "activation_window": {
+            "start_progress": 0.7,
+            "end_progress": 0.8
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Soft sound of falling into sand.",
+          "sound_category": "movement",
+          "sound_profile": {
+            "primary_sound": "sand_fall",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "unfortunate"
+        },
+        {
+          "id": "sfx_cricket_chirp_night",
+          "layer_role": "animal_vocalization",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "26"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "night",
+              "moon"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "visual of night scene"
+          },
+          "activation_window": {
+            "start_progress": 0.8,
+            "end_progress": 0.9
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "Gentle cricket chirps at night.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "cricket_chirp",
+            "variant": "night",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 1,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_magic_sparkle_idea",
+          "layer_role": "emotional_music",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "harika bir iş fikri gelmişti aklına!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "harika",
+              "fikri",
+              "gelmişti"
+            ],
+            "secondary_keywords": [
+              "iş"
+            ],
+            "semantic_intent": "Mr. Bump getting a great idea"
+          },
+          "activation_window": {
+            "start_progress": 0.9,
+            "end_progress": 1.0
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Subtle magical sparkle sound for a new idea.",
+          "sound_category": "magic",
+          "sound_profile": {
+            "primary_sound": "magic_sparkle",
+            "variant": "subtle",
+            "intensity": "low",
+            "texture": "sparkly",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "subtle",
+          "emotional_tone": "wonder"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_5_apple_picker",
+      "pages": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "scene_summary": "Mr. Bump's new job: picking apples by bumping into trees, which he enjoys and is good at.",
+      "scene_type": "garden",
+      "scene_mood": "playful",
+      "scene_energy": "medium",
+      "narrative_phase": "action",
+      "scene_duration_estimate_seconds": 35,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "Bay Küt'ün",
+              "işi",
+              "elma",
+              "toplamak"
+            ],
+            "semantic_intent": "introduction of Mr. Bump's new job"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "Elma",
+              "bahçesinin",
+              "sahibi",
+              "beğeniyor"
+            ],
+            "semantic_intent": "owner likes the new apple picker"
+          }
+        ],
+        "activation_confidence_threshold": 0.8,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_6_conclusion_advice",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_6_conclusion_advice",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "orchard_day",
+            "variant": "gentle",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "wonder",
+          "intensity": "medium"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_footsteps_grass",
+          "layer_role": "movement",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "Sadece... Yürüyor!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "Yürüyor"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump walking"
+          },
+          "activation_window": {
+            "start_progress": 0.2,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Light footsteps on grass.",
+          "sound_category": "movement",
+          "sound_profile": {
+            "primary_sound": "footsteps_grass",
+            "variant": "light",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_tree_impact_thud",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "bir ağaca çarpıveriyor"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "ağaca",
+              "çarpıveriyor"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump bumping into a tree"
+          },
+          "activation_window": {
+            "start_progress": 0.3,
+            "end_progress": 0.4
+          },
+          "trigger_once_per_scene": false,
+          "trigger_cooldown_seconds": 3,
+          "event_summary": "Thud sound of bumping into a tree.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "tree_impact",
+            "variant": "thud",
+            "intensity": "medium",
+            "texture": "wooden",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.95,
+          "mix_level": "prominent",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_cartoon_bump_impact",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "KÜT!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "KÜT"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "onomatopoeia for a bump"
+          },
+          "activation_window": {
+            "start_progress": 0.4,
+            "end_progress": 0.5
+          },
+          "trigger_once_per_scene": false,
+          "trigger_cooldown_seconds": 3,
+          "event_summary": "Cartoonish bump impact sound.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "cartoon_bump",
+            "variant": "impact",
+            "intensity": "high",
+            "texture": "soft",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 5,
+          "confidence": 0.98,
+          "mix_level": "prominent",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_apple_fall_soft",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "bir elma düştü bile!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "elma",
+              "düştü"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "apple falling from tree"
+          },
+          "activation_window": {
+            "start_progress": 0.5,
+            "end_progress": 0.6
+          },
+          "trigger_once_per_scene": false,
+          "trigger_cooldown_seconds": 3,
+          "event_summary": "Soft sound of an apple falling.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "apple_fall",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_apple_catch_soft",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "Bay Küt hemen yakalar."
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "yakalar"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Bump catching an apple"
+          },
+          "activation_window": {
+            "start_progress": 0.6,
+            "end_progress": 0.7
+          },
+          "trigger_once_per_scene": false,
+          "trigger_cooldown_seconds": 3,
+          "event_summary": "Soft sound of catching an apple.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "apple_catch",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_bird_chirp_happy",
+          "layer_role": "animal_vocalization",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "30"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "apple",
+              "tree",
+              "happy"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "visual of Mr. Bump happily in an apple tree"
+          },
+          "activation_window": {
+            "start_progress": 0.8,
+            "end_progress": 0.9
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 0,
+          "event_summary": "Happy bird chirps in the orchard.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "bird_chirp",
+            "variant": "happy",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 1,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "playful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_6_conclusion_advice",
+      "pages": [
+        31,
+        32,
+        33
+      ],
+      "scene_summary": "The story concludes with advice to eat an apple if you bump yourself, remembering Mr. Bump's clever solution.",
+      "scene_type": "other",
+      "scene_mood": "warm",
+      "scene_energy": "low",
+      "narrative_phase": "ending",
+      "scene_duration_estimate_seconds": 30,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "Hemen",
+              "Bay Küt'ün",
+              "topladığı",
+              "elmalardan",
+              "bir tane ye"
+            ],
+            "semantic_intent": "advice to eat an apple"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "hemen",
+              "bunu",
+              "hatırla"
+            ],
+            "semantic_intent": "final concluding advice"
+          }
+        ],
+        "activation_confidence_threshold": 0.8,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "end_of_book",
+        "transition_style": "fade",
+        "audio_continuity": "fade_out",
+        "transition_duration_seconds": 3
+      },
+      "likely_next_scene": "end_of_book",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "cozy_room_quiet",
+            "variant": "cozy",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "calm",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_apple_crunch_soft",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "bir tane ye!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "tane",
+              "ye"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "eating an apple"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Soft apple crunch sound.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "apple_crunch",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "cozy"
+        },
+        {
+          "id": "sfx_gentle_chime_positive",
+          "layer_role": "emotional_music",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "Canının yandığını unutursun böylece."
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "unutursun",
+              "böylece"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "forgetting pain with a positive thought"
+          },
+          "activation_window": {
+            "start_progress": 0.4,
+            "end_progress": 0.6
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Gentle positive chime sound.",
+          "sound_category": "magic",
+          "sound_profile": {
+            "primary_sound": "gentle_chime",
+            "variant": "positive",
+            "intensity": "low",
+            "texture": "sparkly",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_magic_sparkle_remember",
+          "layer_role": "emotional_music",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "hemen bunu hatırla!"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "hatırla"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "remembering the advice"
+          },
+          "activation_window": {
+            "start_progress": 0.8,
+            "end_progress": 1.0
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Subtle magical sparkle sound for remembering.",
+          "sound_category": "magic",
+          "sound_profile": {
+            "primary_sound": "magic_sparkle",
+            "variant": "subtle",
+            "intensity": "low",
+            "texture": "sparkly",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "subtle",
+          "emotional_tone": "wonder"
+        }
+      ]
+    }
+  ]
+}

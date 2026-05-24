@@ -35,6 +35,12 @@
       "title": "Bay Küt",
       "language": "tr",
       "asset_path": "assets/stories/baykut.json"
+    },
+    {
+      "id": "baykut",
+      "title": "Bay Küt",
+      "language": "tr",
+      "asset_path": "assets/stories/baykut2.json"
     }
   ]
 }
