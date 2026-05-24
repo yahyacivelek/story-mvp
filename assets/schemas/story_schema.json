@@ -130,23 +130,7 @@
         "play_style"
       ],
       "properties": {
-        "primary_sound": {
-          "type": "string",
-          "enum": [
-            "forest",
-            "rain",
-            "wind",
-            "ocean",
-            "night_crickets",
-            "birds",
-            "fireplace",
-            "village_day",
-            "cave_drip",
-            "garden_breeze",
-            "magic_ambience",
-            "other"
-          ]
-        },
+        "primary_sound": { "type": "string", "minLength": 1 },
         "variant": {
           "type": "string",
           "enum": [
@@ -202,31 +186,7 @@
         "play_style"
       ],
       "properties": {
-        "primary_sound": {
-          "type": "string",
-          "enum": [
-            "bird_chirp",
-            "owl_hoot",
-            "frog_croak",
-            "lion_roar_soft",
-            "wolf_howl_soft",
-            "monkey_chatter",
-            "bear_breathing",
-            "cat_purr",
-            "dog_bark_soft",
-            "horse_gallop",
-            "duck_quack",
-            "whale_call",
-            "bee_buzz",
-            "footsteps_grass",
-            "footsteps_wood",
-            "door_creak",
-            "magic_chime",
-            "magic_whoosh",
-            "water_splash",
-            "other"
-          ]
-        },
+        "primary_sound": { "type": "string", "minLength": 1 },
         "variant": {
           "type": "string",
           "enum": [
