@@ -379,12 +379,12 @@ class StoryController extends StateNotifier<StoryState> {
       'entryPrimary=${entryKeywords.primary}, entrySecondary=${entryKeywords.secondary}',
     );
 
-    // Evaluate exit and entry cues separately (OR). Combining them inflated
-    // maxPoints so a single end-of-scene phrase (e.g. "severmiş") scored
-    // ~0.14 against the next scene's 0.7 activation threshold — never firing.
-    // 0.5 = one primary hit in a 2-keyword cue list (2/4), or two in a 4-keyword list.
-    // Lowered from 0.6 to improve detection of partial cue matches.
-    const transitionThreshold = 0.5;
+    // Evaluate exit and entry cues separately (OR). Each scene's
+    // activation_confidence_threshold from the JSON is used as the threshold.
+    final exitThreshold =
+        currentScene.sceneActivation.activationConfidenceThreshold;
+    final entryThreshold =
+        nextScene.sceneActivation.activationConfidenceThreshold;
 
     final exitScore = _cueKeywordsNonEmpty(exitKeywords)
         ? FuzzyMatcher.score(
@@ -393,7 +393,7 @@ class StoryController extends StateNotifier<StoryState> {
             secondaryKeywords: exitKeywords.secondary,
           )
         : 0.0;
-    final exitHit = exitScore >= transitionThreshold;
+    final exitHit = exitScore >= exitThreshold;
 
     final entryScore = _cueKeywordsNonEmpty(entryKeywords)
         ? FuzzyMatcher.score(
@@ -402,7 +402,7 @@ class StoryController extends StateNotifier<StoryState> {
             secondaryKeywords: entryKeywords.secondary,
           )
         : 0.0;
-    final entryHit = entryScore >= transitionThreshold;
+    final entryHit = entryScore >= entryThreshold;
 
     debugPrint(
       '[StoryController] Matching transcript: "${transcript.substring(0, transcript.length.clamp(0, 80))}..." '
