@@ -41,6 +41,12 @@
       "title": "Bay Küt",
       "language": "tr",
       "asset_path": "assets/stories/baykut2.json"
+    },
+    {
+      "id": "kucukbayanprenses",
+      "title": "Küçük Bayan Prenses",
+      "language": "tr",
+      "asset_path": "assets/stories/kucuk_bayan_prenses.json"
     }
   ]
 }

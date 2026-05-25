@@ -1,0 +1,16 @@
+# Optional: run Qdrant as a server instead of local file mode.
+# prewarm_audio.py uses local file mode by default (no Docker needed).
+# Use this only if you want to share the index across machines:
+#   docker compose up -d
+#   uv run tools/prewarm_audio.py --qdrant-url http://localhost:6333
+
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_storage:/qdrant/storage:z
+
+volumes:
+  qdrant_storage:
