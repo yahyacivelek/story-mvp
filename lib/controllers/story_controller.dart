@@ -244,7 +244,7 @@ class StoryController extends StateNotifier<StoryState> {
     state = state.copyWith(isListening: true);
 
     _speechSub = _speech.wordStream.listen(_onWords);
-    debugPrint('[StoryController] speech listening started (vosk=$useVosk)');
+    debugPrint('[StoryController] speech listening started (backend=$_sttBackend)');
   }
 
   Future<void> stopListening() async {

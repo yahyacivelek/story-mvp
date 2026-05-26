@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -33,7 +34,7 @@ class DeepgramSpeechService {
   final AudioRecorder _recorder = AudioRecorder();
   WebSocketChannel? _wsChannel;
   StreamSubscription<dynamic>? _wsSub;
-  StreamSubscription<RecordState>? _recordSub;
+  StreamSubscription<Uint8List>? _recordSub;
 
   // Deepgram API configuration
   static const String _deepgramWsUrl = 'wss://api.deepgram.com/v1/listen';

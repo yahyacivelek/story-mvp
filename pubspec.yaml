@@ -34,7 +34,7 @@ dependencies:
 
   # Deepgram streaming STT
   web_socket_channel: ^3.0.3
-  record: ^5.0.4
+  record: ^6.0.0
 
   # Runtime permissions
   permission_handler: ^11.3.1
@@ -63,6 +63,9 @@ dependency_overrides:
   permission_handler: ^11.3.1
   http: ^1.2.0
   archive: ^4.0.9
+  # record_linux 0.7.2 (pulled in by record ^6) is missing startStream impl.
+  # Override to a newer version that implements record_platform_interface 1.6.0.
+  record_linux: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -79,3 +82,4 @@ flutter:
     - assets/stories/
     - assets/audio/
     - assets/schemas/
+    - .env
