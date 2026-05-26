@@ -93,7 +93,7 @@ class StoryController extends StateNotifier<StoryState> {
   final Ref _ref;
   /// Set to [true] to use Vosk offline STT instead of [SpeechService].
   /// Toggle via the [storyControllerProvider] by reading [useVosk].
-  static const bool useVosk = true;
+  static const bool useVosk = false;
 
   late final _SpeechBackend _speech = useVosk
       ? _VoskBackend(VoskSpeechService.instance)

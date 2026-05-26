@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
@@ -11,6 +12,8 @@ import 'package:speech_to_text/speech_to_text.dart';
 class SpeechService {
   SpeechService._();
   static final SpeechService instance = SpeechService._();
+
+  static const _audioUtils = MethodChannel('com.example.story/audio_utils');
 
   final SpeechToText _stt = SpeechToText();
 
@@ -121,6 +124,7 @@ class SpeechService {
     _lastErrorWasBusy = false;
 
     _isListening = true;
+    _muteNotificationStream();
     _listenLoop();
     return true;
   }
@@ -183,6 +187,7 @@ class SpeechService {
     _isListening = false;
     _restartTimer?.cancel();
     await _stt.stop();
+    _unmuteNotificationStream();
     debugPrint('[Speech] stopped');
   }
 
@@ -287,6 +292,15 @@ class SpeechService {
     _isListening = false;
     _restartTimer?.cancel();
     _stt.stop();
+    _unmuteNotificationStream();
     _wordController.close();
+  }
+
+  void _muteNotificationStream() {
+    _audioUtils.invokeMethod('muteNotificationStream').catchError((_) {});
+  }
+
+  void _unmuteNotificationStream() {
+    _audioUtils.invokeMethod('unmuteNotificationStream').catchError((_) {});
   }
 }
