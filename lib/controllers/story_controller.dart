@@ -10,7 +10,7 @@ import 'package:path/path.dart' as path;
 
 import '../models/story_models.dart';
 import '../services/speech_service.dart';
-import '../services/vosk_speech_service.dart';
+import '../services/vosk_speech_service_interface.dart';
 import '../utils/fuzzy_matcher.dart';
 import 'audio_controller.dart';
 
