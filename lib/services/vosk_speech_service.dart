@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:vosk_flutter/vosk_flutter.dart' as vosk;
 
@@ -167,20 +166,15 @@ class VoskSpeechService {
       return null;
     }
 
-    final supportDir = await getApplicationSupportDirectory();
-    final modelLoader = vosk.ModelLoader(modelStorage: supportDir.path);
-
+    final modelLoader = vosk.ModelLoader();
     final modelName = url.split('/').last.replaceAll('.zip', '');
-    final alreadyLoaded = await modelLoader.isModelAlreadyLoaded(modelName);
 
-    if (alreadyLoaded) {
-      final p = await modelLoader.modelPath(modelName);
-      debugPrint('[VoskSTT] Model cache hit: $p');
-      return p;
-    }
+    debugPrint('[VoskSTT] Ensuring model "$modelName"');
 
-    debugPrint('[VoskSTT] Downloading model $modelName from $url ...');
     try {
+      // loadFromNetwork checks the cache internally and skips download if
+      // the model directory already exists. The returned path is always
+      // the correct on-device path to the extracted model.
       final modelPath = await modelLoader.loadFromNetwork(url);
       debugPrint('[VoskSTT] Model ready at $modelPath');
       return modelPath;
