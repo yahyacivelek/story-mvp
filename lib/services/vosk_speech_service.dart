@@ -73,9 +73,16 @@ class VoskSpeechService {
   /// Downloads (if needed) and initialises the Vosk model for [languageCode],
   /// then starts continuous microphone recognition.
   ///
+  /// [grammar] is an optional closed vocabulary list.  When provided the Vosk
+  /// recognizer is created with [vosk_recognizer_new_grm] which restricts
+  /// decoding to those words only, yielding lower CPU usage and higher
+  /// accuracy for constrained scenarios.  Always include `"[unk]"` in the
+  /// list so out-of-vocabulary audio still produces output.
+  ///
   /// Safe to call multiple times — subsequent calls are no-ops if already
   /// listening.
-  Future<bool> startListening({String languageCode = 'en'}) async {
+  Future<bool> startListening(
+      {String languageCode = 'en', List<String>? grammar}) async {
     if (_isListening) return true;
 
     if (!Platform.isAndroid && !Platform.isIOS) {
@@ -112,7 +119,13 @@ class VoskSpeechService {
       _recognizer = await _vosk.createRecognizer(
         model: _model!,
         sampleRate: 16000,
+        grammar: grammar,
       );
+      if (grammar != null) {
+        debugPrint(
+          '[VoskSTT] grammar-constrained recognizer: ${grammar.length} tokens'
+        );
+      }
 
       _speechService = await _vosk.initSpeechService(_recognizer!);
       await _speechService!.start(
@@ -142,13 +155,31 @@ class VoskSpeechService {
         } catch (_) {}
       });
 
-      debugPrint('[VoskSTT] recognition started (lang=$languageCode)');
+      debugPrint(
+        '[VoskSTT] recognition started '
+        '(lang=$languageCode, grammar=${grammar != null ? "${grammar.length} tokens" : "unrestricted"})'
+      );
       return true;
     } catch (e) {
       debugPrint('[VoskSTT] startListening failed: $e');
       _isListening = false;
       return false;
     }
+  }
+
+  /// Swaps the active grammar on-the-fly **without** restarting the audio
+  /// pipeline.  Call this on every scene transition to narrow the vocabulary
+  /// to the current scene's keywords.
+  ///
+  /// No-op if recognition is not currently active.
+  Future<void> updateGrammar(List<String> grammar) async {
+    final rec = _recognizer;
+    if (rec == null || !_isListening) {
+      debugPrint('[VoskSTT] updateGrammar: not listening — skipped');
+      return;
+    }
+    await rec.setGrammar(grammar);
+    debugPrint('[VoskSTT] grammar updated: ${grammar.length} tokens');
   }
 
   Future<void> stopListening() async {

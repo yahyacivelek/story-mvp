@@ -13,9 +13,12 @@ class VoskSpeechService {
   Stream<String> get wordStream => _wordController.stream;
   bool get isListening => false;
 
-  Future<bool> startListening({String languageCode = 'en'}) async {
+  Future<bool> startListening(
+      {String languageCode = 'en', List<String>? grammar}) async {
     return false;
   }
+
+  Future<void> updateGrammar(List<String> grammar) async {}
 
   Future<void> stopListening() async {}
 

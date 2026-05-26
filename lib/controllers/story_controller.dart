@@ -10,6 +10,7 @@ import 'package:path/path.dart' as path;
 
 import '../models/story_models.dart';
 import '../services/speech_service.dart';
+import '../services/vosk_grammar_builder.dart';
 import '../services/vosk_speech_service_interface.dart';
 import '../services/deepgram_speech_service.dart';
 import '../utils/fuzzy_matcher.dart';
@@ -233,7 +234,27 @@ class StoryController extends StateNotifier<StoryState> {
     await _ref
         .read(audioControllerProvider.notifier)
         .setSpeechCaptureDucking(true);
-    final ok = await _speech.startListening(languageCode: languageCode);
+
+    // Build initial grammar from the first (active) scene so the recognizer
+    // starts constrained from the very first utterance.
+    final data = state.storyData;
+    final firstScene = state.activeScene;
+    List<String>? initialGrammar;
+    if (data != null && firstScene != null) {
+      initialGrammar = VoskGrammarBuilder.buildForScene(
+        scene: firstScene,
+        allPages: data.pages,
+      );
+      debugPrint(
+        '[StoryController] initial grammar built: '
+        '${initialGrammar.length} tokens for scene "${firstScene.sceneId}"',
+      );
+    }
+
+    final ok = await _speech.startListening(
+      languageCode: languageCode,
+      grammar: initialGrammar,
+    );
     if (!ok) {
       await _ref
           .read(audioControllerProvider.notifier)
@@ -591,11 +612,24 @@ class StoryController extends StateNotifier<StoryState> {
     _transcriptBuffer.clear();
     _lastTriggered.clear();
 
+    // Swap the Vosk grammar to the next scene's vocabulary without restarting
+    // the audio pipeline.  Other backends ignore this call (no-op).
+    if (_sttBackend == 'vosk') {
+      final newGrammar = VoskGrammarBuilder.buildForScene(
+        scene: nextScene,
+        allPages: data.pages,
+      );
+      _speech.updateGrammar(newGrammar);
+      debugPrint(
+        '[StoryController] grammar updated for scene "${nextScene.sceneId}": '
+        '${newGrammar.length} tokens',
+      );
+    }
+
     // Use crossfade transition when the JSON specifies it.
     _ref
         .read(audioControllerProvider.notifier)
         .transitionToScene(nextScene, transition: transition);
-
   }
 
   @override
@@ -623,8 +657,12 @@ class _Keywords {
 
 abstract class _SpeechBackend {
   Stream<String> get wordStream;
-  Future<bool> startListening({String languageCode});
+  Future<bool> startListening({String languageCode, List<String>? grammar});
   Future<void> stopListening();
+  /// Swap the active vocabulary constraint without restarting recognition.
+  /// Backends that do not support grammar constraints should implement this
+  /// as a no-op.
+  Future<void> updateGrammar(List<String> grammar) async {}
   void dispose();
 }
 
@@ -636,8 +674,12 @@ class _SttBackend implements _SpeechBackend {
   Stream<String> get wordStream => _svc.wordStream;
 
   @override
-  Future<bool> startListening({String languageCode = 'en'}) =>
+  Future<bool> startListening(
+          {String languageCode = 'en', List<String>? grammar}) =>
       _svc.startListening(languageCode: languageCode);
+
+  @override
+  Future<void> updateGrammar(List<String> grammar) async {}
 
   @override
   Future<void> stopListening() => _svc.stopListening();
@@ -654,8 +696,13 @@ class _VoskBackend implements _SpeechBackend {
   Stream<String> get wordStream => _svc.wordStream;
 
   @override
-  Future<bool> startListening({String languageCode = 'en'}) =>
-      _svc.startListening(languageCode: languageCode);
+  Future<bool> startListening(
+          {String languageCode = 'en', List<String>? grammar}) =>
+      _svc.startListening(languageCode: languageCode, grammar: grammar);
+
+  @override
+  Future<void> updateGrammar(List<String> grammar) =>
+      _svc.updateGrammar(grammar);
 
   @override
   Future<void> stopListening() => _svc.stopListening();
@@ -672,8 +719,12 @@ class _DeepgramBackend implements _SpeechBackend {
   Stream<String> get wordStream => _svc.wordStream;
 
   @override
-  Future<bool> startListening({String languageCode = 'en'}) =>
+  Future<bool> startListening(
+          {String languageCode = 'en', List<String>? grammar}) =>
       _svc.startListening(languageCode: languageCode);
+
+  @override
+  Future<void> updateGrammar(List<String> grammar) async {}
 
   @override
   Future<void> stopListening() => _svc.stopListening();
