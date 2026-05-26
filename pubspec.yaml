@@ -29,6 +29,9 @@ dependencies:
   # Speech recognition
   speech_to_text: ^7.0.0
 
+  # Offline speech recognition (Vosk) — feature/vosk-offline-stt branch
+  vosk_flutter: ^0.3.48
+
   # Runtime permissions
   permission_handler: ^11.3.1
 
@@ -51,6 +54,11 @@ dependencies:
   archive: ^4.0.9
   file_picker: ^11.0.0
   wakelock_plus: ^1.2.10
+
+dependency_overrides:
+  permission_handler: ^11.3.1
+  http: ^1.2.0
+  archive: ^4.0.9
 
 dev_dependencies:
   flutter_test:

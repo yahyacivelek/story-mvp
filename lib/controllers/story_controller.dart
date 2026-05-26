@@ -10,6 +10,7 @@ import 'package:path/path.dart' as path;
 
 import '../models/story_models.dart';
 import '../services/speech_service.dart';
+import '../services/vosk_speech_service.dart';
 import '../utils/fuzzy_matcher.dart';
 import 'audio_controller.dart';
 
@@ -90,7 +91,13 @@ class StoryController extends StateNotifier<StoryState> {
   }
 
   final Ref _ref;
-  final SpeechService _speech = SpeechService.instance;
+  /// Set to [true] to use Vosk offline STT instead of [SpeechService].
+  /// Toggle via the [storyControllerProvider] by reading [useVosk].
+  static const bool useVosk = true;
+
+  late final _SpeechBackend _speech = useVosk
+      ? _VoskBackend(VoskSpeechService.instance)
+      : _SttBackend(SpeechService.instance);
   StreamSubscription<String>? _speechSub;
 
   /// Rolling transcript window — keeps last ~120 words for matching.
@@ -232,7 +239,7 @@ class StoryController extends StateNotifier<StoryState> {
     state = state.copyWith(isListening: true);
 
     _speechSub = _speech.wordStream.listen(_onWords);
-    debugPrint('[StoryController] speech listening started');
+    debugPrint('[StoryController] speech listening started (vosk=$useVosk)');
   }
 
   Future<void> stopListening() async {
@@ -590,6 +597,7 @@ class StoryController extends StateNotifier<StoryState> {
   void dispose() {
     _speechSub?.cancel();
     _speech.stopListening();
+    _speech.dispose();
     super.dispose();
   }
 }
@@ -602,6 +610,53 @@ class _Keywords {
   final List<String> primary;
   final List<String> secondary;
   const _Keywords({required this.primary, required this.secondary});
+}
+
+// ---------------------------------------------------------------------------
+// Speech backend abstraction — allows swapping STT implementations
+// ---------------------------------------------------------------------------
+
+abstract class _SpeechBackend {
+  Stream<String> get wordStream;
+  Future<bool> startListening({String languageCode});
+  Future<void> stopListening();
+  void dispose();
+}
+
+class _SttBackend implements _SpeechBackend {
+  _SttBackend(this._svc);
+  final SpeechService _svc;
+
+  @override
+  Stream<String> get wordStream => _svc.wordStream;
+
+  @override
+  Future<bool> startListening({String languageCode = 'en'}) =>
+      _svc.startListening(languageCode: languageCode);
+
+  @override
+  Future<void> stopListening() => _svc.stopListening();
+
+  @override
+  void dispose() => _svc.dispose();
+}
+
+class _VoskBackend implements _SpeechBackend {
+  _VoskBackend(this._svc);
+  final VoskSpeechService _svc;
+
+  @override
+  Stream<String> get wordStream => _svc.wordStream;
+
+  @override
+  Future<bool> startListening({String languageCode = 'en'}) =>
+      _svc.startListening(languageCode: languageCode);
+
+  @override
+  Future<void> stopListening() => _svc.stopListening();
+
+  @override
+  void dispose() => _svc.dispose();
 }
 
 // ---------------------------------------------------------------------------
