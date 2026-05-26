@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:path/path.dart' as path;
+
 import 'package:flutter/foundation.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:vosk_flutter/vosk_flutter.dart' as vosk;
@@ -171,11 +173,36 @@ class VoskSpeechService {
 
     debugPrint('[VoskSTT] Ensuring model "$modelName"');
 
+    // Check if a previously cached model dir is actually valid (non-empty).
+    // ModelLoader.isModelAlreadyLoaded only checks directory existence, not
+    // contents. A partial/failed extraction leaves an empty dir that causes
+    // "Failed to create a model" from the native layer.
+    final alreadyCached = await modelLoader.isModelAlreadyLoaded(modelName);
+    bool forceReload = false;
+    if (alreadyCached) {
+      final cachedPath = await modelLoader.modelPath(modelName);
+      final dir = Directory(cachedPath);
+      final contents = dir.existsSync() ? dir.listSync(recursive: false) : [];
+      if (contents.isEmpty) {
+        debugPrint('[VoskSTT] Cached model dir is empty — forcing re-download');
+        forceReload = true;
+      } else {
+        // Quick sanity check: Vosk models always have a conf/ subdirectory.
+        final hasConf = contents.any(
+          (e) => e is Directory && path.basename(e.path) == 'conf',
+        );
+        if (!hasConf) {
+          debugPrint('[VoskSTT] Cached model missing conf/ — forcing re-download');
+          forceReload = true;
+        }
+      }
+    }
+
     try {
-      // loadFromNetwork checks the cache internally and skips download if
-      // the model directory already exists. The returned path is always
-      // the correct on-device path to the extracted model.
-      final modelPath = await modelLoader.loadFromNetwork(url);
+      final modelPath = await modelLoader.loadFromNetwork(
+        url,
+        forceReload: forceReload,
+      );
       debugPrint('[VoskSTT] Model ready at $modelPath');
       return modelPath;
     } catch (e) {
