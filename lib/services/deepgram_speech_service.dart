@@ -27,6 +27,8 @@ class DeepgramSpeechService {
   bool _isListening = false;
   bool get isListening => _isListening;
 
+  bool _isSpeaking = false;
+
   // ---------------------------------------------------------------------------
   // Internal state
   // ---------------------------------------------------------------------------
@@ -83,10 +85,11 @@ class DeepgramSpeechService {
       final lang = _languageMap[languageCode.toLowerCase()] ?? 'en-US';
       final uri = Uri.parse(_deepgramWsUrl).replace(queryParameters: {
         'language': lang,
-        'model': 'nova-2', // Best multilingual model
+        'model': 'nova-3',
         'punctuate': 'false', // Keep it clean for matching
         'smart_format': 'false',
         'interim_results': 'true', // Enable partial results
+        'vad_events': 'true',
         'encoding': 'linear16',
         'sample_rate': '16000',
         'channels': '1',
@@ -111,7 +114,7 @@ class DeepgramSpeechService {
 
       final stream = await _recorder.startStream(recordConfig);
 
-      // Forward audio to Deepgram
+      // Always forward audio so Deepgram VAD can detect speech start
       _recordSub = stream.listen(
         (data) => _wsChannel?.sink.add(data),
         onError: (e) => debugPrint('[DeepgramSTT] record error: $e'),
@@ -137,6 +140,19 @@ class DeepgramSpeechService {
   void _onTranscriptMessage(dynamic message) {
     try {
       final data = jsonDecode(message as String) as Map<String, dynamic>;
+
+      // Handle VAD events
+      final type = data['type'] as String?;
+      if (type == 'SpeechStarted') {
+        _isSpeaking = true;
+        debugPrint('[DeepgramSTT] speech started');
+        return;
+      } else if (type == 'UtteranceEnd') {
+        _isSpeaking = false;
+        debugPrint('[DeepgramSTT] utterance end');
+        return;
+      }
+
       final channel = data['channel'] as Map<String, dynamic>?;
       final alternatives = channel?['alternatives'] as List<dynamic>?;
 
@@ -145,7 +161,7 @@ class DeepgramSpeechService {
       final transcript = alternatives.first['transcript'] as String? ?? '';
       final isFinal = data['is_final'] as bool? ?? false;
 
-      if (transcript.isNotEmpty) {
+      if (transcript.isNotEmpty && _isSpeaking) {
         final text = transcript.toLowerCase().trim();
         debugPrint(
             '[DeepgramSTT] ${isFinal ? "final" : "partial"}: "$text"');
@@ -163,6 +179,7 @@ class DeepgramSpeechService {
   }
 
   Future<void> _cleanup() async {
+    _isSpeaking = false;
     await _wsSub?.cancel();
     await _recordSub?.cancel();
 
