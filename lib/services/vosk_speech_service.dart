@@ -66,6 +66,10 @@ class VoskSpeechService {
   StreamSubscription<String>? _partialSub;
   StreamSubscription<String>? _resultSub;
 
+  /// Re-entrancy guard — prevents two updateGrammar() calls from racing each
+  /// other (e.g. rapid back-to-back scene transitions).
+  Future<void>? _grammarSwap;
+
   // ---------------------------------------------------------------------------
   // Lifecycle
   // ---------------------------------------------------------------------------
@@ -116,45 +120,8 @@ class VoskSpeechService {
         if (modelPath == null) return false;
         _model = await _vosk.createModel(modelPath);
       }
-      _recognizer = await _vosk.createRecognizer(
-        model: _model!,
-        sampleRate: 16000,
-        grammar: grammar,
-      );
-      if (grammar != null) {
-        debugPrint(
-          '[VoskSTT] grammar-constrained recognizer: ${grammar.length} tokens'
-        );
-      }
-
-      _speechService = await _vosk.initSpeechService(_recognizer!);
-      await _speechService!.start(
-        onRecognitionError: (e) => debugPrint('[VoskSTT] recognition error: $e'),
-      );
+      await _bootRecognizer(grammar);
       _isListening = true;
-
-      _partialSub = _speechService!.onPartial().listen((json) {
-        try {
-          final data = jsonDecode(json) as Map<String, dynamic>;
-          final text = (data['partial'] as String? ?? '').toLowerCase().trim();
-          if (text.isNotEmpty) {
-            debugPrint('[VoskSTT] partial: "$text"');
-            _wordController.add(text);
-          }
-        } catch (_) {}
-      });
-
-      _resultSub = _speechService!.onResult().listen((json) {
-        try {
-          final data = jsonDecode(json) as Map<String, dynamic>;
-          final text = (data['text'] as String? ?? '').toLowerCase().trim();
-          if (text.isNotEmpty) {
-            debugPrint('[VoskSTT] final: "$text"');
-            _wordController.add(text);
-          }
-        } catch (_) {}
-      });
-
       debugPrint(
         '[VoskSTT] recognition started '
         '(lang=$languageCode, grammar=${grammar != null ? "${grammar.length} tokens" : "unrestricted"})'
@@ -167,23 +134,88 @@ class VoskSpeechService {
     }
   }
 
-  /// Swaps the active grammar on-the-fly **without** restarting the audio
-  /// pipeline.  Call this on every scene transition to narrow the vocabulary
-  /// to the current scene's keywords.
+  /// Swaps the active grammar by stopping the current recognizer + speech
+  /// service and recreating them with [grammar].  The expensive [Model] is
+  /// kept in memory, so the swap typically completes in well under 100 ms.
+  ///
+  /// We cannot use Vosk's [Recognizer.setGrammar] directly: native code
+  /// throws `Can't add speaker model to already running recognizer` when
+  /// `vosk_recognizer_set_grm` is called while audio is being fed in.
   ///
   /// No-op if recognition is not currently active.
   Future<void> updateGrammar(List<String> grammar) async {
-    final rec = _recognizer;
-    if (rec == null || !_isListening) {
+    if (!_isListening || _model == null) {
       debugPrint('[VoskSTT] updateGrammar: not listening — skipped');
       return;
     }
-    await rec.setGrammar(grammar);
-    debugPrint('[VoskSTT] grammar updated: ${grammar.length} tokens');
+
+    // Serialise concurrent swaps so a second call can't fire while a first
+    // tear-down is mid-flight.
+    final pending = _grammarSwap;
+    if (pending != null) {
+      await pending;
+    }
+
+    final completer = Completer<void>();
+    _grammarSwap = completer.future;
+    try {
+      await _teardownRecognizer();
+      await _bootRecognizer(grammar);
+      debugPrint('[VoskSTT] grammar updated: ${grammar.length} tokens');
+    } catch (e) {
+      debugPrint('[VoskSTT] updateGrammar failed: $e');
+    } finally {
+      completer.complete();
+      _grammarSwap = null;
+    }
   }
 
-  Future<void> stopListening() async {
-    _isListening = false;
+  /// Creates the recognizer + speech service for the loaded [_model] and
+  /// starts streaming.  Caller is responsible for setting [_isListening].
+  Future<void> _bootRecognizer(List<String>? grammar) async {
+    _recognizer = await _vosk.createRecognizer(
+      model: _model!,
+      sampleRate: 16000,
+      grammar: grammar,
+    );
+    if (grammar != null) {
+      debugPrint(
+        '[VoskSTT] grammar-constrained recognizer: ${grammar.length} tokens',
+      );
+    }
+
+    _speechService = await _vosk.initSpeechService(_recognizer!);
+    await _speechService!.start(
+      onRecognitionError: (e) =>
+          debugPrint('[VoskSTT] recognition error: $e'),
+    );
+
+    _partialSub = _speechService!.onPartial().listen((json) {
+      try {
+        final data = jsonDecode(json) as Map<String, dynamic>;
+        final text = (data['partial'] as String? ?? '').toLowerCase().trim();
+        if (text.isNotEmpty) {
+          debugPrint('[VoskSTT] partial: "$text"');
+          _wordController.add(text);
+        }
+      } catch (_) {}
+    });
+
+    _resultSub = _speechService!.onResult().listen((json) {
+      try {
+        final data = jsonDecode(json) as Map<String, dynamic>;
+        final text = (data['text'] as String? ?? '').toLowerCase().trim();
+        if (text.isNotEmpty) {
+          debugPrint('[VoskSTT] final: "$text"');
+          _wordController.add(text);
+        }
+      } catch (_) {}
+    });
+  }
+
+  /// Stops the speech service and disposes the recognizer, but leaves the
+  /// loaded [_model] intact so the next [_bootRecognizer] call is fast.
+  Future<void> _teardownRecognizer() async {
     await _partialSub?.cancel();
     await _resultSub?.cancel();
     _partialSub = null;
@@ -194,6 +226,16 @@ class VoskSpeechService {
     _speechService = null;
     _recognizer?.dispose();
     _recognizer = null;
+  }
+
+  Future<void> stopListening() async {
+    _isListening = false;
+    // Wait for any in-flight grammar swap to settle before tearing down.
+    final pending = _grammarSwap;
+    if (pending != null) {
+      try { await pending; } catch (_) {}
+    }
+    await _teardownRecognizer();
     _model?.dispose();
     _model = null;
     debugPrint('[VoskSTT] stopped');

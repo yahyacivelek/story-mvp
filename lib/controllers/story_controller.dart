@@ -97,7 +97,7 @@ class StoryController extends StateNotifier<StoryState> {
   /// - 'stt' = speech_to_text plugin (platform default)
   /// - 'vosk' = offline Vosk
   /// - 'deepgram' = Deepgram streaming API
-  static const String _sttBackend = 'deepgram'; // <-- Change to 'stt' or 'vosk' to switch
+  static const String _sttBackend = 'vosk'; // <-- Change to 'stt' or 'vosk' or 'deepgram' to switch
 
   late final _SpeechBackend _speech = switch (_sttBackend) {
     'vosk' => _VoskBackend(VoskSpeechService.instance),
