@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
@@ -45,10 +46,10 @@ class VoskSpeechService {
   ///
   /// Models are ~40–80 MB. Full list: https://alphacephei.com/vosk/models
   static const Map<String, String> _modelUrls = {
-    'tr': 'https://alphacephei.com/vosk/models/vosk-model-small-tr-0.42.zip',
+    'tr': 'https://alphacephei.com/vosk/models/vosk-model-small-tr-0.3.zip',
     'en': 'https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip',
     'de': 'https://alphacephei.com/vosk/models/vosk-model-small-de-0.15.zip',
-    'fr': 'https://alphacephei.com/vosk/models/vosk-model-small-fr-pguyot-0.3.zip',
+    'fr': 'https://alphacephei.com/vosk/models/vosk-model-small-fr-0.22.zip',
     'es': 'https://alphacephei.com/vosk/models/vosk-model-small-es-0.42.zip',
     'ru': 'https://alphacephei.com/vosk/models/vosk-model-small-ru-0.22.zip',
   };
@@ -82,41 +83,63 @@ class VoskSpeechService {
       return false;
     }
 
-    final status = await Permission.microphone.request();
-    if (!status.isGranted) {
-      debugPrint('[VoskSTT] microphone permission denied');
+    // Check first to avoid hanging on already-granted permissions on some OEMs.
+    var micStatus = await Permission.microphone.status;
+    if (!micStatus.isGranted) {
+      micStatus = await Permission.microphone.request();
+    }
+    if (!micStatus.isGranted) {
+      debugPrint('[VoskSTT] microphone permission denied: $micStatus');
       return false;
     }
+    debugPrint('[VoskSTT] microphone permission: $micStatus');
 
     try {
-      final modelPath = await _ensureModel(languageCode);
+      String? modelPath = await _ensureModel(languageCode);
       if (modelPath == null) return false;
 
       debugPrint('[VoskSTT] loading model from $modelPath');
-      _model = await _vosk.createModel(modelPath);
+      try {
+        _model = await _vosk.createModel(modelPath);
+      } catch (_) {
+        // Model dir exists but is corrupt — delete it and try once more.
+        debugPrint('[VoskSTT] createModel failed, purging cache and retrying');
+        await _purgeCachedModel(languageCode);
+        modelPath = await _ensureModel(languageCode);
+        if (modelPath == null) return false;
+        _model = await _vosk.createModel(modelPath);
+      }
       _recognizer = await _vosk.createRecognizer(
         model: _model!,
         sampleRate: 16000,
       );
 
       _speechService = await _vosk.initSpeechService(_recognizer!);
-      await _speechService!.start();
+      await _speechService!.start(
+        onRecognitionError: (e) => debugPrint('[VoskSTT] recognition error: $e'),
+      );
       _isListening = true;
 
-      _partialSub = _speechService!.onPartial().listen((partial) {
-        final text = partial.toLowerCase().trim();
-        if (text.isNotEmpty) {
-          debugPrint('[VoskSTT] partial: "$text"');
-          _wordController.add(text);
-        }
+      _partialSub = _speechService!.onPartial().listen((json) {
+        try {
+          final data = jsonDecode(json) as Map<String, dynamic>;
+          final text = (data['partial'] as String? ?? '').toLowerCase().trim();
+          if (text.isNotEmpty) {
+            debugPrint('[VoskSTT] partial: "$text"');
+            _wordController.add(text);
+          }
+        } catch (_) {}
       });
 
-      _resultSub = _speechService!.onResult().listen((result) {
-        final text = result.toLowerCase().trim();
-        if (text.isNotEmpty) {
-          debugPrint('[VoskSTT] final: "$text"');
-          _wordController.add(text);
-        }
+      _resultSub = _speechService!.onResult().listen((json) {
+        try {
+          final data = jsonDecode(json) as Map<String, dynamic>;
+          final text = (data['text'] as String? ?? '').toLowerCase().trim();
+          if (text.isNotEmpty) {
+            debugPrint('[VoskSTT] final: "$text"');
+            _wordController.add(text);
+          }
+        } catch (_) {}
       });
 
       debugPrint('[VoskSTT] recognition started (lang=$languageCode)');
@@ -187,12 +210,11 @@ class VoskSpeechService {
         debugPrint('[VoskSTT] Cached model dir is empty — forcing re-download');
         forceReload = true;
       } else {
-        // Quick sanity check: Vosk models always have a conf/ subdirectory.
-        final hasConf = contents.any(
-          (e) => e is Directory && path.basename(e.path) == 'conf',
-        );
-        if (!hasConf) {
-          debugPrint('[VoskSTT] Cached model missing conf/ — forcing re-download');
+        // Vosk models require at minimum conf/ and am/ subdirectories.
+        final dirs = contents.whereType<Directory>().map((e) => path.basename(e.path)).toSet();
+        final valid = dirs.contains('conf') && dirs.contains('am');
+        if (!valid) {
+          debugPrint('[VoskSTT] Cached model incomplete (dirs: $dirs) — forcing re-download');
           forceReload = true;
         }
       }
@@ -208,6 +230,19 @@ class VoskSpeechService {
     } catch (e) {
       debugPrint('[VoskSTT] Model download/extraction failed: $e');
       return null;
+    }
+  }
+
+  Future<void> _purgeCachedModel(String languageCode) async {
+    final url = _modelUrls[languageCode.toLowerCase()];
+    if (url == null) return;
+    final modelName = url.split('/').last.replaceAll('.zip', '');
+    final modelLoader = vosk.ModelLoader();
+    final cachedPath = await modelLoader.modelPath(modelName);
+    final dir = Directory(cachedPath);
+    if (dir.existsSync()) {
+      debugPrint('[VoskSTT] Deleting corrupt model dir: $cachedPath');
+      await dir.delete(recursive: true);
     }
   }
 }
