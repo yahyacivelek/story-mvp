@@ -26,6 +26,8 @@ class StoryState {
   final String? error;
   final bool isListening;
   final String lastHeardText;
+  /// Map of pageNumber → character offset up to which text has been read aloud.
+  final Map<int, int> readProgressOffsets;
 
   const StoryState({
     this.manifest,
@@ -36,6 +38,7 @@ class StoryState {
     this.error,
     this.isListening = false,
     this.lastHeardText = '',
+    this.readProgressOffsets = const {},
   });
 
   Scene? get activeScene =>
@@ -61,6 +64,7 @@ class StoryState {
     String? error,
     bool? isListening,
     String? lastHeardText,
+    Map<int, int>? readProgressOffsets,
   }) {
     return StoryState(
       manifest: manifest ?? this.manifest,
@@ -71,6 +75,7 @@ class StoryState {
       error: error,
       isListening: isListening ?? this.isListening,
       lastHeardText: lastHeardText ?? this.lastHeardText,
+      readProgressOffsets: readProgressOffsets ?? this.readProgressOffsets,
     );
   }
 }
@@ -264,6 +269,9 @@ class StoryController extends StateNotifier<StoryState> {
     final data = state.storyData;
     if (data == null) return;
 
+    // 0. Update karaoke read-progress highlights.
+    _updateReadProgress();
+
     // 1. Try to match audio opportunities in the active scene first.
     _matchAudioOpportunities(transcript, data);
 
@@ -418,6 +426,95 @@ class StoryController extends StateNotifier<StoryState> {
     }
   }
 
+  // -------------------------------------------------------------------------
+  // Karaoke read-progress alignment
+  // -------------------------------------------------------------------------
+
+  /// Normalises [text] to a list of lowercase words with punctuation stripped,
+  /// alongside the original character offset of each word's start.
+  static List<({String word, int offset})> _tokenise(String text) {
+    final result = <({String word, int offset})>[];
+    final re = RegExp(r'[\w\u00C0-\u024F]+', unicode: true);
+    for (final m in re.allMatches(text)) {
+      result.add((word: m.group(0)!.toLowerCase(), offset: m.start));
+    }
+    return result;
+  }
+
+  /// Advances the per-page read offsets based on the current transcript buffer.
+  ///
+  /// Strategy: take the last up-to-10 words from [_transcriptBuffer] and
+  /// slide them over the page token list looking for the best-matching window
+  /// (≥ 60 % of probe words hit). When found, advance the stored offset to
+  /// just past the last matched token. The offset never goes backwards.
+  void _updateReadProgress() {
+    final scene = state.activeScene;
+    if (scene == null) return;
+    final data = state.storyData;
+    if (data == null) return;
+    if (_transcriptBuffer.isEmpty) return;
+
+    final pageNums = scene.pages.toSet();
+    final pages = data.pages
+        .where((p) => pageNums.contains(p.pageNumber))
+        .toList()
+      ..sort((a, b) => a.pageNumber.compareTo(b.pageNumber));
+
+    // Probe: last up-to-10 words from the rolling buffer.
+    const probeSize = 10;
+    final probe = _transcriptBuffer.length > probeSize
+        ? _transcriptBuffer.sublist(_transcriptBuffer.length - probeSize)
+        : List<String>.from(_transcriptBuffer);
+
+    final updatedOffsets = Map<int, int>.from(state.readProgressOffsets);
+
+    for (final page in pages) {
+      final tokens = _tokenise(page.fullText);
+      if (tokens.isEmpty) continue;
+
+      final currentOffset = updatedOffsets[page.pageNumber] ?? 0;
+
+      // Only search from a little before the current offset (allow slight
+      // rewind in case STT re-emits an earlier partial).
+      final startTokenIdx = () {
+        // Find the first token whose offset >= currentOffset - 50 chars.
+        final searchFrom = (currentOffset - 50).clamp(0, page.fullText.length);
+        for (int i = 0; i < tokens.length; i++) {
+          if (tokens[i].offset >= searchFrom) return i;
+        }
+        return tokens.length;
+      }();
+
+      // Slide the probe window over tokens starting from startTokenIdx.
+      int bestEndOffset = currentOffset;
+
+      for (int ti = startTokenIdx; ti <= tokens.length - probe.length; ti++) {
+        int hits = 0;
+        int lastHitCharEnd = currentOffset;
+        for (int pi = 0; pi < probe.length; pi++) {
+          if (tokens[ti + pi].word == probe[pi]) {
+            hits++;
+            // Character end = start of next token or end of text.
+            final nextIdx = ti + pi + 1;
+            lastHitCharEnd = nextIdx < tokens.length
+                ? tokens[nextIdx].offset
+                : page.fullText.length;
+          }
+        }
+        final hitRate = hits / probe.length;
+        if (hitRate >= 0.6 && lastHitCharEnd > bestEndOffset) {
+          bestEndOffset = lastHitCharEnd;
+        }
+      }
+
+      if (bestEndOffset > currentOffset) {
+        updatedOffsets[page.pageNumber] = bestEndOffset;
+      }
+    }
+
+    state = state.copyWith(readProgressOffsets: updatedOffsets);
+  }
+
   bool _cueKeywordsNonEmpty(_Keywords k) =>
       k.primary.isNotEmpty || k.secondary.isNotEmpty;
 
@@ -476,7 +573,7 @@ class StoryController extends StateNotifier<StoryState> {
     final transition = currentScene.sceneTransition;
     final nextScene = data.sceneGraph[index];
 
-    state = state.copyWith(activeSceneIndex: index);
+    state = state.copyWith(activeSceneIndex: index, readProgressOffsets: {});
     _lastTransitionAt = DateTime.now();
     // Clear transcript buffer on scene change to avoid re-triggering.
     _transcriptBuffer.clear();

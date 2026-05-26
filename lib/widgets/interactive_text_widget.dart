@@ -13,11 +13,15 @@ import '../models/story_models.dart';
 class InteractiveTextWidget extends ConsumerWidget {
   final String fullText;
   final List<AudioOpportunity> opportunities;
+  /// Character offset up to which text has been read aloud (karaoke highlight).
+  /// 0 means nothing highlighted yet.
+  final int readUpToCharOffset;
 
   const InteractiveTextWidget({
     super.key,
     required this.fullText,
     required this.opportunities,
+    this.readUpToCharOffset = 0,
   });
 
   @override
@@ -29,10 +33,18 @@ class InteractiveTextWidget extends ConsumerWidget {
           color: colorScheme.onSurface,
         );
 
+    final readStyle = baseStyle.copyWith(
+      color: colorScheme.onSurface.withValues(alpha: 0.38),
+      background: Paint()
+        ..color = colorScheme.primary.withValues(alpha: 0.08),
+    );
+
     return RichText(
       text: TextSpan(
         style: baseStyle,
-        children: _buildSpans(context, ref, audioState, colorScheme, baseStyle),
+        children: _buildSpans(
+          context, ref, audioState, colorScheme, baseStyle, readStyle,
+        ),
       ),
     );
   }
@@ -43,6 +55,7 @@ class InteractiveTextWidget extends ConsumerWidget {
     AudioState audioState,
     ColorScheme colorScheme,
     TextStyle baseStyle,
+    TextStyle readStyle,
   ) {
     // Build a lookup: anchor text → AudioOpportunity
     final Map<String, AudioOpportunity> anchors = {
@@ -50,7 +63,7 @@ class InteractiveTextWidget extends ConsumerWidget {
     };
 
     if (anchors.isEmpty) {
-      return [TextSpan(text: fullText)];
+      return _splitAtOffset(fullText, 0, readStyle, baseStyle);
     }
 
     // Build a combined regex that matches any of the anchor strings.
@@ -71,9 +84,12 @@ class InteractiveTextWidget extends ConsumerWidget {
     };
 
     for (final match in regex.allMatches(fullText)) {
-      // Text before the match.
+      // Text before the match — may partially overlap the read offset.
       if (match.start > cursor) {
-        spans.add(TextSpan(text: fullText.substring(cursor, match.start)));
+        final segment = fullText.substring(cursor, match.start);
+        spans.addAll(
+          _splitAtOffset(segment, cursor, readStyle, baseStyle),
+        );
       }
 
       final matchedText = match.group(0)!;  // Full match including punctuation
@@ -99,10 +115,33 @@ class InteractiveTextWidget extends ConsumerWidget {
 
     // Remaining text after last match.
     if (cursor < fullText.length) {
-      spans.add(TextSpan(text: fullText.substring(cursor)));
+      final segment = fullText.substring(cursor);
+      spans.addAll(_splitAtOffset(segment, cursor, readStyle, baseStyle));
     }
 
     return spans;
+  }
+
+  /// Splits [segment] (which starts at [segmentStart] in [fullText]) into at
+  /// most two [TextSpan]s: the part before [readUpToCharOffset] uses
+  /// [readStyle]; the rest uses [normalStyle].
+  List<TextSpan> _splitAtOffset(
+    String segment,
+    int segmentStart,
+    TextStyle readStyle,
+    TextStyle normalStyle,
+  ) {
+    if (readUpToCharOffset <= segmentStart) {
+      return [TextSpan(text: segment, style: normalStyle)];
+    }
+    final splitLocal = (readUpToCharOffset - segmentStart).clamp(0, segment.length);
+    if (splitLocal >= segment.length) {
+      return [TextSpan(text: segment, style: readStyle)];
+    }
+    return [
+      TextSpan(text: segment.substring(0, splitLocal), style: readStyle),
+      TextSpan(text: segment.substring(splitLocal), style: normalStyle),
+    ];
   }
 
   InlineSpan _buildTriggerSpan({
@@ -117,7 +156,7 @@ class InteractiveTextWidget extends ConsumerWidget {
       color: colorScheme.primary,
       fontWeight: FontWeight.w600,
       decoration: TextDecoration.underline,
-      decorationColor: colorScheme.primary.withOpacity(0.5),
+      decorationColor: colorScheme.primary.withValues(alpha: 0.5),
     );
 
     return WidgetSpan(

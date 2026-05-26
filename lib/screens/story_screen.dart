@@ -107,6 +107,7 @@ class StoryScreen extends ConsumerWidget {
                         child: _StoryBody(
                           scene: scene,
                           pages: storyState.activePagesContent,
+                          readProgressOffsets: storyState.readProgressOffsets,
                         ),
                       ),
                     ],
@@ -201,8 +202,13 @@ class _AudioUnlockBanner extends StatelessWidget {
 class _StoryBody extends ConsumerStatefulWidget {
   final Scene scene;
   final List<StoryPage> pages;
+  final Map<int, int> readProgressOffsets;
 
-  const _StoryBody({required this.scene, required this.pages});
+  const _StoryBody({
+    required this.scene,
+    required this.pages,
+    required this.readProgressOffsets,
+  });
 
   @override
   ConsumerState<_StoryBody> createState() => _StoryBodyState();
@@ -241,6 +247,8 @@ class _StoryBodyState extends ConsumerState<_StoryBody> {
                       InteractiveTextWidget(
                         fullText: page.fullText,
                         opportunities: widget.scene.audioOpportunities,
+                        readUpToCharOffset:
+                            widget.readProgressOffsets[page.pageNumber] ?? 0,
                       ),
                     ],
                   ),
