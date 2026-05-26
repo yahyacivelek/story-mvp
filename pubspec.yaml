@@ -33,7 +33,7 @@ dependencies:
   vosk_flutter: ^0.3.48
 
   # Deepgram streaming STT
-  web_socket_channel: ^2.4.5
+  web_socket_channel: ^3.0.3
   record: ^5.0.4
 
   # Runtime permissions
