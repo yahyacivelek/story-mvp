@@ -50,3 +50,6 @@ app.*.map.json
 
 # Qdrant local vector DB storage
 tools/qdrant_storage/
+
+# Bundled Vosk STT models (downloaded locally; see lib/services/vosk_speech_service.dart)
+assets/vosk_models/*.zip

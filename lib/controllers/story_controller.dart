@@ -106,6 +106,13 @@ class StoryController extends StateNotifier<StoryState> {
   };
   StreamSubscription<String>? _speechSub;
 
+  /// Monotonically incremented on every [loadStory] call. After each await
+  /// inside [loadStory] / [startListening] we check that our captured local
+  /// generation still matches \[_loadGen]. If not, a newer load has started
+  /// and we abort the stale chain so it can't overwrite the new story's
+  /// grammar or audio.
+  int _loadGen = 0;
+
   /// Rolling transcript window — keeps last ~120 words for matching.
   /// Increased from 60 to handle longer pages where exit cues are at the end.
   final List<String> _transcriptBuffer = [];
@@ -174,11 +181,24 @@ class StoryController extends StateNotifier<StoryState> {
   }
 
   /// Loads a specific story by its [StoryEntry] and resets all state.
+  ///
+  /// Reentrancy: if [loadStory] is called again before this one completes
+  /// (e.g. user taps a second story while the first is still booting up
+  /// Vosk / downloading audio), the older call aborts at the next await
+  /// point so it can't clobber the newer story's grammar or scene state.
   Future<void> loadStory(StoryEntry entry) async {
+    final gen = ++_loadGen;
+    bool isStale() => gen != _loadGen;
+
+    debugPrint('[StoryController] ===> loadStory("${entry.title}") begin (gen=$gen)');
     // Stop current audio and speech before switching.
     await stopListening();
+    if (isStale()) { debugPrint('[StoryController] loadStory gen=$gen stale after stopListening'); return; }
+    debugPrint('[StoryController] loadStory: stopListening complete');
     await _ref.read(audioControllerProvider.notifier).stopAmbience();
+    if (isStale()) { debugPrint('[StoryController] loadStory gen=$gen stale after stopAmbience'); return; }
     await _ref.read(audioControllerProvider.notifier).stopMusic();
+    if (isStale()) { debugPrint('[StoryController] loadStory gen=$gen stale after stopMusic'); return; }
 
     state = state.copyWith(
       currentStoryEntry: entry,
@@ -191,6 +211,7 @@ class StoryController extends StateNotifier<StoryState> {
       final jsonString = (!kIsWeb && entry.isLocal)
           ? await File(entry.assetPath).readAsString()
           : await rootBundle.loadString(entry.assetPath);
+      if (isStale()) { debugPrint('[StoryController] loadStory gen=$gen stale after JSON read'); return; }
       final data = StoryData.fromJsonString(jsonString);
 
       state = state.copyWith(
@@ -204,12 +225,15 @@ class StoryController extends StateNotifier<StoryState> {
         await _ref
             .read(audioControllerProvider.notifier)
             .startSceneAudio(firstScene);
+        if (isStale()) { debugPrint('[StoryController] loadStory gen=$gen stale after startSceneAudio'); return; }
       }
 
       // Start listening in the story's language.
       await startListening(languageCode: data.book.language);
-      debugPrint('[StoryController] Loaded story: ${entry.title} (lang: ${data.book.language})');
+      if (isStale()) { debugPrint('[StoryController] loadStory gen=$gen stale after startListening'); return; }
+      debugPrint('[StoryController] Loaded story: ${entry.title} (lang: ${data.book.language}, gen=$gen)');
     } catch (e) {
+      if (isStale()) return;
       state = state.copyWith(isLoading: false, error: e.toString());
     }
   }
@@ -245,9 +269,11 @@ class StoryController extends StateNotifier<StoryState> {
         scene: firstScene,
         allPages: data.pages,
       );
+      final sample = initialGrammar.take(10).join(', ');
       debugPrint(
         '[StoryController] initial grammar built: '
-        '${initialGrammar.length} tokens for scene "${firstScene.sceneId}"',
+        '${initialGrammar.length} tokens for scene "${firstScene.sceneId}" '
+        '(story="${data.book.detectedTitle ?? "?"}") sample=[$sample]',
       );
     }
 

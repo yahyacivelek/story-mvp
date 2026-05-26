@@ -54,6 +54,13 @@ class VoskSpeechService {
     'ru': 'https://alphacephei.com/vosk/models/vosk-model-small-ru-0.22.zip',
   };
 
+  /// Optional bundled-asset paths for each language.  When present, the model
+  /// is loaded from the app bundle (instant, offline) instead of downloaded.
+  /// Falls back to the network URL when an entry is missing.
+  static const Map<String, String> _modelAssets = {
+    'tr': 'assets/vosk_models/vosk-model-small-tr-0.3.zip',
+  };
+
   // ---------------------------------------------------------------------------
   // Internal state
   // ---------------------------------------------------------------------------
@@ -87,7 +94,18 @@ class VoskSpeechService {
   /// listening.
   Future<bool> startListening(
       {String languageCode = 'en', List<String>? grammar}) async {
-    if (_isListening) return true;
+    if (_isListening) {
+      // Already listening (typically due to a still-in-flight previous
+      // startListening call winning the race).  If the caller supplied a
+      // grammar, swap to it so we don't silently keep the older vocabulary.
+      if (grammar != null) {
+        debugPrint(
+          '[VoskSTT] startListening: already listening \u2192 routing to updateGrammar',
+        );
+        await updateGrammar(grammar);
+      }
+      return true;
+    }
 
     if (!Platform.isAndroid && !Platform.isIOS) {
       debugPrint('[VoskSTT] Vosk is only supported on Android/iOS');
@@ -293,15 +311,26 @@ class VoskSpeechService {
       }
     }
 
+    final assetPath = _modelAssets[languageCode.toLowerCase()];
     try {
-      final modelPath = await modelLoader.loadFromNetwork(
-        url,
-        forceReload: forceReload,
-      );
+      final String modelPath;
+      if (assetPath != null) {
+        debugPrint('[VoskSTT] Loading bundled model from asset "$assetPath"');
+        modelPath = await modelLoader.loadFromAssets(
+          assetPath,
+          forceReload: forceReload,
+        );
+      } else {
+        debugPrint('[VoskSTT] No bundled asset for "$languageCode" \u2014 downloading from $url');
+        modelPath = await modelLoader.loadFromNetwork(
+          url,
+          forceReload: forceReload,
+        );
+      }
       debugPrint('[VoskSTT] Model ready at $modelPath');
       return modelPath;
     } catch (e) {
-      debugPrint('[VoskSTT] Model download/extraction failed: $e');
+      debugPrint('[VoskSTT] Model load failed: $e');
       return null;
     }
   }

@@ -82,4 +82,5 @@ flutter:
     - assets/stories/
     - assets/audio/
     - assets/schemas/
+    - assets/vosk_models/
     - .env

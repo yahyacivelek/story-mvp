@@ -468,6 +468,10 @@ class StoryPickerSheet extends ConsumerWidget {
                     entry: entry,
                     isActive: isActive,
                     onTap: () {
+                      debugPrint(
+                          '[SceneHeader] story tap: "${entry.title}" '
+                          'id=${entry.id} isActive=$isActive '
+                          'currentId=${currentEntry?.id}');
                       if (!isActive) {
                         ref
                             .read(storyControllerProvider.notifier)
