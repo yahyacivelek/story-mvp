@@ -11,6 +11,7 @@ import 'package:path/path.dart' as path;
 import '../models/story_models.dart';
 import '../services/speech_service.dart';
 import '../services/vosk_speech_service_interface.dart';
+import '../services/deepgram_speech_service.dart';
 import '../utils/fuzzy_matcher.dart';
 import 'audio_controller.dart';
 
@@ -91,13 +92,17 @@ class StoryController extends StateNotifier<StoryState> {
   }
 
   final Ref _ref;
-  /// Set to [true] to use Vosk offline STT instead of [SpeechService].
-  /// Toggle via the [storyControllerProvider] by reading [useVosk].
-  static const bool useVosk = false;
+  /// Choose which STT backend to use:
+  /// - 'stt' = speech_to_text plugin (platform default)
+  /// - 'vosk' = offline Vosk
+  /// - 'deepgram' = Deepgram streaming API
+  static const String _sttBackend = 'deepgram'; // <-- Change to 'stt' or 'vosk' to switch
 
-  late final _SpeechBackend _speech = useVosk
-      ? _VoskBackend(VoskSpeechService.instance)
-      : _SttBackend(SpeechService.instance);
+  late final _SpeechBackend _speech = switch (_sttBackend) {
+    'vosk' => _VoskBackend(VoskSpeechService.instance),
+    'deepgram' => _DeepgramBackend(DeepgramSpeechService.instance),
+    _ => _SttBackend(SpeechService.instance),
+  };
   StreamSubscription<String>? _speechSub;
 
   /// Rolling transcript window — keeps last ~120 words for matching.
@@ -644,6 +649,24 @@ class _SttBackend implements _SpeechBackend {
 class _VoskBackend implements _SpeechBackend {
   _VoskBackend(this._svc);
   final VoskSpeechService _svc;
+
+  @override
+  Stream<String> get wordStream => _svc.wordStream;
+
+  @override
+  Future<bool> startListening({String languageCode = 'en'}) =>
+      _svc.startListening(languageCode: languageCode);
+
+  @override
+  Future<void> stopListening() => _svc.stopListening();
+
+  @override
+  void dispose() => _svc.dispose();
+}
+
+class _DeepgramBackend implements _SpeechBackend {
+  _DeepgramBackend(this._svc);
+  final DeepgramSpeechService _svc;
 
   @override
   Stream<String> get wordStream => _svc.wordStream;
