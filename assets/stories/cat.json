@@ -311,6 +311,7 @@
         "exit_cues": [
           {
             "keywords": [
+              "seymour",
               "hat"
             ],
             "semantic_intent": "End of character introduction"
@@ -459,7 +460,7 @@
           {
             "keywords": [
               "gulp",
-              "said"
+              "wimpydimple"
             ],
             "semantic_intent": "Main character expresses worry"
           }
@@ -550,7 +551,7 @@
               "gulp"
             ],
             "secondary_keywords": [
-              "said"
+              "splat"
             ],
             "semantic_intent": "Main character expresses anxiety"
           },
@@ -609,7 +610,7 @@
           {
             "keywords": [
               "hum",
-              "said"
+              "forget"
             ],
             "semantic_intent": "Main character's complete inability to hum"
           }
@@ -701,7 +702,7 @@
               "sing"
             ],
             "secondary_keywords": [
-              "said"
+              "splat"
             ],
             "semantic_intent": "Cat expresses distress about singing"
           },
@@ -759,7 +760,7 @@
           {
             "keywords": [
               "except",
-              "him"
+              "splat"
             ],
             "semantic_intent": "Main character is the only one not singing"
           }
@@ -909,7 +910,7 @@
           {
             "keywords": [
               "brave",
-              "too"
+              "seymour"
             ],
             "semantic_intent": "Main character resolves to be brave"
           }
@@ -959,8 +960,7 @@
               "squeak"
             ],
             "secondary_keywords": [
-              "came",
-              "out"
+              "splat"
             ],
             "semantic_intent": "Main character's failed singing attempt"
           },
@@ -1061,7 +1061,7 @@
           {
             "keywords": [
               "star",
-              "hat"
+              "wimpydimple"
             ],
             "semantic_intent": "Teacher encourages main character to be a star"
           }
@@ -1184,10 +1184,10 @@
     {
       "scene_id": "scene_7_practicing_at_home",
       "pages": [
-        16,
         17,
         18,
-        19
+        19,
+        20
       ],
       "scene_summary": "The main character goes home, worries about forgetting his part, practices his flat note, and his confidence wavers.",
       "scene_type": "other",
@@ -1215,7 +1215,7 @@
           {
             "keywords": [
               "forget",
-              "said"
+              "won't"
             ],
             "semantic_intent": "Main character's wavering confidence"
           }
@@ -1381,8 +1381,8 @@
     {
       "scene_id": "scene_8_parents_night_begins",
       "pages": [
-        20,
-        21
+        21,
+        22
       ],
       "scene_summary": "Parents arrive for Parents' Night, the class begins to sing, and the main character waits nervously for his turn.",
       "scene_type": "school",
@@ -1408,8 +1408,8 @@
         "exit_cues": [
           {
             "keywords": [
-              "turn",
-              "waited"
+              "waited",
+              "quiet"
             ],
             "semantic_intent": "Main character waits for his turn to sing"
           }
@@ -1531,9 +1531,9 @@
     {
       "scene_id": "scene_9_big_performance_fall",
       "pages": [
-        22,
         23,
-        24
+        24,
+        25
       ],
       "scene_summary": "The main character performs his loud, flat note with increasing enthusiasm, eventually falling off the mat, leading to joyful laughter from everyone.",
       "scene_type": "school",
@@ -1560,7 +1560,7 @@
           {
             "keywords": [
               "loudest",
-              "all"
+              "laughed"
             ],
             "semantic_intent": "Everyone, including main character, laughs joyfully"
           }
@@ -1766,8 +1766,8 @@
     {
       "scene_id": "scene_10_proud_parents_ending",
       "pages": [
-        25,
-        26
+        26,
+        27
       ],
       "scene_summary": "The main character's parents express immense pride and love for their unique cat who sings flat, ending the story on a warm, accepting note.",
       "scene_type": "school",
@@ -1803,7 +1803,7 @@
         "scene_persistence": "until_next_scene"
       },
       "scene_transition": {
-        "next_scene_id": "END",
+        "next_scene_id": "none",
         "transition_style": "fade",
         "audio_continuity": "fade_out",
         "transition_duration_seconds": 3

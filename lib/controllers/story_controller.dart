@@ -260,20 +260,17 @@ class StoryController extends StateNotifier<StoryState> {
         .read(audioControllerProvider.notifier)
         .setSpeechCaptureDucking(true);
 
-    // Build initial grammar from the first (active) scene so the recognizer
-    // starts constrained from the very first utterance.
+    // Build a full-story grammar once so the recognizer covers every word
+    // across all scenes.  This avoids per-scene swap overhead and prevents
+    // out-of-vocabulary drops near scene boundaries.
     final data = state.storyData;
-    final firstScene = state.activeScene;
     List<String>? initialGrammar;
-    if (data != null && firstScene != null) {
-      initialGrammar = VoskGrammarBuilder.buildForScene(
-        scene: firstScene,
-        allPages: data.pages,
-      );
+    if (data != null) {
+      initialGrammar = VoskGrammarBuilder.buildForStory(data);
       final sample = initialGrammar.take(10).join(', ');
       debugPrint(
-        '[StoryController] initial grammar built: '
-        '${initialGrammar.length} tokens for scene "${firstScene.sceneId}" '
+        '[StoryController] full-story grammar built: '
+        '${initialGrammar.length} tokens '
         '(story="${data.book.detectedTitle ?? "?"}") sample=[$sample]',
       );
     }
@@ -463,7 +460,12 @@ class StoryController extends StateNotifier<StoryState> {
         : 0.0;
     final exitHit = exitScore >= exitThreshold;
 
-    final entryScore = _cueKeywordsNonEmpty(entryKeywords)
+    // Entry cues are checked only as a secondary confirmation when the exit
+    // keywords list is empty (i.e. no explicit exit cues were defined for this
+    // scene).  They must never fire a transition on their own while exit cues
+    // are present, because entry cue words often appear earlier in the same
+    // page and would cause premature jumps.
+    final entryScore = (!_cueKeywordsNonEmpty(exitKeywords) && _cueKeywordsNonEmpty(entryKeywords))
         ? FuzzyMatcher.score(
             transcript: transcript,
             primaryKeywords: entryKeywords.primary,
@@ -639,32 +641,16 @@ class StoryController extends StateNotifier<StoryState> {
     _transcriptBuffer.clear();
     _lastTriggered.clear();
 
-    // Swap the Vosk grammar to the next scene's vocabulary without restarting
-    // the audio pipeline.  Other backends ignore this call (no-op).
-    if (_sttBackend == 'vosk') {
-      final newGrammar = VoskGrammarBuilder.buildForScene(
-        scene: nextScene,
-        allPages: data.pages,
+    // Full-story grammar is loaded once at startup — no per-scene swap needed.
+    // Only restart STT if it stopped unexpectedly (e.g. mic permission denied).
+    if (_sttBackend == 'vosk' && !state.isListening) {
+      debugPrint(
+        '[StoryController] not listening at scene transition → '
+        'restarting STT for scene "${nextScene.sceneId}"',
       );
-      if (state.isListening) {
-        _speech.updateGrammar(newGrammar);
-        debugPrint(
-          '[StoryController] grammar updated for scene "${nextScene.sceneId}": '
-          '${newGrammar.length} tokens',
-        );
-      } else {
-        // Listening never started successfully (e.g. mic permission was
-        // denied during the initial loadStory, or audio init hung).  A
-        // manual scene change is the user's signal that they want to keep
-        // going, so retry startListening here with the new scene's grammar.
-        debugPrint(
-          '[StoryController] not listening at scene transition \u2192 '
-          'restarting STT for scene "${nextScene.sceneId}"',
-        );
-        // Fire-and-forget; startListening handles its own error logging.
-        // ignore: discarded_futures
-        startListening(languageCode: data.book.language);
-      }
+      // Fire-and-forget; startListening handles its own error logging.
+      // ignore: discarded_futures
+      startListening(languageCode: data.book.language);
     }
 
     // Use crossfade transition when the JSON specifies it.

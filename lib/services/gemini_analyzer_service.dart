@@ -130,6 +130,12 @@ Scenes should be determined using BOTH:
 
 A scene may span multiple pages.
 
+CRITICAL: The "pages" array in each scene MUST contain the `order_index` values from the `pages` array.
+- Do NOT use the filename number (e.g. the "N" in "page_N.jpg").
+- Do NOT use `page_number`.
+- ALWAYS use `order_index` exactly as assigned in the pages array.
+- Example: if a page has "page_id": "page_5.jpg" and "order_index": 6, the scene must reference 6, not 5.
+
 A scene should represent:
 - a coherent environment
 - emotional continuity
