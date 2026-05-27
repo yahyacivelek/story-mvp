@@ -53,6 +53,12 @@
       "title": "Küçük Bayan Prenses 2",
       "language": "tr",
       "asset_path": "assets/stories/pses_new.json"
+    },
+    {
+      "id": "cat",
+      "title": "cat",
+      "language": "en",
+      "asset_path": "assets/stories/cat.json"
     }
   ]
 }
