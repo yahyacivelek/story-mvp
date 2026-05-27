@@ -220,17 +220,18 @@ class StoryController extends StateNotifier<StoryState> {
         activeSceneIndex: 0,
       );
 
-      if (data.sceneGraph.isNotEmpty) {
-        final firstScene = data.sceneGraph.first;
-        await _ref
-            .read(audioControllerProvider.notifier)
-            .startSceneAudio(firstScene);
-        if (isStale()) { debugPrint('[StoryController] loadStory gen=$gen stale after startSceneAudio'); return; }
-      }
+      // Start audio and STT in parallel — audio fetch can take several seconds
+      // and STT initialisation (model load / permission check) is independent.
+      final audioFuture = data.sceneGraph.isNotEmpty
+          ? _ref
+              .read(audioControllerProvider.notifier)
+              .startSceneAudio(data.sceneGraph.first)
+          : Future<void>.value();
 
-      // Start listening in the story's language.
-      await startListening(languageCode: data.book.language);
-      if (isStale()) { debugPrint('[StoryController] loadStory gen=$gen stale after startListening'); return; }
+      final sttFuture = startListening(languageCode: data.book.language);
+
+      await Future.wait([audioFuture, sttFuture]);
+      if (isStale()) { debugPrint('[StoryController] loadStory gen=$gen stale after parallel init'); return; }
       debugPrint('[StoryController] Loaded story: ${entry.title} (lang: ${data.book.language}, gen=$gen)');
     } catch (e) {
       if (isStale()) return;

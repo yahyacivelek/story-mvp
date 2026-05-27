@@ -241,6 +241,9 @@ class VoskSpeechService {
     try {
       await _speechService?.stop();
     } catch (_) {}
+    try {
+      await _speechService?.dispose();
+    } catch (_) {}
     _speechService = null;
     _recognizer?.dispose();
     _recognizer = null;
@@ -264,6 +267,7 @@ class VoskSpeechService {
     _partialSub?.cancel();
     _resultSub?.cancel();
     _speechService?.stop();
+    _speechService?.dispose();
     _recognizer?.dispose();
     _model?.dispose();
     _wordController.close();
