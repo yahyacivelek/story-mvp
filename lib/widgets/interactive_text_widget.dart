@@ -10,19 +10,39 @@ import '../models/story_models.dart';
 /// Trigger words are rendered as inline tappable spans with a small audio
 /// icon. While the SFX is fetching, a [CircularProgressIndicator] icon
 /// replaces the audio icon inline.
+///
+/// Additionally:
+/// - [cueKeywords] (entry/exit scene-transition words) → amber background
+/// - AO voice trigger primary_keywords → green background
 class InteractiveTextWidget extends ConsumerWidget {
   final String fullText;
   final List<AudioOpportunity> opportunities;
   /// Character offset up to which text has been read aloud (karaoke highlight).
   /// 0 means nothing highlighted yet.
   final int readUpToCharOffset;
+  /// Entry + exit cue keywords for the active scene (shown with amber background).
+  final Set<String> cueKeywords;
 
   const InteractiveTextWidget({
     super.key,
     required this.fullText,
     required this.opportunities,
     this.readUpToCharOffset = 0,
+    this.cueKeywords = const {},
   });
+
+  /// Collects all voice-trigger primary keywords from [opportunities] whose
+  /// anchor type is NOT phrase/word (i.e. page_start) — those won't appear
+  /// as tappable anchors so we highlight their keywords instead.
+  Set<String> _aoVoiceKeywords() {
+    final result = <String>{};
+    for (final ao in opportunities) {
+      for (final kw in ao.triggerPrimaryKeywords) {
+        result.add(kw.toLowerCase());
+      }
+    }
+    return result;
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,11 +59,24 @@ class InteractiveTextWidget extends ConsumerWidget {
         ..color = colorScheme.primary.withValues(alpha: 0.08),
     );
 
+    final cueStyle = baseStyle.copyWith(
+      fontWeight: FontWeight.w600,
+      background: Paint()
+        ..color = Colors.amber.withValues(alpha: 0.35),
+    );
+
+    final aoKwStyle = baseStyle.copyWith(
+      fontWeight: FontWeight.w600,
+      background: Paint()
+        ..color = Colors.green.withValues(alpha: 0.25),
+    );
+
     return RichText(
       text: TextSpan(
         style: baseStyle,
         children: _buildSpans(
-          context, ref, audioState, colorScheme, baseStyle, readStyle,
+          context, ref, audioState, colorScheme,
+          baseStyle, readStyle, cueStyle, aoKwStyle,
         ),
       ),
     );
@@ -56,64 +89,76 @@ class InteractiveTextWidget extends ConsumerWidget {
     ColorScheme colorScheme,
     TextStyle baseStyle,
     TextStyle readStyle,
+    TextStyle cueStyle,
+    TextStyle aoKwStyle,
   ) {
-    // Build a lookup: anchor text → AudioOpportunity
-    final Map<String, AudioOpportunity> anchors = {
-      for (final opp in opportunities) opp.triggerAnchor.value: opp,
-    };
+    // Build a lookup: anchor text → AudioOpportunity (phrase/word anchors only)
+    final Map<String, AudioOpportunity> anchors = {};
+    for (final opp in opportunities) {
+      final t = opp.triggerAnchor.type;
+      if (t == 'phrase' || t == 'word') {
+        anchors[opp.triggerAnchor.value] = opp;
+      }
+    }
 
-    if (anchors.isEmpty) {
+    // Combine all highlight tokens: anchors + cue keywords + AO voice keywords.
+    // Priority: anchor > cue > ao_keyword (longer match wins via sort).
+    final aoVoiceKws = _aoVoiceKeywords();
+    final lowerCue = {for (final k in cueKeywords) k.toLowerCase()};
+
+    final allTokens = <String>{
+      ...anchors.keys,
+      ...lowerCue,
+      ...aoVoiceKws,
+    }.toList()
+      ..sort((a, b) => b.length.compareTo(a.length));
+
+    if (allTokens.isEmpty) {
       return _splitAtOffset(fullText, 0, readStyle, baseStyle);
     }
 
-    // Build a combined regex that matches any of the anchor strings.
-    // Anchors are sorted longest-first to avoid partial-match ambiguities.
-    final sortedAnchors = anchors.keys.toList()
-      ..sort((a, b) => b.length.compareTo(a.length));
-
-    final pattern = sortedAnchors.map(RegExp.escape).join('|');
-    // Case-insensitive match, allow optional trailing punctuation
-    final regex = RegExp('($pattern)[\\s\\p{P}]*', caseSensitive: false);
+    final pattern = allTokens.map(RegExp.escape).join('|');
+    final regex = RegExp('($pattern)', caseSensitive: false, unicode: true);
 
     final spans = <InlineSpan>[];
     int cursor = 0;
 
-    // Build case-insensitive lookup
     final lowerAnchors = <String, AudioOpportunity>{
       for (final entry in anchors.entries) entry.key.toLowerCase(): entry.value,
     };
 
     for (final match in regex.allMatches(fullText)) {
-      // Text before the match — may partially overlap the read offset.
       if (match.start > cursor) {
         final segment = fullText.substring(cursor, match.start);
-        spans.addAll(
-          _splitAtOffset(segment, cursor, readStyle, baseStyle),
-        );
+        spans.addAll(_splitAtOffset(segment, cursor, readStyle, baseStyle));
       }
 
-      final matchedText = match.group(0)!;  // Full match including punctuation
-      final anchorKey = match.group(1)!;    // Just the anchor part (group 1)
-      final opportunity = lowerAnchors[anchorKey.toLowerCase()]!;
-      // Use matchedText for display (includes trailing punctuation that was in the text)
-      final displayText = matchedText.trimRight();
-      final isLoading = audioState.isSfxLoading(opportunity.eventSummary);
+      final matchedText = match.group(1)!;
+      final key = matchedText.toLowerCase();
 
-      spans.add(
-        _buildTriggerSpan(
-          anchor: displayText,
+      if (lowerAnchors.containsKey(key)) {
+        // Tappable SFX anchor — existing behaviour
+        final opportunity = lowerAnchors[key]!;
+        final isLoading = audioState.isSfxLoading(opportunity.eventSummary);
+        spans.add(_buildTriggerSpan(
+          anchor: matchedText,
           opportunity: opportunity,
           isLoading: isLoading,
           ref: ref,
           colorScheme: colorScheme,
           baseStyle: baseStyle,
-        ),
-      );
+        ));
+      } else if (lowerCue.contains(key)) {
+        // Scene-transition cue keyword — amber highlight
+        spans.add(TextSpan(text: matchedText, style: cueStyle));
+      } else {
+        // AO voice trigger keyword — green highlight
+        spans.add(TextSpan(text: matchedText, style: aoKwStyle));
+      }
 
       cursor = match.end;
     }
 
-    // Remaining text after last match.
     if (cursor < fullText.length) {
       final segment = fullText.substring(cursor);
       spans.addAll(_splitAtOffset(segment, cursor, readStyle, baseStyle));

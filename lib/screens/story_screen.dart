@@ -108,6 +108,15 @@ class StoryScreen extends ConsumerWidget {
                           scene: scene,
                           pages: storyState.activePagesContent,
                           readProgressOffsets: storyState.readProgressOffsets,
+                          cueKeywords: {
+                            for (final c in [
+                              ...scene.sceneActivation.entryCues,
+                              ...scene.sceneActivation.exitCues,
+                            ])
+                              ...c.primaryKeywords,
+                            ...scene.sceneActivation.exitCues
+                                .expand((c) => c.secondaryKeywords),
+                          },
                         ),
                       ),
                     ],
@@ -203,11 +212,13 @@ class _StoryBody extends ConsumerStatefulWidget {
   final Scene scene;
   final List<StoryPage> pages;
   final Map<int, int> readProgressOffsets;
+  final Set<String> cueKeywords;
 
   const _StoryBody({
     required this.scene,
     required this.pages,
     required this.readProgressOffsets,
+    this.cueKeywords = const {},
   });
 
   @override
@@ -249,6 +260,7 @@ class _StoryBodyState extends ConsumerState<_StoryBody> {
                         opportunities: widget.scene.audioOpportunities,
                         readUpToCharOffset:
                             widget.readProgressOffsets[page.pageNumber] ?? 0,
+                        cueKeywords: widget.cueKeywords,
                       ),
                     ],
                   ),
