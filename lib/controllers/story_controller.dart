@@ -645,11 +645,25 @@ class StoryController extends StateNotifier<StoryState> {
         scene: nextScene,
         allPages: data.pages,
       );
-      _speech.updateGrammar(newGrammar);
-      debugPrint(
-        '[StoryController] grammar updated for scene "${nextScene.sceneId}": '
-        '${newGrammar.length} tokens',
-      );
+      if (state.isListening) {
+        _speech.updateGrammar(newGrammar);
+        debugPrint(
+          '[StoryController] grammar updated for scene "${nextScene.sceneId}": '
+          '${newGrammar.length} tokens',
+        );
+      } else {
+        // Listening never started successfully (e.g. mic permission was
+        // denied during the initial loadStory, or audio init hung).  A
+        // manual scene change is the user's signal that they want to keep
+        // going, so retry startListening here with the new scene's grammar.
+        debugPrint(
+          '[StoryController] not listening at scene transition \u2192 '
+          'restarting STT for scene "${nextScene.sceneId}"',
+        );
+        // Fire-and-forget; startListening handles its own error logging.
+        // ignore: discarded_futures
+        startListening(languageCode: data.book.language);
+      }
     }
 
     // Use crossfade transition when the JSON specifies it.

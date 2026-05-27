@@ -42,19 +42,37 @@ class FuzzyMatcher {
 
     for (final kw in primaryKeywords) {
       maxPoints += 2;
-      if (_contains(t, kw.toLowerCase())) earned += 2;
+      earned += 2 * _keywordHitFraction(t, kw.toLowerCase());
     }
     for (final kw in secondaryKeywords) {
       maxPoints += 1;
-      if (_contains(t, kw.toLowerCase())) earned += 1;
+      earned += 1 * _keywordHitFraction(t, kw.toLowerCase());
     }
 
     return maxPoints == 0 ? 0 : (earned / maxPoints).clamp(0.0, 1.0);
   }
 
-  /// Checks whether [haystack] contains [needle] as a word or sub-word.
-  static bool _contains(String haystack, String needle) {
-    if (needle.isEmpty) return false;
-    return haystack.contains(needle);
+  /// Returns how strongly [keyword] is present in [transcript], in `[0, 1]`.
+  ///
+  /// Single-word keywords are binary (1.0 if contained, else 0.0).
+  /// Multi-word phrases ("kalede ya\u015fard\u0131") tokenise and award the
+  /// fraction of tokens found, so STT misrecognising one word in a phrase
+  /// still contributes meaningful score instead of dropping to zero.
+  static double _keywordHitFraction(String transcript, String keyword) {
+    if (keyword.isEmpty) return 0.0;
+    // Fast path: exact substring match wins full credit.
+    if (transcript.contains(keyword)) return 1.0;
+
+    final tokens = keyword
+        .split(RegExp(r'\s+'))
+        .where((t) => t.isNotEmpty)
+        .toList();
+    if (tokens.length <= 1) return 0.0;
+
+    var hit = 0;
+    for (final tok in tokens) {
+      if (transcript.contains(tok)) hit++;
+    }
+    return hit / tokens.length;
   }
 }
