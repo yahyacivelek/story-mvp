@@ -54,9 +54,9 @@ class VoskGrammarBuilder {
     }
 
     // 3. Page full-texts for the active scene (karaoke alignment).
-    final pageNums = scene.pages.toSet();
+    final orderIndices = scene.pages.toSet();
     for (final page in allPages) {
-      if (!pageNums.contains(page.pageNumber)) continue;
+      if (!orderIndices.contains(page.orderIndex)) continue;
       _addPhrase(page.fullText, words);
     }
 

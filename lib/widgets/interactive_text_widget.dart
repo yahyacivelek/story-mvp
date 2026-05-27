@@ -44,6 +44,15 @@ class InteractiveTextWidget extends ConsumerWidget {
     return result;
   }
 
+  /// Normalises curly/smart quotes and apostrophes to plain ASCII so that
+  /// anchor values (e.g. `"can't"`) match full_text containing Unicode
+  /// typographic characters (U+2018/U+2019/U+201C/U+201D).
+  static String _normalise(String s) => s
+      .replaceAll('\u2018', "'") // LEFT SINGLE QUOTATION MARK
+      .replaceAll('\u2019', "'") // RIGHT SINGLE QUOTATION MARK / apostrophe
+      .replaceAll('\u201C', '"') // LEFT DOUBLE QUOTATION MARK
+      .replaceAll('\u201D', '"'); // RIGHT DOUBLE QUOTATION MARK
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final audioState = ref.watch(audioControllerProvider);
@@ -93,11 +102,13 @@ class InteractiveTextWidget extends ConsumerWidget {
     TextStyle aoKwStyle,
   ) {
     // Build a lookup: anchor text → AudioOpportunity (phrase/word anchors only)
+    // Normalise anchor values so curly-quote anchors (e.g. "can't") match
+    // full_text that uses Unicode typographic characters.
     final Map<String, AudioOpportunity> anchors = {};
     for (final opp in opportunities) {
       final t = opp.triggerAnchor.type;
       if (t == 'phrase' || t == 'word') {
-        anchors[opp.triggerAnchor.value] = opp;
+        anchors[_normalise(opp.triggerAnchor.value)] = opp;
       }
     }
 
@@ -123,13 +134,16 @@ class InteractiveTextWidget extends ConsumerWidget {
     final spans = <InlineSpan>[];
     int cursor = 0;
 
+    // Normalise fullText for matching so curly quotes align with anchor values.
+    final normalisedText = _normalise(fullText);
+
     final lowerAnchors = <String, AudioOpportunity>{
       for (final entry in anchors.entries) entry.key.toLowerCase(): entry.value,
     };
 
-    for (final match in regex.allMatches(fullText)) {
+    for (final match in regex.allMatches(normalisedText)) {
       if (match.start > cursor) {
-        final segment = fullText.substring(cursor, match.start);
+        final segment = normalisedText.substring(cursor, match.start);
         spans.addAll(_splitAtOffset(segment, cursor, readStyle, baseStyle));
       }
 
@@ -159,8 +173,8 @@ class InteractiveTextWidget extends ConsumerWidget {
       cursor = match.end;
     }
 
-    if (cursor < fullText.length) {
-      final segment = fullText.substring(cursor);
+    if (cursor < normalisedText.length) {
+      final segment = normalisedText.substring(cursor);
       spans.addAll(_splitAtOffset(segment, cursor, readStyle, baseStyle));
     }
 

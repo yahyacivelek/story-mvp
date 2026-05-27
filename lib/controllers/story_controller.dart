@@ -29,7 +29,7 @@ class StoryState {
   final String? error;
   final bool isListening;
   final String lastHeardText;
-  /// Map of pageNumber → character offset up to which text has been read aloud.
+  /// Map of orderIndex → character offset up to which text has been read aloud.
   final Map<int, int> readProgressOffsets;
 
   const StoryState({
@@ -51,11 +51,11 @@ class StoryState {
 
   List<StoryPage> get activePagesContent {
     if (storyData == null || activeScene == null) return [];
-    final pageNums = activeScene!.pages.toSet();
+    final orderIndices = activeScene!.pages.toSet();
     return storyData!.pages
-        .where((p) => pageNums.contains(p.pageNumber))
+        .where((p) => orderIndices.contains(p.orderIndex))
         .toList()
-      ..sort((a, b) => a.pageNumber.compareTo(b.pageNumber));
+      ..sort((a, b) => a.orderIndex.compareTo(b.orderIndex));
   }
 
   StoryState copyWith({
@@ -514,11 +514,11 @@ class StoryController extends StateNotifier<StoryState> {
     if (data == null) return;
     if (_transcriptBuffer.isEmpty) return;
 
-    final pageNums = scene.pages.toSet();
+    final orderIndices = scene.pages.toSet();
     final pages = data.pages
-        .where((p) => pageNums.contains(p.pageNumber))
+        .where((p) => orderIndices.contains(p.orderIndex))
         .toList()
-      ..sort((a, b) => a.pageNumber.compareTo(b.pageNumber));
+      ..sort((a, b) => a.orderIndex.compareTo(b.orderIndex));
 
     // Probe: last up-to-10 words from the rolling buffer.
     const probeSize = 10;
@@ -532,7 +532,7 @@ class StoryController extends StateNotifier<StoryState> {
       final tokens = _tokenise(page.fullText);
       if (tokens.isEmpty) continue;
 
-      final currentOffset = updatedOffsets[page.pageNumber] ?? 0;
+      final currentOffset = updatedOffsets[page.orderIndex] ?? 0;
 
       // Only search from a little before the current offset (allow slight
       // rewind in case STT re-emits an earlier partial).
@@ -568,7 +568,7 @@ class StoryController extends StateNotifier<StoryState> {
       }
 
       if (bestEndOffset > currentOffset) {
-        updatedOffsets[page.pageNumber] = bestEndOffset;
+        updatedOffsets[page.orderIndex] = bestEndOffset;
       }
     }
 
@@ -602,11 +602,11 @@ class StoryController extends StateNotifier<StoryState> {
 
     // Fallback: derive from last page text when no structured cues.
     final data = state.storyData!;
-    final pageNums = scene.pages.toSet();
+    final orderIndices = scene.pages.toSet();
     final pages = data.pages
-        .where((p) => pageNums.contains(p.pageNumber))
+        .where((p) => orderIndices.contains(p.orderIndex))
         .toList()
-      ..sort((a, b) => a.pageNumber.compareTo(b.pageNumber));
+      ..sort((a, b) => a.orderIndex.compareTo(b.orderIndex));
 
     final lastPageWords = pages.isNotEmpty
         ? pages.last.fullText

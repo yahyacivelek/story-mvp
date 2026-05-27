@@ -259,7 +259,7 @@ class _StoryBodyState extends ConsumerState<_StoryBody> {
                         fullText: page.fullText,
                         opportunities: widget.scene.audioOpportunities,
                         readUpToCharOffset:
-                            widget.readProgressOffsets[page.pageNumber] ?? 0,
+                            widget.readProgressOffsets[page.orderIndex] ?? 0,
                         cueKeywords: widget.cueKeywords,
                       ),
                     ],

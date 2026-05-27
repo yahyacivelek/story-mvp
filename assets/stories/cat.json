@@ -1,0 +1,1874 @@
+{
+  "book": {
+    "language": "en",
+    "analysis_confidence": 0.99,
+    "detected_title": "cat"
+  },
+  "page_ordering": {
+    "ordering_method": "visible_page_numbers_and_sequential_inference",
+    "confidence": 0.98
+  },
+  "pages": [
+    {
+      "page_id": "page_0.jpg",
+      "page_number": 1,
+      "order_index": 1,
+      "order_confidence": 0.99,
+      "full_text": "",
+      "primary_scene_hint": "A chaotic classroom with cats",
+      "dominant_visual": "Cats in a classroom, one upside down, one holding a 'MATH' book, a frog on the floor",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_1.jpg",
+      "page_number": 2,
+      "order_index": 2,
+      "order_confidence": 0.99,
+      "full_text": "Splat the cat goes to Cat School.\nSplat likes to take Seymour.\nSeymour is Splat's pet mouse.\nSeymour rides in Splat's hat.",
+      "primary_scene_hint": "Splat the cat and Seymour the mouse in a classroom",
+      "dominant_visual": "Large black cat (Splat) with a mouse (Seymour) in his hat, carrying a red satchel, in a classroom setting",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_2.jpg",
+      "page_number": 6,
+      "order_index": 3,
+      "order_confidence": 0.99,
+      "full_text": "One morning,\nSplat's teacher had big news.\nShe asked all the cats\nto sit on the big red mat.\nSeymour sat in Splat's hat.\n6",
+      "primary_scene_hint": "Cats gathered on a mat in a classroom",
+      "dominant_visual": "Teacher cat holding a 'MUSIC' book, surrounded by student cats sitting on a red mat",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_3.jpg",
+      "page_number": 7,
+      "order_index": 4,
+      "order_confidence": 0.99,
+      "full_text": "“All of you will sing\non Parents' Night,”\nMrs. Wimpydimple said.\n“If your singing is loud,\nyour parents will be proud.”",
+      "primary_scene_hint": "Teacher cat announcing Parents' Night",
+      "dominant_visual": "Close-up of Mrs. Wimpydimple (teacher cat) smiling, holding a 'MUSIC' book",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_4.jpg",
+      "page_number": 8,
+      "order_index": 5,
+      "order_confidence": 0.99,
+      "full_text": "“Will lots of parents be there?”\nasked Splat.\n“Yes. All the parents,”\nsaid Mrs. Wimpydimple.\n“Gulp!” said Splat.",
+      "primary_scene_hint": "Splat expressing worry about Parents' Night",
+      "dominant_visual": "Close-up of Mrs. Wimpydimple smiling, with a glimpse of Splat looking worried",
+      "mood": "suspenseful"
+    },
+    {
+      "page_id": "page_5.jpg",
+      "page_number": 9,
+      "order_index": 6,
+      "order_confidence": 0.99,
+      "full_text": "Splat's tail wiggled wildly.\nSplat was worried.\nSplat was shy.",
+      "primary_scene_hint": "Splat feeling shy and worried",
+      "dominant_visual": "Splat looking worried, surrounded by other cats in a classroom setting",
+      "mood": "suspenseful"
+    },
+    {
+      "page_id": "page_6.jpg",
+      "page_number": 10,
+      "order_index": 7,
+      "order_confidence": 0.99,
+      "full_text": "“I can't sing,” said Splat.\n\n“Can you meow?” asked his teacher.\n“I forget how to meow,” said Splat.",
+      "primary_scene_hint": "Splat struggling to sing or meow",
+      "dominant_visual": "Splat looking distressed, followed by Mrs. Wimpydimple smiling",
+      "mood": "suspenseful"
+    },
+    {
+      "page_id": "page_7.jpg",
+      "page_number": 11,
+      "order_index": 8,
+      "order_confidence": 0.99,
+      "full_text": "“Can you hum?” asked his teacher.\n\n“I even forget how to hum,”\nsaid Splat.",
+      "primary_scene_hint": "Splat unable to hum",
+      "dominant_visual": "Splat looking even more distressed, then Mrs. Wimpydimple",
+      "mood": "suspenseful"
+    },
+    {
+      "page_id": "page_8.jpg",
+      "page_number": 12,
+      "order_index": 9,
+      "order_confidence": 0.99,
+      "full_text": "“That's okay, Splat,”\nsaid Mrs. Wimpydimple.\n“I will help you sing.\nWe will all help you sing.”",
+      "primary_scene_hint": "Teacher and classmates offering help to Splat",
+      "dominant_visual": "Mrs. Wimpydimple and other cats looking encouraging, with musical notes floating around",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_9.jpg",
+      "page_number": 13,
+      "order_index": 10,
+      "order_confidence": 0.99,
+      "full_text": "Mrs. Wimpydimple sang first.\n“La-la-la!” she sang.\nThe cats on the mat began to sing.\nAll except Splat.",
+      "primary_scene_hint": "Cats singing in class, Splat hesitates",
+      "dominant_visual": "Cats singing with open mouths, musical notes, Splat looking hesitant",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_10.jpg",
+      "page_number": 14,
+      "order_index": 11,
+      "order_confidence": 0.99,
+      "full_text": "“Now you try, Splat,”\nsaid Mrs. Wimpydimple.\nSplat opened his mouth.\nNothing came out.",
+      "primary_scene_hint": "Splat's first attempt to sing",
+      "dominant_visual": "Close-up of Mrs. Wimpydimple, then a glimpse of Splat with an open mouth",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_11.jpg",
+      "page_number": 15,
+      "order_index": 12,
+      "order_confidence": 0.99,
+      "full_text": "“You can do it, Splat,”\nsaid his teacher.\nSplat tried hard,\nbut all that came out\nwas a little squeak.",
+      "primary_scene_hint": "Splat's attempt results in a squeak",
+      "dominant_visual": "Splat trying to sing, Seymour (mouse) on his head looking surprised",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_12.jpg",
+      "page_number": 16,
+      "order_index": 13,
+      "order_confidence": 0.99,
+      "full_text": "Splat looked at Seymour.\nSeymour was brave.\nHe was a mouse\nin a room full of cats.\nSplat could be brave, too.",
+      "primary_scene_hint": "Splat finds inspiration from Seymour's bravery",
+      "dominant_visual": "Splat looking at Seymour, who is on his head, surrounded by other cats",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_13.jpg",
+      "page_number": 17,
+      "order_index": 14,
+      "order_confidence": 0.99,
+      "full_text": "Splat opened his mouth again.\n“La!” sang Splat.\nThe note was loud.\nIt was long.\nAnd it was very, very flat!\n17",
+      "primary_scene_hint": "Splat sings a loud, flat note",
+      "dominant_visual": "Splat singing loudly with other cats reacting, some surprised, some amused",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_14.jpg",
+      "page_number": 18,
+      "order_index": 15,
+      "order_confidence": 0.99,
+      "full_text": "HA!\nHA!\nHA!\nThe cats on the mat went wild.\nSplat was not trying to be funny,\nbut he was funny anyway.\n18",
+      "primary_scene_hint": "Classmates laughing at Splat's singing",
+      "dominant_visual": "Cats laughing hysterically, Splat looking a bit confused but also pleased",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_15.jpg",
+      "page_number": 19,
+      "order_index": 16,
+      "order_confidence": 0.99,
+      "full_text": "“Sing just like that!”\nsaid Mrs. Wimpydimple.\n“You will be the star\nwith a mouse in his hat!”\n“Maybe,” said Splat.",
+      "primary_scene_hint": "Mrs. Wimpydimple encourages Splat",
+      "dominant_visual": "Mrs. Wimpydimple smiling, Splat looking thoughtful with Seymour on his head",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_16.jpg",
+      "page_number": 20,
+      "order_index": 17,
+      "order_confidence": 0.99,
+      "full_text": "Splat went home after school.\n“What if I forget my part?”\nSplat asked Mom and Dad.\n“You won't forget,”\nthey said to Splat.",
+      "primary_scene_hint": "Splat worries about forgetting his part at home",
+      "dominant_visual": "Splat at home with his parents, looking worried, parents reassuring him",
+      "mood": "warm"
+    },
+    {
+      "page_id": "page_17.jpg",
+      "page_number": 21,
+      "order_index": 18,
+      "order_confidence": 0.99,
+      "full_text": "“Maybe I will forget,”\nsaid Splat.\n21",
+      "primary_scene_hint": "Splat's continued worry",
+      "dominant_visual": "Splat walking away from his mom, looking worried, entering a room",
+      "mood": "suspenseful"
+    },
+    {
+      "page_id": "page_18.jpg",
+      "page_number": 22,
+      "order_index": 19,
+      "order_confidence": 0.99,
+      "full_text": "Splat put Seymour on his head.\nSplat's tail wiggled\nand Seymour jiggled.\nSplat sang “la!”\nThe note still came out flat.",
+      "primary_scene_hint": "Splat practices singing at home",
+      "dominant_visual": "Splat practicing singing in front of a mirror, Seymour on his head, a red satchel hanging nearby",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_19.jpg",
+      "page_number": 23,
+      "order_index": 20,
+      "order_confidence": 0.99,
+      "full_text": "“Maybe I won't forget,”\nsaid Splat.",
+      "primary_scene_hint": "Splat's wavering confidence",
+      "dominant_visual": "Splat looking out from behind a door, a bookshelf with books titled 'CAT TALES' visible",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_20.jpg",
+      "page_number": 24,
+      "order_index": 21,
+      "order_confidence": 0.99,
+      "full_text": "Soon it was Parents' Night.\nAll the parents came\nto Splat's classroom.\nThe class stood on the big red mat.\nParents' Night",
+      "primary_scene_hint": "Parents' Night begins in the classroom",
+      "dominant_visual": "Classroom set up for Parents' Night, cats on the mat, parents in the audience, blackboard says 'Parents' Night'",
+      "mood": "calm"
+    },
+    {
+      "page_id": "page_21.jpg",
+      "page_number": 25,
+      "order_index": 22,
+      "order_confidence": 0.99,
+      "full_text": "“Let's begin!” said Mrs. Wimpydimple.\nThe class started to sing.\n“La-la-la!” sang the cats.\nBut Splat stayed quiet.\nHe waited for his turn.\n25",
+      "primary_scene_hint": "The class sings, Splat waits nervously",
+      "dominant_visual": "Cats singing, Mrs. Wimpydimple conducting, Splat waiting quietly",
+      "mood": "suspenseful"
+    },
+    {
+      "page_id": "page_22.jpg",
+      "page_number": 26,
+      "order_index": 23,
+      "order_confidence": 0.99,
+      "full_text": "Mrs. Wimpydimple gave Splat a nod.\nSplat was ready.\nSeymour jumped onto Splat's head.\nSeymour was ready, too.\nSplat's tail wiggled wildly.\nSplat opened his mouth very wide.",
+      "primary_scene_hint": "Splat prepares to sing on stage",
+      "dominant_visual": "Close-up of Splat, Seymour on his head, preparing to sing with a wide-open mouth",
+      "mood": "suspenseful"
+    },
+    {
+      "page_id": "page_23.jpg",
+      "page_number": 27,
+      "order_index": 24,
+      "order_confidence": 0.99,
+      "full_text": "“La!” sang Splat,\nand the note was flat.\nIt was very flat and very loud.\n\nHe opened his mouth even wider.\n“LA!” sang Splat.\n\nThen he opened his mouth\nas wide as it could go.",
+      "primary_scene_hint": "Splat sings louder and flatter",
+      "dominant_visual": "Splat singing with increasing effort and a wide-open mouth, musical notes, Seymour on his head",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_24.jpg",
+      "page_number": 28,
+      "order_index": 25,
+      "order_confidence": 0.99,
+      "full_text": "“LAAA!” sang Splat,\nand he fell off the mat.\nSPLAT!\n\nThe class giggled.\nThe parents laughed.\nAnd Splat laughed\nthe loudest of all.\n28",
+      "primary_scene_hint": "Splat's performance ends with a fall and laughter",
+      "dominant_visual": "Splat falling off the mat while singing, other cats and parents laughing joyfully",
+      "mood": "playful"
+    },
+    {
+      "page_id": "page_25.jpg",
+      "page_number": 29,
+      "order_index": 26,
+      "order_confidence": 0.99,
+      "full_text": "“You were the star!”\nsaid Splat's mom.\n“We are very proud of you,”\nsaid Splat's dad.",
+      "primary_scene_hint": "Splat being hugged by his parents (image is rotated 180 degrees)",
+      "dominant_visual": "Splat being hugged by his parents (image is rotated 180 degrees)",
+      "mood": "warm"
+    },
+    {
+      "page_id": "page_26.jpg",
+      "page_number": 30,
+      "order_index": 27,
+      "order_confidence": 0.99,
+      "full_text": "Mom and Dad hugged Splat.\n“We love our cat who sings flat.”",
+      "primary_scene_hint": "Splat receives a loving hug from his parents",
+      "dominant_visual": "Splat being hugged by his parents",
+      "mood": "warm"
+    }
+  ],
+  "scene_graph": [
+    {
+      "scene_id": "scene_1_intro_cat_school",
+      "pages": [
+        1,
+        2
+      ],
+      "scene_summary": "Introduction to Splat the cat, his pet mouse Seymour, and their daily routine at Cat School.",
+      "scene_type": "school",
+      "scene_mood": "playful",
+      "scene_energy": "medium",
+      "narrative_phase": "intro",
+      "scene_duration_estimate_seconds": 25,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "cat",
+              "school"
+            ],
+            "secondary_keywords": [
+              "goes",
+              "likes"
+            ],
+            "semantic_intent": "Introduce main character and setting"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "hat"
+            ],
+            "semantic_intent": "End of character introduction"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_2_parents_night_announcement",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_2_parents_night_announcement",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "classroom_chatter",
+            "variant": "light",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "playful",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_cat_meow_playful",
+          "layer_role": "animal_vocalization",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "cat"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "cat"
+            ],
+            "secondary_keywords": [
+              "goes"
+            ],
+            "semantic_intent": "Cat introduction"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 10,
+          "event_summary": "A playful cat meow when Splat is introduced.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "cat_meow",
+            "variant": "playful",
+            "intensity": "medium",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.9,
+          "mix_level": "subtle",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_mouse_squeak_curious",
+          "layer_role": "animal_vocalization",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "mouse"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "mouse"
+            ],
+            "secondary_keywords": [
+              "pet"
+            ],
+            "semantic_intent": "Mouse introduction"
+          },
+          "activation_window": {
+            "start_progress": 0.5,
+            "end_progress": 0.7
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 10,
+          "event_summary": "A curious mouse squeak when Seymour is introduced.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "mouse_squeak",
+            "variant": "light",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "playful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_2_parents_night_announcement",
+      "pages": [
+        3,
+        4
+      ],
+      "scene_summary": "The teacher announces Parents' Night, where all cats will sing, causing the main character to feel worried.",
+      "scene_type": "school",
+      "scene_mood": "suspenseful",
+      "scene_energy": "medium",
+      "narrative_phase": "build_up",
+      "scene_duration_estimate_seconds": 30,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "morning",
+              "teacher"
+            ],
+            "secondary_keywords": [
+              "news",
+              "mat"
+            ],
+            "semantic_intent": "Teacher gathers class for announcement"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "gulp",
+              "said"
+            ],
+            "semantic_intent": "Main character expresses worry"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_3_struggle_to_sing",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_3_struggle_to_sing",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "classroom_chatter",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "calm",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_teacher_announcement",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "big news"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "teacher",
+              "news"
+            ],
+            "secondary_keywords": [
+              "morning"
+            ],
+            "semantic_intent": "Teacher makes an important announcement"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 10,
+          "event_summary": "A subtle sound indicating an announcement, like a gentle bell or chime.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "bell_chime",
+            "variant": "gentle",
+            "intensity": "low",
+            "texture": "sparkly",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_cat_gulp",
+          "layer_role": "emotion",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "gulp"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "gulp"
+            ],
+            "secondary_keywords": [
+              "said"
+            ],
+            "semantic_intent": "Main character expresses anxiety"
+          },
+          "activation_window": {
+            "start_progress": 0.8,
+            "end_progress": 0.95
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "A subtle gulp sound to emphasize the cat's worry.",
+          "sound_category": "emotion",
+          "sound_profile": {
+            "primary_sound": "swallow_gulp",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "suspenseful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_3_struggle_to_sing",
+      "pages": [
+        5,
+        6,
+        7
+      ],
+      "scene_summary": "The main character expresses shyness and inability to sing, meow, or hum, feeling distressed about Parents' Night.",
+      "scene_type": "school",
+      "scene_mood": "suspenseful",
+      "scene_energy": "low",
+      "narrative_phase": "build_up",
+      "scene_duration_estimate_seconds": 40,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "tail",
+              "wiggled"
+            ],
+            "secondary_keywords": [
+              "worried",
+              "shy"
+            ],
+            "semantic_intent": "Main character shows signs of nervousness"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "hum",
+              "said"
+            ],
+            "semantic_intent": "Main character's complete inability to hum"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_4_teacher_class_support",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_4_teacher_class_support",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "classroom_quiet",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "mystery",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_tail_wiggle",
+          "layer_role": "animal_presence",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "wiggled"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "tail",
+              "wiggled"
+            ],
+            "secondary_keywords": [
+              "wildly"
+            ],
+            "semantic_intent": "Cat's tail movement indicating nervousness"
+          },
+          "activation_window": {
+            "start_progress": 0.05,
+            "end_progress": 0.2
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "A subtle swishing sound for the cat's wiggling tail.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "tail_swish",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "suspenseful"
+        },
+        {
+          "id": "sfx_cat_sigh_distressed",
+          "layer_role": "emotion",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "can't sing"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "can't",
+              "sing"
+            ],
+            "secondary_keywords": [
+              "said"
+            ],
+            "semantic_intent": "Cat expresses distress about singing"
+          },
+          "activation_window": {
+            "start_progress": 0.3,
+            "end_progress": 0.5
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 10,
+          "event_summary": "A soft, distressed cat sigh.",
+          "sound_category": "emotion",
+          "sound_profile": {
+            "primary_sound": "cat_sigh",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "suspenseful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_4_teacher_class_support",
+      "pages": [
+        8,
+        9
+      ],
+      "scene_summary": "The teacher and other cats offer encouragement and demonstrate singing, but the main character remains hesitant.",
+      "scene_type": "school",
+      "scene_mood": "calm",
+      "scene_energy": "medium",
+      "narrative_phase": "build_up",
+      "scene_duration_estimate_seconds": 35,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "okay",
+              "help"
+            ],
+            "secondary_keywords": [
+              "sing",
+              "teacher"
+            ],
+            "semantic_intent": "Teacher offers support to the main character"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "except",
+              "him"
+            ],
+            "semantic_intent": "Main character is the only one not singing"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_5_first_squeak_inspiration",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_5_first_squeak_inspiration",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "classroom_chatter",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "comfort",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_teacher_sings",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "sang first"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "teacher",
+              "sang"
+            ],
+            "secondary_keywords": [
+              "first"
+            ],
+            "semantic_intent": "Teacher demonstrates singing"
+          },
+          "activation_window": {
+            "start_progress": 0.5,
+            "end_progress": 0.7
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 10,
+          "event_summary": "A short, pleasant vocalization of 'la-la-la' by the teacher.",
+          "sound_category": "music",
+          "sound_profile": {
+            "primary_sound": "vocal_melody",
+            "variant": "gentle",
+            "intensity": "medium",
+            "texture": "soft",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_cats_singing_chorus",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "began to sing"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "cats",
+              "sing"
+            ],
+            "secondary_keywords": [
+              "mat"
+            ],
+            "semantic_intent": "Class joins in singing"
+          },
+          "activation_window": {
+            "start_progress": 0.7,
+            "end_progress": 0.9
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 10,
+          "event_summary": "A soft chorus of cats singing 'la-la-la'.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "cat_chorus",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_5_first_squeak_inspiration",
+      "pages": [
+        10,
+        11,
+        12
+      ],
+      "scene_summary": "The main character attempts to sing, producing only a squeak, then finds courage by observing Seymour's bravery.",
+      "scene_type": "school",
+      "scene_mood": "calm",
+      "scene_energy": "medium",
+      "narrative_phase": "build_up",
+      "scene_duration_estimate_seconds": 45,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "now",
+              "try"
+            ],
+            "secondary_keywords": [
+              "teacher"
+            ],
+            "semantic_intent": "Teacher prompts main character to sing"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "brave",
+              "too"
+            ],
+            "semantic_intent": "Main character resolves to be brave"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_6_loud_flat_note",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_6_loud_flat_note",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "classroom_quiet",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "comfort",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_cat_squeak_attempt",
+          "layer_role": "animal_vocalization",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "squeak"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "little",
+              "squeak"
+            ],
+            "secondary_keywords": [
+              "came",
+              "out"
+            ],
+            "semantic_intent": "Main character's failed singing attempt"
+          },
+          "activation_window": {
+            "start_progress": 0.4,
+            "end_progress": 0.6
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "A small, high-pitched squeak from the cat.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "cat_squeak",
+            "variant": "playful",
+            "intensity": "medium",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.9,
+          "mix_level": "prominent",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_mouse_brave_squeak",
+          "layer_role": "animal_vocalization",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "brave"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "mouse",
+              "brave"
+            ],
+            "secondary_keywords": [
+              "room",
+              "cats"
+            ],
+            "semantic_intent": "Mouse's bravery inspires the main character"
+          },
+          "activation_window": {
+            "start_progress": 0.7,
+            "end_progress": 0.9
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "A confident, small mouse squeak.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "mouse_squeak",
+            "variant": "light",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_6_loud_flat_note",
+      "pages": [
+        13,
+        14,
+        15
+      ],
+      "scene_summary": "The main character sings a loud, flat note, causing the class to laugh, and the teacher encourages him to embrace his unique sound.",
+      "scene_type": "school",
+      "scene_mood": "playful",
+      "scene_energy": "high",
+      "narrative_phase": "action",
+      "scene_duration_estimate_seconds": 40,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "opened",
+              "mouth"
+            ],
+            "secondary_keywords": [
+              "again"
+            ],
+            "semantic_intent": "Main character prepares to sing again"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "star",
+              "hat"
+            ],
+            "semantic_intent": "Teacher encourages main character to be a star"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_7_practicing_at_home",
+        "transition_style": "fade",
+        "audio_continuity": "replace",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_7_practicing_at_home",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "classroom_chatter",
+            "variant": "playful",
+            "intensity": "medium",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "playful",
+          "intensity": "medium"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_cat_loud_flat_note",
+          "layer_role": "animal_vocalization",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "loud"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "note",
+              "loud",
+              "flat"
+            ],
+            "secondary_keywords": [
+              "sang"
+            ],
+            "semantic_intent": "Main character sings a loud, flat note"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "A comically loud and flat cat vocalization.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "cat_meow_flat",
+            "variant": "playful",
+            "intensity": "high",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 5,
+          "confidence": 0.95,
+          "mix_level": "prominent",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_cats_laughing",
+          "layer_role": "emotion",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "went wild"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "cats",
+              "wild"
+            ],
+            "secondary_keywords": [
+              "laughing"
+            ],
+            "semantic_intent": "Classmates react with laughter"
+          },
+          "activation_window": {
+            "start_progress": 0.4,
+            "end_progress": 0.6
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 10,
+          "event_summary": "Sound of multiple cats giggling and laughing.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "cat_giggles",
+            "variant": "playful",
+            "intensity": "medium",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.9,
+          "mix_level": "prominent",
+          "emotional_tone": "playful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_7_practicing_at_home",
+      "pages": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "scene_summary": "The main character goes home, worries about forgetting his part, practices his flat note, and his confidence wavers.",
+      "scene_type": "other",
+      "scene_mood": "warm",
+      "scene_energy": "low",
+      "narrative_phase": "calm",
+      "scene_duration_estimate_seconds": 50,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "home",
+              "school"
+            ],
+            "secondary_keywords": [
+              "asked",
+              "mom",
+              "dad"
+            ],
+            "semantic_intent": "Main character returns home and talks to parents"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "forget",
+              "said"
+            ],
+            "semantic_intent": "Main character's wavering confidence"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_8_parents_night_begins",
+        "transition_style": "fade",
+        "audio_continuity": "replace",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_8_parents_night_begins",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "home_interior",
+            "variant": "cozy",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "cozy",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_door_close_home",
+          "layer_role": "secondary_detail",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "home"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "went",
+              "home"
+            ],
+            "secondary_keywords": [
+              "after",
+              "school"
+            ],
+            "semantic_intent": "Main character arrives home"
+          },
+          "activation_window": {
+            "start_progress": 0.05,
+            "end_progress": 0.15
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "A soft door closing sound.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "door_close",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "wooden",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 2,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_cat_sigh_worry",
+          "layer_role": "emotion",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "forget"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "forget",
+              "part"
+            ],
+            "secondary_keywords": [
+              "asked"
+            ],
+            "semantic_intent": "Main character expresses worry about forgetting"
+          },
+          "activation_window": {
+            "start_progress": 0.15,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 10,
+          "event_summary": "A soft, worried cat sigh.",
+          "sound_category": "emotion",
+          "sound_profile": {
+            "primary_sound": "cat_sigh",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.85,
+          "mix_level": "medium",
+          "emotional_tone": "suspenseful"
+        },
+        {
+          "id": "sfx_cat_practice_sing",
+          "layer_role": "animal_vocalization",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "sang"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "sang",
+              "la"
+            ],
+            "secondary_keywords": [
+              "note",
+              "flat"
+            ],
+            "semantic_intent": "Main character practices singing"
+          },
+          "activation_window": {
+            "start_progress": 0.6,
+            "end_progress": 0.8
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "A short, flat cat vocalization during practice.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "cat_meow_flat",
+            "variant": "playful",
+            "intensity": "medium",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "playful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_8_parents_night_begins",
+      "pages": [
+        20,
+        21
+      ],
+      "scene_summary": "Parents arrive for Parents' Night, the class begins to sing, and the main character waits nervously for his turn.",
+      "scene_type": "school",
+      "scene_mood": "suspenseful",
+      "scene_energy": "medium",
+      "narrative_phase": "build_up",
+      "scene_duration_estimate_seconds": 35,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "soon",
+              "parents"
+            ],
+            "secondary_keywords": [
+              "night",
+              "came"
+            ],
+            "semantic_intent": "Parents' Night begins"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "turn",
+              "waited"
+            ],
+            "semantic_intent": "Main character waits for his turn to sing"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_9_big_performance_fall",
+        "transition_style": "crossfade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 3
+      },
+      "likely_next_scene": "scene_9_big_performance_fall",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "school_hall_chatter",
+            "variant": "light",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "calm",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_parents_murmur",
+          "layer_role": "secondary_detail",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "parents"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "parents",
+              "came"
+            ],
+            "secondary_keywords": [
+              "classroom"
+            ],
+            "semantic_intent": "Parents arrive for the event"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 10,
+          "event_summary": "A soft murmur of parents arriving and settling.",
+          "sound_category": "environment",
+          "sound_profile": {
+            "primary_sound": "crowd_murmur",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_class_sings_softly",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "started to sing"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "class",
+              "sing"
+            ],
+            "secondary_keywords": [
+              "la"
+            ],
+            "semantic_intent": "The class begins their performance"
+          },
+          "activation_window": {
+            "start_progress": 0.6,
+            "end_progress": 0.8
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 10,
+          "event_summary": "A soft, harmonious chorus of cats singing 'la-la-la'.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "cat_chorus",
+            "variant": "soft",
+            "intensity": "medium",
+            "texture": "airy",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "calm"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_9_big_performance_fall",
+      "pages": [
+        22,
+        23,
+        24
+      ],
+      "scene_summary": "The main character performs his loud, flat note with increasing enthusiasm, eventually falling off the mat, leading to joyful laughter from everyone.",
+      "scene_type": "school",
+      "scene_mood": "playful",
+      "scene_energy": "high",
+      "narrative_phase": "action",
+      "scene_duration_estimate_seconds": 45,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "nod",
+              "ready"
+            ],
+            "secondary_keywords": [
+              "teacher",
+              "mouth"
+            ],
+            "semantic_intent": "Main character prepares for his performance"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "loudest",
+              "all"
+            ],
+            "semantic_intent": "Everyone, including main character, laughs joyfully"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_10_proud_parents_ending",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_10_proud_parents_ending",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "school_hall_chatter",
+            "variant": "playful",
+            "intensity": "medium",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "adventure",
+          "intensity": "medium"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_cat_tail_wiggle_excited",
+          "layer_role": "animal_presence",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "tail wiggled"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "tail",
+              "wiggled"
+            ],
+            "secondary_keywords": [
+              "wildly"
+            ],
+            "semantic_intent": "Main character's excited tail movement"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.2
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "An energetic swishing sound for the cat's tail.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "tail_swish",
+            "variant": "playful",
+            "intensity": "medium",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "excited"
+        },
+        {
+          "id": "sfx_cat_sing_loud_flat_crescendo",
+          "layer_role": "animal_vocalization",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "wider"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "opened",
+              "wider"
+            ],
+            "secondary_keywords": [
+              "sang"
+            ],
+            "semantic_intent": "Main character sings louder and wider"
+          },
+          "activation_window": {
+            "start_progress": 0.4,
+            "end_progress": 0.7
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "A series of increasingly loud and flat cat vocalizations.",
+          "sound_category": "animal",
+          "sound_profile": {
+            "primary_sound": "cat_meow_flat",
+            "variant": "playful",
+            "intensity": "high",
+            "texture": "natural",
+            "play_style": "repeat"
+          },
+          "playback_type": "oneshot",
+          "importance": 5,
+          "confidence": 0.95,
+          "mix_level": "prominent",
+          "emotional_tone": "excited"
+        },
+        {
+          "id": "sfx_cat_fall_thud",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "phrase",
+            "value": "fell off"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "fell",
+              "off",
+              "mat"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Main character falls off the mat"
+          },
+          "activation_window": {
+            "start_progress": 0.7,
+            "end_progress": 0.8
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "A soft, comical thud as the cat falls.",
+          "sound_category": "movement",
+          "sound_profile": {
+            "primary_sound": "thud_soft",
+            "variant": "playful",
+            "intensity": "medium",
+            "texture": "soft",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.9,
+          "mix_level": "prominent",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_audience_laughter",
+          "layer_role": "emotion",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "laughed"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "parents",
+              "laughed"
+            ],
+            "secondary_keywords": [
+              "class",
+              "giggled"
+            ],
+            "semantic_intent": "Audience and class laugh at the performance"
+          },
+          "activation_window": {
+            "start_progress": 0.8,
+            "end_progress": 0.95
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 10,
+          "event_summary": "Sound of giggling and joyful laughter from the audience.",
+          "sound_category": "emotion",
+          "sound_profile": {
+            "primary_sound": "crowd_laughter",
+            "variant": "playful",
+            "intensity": "high",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 5,
+          "confidence": 0.95,
+          "mix_level": "prominent",
+          "emotional_tone": "playful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_10_proud_parents_ending",
+      "pages": [
+        25,
+        26
+      ],
+      "scene_summary": "The main character's parents express immense pride and love for their unique cat who sings flat, ending the story on a warm, accepting note.",
+      "scene_type": "school",
+      "scene_mood": "warm",
+      "scene_energy": "low",
+      "narrative_phase": "ending",
+      "scene_duration_estimate_seconds": 30,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "star",
+              "mom"
+            ],
+            "secondary_keywords": [
+              "proud",
+              "dad"
+            ],
+            "semantic_intent": "Parents express pride in main character's performance"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "flat",
+              "love"
+            ],
+            "semantic_intent": "Final loving statement from parents"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "END",
+        "transition_style": "fade",
+        "audio_continuity": "fade_out",
+        "transition_duration_seconds": 3
+      },
+      "likely_next_scene": "END",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "home_interior",
+            "variant": "cozy",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "comfort",
+          "intensity": "medium"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_parents_hug",
+          "layer_role": "emotion",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "hugged"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "mom",
+              "dad",
+              "hugged"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Parents hug the main character"
+          },
+          "activation_window": {
+            "start_progress": 0.6,
+            "end_progress": 0.8
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "A soft, warm sound of a hug.",
+          "sound_category": "emotion",
+          "sound_profile": {
+            "primary_sound": "hug_embrace",
+            "variant": "warm",
+            "intensity": "medium",
+            "texture": "soft",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "warm"
+        }
+      ]
+    }
+  ]
+}
