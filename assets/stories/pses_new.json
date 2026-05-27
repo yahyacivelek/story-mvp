@@ -1,0 +1,1994 @@
+{
+  "book": {
+    "language": "tr",
+    "analysis_confidence": 0.99,
+    "detected_title": "Küçük Bayan Prenses"
+  },
+  "page_ordering": {
+    "ordering_method": "capture_order",
+    "confidence": 1.0
+  },
+  "pages": [
+    {
+      "page_id": "book_1779738150146_page_1",
+      "page_number": 1,
+      "order_index": 1,
+      "order_confidence": 1.0,
+      "full_text": "Küçük Bayan Prenses'in babası kraldı.\nAnnesi ise kraliçe.\nBu yüzden de Küçük Bayan Prenses bir prensesti.\nPrenses olduğu için bir kalede yaşardı.\nKuleleri,\nhendekleri olan\nçok büyük bir kalede.",
+      "primary_scene_hint": "Introduction of Little Miss Princess and her royal family, living in a large castle.",
+      "dominant_visual": "Text only page.",
+      "mood": "calm"
+    },
+    {
+      "page_id": "book_1779738150146_page_2",
+      "page_number": 2,
+      "order_index": 2,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess looking out from a castle tower.",
+      "dominant_visual": "Little Miss Princess in a castle tower, castle exterior, moat, trees.",
+      "mood": "magical"
+    },
+    {
+      "page_id": "book_1779738150146_page_3",
+      "page_number": 3,
+      "order_index": 3,
+      "order_confidence": 1.0,
+      "full_text": "Prenses olduğu için onun yerine\nbaşkaları çalışırdı.\nÇimleri başkaları biçerdi.\nKahvaltıyı başkaları hazırlardı.\nYatağını bile başkaları toplardı.",
+      "primary_scene_hint": "Describing how others perform chores for Little Miss Princess.",
+      "dominant_visual": "Text only page.",
+      "mood": "calm"
+    },
+    {
+      "page_id": "book_1779738150146_page_4",
+      "page_number": 4,
+      "order_index": 4,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "A man mowing a lawn.",
+      "dominant_visual": "A man pushing a lawnmower on a striped green lawn.",
+      "mood": "calm"
+    },
+    {
+      "page_id": "book_1779738150146_page_5",
+      "page_number": 5,
+      "order_index": 5,
+      "order_confidence": 1.0,
+      "full_text": "Bu yüzden onun kaba ve şımarık bir prenses\nolduğunu zannedebilirsin. Ama hayır! O nazik,\ncömert ve iyi yürekli bir prensesti.\nHer sabah, “Prenses olduğum için çok şanslıyım,\nbu şansımı herkesle paylaşmalıyım,” derdi kendi\nkendine.\nBunun için de herkesin yardımına koşardı.",
+      "primary_scene_hint": "Explaining that Little Miss Princess is kind and generous, not spoiled, and helps others.",
+      "dominant_visual": "Text only page.",
+      "mood": "warm"
+    },
+    {
+      "page_id": "book_1779738150146_page_6",
+      "page_number": 6,
+      "order_index": 6,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "A butler presenting a toothbrush to Little Miss Princess.",
+      "dominant_visual": "Little Miss Princess with a crown, being offered a toothbrush by a butler.",
+      "mood": "cozy"
+    },
+    {
+      "page_id": "book_1779738150146_page_7",
+      "page_number": 7,
+      "order_index": 7,
+      "order_confidence": 1.0,
+      "full_text": "Küçük Bayan Günışığı'nın hastalandığını\nduyduğunda ona yemek pişirmesi için evine\nbir aşçı göndermişti.\nBay Aceleci'nin çok işi olduğundan şikâyet\nettiğini duyduğunda çimlerini biçmesi için ona\nbir bahçıvan göndermişti.\nKüçük Bayan Tertipli'nin paspasının eskidiğini\nduyduğunda evine bir temizlikçi göndermişti.",
+      "primary_scene_hint": "Little Miss Princess sending help to her friends (cook for Miss Sunshine, gardener for Mr. Busy, cleaner for Miss Tidy).",
+      "dominant_visual": "Text only page.",
+      "mood": "warm"
+    },
+    {
+      "page_id": "book_1779738150146_page_8",
+      "page_number": 8,
+      "order_index": 8,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "A butler serving soup to a sick Miss Sunshine.",
+      "dominant_visual": "A butler serving a bowl of steaming soup to a yellow character (Miss Sunshine) in bed.",
+      "mood": "cozy"
+    },
+    {
+      "page_id": "book_1779738150146_page_9",
+      "page_number": 9,
+      "order_index": 9,
+      "order_confidence": 1.0,
+      "full_text": "Tüm bunlar çok işe yarıyordu, herkes çok\nminnettardı ama Küçük Bayan Prenses bir türlü\nyardım ediyormuş gibi hissetmiyordu.\nBu yüzden Bay Küt'ün bacağını kırdığını\nduyduğunda ne yapabileceğine bakmak için\nderhâl onun yanına koştu.\n“Evde bazı eksikler var,” dedi Bay Küt. “Benim\niçin alışverişe çıkabilirsin.”\nBöylece Küçük Bayan Prenses çarşıya gitti.\nAma bir prenses olduğu için daha önce hiç\nalışverişe gitmemişti.",
+      "primary_scene_hint": "Little Miss Princess feels she isn't truly helping, so she goes to help Mr. Grumpy (Bay Küt) who broke his leg, by doing his shopping, something she's never done before.",
+      "dominant_visual": "Text only page.",
+      "mood": "calm"
+    },
+    {
+      "page_id": "book_1779738150146_page_10",
+      "page_number": 10,
+      "order_index": 10,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess visiting Mr. Grumpy, who has a bandaged leg.",
+      "dominant_visual": "Little Miss Princess with a crown, sitting next to Mr. Grumpy (blue, bandaged head and leg) on a sofa.",
+      "mood": "warm"
+    },
+    {
+      "page_id": "book_1779738150146_page_11",
+      "page_number": 11,
+      "order_index": 11,
+      "order_confidence": 1.0,
+      "full_text": "Önce fırına gitti.\n“Altı tane sosis lütfen,” dedi fırıncıya.\n“Bizde sosis yok,” dedi fırıncı.\nArdından kasaba girdi ve bezelye istedi.\n“Bizde bezelye yok,” dedi kasap.\nSonra manava gitti ve bir somun ekmek istedi.\n“Bizde ekmek yok,” dedi manav.\nSonunda Küçük Bayan Prenses\nBay Küt'ün evine boş bir sepetle döndü.",
+      "primary_scene_hint": "Little Miss Princess's unsuccessful shopping trip to various shops (bakery, butcher, greengrocer) where items were unavailable.",
+      "dominant_visual": "Text only page.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_12",
+      "page_number": 12,
+      "order_index": 12,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "A butcher standing behind a counter with various meats.",
+      "dominant_visual": "A butcher in a hat and apron, standing behind a counter filled with sausages, chicken, and other meats.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_13",
+      "page_number": 13,
+      "order_index": 13,
+      "order_confidence": 1.0,
+      "full_text": "“Dükkânlarda hiçbir şey kalmamış,” dedi\nBay Küt'e.\nBay Küt şaşırdı. “Hiçbir şey mi?”\n“Evet!” dedi Küçük Bayan Prenses.\n“Kasapta bezelye yoktu. Fırında sosis,\nmanavda ise hiç ekmek kalmamıştı.”\n“Hımm,” dedi Bay Küt. Ne olduğunu anlamıştı.\n“Markete gitmeye ne dersin?”",
+      "primary_scene_hint": "Little Miss Princess reports her failed shopping trip to Mr. Grumpy, who then suggests going to a supermarket.",
+      "dominant_visual": "Text only page.",
+      "mood": "calm"
+    },
+    {
+      "page_id": "book_1779738150146_page_14",
+      "page_number": 14,
+      "order_index": 14,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess holding an empty basket, talking to Mr. Grumpy.",
+      "dominant_visual": "Little Miss Princess with an empty basket, looking surprised, next to Mr. Grumpy.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_15",
+      "page_number": 15,
+      "order_index": 15,
+      "order_confidence": 1.0,
+      "full_text": "Küçük Bayan Prenses bir süre sonra alışverişten\ndöndü. Bu kez her şeyi almıştı ve sıra, aldıklarını\nyerleştirmeye gelmişti. Ama bir prenses olduğu\niçin daha önce hiç alışveriş torbası boşaltmamıştı.\nSosisleri dolaba koydu, donmuş bezelyeleri\nekmek kutusuna, ekmeği çekmeceye...",
+      "primary_scene_hint": "Little Miss Princess returns from shopping, having bought everything, but struggles with putting things away as she's never done it before.",
+      "dominant_visual": "Text only page.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_16",
+      "page_number": 16,
+      "order_index": 16,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess in a kitchen, looking confused while holding a milk carton, with items misplaced.",
+      "dominant_visual": "Little Miss Princess in a kitchen, holding a milk carton, with sausages hanging from a cabinet and bread in a drawer.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_17",
+      "page_number": 17,
+      "order_index": 17,
+      "order_confidence": 1.0,
+      "full_text": "Sütü ise fırına koydu!\nEyvah!",
+      "primary_scene_hint": "Little Miss Princess puts the milk in the oven.",
+      "dominant_visual": "Text only page.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_18",
+      "page_number": 18,
+      "order_index": 18,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "A milk carton inside an oven.",
+      "dominant_visual": "A white milk carton with \"SÜT\" (milk) written on it, placed inside an open oven.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_19",
+      "page_number": 19,
+      "order_index": 19,
+      "order_confidence": 1.0,
+      "full_text": "Sonra temizlik yapmaya karar verdi.\nAma bir prenses olduğu için daha önce\nhiç temizlik yapmamıştı.\nYemek tabaklarının tozunu aldı, koltukları cilaladı\nve halıyı paspasladı!\nOlamaz!",
+      "primary_scene_hint": "Little Miss Princess decides to clean, but having never done it, she makes mistakes like mopping the carpet.",
+      "dominant_visual": "Text only page.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_20",
+      "page_number": 20,
+      "order_index": 20,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess mopping a carpet, creating a puddle.",
+      "dominant_visual": "Little Miss Princess mopping a patterned carpet with a red bucket and mop, creating a large puddle.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_21",
+      "page_number": 21,
+      "order_index": 21,
+      "order_confidence": 1.0,
+      "full_text": "Küçük Bayan Prenses daha sonra Bay Küt'ün yatağını\ntoplamaya gitti. Ama bir prenses olduğu için daha\nönce hiç yatak toplamamıştı.\nEyvah eyvah!",
+      "primary_scene_hint": "Little Miss Princess tries to make Mr. Grumpy's bed, but fails.",
+      "dominant_visual": "Text only page.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_22",
+      "page_number": 22,
+      "order_index": 22,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess tangled in a bedsheet.",
+      "dominant_visual": "Little Miss Princess completely covered and tangled in a white bedsheet.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_23",
+      "page_number": 23,
+      "order_index": 23,
+      "order_confidence": 1.0,
+      "full_text": "Bay Küt için yemek pişirmek istiyordu. Ama\nbir prenses olduğu için daha önce hiç yemek\npişirmemişti.",
+      "primary_scene_hint": "Little Miss Princess wants to cook for Mr. Grumpy but has no experience.",
+      "dominant_visual": "Text only page.",
+      "mood": "calm"
+    },
+    {
+      "page_id": "book_1779738150146_page_24",
+      "page_number": 24,
+      "order_index": 24,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess looking worried while holding a pan with burnt sausages.",
+      "dominant_visual": "Little Miss Princess with a worried expression, holding a pan with burnt sausages.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_25",
+      "page_number": 25,
+      "order_index": 25,
+      "order_confidence": 1.0,
+      "full_text": "Akşam yemeğinde yanmış sosis ve\nyanmış patates vardı.\nKüçük Bayan Prenses bezelyeleri bile yakmıştı!",
+      "primary_scene_hint": "Describing the burnt dinner Little Miss Princess prepared.",
+      "dominant_visual": "Text only page.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_26",
+      "page_number": 26,
+      "order_index": 26,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Grumpy looking at a plate of burnt food.",
+      "dominant_visual": "Mr. Grumpy looking at a plate of burnt sausages, peas, and mashed potatoes.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_27",
+      "page_number": 27,
+      "order_index": 27,
+      "order_confidence": 1.0,
+      "full_text": "Yanmış yemekleri çöpe atarken, “Eyvahlar\nolsun!” dedi Küçük Bayan Prenses. “Hiçbir şeyi\nbeceremiyorum!”\n“Hiç de bile!” dedi Bay Küt. “Becerebildiğin pek\nçok şey var.”\nKüçük Bayan Prenses üzgün bir sesle, “Ne mesela?”\ndiye sordu.",
+      "primary_scene_hint": "Little Miss Princess is discouraged by her failures, but Mr. Grumpy tries to reassure her.",
+      "dominant_visual": "Text only page.",
+      "mood": "calm"
+    },
+    {
+      "page_id": "book_1779738150146_page_28",
+      "page_number": 28,
+      "order_index": 28,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess throwing burnt food into a bin, looking upset.",
+      "dominant_visual": "Little Miss Princess looking sad, holding a plate and throwing burnt food into a red bin, with smoke rising.",
+      "mood": "calm"
+    },
+    {
+      "page_id": "book_1779738150146_page_29",
+      "page_number": 29,
+      "order_index": 29,
+      "order_confidence": 1.0,
+      "full_text": "Bay Küt telefonu uzatıp, “Pizza sipariş et de gör!”\ndedi.\nKüçük Bayan Prenses, “Neyi görecekmişim?” diye\nsordu.",
+      "primary_scene_hint": "Mr. Grumpy suggests ordering pizza, implying Little Miss Princess is good at giving orders.",
+      "dominant_visual": "Text only page.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_30",
+      "page_number": 30,
+      "order_index": 30,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess holding a phone, looking happy, next to Mr. Grumpy.",
+      "dominant_visual": "Little Miss Princess holding a green telephone, smiling, next to Mr. Grumpy.",
+      "mood": "playful"
+    },
+    {
+      "page_id": "book_1779738150146_page_31",
+      "page_number": 31,
+      "order_index": 31,
+      "order_confidence": 1.0,
+      "full_text": "“Çok iyi emir verdiğini tabii ki!”",
+      "primary_scene_hint": "Mr. Grumpy's answer, confirming Little Miss Princess's skill at giving orders.",
+      "dominant_visual": "Text only page.",
+      "mood": "playful"
+    }
+  ],
+  "scene_graph": [
+    {
+      "scene_id": "scene_1_intro_castle_life",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "scene_summary": "Introduction of Little Miss Princess, her royal family, and her life in a grand castle where others do all the work for her.",
+      "scene_type": "castle",
+      "scene_mood": "calm",
+      "scene_energy": "low",
+      "narrative_phase": "intro",
+      "scene_duration_estimate_seconds": 90,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "kral",
+              "prenses"
+            ],
+            "semantic_intent": "Introduce royal family"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "herkes",
+              "kral"
+            ],
+            "semantic_intent": "End description of chores"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_2_kind_nature",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_2_kind_nature",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "castle_interior",
+            "variant": "gentle",
+            "intensity": "low",
+            "texture": "airy",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "calm",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_castle_distant_chime",
+          "layer_role": "secondary_detail",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "2"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "kule"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Castle tower visual"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Subtle distant castle chime or bell sound.",
+          "sound_category": "environment",
+          "sound_profile": {
+            "primary_sound": "bell_chime",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "sparkly",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "wonder"
+        },
+        {
+          "id": "sfx_lawnmower_distant",
+          "layer_role": "event",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "4"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "evine"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Lawn mowing activity"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.5
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 10,
+          "event_summary": "Distant sound of a lawnmower.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "lawnmower",
+            "variant": "distant",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.85,
+          "mix_level": "medium",
+          "emotional_tone": "calm"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_2_kind_nature",
+      "pages": [
+        5,
+        6
+      ],
+      "scene_summary": "Explains that Little Miss Princess is kind and generous, not spoiled, and always ready to help others.",
+      "scene_type": "castle",
+      "scene_mood": "warm",
+      "scene_energy": "low",
+      "narrative_phase": "build_up",
+      "scene_duration_estimate_seconds": 50,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "nazik",
+              "iyi"
+            ],
+            "semantic_intent": "Transition to character description"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "herkes",
+              "eder"
+            ],
+            "semantic_intent": "Conclude description of helpfulness"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_3_helping_friends",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_3_helping_friends",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "castle_interior",
+            "variant": "cozy",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "comfort",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_butler_serving",
+          "layer_role": "secondary_detail",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "6"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "bayan",
+              "her temizlik"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Butler offering item"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.5
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Subtle sound of a butler's movement and cloth rustle.",
+          "sound_category": "movement",
+          "sound_profile": {
+            "primary_sound": "cloth_rustle",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "gentle",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.75,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_3_helping_friends",
+      "pages": [
+        7,
+        8
+      ],
+      "scene_summary": "Little Miss Princess sends her staff to help her friends: a cook for Miss Sunshine, a gardener for Mr. Busy, and a cleaner for Miss Tidy.",
+      "scene_type": "other",
+      "scene_mood": "warm",
+      "scene_energy": "low",
+      "narrative_phase": "build_up",
+      "scene_duration_estimate_seconds": 60,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "hasta",
+              "yemek"
+            ],
+            "semantic_intent": "Start of helping friends"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "temizlik",
+              "evine"
+            ],
+            "semantic_intent": "End of sending help"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_4_shopping_grumpy",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_4_shopping_grumpy",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "home_interior",
+            "variant": "cozy",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "comfort",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_cooking_gentle",
+          "layer_role": "secondary_detail",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "yemek"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "yemek",
+              "yemek"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Cook preparing food"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Gentle cooking sounds like stirring or simmering.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "cooking",
+            "variant": "gentle",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "cozy"
+        },
+        {
+          "id": "sfx_soup_serving",
+          "layer_role": "event",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "8"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "bayan",
+              "yemek"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Serving soup to sick person"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.5
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of a spoon clinking on a bowl while serving soup.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "spoon_clink",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "gentle",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "cozy"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_4_shopping_grumpy",
+      "pages": [
+        9,
+        10
+      ],
+      "scene_summary": "Little Miss Princess decides to personally help Mr. Grumpy who broke his leg, by doing his shopping, a task she's never done.",
+      "scene_type": "other",
+      "scene_mood": "calm",
+      "scene_energy": "medium",
+      "narrative_phase": "build_up",
+      "scene_duration_estimate_seconds": 60,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "herkes",
+              "eder"
+            ],
+            "semantic_intent": "Princess feels she isn't truly helping"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "gitti",
+              "onun"
+            ],
+            "semantic_intent": "Princess goes shopping for the first time"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_5_failed_shopping",
+        "transition_style": "crossfade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 3
+      },
+      "likely_next_scene": "scene_5_failed_shopping",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "home_interior",
+            "variant": "warm",
+            "intensity": "low",
+            "texture": "cozy",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "calm",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_mr_grumpy_groan",
+          "layer_role": "event",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "10"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "Bay bay",
+              "bacak"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Grumpy's injury"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.5
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Subtle, humorous groan from Mr. Grumpy.",
+          "sound_category": "emotion",
+          "sound_profile": {
+            "primary_sound": "groan",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "gentle",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_footsteps_princess",
+          "layer_role": "secondary_detail",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "gitti"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "markete",
+              "gitti"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Princess walking to market"
+          },
+          "activation_window": {
+            "start_progress": 0.7,
+            "end_progress": 0.9
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Light footsteps as Little Miss Princess leaves for the market.",
+          "sound_category": "movement",
+          "sound_profile": {
+            "primary_sound": "footsteps",
+            "variant": "light",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.75,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_5_failed_shopping",
+      "pages": [
+        11,
+        12
+      ],
+      "scene_summary": "Little Miss Princess's unsuccessful shopping trip to various shops where she asks for the wrong items.",
+      "scene_type": "village",
+      "scene_mood": "playful",
+      "scene_energy": "medium",
+      "narrative_phase": "action",
+      "scene_duration_estimate_seconds": 60,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "sosis",
+              "kasap"
+            ],
+            "semantic_intent": "Princess starts shopping"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "ekmek",
+              "yok"
+            ],
+            "semantic_intent": "Princess returns with empty basket"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_6_supermarket_suggestion",
+        "transition_style": "fade",
+        "audio_continuity": "replace",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_6_supermarket_suggestion",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "market_street",
+            "variant": "light",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "playful",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_bakery_bell",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "ekmek"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "ekmek",
+              "gitti"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Entering bakery"
+          },
+          "activation_window": {
+            "start_progress": 0.0,
+            "end_progress": 0.2
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of a shop bell as she enters the bakery.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "shop_bell",
+            "variant": "light",
+            "intensity": "medium",
+            "texture": "sparkly",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.8,
+          "mix_level": "medium",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_butcher_knife",
+          "layer_role": "secondary_detail",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "12"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "kasap",
+              "tezgah"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Butcher's shop visual"
+          },
+          "activation_window": {
+            "start_progress": 0.5,
+            "end_progress": 0.7
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Subtle sound of a butcher's knife sharpening.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "knife_sharpen",
+            "variant": "light",
+            "intensity": "low",
+            "texture": "wooden",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.7,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_empty_basket_clink",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "sepet"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "yok",
+              "sepet"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Empty basket sound"
+          },
+          "activation_window": {
+            "start_progress": 0.8,
+            "end_progress": 1.0
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Light clinking sound of an empty basket.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "basket_clink",
+            "variant": "light",
+            "intensity": "low",
+            "texture": "wooden",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "playful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_6_supermarket_suggestion",
+      "pages": [
+        13,
+        14
+      ],
+      "scene_summary": "Little Miss Princess reports her failed shopping trip to Mr. Grumpy, who then suggests going to a supermarket.",
+      "scene_type": "other",
+      "scene_mood": "calm",
+      "scene_energy": "low",
+      "narrative_phase": "transition",
+      "scene_duration_estimate_seconds": 50,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "yok",
+              "dedi"
+            ],
+            "semantic_intent": "Princess reports failed shopping"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "markete",
+              "dersin"
+            ],
+            "semantic_intent": "Mr. Grumpy suggests supermarket"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_7_misplaced_groceries",
+        "transition_style": "fade",
+        "audio_continuity": "replace",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_7_misplaced_groceries",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "home_interior",
+            "variant": "cozy",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "calm",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_grumpy_hum",
+          "layer_role": "secondary_detail",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "dedi"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "dedi",
+              "Bay bay"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mr. Grumpy's realization"
+          },
+          "activation_window": {
+            "start_progress": 0.6,
+            "end_progress": 0.8
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Subtle thoughtful hum from Mr. Grumpy.",
+          "sound_category": "emotion",
+          "sound_profile": {
+            "primary_sound": "hum",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "gentle",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.75,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_7_misplaced_groceries",
+      "pages": [
+        15,
+        16,
+        17,
+        18
+      ],
+      "scene_summary": "Little Miss Princess returns from shopping and struggles to put groceries away, misplacing items like milk in the oven.",
+      "scene_type": "other",
+      "scene_mood": "playful",
+      "scene_energy": "medium",
+      "narrative_phase": "action",
+      "scene_duration_estimate_seconds": 90,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "her",
+              "dolaba"
+            ],
+            "semantic_intent": "Princess returns from shopping"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "eyvah",
+              "dolaba"
+            ],
+            "semantic_intent": "Milk put in oven"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_8_cleaning_catastrophe",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_8_cleaning_catastrophe",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "kitchen_ambience",
+            "variant": "light",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "playful",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_fridge_open_close",
+          "layer_role": "secondary_detail",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "dolaba"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "sosis",
+              "dolaba"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Putting sausages in fridge"
+          },
+          "activation_window": {
+            "start_progress": 0.3,
+            "end_progress": 0.5
+          },
+          "trigger_once_per_scene": false,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of a fridge door opening and closing.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "fridge_door",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "gentle",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_drawer_open_close",
+          "layer_role": "secondary_detail",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "dolaba"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "ekmek",
+              "dolaba"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Putting bread in drawer"
+          },
+          "activation_window": {
+            "start_progress": 0.5,
+            "end_progress": 0.7
+          },
+          "trigger_once_per_scene": false,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of a drawer opening and closing.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "drawer_slide",
+            "variant": "wooden",
+            "intensity": "low",
+            "texture": "wooden",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_oven_door_open_close",
+          "layer_role": "event",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "18"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "ekmek",
+              "dolaba"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Milk in oven visual"
+          },
+          "activation_window": {
+            "start_progress": 0.8,
+            "end_progress": 1.0
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of an oven door opening and closing.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "oven_door",
+            "variant": "metal",
+            "intensity": "medium",
+            "texture": "gentle",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.9,
+          "mix_level": "medium",
+          "emotional_tone": "playful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_8_cleaning_catastrophe",
+      "pages": [
+        19,
+        20
+      ],
+      "scene_summary": "Little Miss Princess decides to clean, but having never done it, she makes mistakes like mopping the carpet.",
+      "scene_type": "other",
+      "scene_mood": "playful",
+      "scene_energy": "medium",
+      "narrative_phase": "action",
+      "scene_duration_estimate_seconds": 60,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "temizlik",
+              "karar"
+            ],
+            "semantic_intent": "Princess decides to clean"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "olamaz",
+              "koltuk"
+            ],
+            "semantic_intent": "Carpet mopping mistake"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_9_bed_making_blunder",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_9_bed_making_blunder",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "home_interior",
+            "variant": "light",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "playful",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_dusting_swish",
+          "layer_role": "secondary_detail",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "toz"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "tabak",
+              "toz",
+              "sildi"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Dusting plates"
+          },
+          "activation_window": {
+            "start_progress": 0.3,
+            "end_progress": 0.5
+          },
+          "trigger_once_per_scene": false,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Light swishing sound of dusting.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "dusting",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "gentle",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_mop_splash",
+          "layer_role": "event",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "20"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "temizlik",
+              "sildi"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Mopping carpet visual"
+          },
+          "activation_window": {
+            "start_progress": 0.5,
+            "end_progress": 0.9
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Prominent splashing sound of mopping a carpet.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "water_splash",
+            "variant": "medium",
+            "intensity": "medium",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 5,
+          "confidence": 0.9,
+          "mix_level": "prominent",
+          "emotional_tone": "playful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_9_bed_making_blunder",
+      "pages": [
+        21,
+        22
+      ],
+      "scene_summary": "Little Miss Princess tries to make Mr. Grumpy's bed but gets tangled in the sheets.",
+      "scene_type": "bedroom",
+      "scene_mood": "playful",
+      "scene_energy": "medium",
+      "narrative_phase": "action",
+      "scene_duration_estimate_seconds": 50,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "yatak",
+              "toplamaya"
+            ],
+            "semantic_intent": "Princess tries to make bed"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "eyvah",
+              "eyvah"
+            ],
+            "semantic_intent": "Exclamation of failure"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_10_burnt_dinner",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_10_burnt_dinner",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "bedroom_ambience",
+            "variant": "cozy",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "playful",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_sheet_rustle",
+          "layer_role": "event",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "22"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "yatak",
+              "yatak"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Tangled in bedsheet visual"
+          },
+          "activation_window": {
+            "start_progress": 0.3,
+            "end_progress": 0.8
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of bedsheets rustling and tangling.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "sheet_rustle",
+            "variant": "light",
+            "intensity": "medium",
+            "texture": "soft",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 5,
+          "confidence": 0.9,
+          "mix_level": "prominent",
+          "emotional_tone": "playful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_10_burnt_dinner",
+      "pages": [
+        23,
+        24,
+        25,
+        26
+      ],
+      "scene_summary": "Little Miss Princess attempts to cook dinner for Mr. Grumpy but burns everything: sausages, potatoes, and even peas.",
+      "scene_type": "other",
+      "scene_mood": "playful",
+      "scene_energy": "medium",
+      "narrative_phase": "action",
+      "scene_duration_estimate_seconds": 90,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "yemek",
+              "istiyordu"
+            ],
+            "semantic_intent": "Princess wants to cook"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "yemek",
+              "patates"
+            ],
+            "semantic_intent": "Peas also burnt"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_11_discouragement_reassurance",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_11_discouragement_reassurance",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "kitchen_ambience",
+            "variant": "light",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "playful",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_sizzling_food",
+          "layer_role": "secondary_detail",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "sosis"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "yemek",
+              "sosis"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Cooking sausages"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of food sizzling in a pan.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "sizzle",
+            "variant": "medium",
+            "intensity": "low",
+            "texture": "natural",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_burning_food",
+          "layer_role": "event",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "24"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "yemek",
+              "sosis"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Burnt food visual"
+          },
+          "activation_window": {
+            "start_progress": 0.4,
+            "end_progress": 0.8
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of food burning and scorching.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "burning_food",
+            "variant": "charred",
+            "intensity": "medium",
+            "texture": "dark",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 5,
+          "confidence": 0.9,
+          "mix_level": "prominent",
+          "emotional_tone": "suspenseful"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_11_discouragement_reassurance",
+      "pages": [
+        27,
+        28
+      ],
+      "scene_summary": "Little Miss Princess is discouraged by her failures, but Mr. Grumpy tries to reassure her.",
+      "scene_type": "other",
+      "scene_mood": "calm",
+      "scene_energy": "low",
+      "narrative_phase": "calm",
+      "scene_duration_estimate_seconds": 60,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "eyvah",
+              "yemek"
+            ],
+            "semantic_intent": "Princess throws away burnt food"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "becere",
+              "sordu"
+            ],
+            "semantic_intent": "Princess asks for examples of her skills"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "scene_12_pizza_order",
+        "transition_style": "fade",
+        "audio_continuity": "evolve",
+        "transition_duration_seconds": 2
+      },
+      "likely_next_scene": "scene_12_pizza_order",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "home_interior",
+            "variant": "cozy",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "comfort",
+          "intensity": "low"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_food_bin_thud",
+          "layer_role": "event",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "28"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "verdi",
+              "yemek"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Throwing food in bin visual"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.5
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Light thud of food hitting the bin.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "thud",
+            "variant": "soft",
+            "intensity": "low",
+            "texture": "gentle",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.85,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        },
+        {
+          "id": "sfx_princess_sigh",
+          "layer_role": "emotional_music",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "olamaz"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "olamaz"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Princess expresses discouragement"
+          },
+          "activation_window": {
+            "start_progress": 0.3,
+            "end_progress": 0.6
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "A subtle, sad sigh from Little Miss Princess.",
+          "sound_category": "emotion",
+          "sound_profile": {
+            "primary_sound": "sigh",
+            "variant": "sad",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 3,
+          "confidence": 0.7,
+          "mix_level": "subtle",
+          "emotional_tone": "calm"
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_12_pizza_order",
+      "pages": [
+        29,
+        30,
+        31
+      ],
+      "scene_summary": "Mr. Grumpy hands Little Miss Princess the phone and tells her to order pizza, revealing that her true skill is giving orders.",
+      "scene_type": "other",
+      "scene_mood": "playful",
+      "scene_energy": "medium",
+      "narrative_phase": "ending",
+      "scene_duration_estimate_seconds": 70,
+      "scene_activation": {
+        "activation_mode": "voice",
+        "entry_cues": [
+          {
+            "primary_keywords": [
+              "pizza",
+              "telefon"
+            ],
+            "semantic_intent": "Mr. Grumpy suggests ordering pizza"
+          }
+        ],
+        "exit_cues": [
+          {
+            "keywords": [
+              "emir",
+              "tabii"
+            ],
+            "semantic_intent": "Reveal princess's skill in giving orders"
+          }
+        ],
+        "activation_confidence_threshold": 0.7,
+        "scene_persistence": "until_next_scene"
+      },
+      "scene_transition": {
+        "next_scene_id": "END_OF_BOOK",
+        "transition_style": "fade",
+        "audio_continuity": "fade_out",
+        "transition_duration_seconds": 3
+      },
+      "likely_next_scene": "END_OF_BOOK",
+      "scene_audio": {
+        "primary_ambience": {
+          "sound_profile": {
+            "primary_sound": "home_interior",
+            "variant": "cozy",
+            "intensity": "low",
+            "texture": "soft",
+            "play_style": "loop"
+          }
+        },
+        "secondary_layers": [],
+        "music_layer": {
+          "enabled": true,
+          "music_theme": "playful",
+          "intensity": "medium"
+        }
+      },
+      "audio_opportunities": [
+        {
+          "id": "sfx_phone_dial",
+          "layer_role": "event",
+          "source": "text",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "word",
+            "value": "telefon"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "telefon",
+              "iste"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Princess takes phone to order"
+          },
+          "activation_window": {
+            "start_progress": 0.1,
+            "end_progress": 0.3
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Sound of a phone dialing.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "phone_dial",
+            "variant": "classic",
+            "intensity": "medium",
+            "texture": "gentle",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.85,
+          "mix_level": "medium",
+          "emotional_tone": "playful"
+        },
+        {
+          "id": "sfx_pizza_delivery_bell",
+          "layer_role": "event",
+          "source": "image",
+          "trigger_scope": {
+            "active_scene_only": true
+          },
+          "trigger_anchor": {
+            "type": "page_start",
+            "value": "30"
+          },
+          "trigger_structure": {
+            "primary_keywords": [
+              "pizza",
+              "evet"
+            ],
+            "secondary_keywords": [],
+            "semantic_intent": "Princess happy after ordering pizza"
+          },
+          "activation_window": {
+            "start_progress": 0.5,
+            "end_progress": 0.8
+          },
+          "trigger_once_per_scene": true,
+          "trigger_cooldown_seconds": 5,
+          "event_summary": "Distant doorbell and a subtle pizza delivery vehicle sound.",
+          "sound_category": "object",
+          "sound_profile": {
+            "primary_sound": "doorbell",
+            "variant": "chime",
+            "intensity": "low",
+            "texture": "sparkly",
+            "play_style": "single"
+          },
+          "playback_type": "oneshot",
+          "importance": 4,
+          "confidence": 0.8,
+          "mix_level": "subtle",
+          "emotional_tone": "excited"
+        }
+      ]
+    }
+  ]
+}

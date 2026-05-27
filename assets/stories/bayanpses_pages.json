@@ -1,0 +1,323 @@
+{
+  "book": {
+    "detected_title": "Küçük Bayan Prenses",
+    "language": "tr",
+    "analysis_confidence": 0.99
+  },
+  "page_ordering": {
+    "ordering_method": "capture_order",
+    "confidence": 1.0
+  },
+  "pages": [
+    {
+      "page_id": "book_1779738150146_page_1",
+      "page_number": 1,
+      "order_index": 0,
+      "order_confidence": 1.0,
+      "full_text": "Küçük Bayan Prenses'in babası kraldı.\nAnnesi ise kraliçe.\nBu yüzden de Küçük Bayan Prenses bir prensesti.\nPrenses olduğu için bir kalede yaşardı.\nKuleleri,\nhendekleri olan\nçok büyük bir kalede.",
+      "primary_scene_hint": "Introduction of Little Miss Princess and her royal family, living in a large castle.",
+      "dominant_visual": "Text only page.",
+      "mood": "Informative, descriptive"
+    },
+    {
+      "page_id": "book_1779738150146_page_2",
+      "page_number": 2,
+      "order_index": 1,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess looking out from a castle tower.",
+      "dominant_visual": "Little Miss Princess in a castle tower, castle exterior, moat, trees.",
+      "mood": "Whimsical, descriptive"
+    },
+    {
+      "page_id": "book_1779738150146_page_3",
+      "page_number": 3,
+      "order_index": 2,
+      "order_confidence": 1.0,
+      "full_text": "Prenses olduğu için onun yerine\nbaşkaları çalışırdı.\nÇimleri başkaları biçerdi.\nKahvaltıyı başkaları hazırlardı.\nYatağını bile başkaları toplardı.",
+      "primary_scene_hint": "Describing how others perform chores for Little Miss Princess.",
+      "dominant_visual": "Text only page.",
+      "mood": "Informative, descriptive"
+    },
+    {
+      "page_id": "book_1779738150146_page_4",
+      "page_number": 4,
+      "order_index": 3,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "A man mowing a lawn.",
+      "dominant_visual": "A man pushing a lawnmower on a striped green lawn.",
+      "mood": "Calm, illustrative of daily chores"
+    },
+    {
+      "page_id": "book_1779738150146_page_5",
+      "page_number": 5,
+      "order_index": 4,
+      "order_confidence": 1.0,
+      "full_text": "Bu yüzden onun kaba ve şımarık bir prenses\nolduğunu zannedebilirsin. Ama hayır! O nazik,\ncömert ve iyi yürekli bir prensesti.\nHer sabah, “Prenses olduğum için çok şanslıyım,\nbu şansımı herkesle paylaşmalıyım,” derdi kendi\nkendine.\nBunun için de herkesin yardımına koşardı.",
+      "primary_scene_hint": "Explaining that Little Miss Princess is kind and generous, not spoiled, and helps others.",
+      "dominant_visual": "Text only page.",
+      "mood": "Affirmative, positive, character-defining"
+    },
+    {
+      "page_id": "book_1779738150146_page_6",
+      "page_number": 6,
+      "order_index": 5,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "A butler presenting a toothbrush to Little Miss Princess.",
+      "dominant_visual": "Little Miss Princess with a crown, being offered a toothbrush by a butler.",
+      "mood": "Royal, helpful, morning routine"
+    },
+    {
+      "page_id": "book_1779738150146_page_7",
+      "page_number": 7,
+      "order_index": 6,
+      "order_confidence": 1.0,
+      "full_text": "Küçük Bayan Günışığı'nın hastalandığını\nduyduğunda ona yemek pişirmesi için evine\nbir aşçı göndermişti.\nBay Aceleci'nin çok işi olduğundan şikâyet\nettiğini duyduğunda çimlerini biçmesi için ona\nbir bahçıvan göndermişti.\nKüçük Bayan Tertipli'nin paspasının eskidiğini\nduyduğunda evine bir temizlikçi göndermişti.",
+      "primary_scene_hint": "Little Miss Princess sending help to her friends (cook for Miss Sunshine, gardener for Mr. Busy, cleaner for Miss Tidy).",
+      "dominant_visual": "Text only page.",
+      "mood": "Helpful, generous"
+    },
+    {
+      "page_id": "book_1779738150146_page_8",
+      "page_number": 8,
+      "order_index": 7,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "A butler serving soup to a sick Miss Sunshine.",
+      "dominant_visual": "A butler serving a bowl of steaming soup to a yellow character (Miss Sunshine) in bed.",
+      "mood": "Caring, comforting"
+    },
+    {
+      "page_id": "book_1779738150146_page_9",
+      "page_number": 9,
+      "order_index": 8,
+      "order_confidence": 1.0,
+      "full_text": "Tüm bunlar çok işe yarıyordu, herkes çok\nminnettardı ama Küçük Bayan Prenses bir türlü\nyardım ediyormuş gibi hissetmiyordu.\nBu yüzden Bay Küt'ün bacağını kırdığını\nduyduğunda ne yapabileceğine bakmak için\nderhâl onun yanına koştu.\n“Evde bazı eksikler var,” dedi Bay Küt. “Benim\niçin alışverişe çıkabilirsin.”\nBöylece Küçük Bayan Prenses çarşıya gitti.\nAma bir prenses olduğu için daha önce hiç\nalışverişe gitmemişti.",
+      "primary_scene_hint": "Little Miss Princess feels she isn't truly helping, so she goes to help Mr. Grumpy (Bay Küt) who broke his leg, by doing his shopping, something she's never done before.",
+      "dominant_visual": "Text only page.",
+      "mood": "Reflective, determined, new challenge"
+    },
+    {
+      "page_id": "book_1779738150146_page_10",
+      "page_number": 10,
+      "order_index": 9,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess visiting Mr. Grumpy, who has a bandaged leg.",
+      "dominant_visual": "Little Miss Princess with a crown, sitting next to Mr. Grumpy (blue, bandaged head and leg) on a sofa.",
+      "mood": "Concerned, supportive"
+    },
+    {
+      "page_id": "book_1779738150146_page_11",
+      "page_number": 11,
+      "order_index": 10,
+      "order_confidence": 1.0,
+      "full_text": "Önce fırına gitti.\n“Altı tane sosis lütfen,” dedi fırıncıya.\n“Bizde sosis yok,” dedi fırıncı.\nArdından kasaba girdi ve bezelye istedi.\n“Bizde bezelye yok,” dedi kasap.\nSonra manava gitti ve bir somun ekmek istedi.\n“Bizde ekmek yok,” dedi manav.\nSonunda Küçük Bayan Prenses\nBay Küt'ün evine boş bir sepetle döndü.",
+      "primary_scene_hint": "Little Miss Princess's unsuccessful shopping trip to various shops (bakery, butcher, greengrocer) where items were unavailable.",
+      "dominant_visual": "Text only page.",
+      "mood": "Frustrated, confused, unsuccessful"
+    },
+    {
+      "page_id": "book_1779738150146_page_12",
+      "page_number": 12,
+      "order_index": 11,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "A butcher standing behind a counter with various meats.",
+      "dominant_visual": "A butcher in a hat and apron, standing behind a counter filled with sausages, chicken, and other meats.",
+      "mood": "Business-like, slightly ironic"
+    },
+    {
+      "page_id": "book_1779738150146_page_13",
+      "page_number": 13,
+      "order_index": 12,
+      "order_confidence": 1.0,
+      "full_text": "“Dükkânlarda hiçbir şey kalmamış,” dedi\nBay Küt'e.\nBay Küt şaşırdı. “Hiçbir şey mi?”\n“Evet!” dedi Küçük Bayan Prenses.\n“Kasapta bezelye yoktu. Fırında sosis,\nmanavda ise hiç ekmek kalmamıştı.”\n“Hımm,” dedi Bay Küt. Ne olduğunu anlamıştı.\n“Markete gitmeye ne dersin?”",
+      "primary_scene_hint": "Little Miss Princess reports her failed shopping trip to Mr. Grumpy, who then suggests going to a supermarket.",
+      "dominant_visual": "Text only page.",
+      "mood": "Confused, surprised, understanding, suggestive"
+    },
+    {
+      "page_id": "book_1779738150146_page_14",
+      "page_number": 14,
+      "order_index": 13,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess holding an empty basket, talking to Mr. Grumpy.",
+      "dominant_visual": "Little Miss Princess with an empty basket, looking surprised, next to Mr. Grumpy.",
+      "mood": "Confused, surprised"
+    },
+    {
+      "page_id": "book_1779738150146_page_15",
+      "page_number": 15,
+      "order_index": 14,
+      "order_confidence": 1.0,
+      "full_text": "Küçük Bayan Prenses bir süre sonra alışverişten\ndöndü. Bu kez her şeyi almıştı ve sıra, aldıklarını\nyerleştirmeye gelmişti. Ama bir prenses olduğu\niçin daha önce hiç alışveriş torbası boşaltmamıştı.\nSosisleri dolaba koydu, donmuş bezelyeleri\nekmek kutusuna, ekmeği çekmeceye...",
+      "primary_scene_hint": "Little Miss Princess returns from shopping, having bought everything, but struggles with putting things away as she's never done it before.",
+      "dominant_visual": "Text only page.",
+      "mood": "Accomplished (shopping), bewildered (putting away)"
+    },
+    {
+      "page_id": "book_1779738150146_page_16",
+      "page_number": 16,
+      "order_index": 15,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess in a kitchen, looking confused while holding a milk carton, with items misplaced.",
+      "dominant_visual": "Little Miss Princess in a kitchen, holding a milk carton, with sausages hanging from a cabinet and bread in a drawer.",
+      "mood": "Confused, messy, humorous"
+    },
+    {
+      "page_id": "book_1779738150146_page_17",
+      "page_number": 17,
+      "order_index": 16,
+      "order_confidence": 1.0,
+      "full_text": "Sütü ise fırına koydu!\nEyvah!",
+      "primary_scene_hint": "Little Miss Princess puts the milk in the oven.",
+      "dominant_visual": "Text only page.",
+      "mood": "Alarming, humorous"
+    },
+    {
+      "page_id": "book_1779738150146_page_18",
+      "page_number": 18,
+      "order_index": 17,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "A milk carton inside an oven.",
+      "dominant_visual": "A white milk carton with \"SÜT\" (milk) written on it, placed inside an open oven.",
+      "mood": "Humorous, misplaced"
+    },
+    {
+      "page_id": "book_1779738150146_page_19",
+      "page_number": 19,
+      "order_index": 18,
+      "order_confidence": 1.0,
+      "full_text": "Sonra temizlik yapmaya karar verdi.\nAma bir prenses olduğu için daha önce\nhiç temizlik yapmamıştı.\nYemek tabaklarının tozunu aldı, koltukları cilaladı\nve halıyı paspasladı!\nOlamaz!",
+      "primary_scene_hint": "Little Miss Princess decides to clean, but having never done it, she makes mistakes like mopping the carpet.",
+      "dominant_visual": "Text only page.",
+      "mood": "Determined, disastrous, humorous"
+    },
+    {
+      "page_id": "book_1779738150146_page_20",
+      "page_number": 20,
+      "order_index": 19,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess mopping a carpet, creating a puddle.",
+      "dominant_visual": "Little Miss Princess mopping a patterned carpet with a red bucket and mop, creating a large puddle.",
+      "mood": "Messy, humorous, chaotic"
+    },
+    {
+      "page_id": "book_1779738150146_page_21",
+      "page_number": 21,
+      "order_index": 20,
+      "order_confidence": 1.0,
+      "full_text": "Küçük Bayan Prenses daha sonra Bay Küt'ün yatağını\ntoplamaya gitti. Ama bir prenses olduğu için daha\nönce hiç yatak toplamamıştı.\nEyvah eyvah!",
+      "primary_scene_hint": "Little Miss Princess tries to make Mr. Grumpy's bed, but fails.",
+      "dominant_visual": "Text only page.",
+      "mood": "Determined, disastrous, humorous"
+    },
+    {
+      "page_id": "book_1779738150146_page_22",
+      "page_number": 22,
+      "order_index": 21,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess tangled in a bedsheet.",
+      "dominant_visual": "Little Miss Princess completely covered and tangled in a white bedsheet.",
+      "mood": "Humorous, clumsy, frustrated"
+    },
+    {
+      "page_id": "book_1779738150146_page_23",
+      "page_number": 23,
+      "order_index": 22,
+      "order_confidence": 1.0,
+      "full_text": "Bay Küt için yemek pişirmek istiyordu. Ama\nbir prenses olduğu için daha önce hiç yemek\npişirmemişti.",
+      "primary_scene_hint": "Little Miss Princess wants to cook for Mr. Grumpy but has no experience.",
+      "dominant_visual": "Text only page.",
+      "mood": "Determined, inexperienced"
+    },
+    {
+      "page_id": "book_1779738150146_page_24",
+      "page_number": 24,
+      "order_index": 23,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess looking worried while holding a pan with burnt sausages.",
+      "dominant_visual": "Little Miss Princess with a worried expression, holding a pan with burnt sausages.",
+      "mood": "Worried, unsuccessful, culinary disaster"
+    },
+    {
+      "page_id": "book_1779738150146_page_25",
+      "page_number": 25,
+      "order_index": 24,
+      "order_confidence": 1.0,
+      "full_text": "Akşam yemeğinde yanmış sosis ve\nyanmış patates vardı.\nKüçük Bayan Prenses bezelyeleri bile yakmıştı!",
+      "primary_scene_hint": "Describing the burnt dinner Little Miss Princess prepared.",
+      "dominant_visual": "Text only page.",
+      "mood": "Disastrous, humorous"
+    },
+    {
+      "page_id": "book_1779738150146_page_26",
+      "page_number": 26,
+      "order_index": 25,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Mr. Grumpy looking at a plate of burnt food.",
+      "dominant_visual": "Mr. Grumpy looking at a plate of burnt sausages, peas, and mashed potatoes.",
+      "mood": "Disappointed, humorous"
+    },
+    {
+      "page_id": "book_1779738150146_page_27",
+      "page_number": 27,
+      "order_index": 26,
+      "order_confidence": 1.0,
+      "full_text": "Yanmış yemekleri çöpe atarken, “Eyvahlar\nolsun!” dedi Küçük Bayan Prenses. “Hiçbir şeyi\nbeceremiyorum!”\n“Hiç de bile!” dedi Bay Küt. “Becerebildiğin pek\nçok şey var.”\nKüçük Bayan Prenses üzgün bir sesle, “Ne mesela?”\ndiye sordu.",
+      "primary_scene_hint": "Little Miss Princess is discouraged by her failures, but Mr. Grumpy tries to reassure her.",
+      "dominant_visual": "Text only page.",
+      "mood": "Discouraged, comforting, questioning"
+    },
+    {
+      "page_id": "book_1779738150146_page_28",
+      "page_number": 28,
+      "order_index": 27,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess throwing burnt food into a bin, looking upset.",
+      "dominant_visual": "Little Miss Princess looking sad, holding a plate and throwing burnt food into a red bin, with smoke rising.",
+      "mood": "Sad, frustrated, messy"
+    },
+    {
+      "page_id": "book_1779738150146_page_29",
+      "page_number": 29,
+      "order_index": 28,
+      "order_confidence": 1.0,
+      "full_text": "Bay Küt telefonu uzatıp, “Pizza sipariş et de gör!”\ndedi.\nKüçük Bayan Prenses, “Neyi görecekmişim?” diye\nsordu.",
+      "primary_scene_hint": "Mr. Grumpy suggests ordering pizza, implying Little Miss Princess is good at giving orders.",
+      "dominant_visual": "Text only page.",
+      "mood": "Suggestive, curious, humorous"
+    },
+    {
+      "page_id": "book_1779738150146_page_30",
+      "page_number": 30,
+      "order_index": 29,
+      "order_confidence": 1.0,
+      "full_text": "",
+      "primary_scene_hint": "Little Miss Princess holding a phone, looking happy, next to Mr. Grumpy.",
+      "dominant_visual": "Little Miss Princess holding a green telephone, smiling, next to Mr. Grumpy.",
+      "mood": "Happy, relieved, cooperative"
+    },
+    {
+      "page_id": "book_1779738150146_page_31",
+      "page_number": 31,
+      "order_index": 30,
+      "order_confidence": 1.0,
+      "full_text": "“Çok iyi emir verdiğini tabii ki!”",
+      "primary_scene_hint": "Mr. Grumpy's answer, confirming Little Miss Princess's skill at giving orders.",
+      "dominant_visual": "Text only page.",
+      "mood": "Humorous, conclusive"
+    }
+  ]
+}
