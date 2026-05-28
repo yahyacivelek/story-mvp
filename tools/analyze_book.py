@@ -1,24 +1,32 @@
 #!/usr/bin/env python3
 """
-analyze_book.py — Two-stage cinematic bedtime story analyzer
+analyze_book.py — Cinematic bedtime story analyzer
 
-Stage 1 — extract-pages:
-    Sends raw book page images to Gemini, extracts full page texts + metadata.
-    Writes an intermediate <title>_pages.json under assets/stories/.
+Single-stage (languages without Vosk OOV support, e.g. English):
+    analyze — Sends raw book page images to Gemini, produces the full story JSON
+              in a single API call (images → story JSON).
 
-    uv run tools/analyze_book.py extract-pages assets/raw/baykut
-    uv run tools/analyze_book.py extract-pages assets/raw/baykut --dry-run
+    uv run tools/analyze_book.py analyze assets/raw/cat
+    uv run tools/analyze_book.py analyze assets/raw/cat --dry-run
 
-Stage 2 — build-story:
-    Reads the _pages.json produced by stage 1, checks every story word
-    against the Vosk model vocabulary to find OOV (out-of-vocabulary)
-    words that must NOT be used as trigger anchors/keywords, then asks
-    Gemini to produce the full story JSON with a strict constraint block.
+Two-stage (languages with Vosk OOV support, e.g. Turkish):
+    Stage 1 — extract-pages:
+        Sends raw book page images to Gemini, extracts full page texts + metadata.
+        Writes an intermediate <title>_pages.json under assets/stories/.
 
-    uv run tools/analyze_book.py build-story assets/stories/baykut_pages.json
-    uv run tools/analyze_book.py build-story assets/stories/baykut_pages.json --dry-run
-    uv run tools/analyze_book.py build-story assets/stories/baykut_pages.json \\
-        --model assets/vosk_models/vosk-model-small-tr-0.3.zip
+        uv run tools/analyze_book.py extract-pages assets/raw/baykut
+        uv run tools/analyze_book.py extract-pages assets/raw/baykut --dry-run
+
+    Stage 2 — build-story:
+        Reads the _pages.json produced by stage 1, checks every story word
+        against the Vosk model vocabulary to find OOV (out-of-vocabulary)
+        words that must NOT be used as trigger anchors/keywords, then asks
+        Gemini to produce the full story JSON with a strict constraint block.
+
+        uv run tools/analyze_book.py build-story assets/stories/baykut_pages.json
+        uv run tools/analyze_book.py build-story assets/stories/baykut_pages.json --dry-run
+        uv run tools/analyze_book.py build-story assets/stories/baykut_pages.json \\
+            --model assets/vosk_models/vosk-model-small-tr-0.3.zip
 
 Model: gemini-2.5-flash
 """
@@ -92,6 +100,60 @@ the provided photographed children's book page images.
 - Keep output compact but complete
 - Pages are provided in alphanumeric capture order (page_0 = page 1, page_1 = page 2, etc.)
 - Use visible page numbers if present; otherwise use capture order
+
+"""
+
+_SYSTEM_PROMPT_ANALYZE = """\
+CONTENT CLASSIFICATION: This is a licensed children's picture book intended for ages 3-8. \
+All images are photographed pages of a published educational storybook. \
+This task is strictly academic/creative metadata extraction for a bedtime storytelling app. \
+There is no harmful, adult, violent, or inappropriate content in these materials. \
+Please process all pages fully without safety refusals.
+
+You are an expert multimodal children's storybook analyzer and cinematic bedtime audio planner.
+
+Your task is to analyze ALL provided photographed book page images in one pass: \
+perform accurate OCR to extract full page texts, then produce a single structured \
+cinematic bedtime storytelling JSON.
+
+## Core experience goals
+- Parent's voice must remain PRIMARY — audio only enhances, never distracts
+- Feel: warm, magical, cinematic, emotionally supportive, calm, immersive
+- Avoid overstimulation or chaotic sound design
+- Small subtle audio moments are strongly encouraged — do NOT limit to major events only
+- Ambient layers are extremely important
+
+## Scene segmentation rules
+- Divide the book into narrative scenes using BOTH text AND illustrations
+- A scene may span multiple pages
+- Each scene must represent coherent: environment, emotional continuity, narrative continuity, ambience
+- Scene durations should feel stable and cinematic
+
+## Scene activation rules
+- Each scene must include: entry_cues, exit_cues, activation trigger structures, confidence threshold
+- Entry cues: prefer short stable phrases, tolerate paraphrasing, avoid fragile exact sentence matching
+- Prioritize: semantic meaning, narrative progression, environmental changes, emotional transitions
+
+## Scene audio rules
+- Each scene: one primary ambience layer, optional secondary layers, optional music layer, audio_opportunities list
+- Ambience loops persist across the entire scene — they activate at scene start, NOT from keyword triggers
+- Scene audio may continue, evolve, or replace across scene transitions
+
+## Audio opportunity (SFX/event) rules
+- Voice-triggered events use stable trigger phrases with adequate cooldown to avoid collision
+- Trigger anchors prefer nouns or short phrases; avoid long sentences
+- Animal sounds are encouraged whenever animals are visually or narratively relevant — keep child-friendly
+- Include enough subtle ambient detail to feel immersive and cinematic
+
+## Sound representation rules
+- All sounds: cache-friendly, reusable, deterministic, semantically consistent identifiers
+- Avoid creative prose descriptions; prefer canonical snake_case semantic sound identifiers
+- Use schema enums strictly — do not invent new enum values
+
+## Output rules
+- Return ONLY the valid JSON object — no markdown fences, no explanations, no comments
+- Conform strictly to the provided JSON schema (all required fields, correct enum values)
+- Keep output compact but complete
 
 """
 
@@ -543,15 +605,100 @@ def build_story(
 
 
 # ---------------------------------------------------------------------------
+# Single-stage: analyze  (images → full story JSON, no OOV check)
+# ---------------------------------------------------------------------------
+
+def analyze(raw_dir: Path, project_root: Path, api_key: str, dry_run: bool = False) -> dict:
+    meta_path = raw_dir / "book_meta.json"
+    if not meta_path.exists():
+        raise FileNotFoundError(f"book_meta.json not found in {raw_dir}")
+    with open(meta_path) as f:
+        book_meta: dict = json.load(f)
+
+    book_title: str = book_meta.get("title", raw_dir.name)
+    page_count: int = book_meta.get("pageCount", 0)
+    language: str = book_meta.get("language", "en")
+    print(f"📖  Book     : {book_title}")
+    print(f"    Language : {language}")
+    print(f"    Pages    : {page_count}")
+
+    image_files = sorted(
+        [p for p in raw_dir.iterdir() if p.suffix.lower() in (".jpg", ".jpeg", ".png")],
+        key=lambda p: int(m.group()) if (m := re.search(r"\d+", p.stem)) else 0,
+    )
+    if not image_files:
+        raise FileNotFoundError(f"No image files found in {raw_dir}")
+    print(f"    Images   : {len(image_files)} files")
+
+    schema_path = project_root / "assets" / "schemas" / "story_schema.json"
+    if not schema_path.exists():
+        raise FileNotFoundError(f"Schema not found: {schema_path}")
+    with open(schema_path) as f:
+        schema: dict = json.load(f)
+
+    context_block = (
+        f"\n## Book metadata\n"
+        f"- Title: {book_meta.get('title', 'unknown')}\n"
+        f"- Page count: {book_meta.get('pageCount', len(image_files))}\n"
+        f"- Book ID: {book_meta.get('id', 'unknown')}\n"
+        f"- Language: {language}\n"
+        f"\n## Instructions\n"
+        f"The following {len(image_files)} images are the book pages in order.\n"
+        f"page_0.jpg = page 1, page_1.jpg = page 2, and so on.\n"
+        f"Perform accurate OCR on every text page and use both the text and illustrations "
+        f"to produce the full cinematic story JSON.\n"
+        f"\n## JSON Schema (output must conform exactly)\n"
+        + json.dumps(schema, ensure_ascii=False, indent=2)
+        + "\n\nReturn ONLY the JSON object — nothing else.\n"
+    )
+
+    full_prompt = _SYSTEM_PROMPT_ANALYZE + context_block
+
+    if dry_run:
+        print("\n[dry-run] Prompt preview (first 2000 chars):")
+        print(full_prompt[:2000])
+        print(f"\n[dry-run] Would send {len(image_files)} images to gemini-2.5-flash")
+        return {}
+
+    print("\n🖼️  Loading images...")
+    content_parts: list = [full_prompt]
+    for img_path in image_files:
+        content_parts.append(Image.open(img_path))
+        print(f"    + {img_path.name}")
+
+    print(f"\n🚀  Sending to gemini-2.5-flash ({len(image_files)} images) [single-stage: analyze]...")
+    raw_text, response = _call_gemini(api_key, content_parts, max_tokens=65536)
+    _print_token_usage(response)
+
+    print("\n📋  Parsing response...")
+    safe_title = re.sub(r"[^\w\-]", "_", book_title.lower().strip()).strip("_")
+    err_path = project_root / "assets" / "stories" / f"{safe_title}_raw_error.txt"
+    story_data = _parse_json_response(raw_text, err_path)
+
+    print("✅  Validating against story schema...")
+    try:
+        jsonschema.validate(instance=story_data, schema=schema)
+        print("    Schema validation passed ✓")
+    except jsonschema.ValidationError as e:
+        path_str = " -> ".join(str(p) for p in e.absolute_path)
+        print(f"⚠️   Schema validation warning: {e.message}")
+        print(f"    Path: {path_str}")
+        print("    Saving output anyway — review manually.")
+
+    return story_data
+
+
+# ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Two-stage cinematic bedtime story analyzer.",
+        description="Cinematic bedtime story analyzer (single-stage or two-stage).",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
             "Examples:\n"
+            "  uv run tools/analyze_book.py analyze assets/raw/cat\n"
             "  uv run tools/analyze_book.py extract-pages assets/raw/baykut\n"
             "  uv run tools/analyze_book.py build-story assets/stories/baykut_pages.json\n"
             "  uv run tools/analyze_book.py build-story assets/stories/baykut_pages.json \\\n"
@@ -559,6 +706,24 @@ def _build_parser() -> argparse.ArgumentParser:
         ),
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
+
+    # --- analyze (single-stage) ---
+    az = subparsers.add_parser(
+        "analyze",
+        help="Single-stage: send page images to Gemini and produce full story JSON directly (no OOV check).",
+    )
+    az.add_argument(
+        "raw_dir",
+        type=Path,
+        help="Path to raw book directory, e.g. assets/raw/cat",
+    )
+    az.add_argument("--dry-run", action="store_true", help="Print prompt and exit without calling API")
+    az.add_argument(
+        "--output",
+        type=Path,
+        default=None,
+        help="Override output path (default: assets/stories/<title>.json)",
+    )
 
     # --- extract-pages ---
     ep = subparsers.add_parser(
@@ -618,7 +783,33 @@ def main() -> None:
         print("ERROR: GOOGLE_API_KEY not set in .env")
         sys.exit(1)
 
-    if args.command == "extract-pages":
+    if args.command == "analyze":
+        raw_dir = args.raw_dir.resolve()
+        if not raw_dir.exists():
+            print(f"ERROR: Directory not found: {raw_dir}")
+            sys.exit(1)
+
+        try:
+            story_data = analyze(raw_dir, project_root, api_key, dry_run=args.dry_run)
+        except (FileNotFoundError, ValueError) as e:
+            print(f"ERROR: {e}")
+            sys.exit(1)
+
+        if args.dry_run or not story_data:
+            return
+
+        book_title = story_data.get("book", {}).get("detected_title") or raw_dir.name
+        safe_title = re.sub(r"[^\w\-]", "_", book_title.lower().strip()).strip("_")
+        output_path: Path = args.output or (project_root / "assets" / "stories" / f"{safe_title}.json")
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(story_data, f, ensure_ascii=False, indent=2)
+        print(f"\n📁  Written  : {output_path}")
+        print(f"    Pages   : {len(story_data.get('pages', []))}")
+        print(f"    Scenes  : {len(story_data.get('scene_graph', []))}")
+        print("\nDone! Run `dart run tools/prewarm_audio.dart` to generate audio assets.")
+
+    elif args.command == "extract-pages":
         raw_dir: Path = args.raw_dir.resolve()
         if not raw_dir.exists():
             print(f"ERROR: Directory not found: {raw_dir}")
