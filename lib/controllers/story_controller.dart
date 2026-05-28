@@ -9,7 +9,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 
 import '../models/story_models.dart';
-import '../services/speech_service.dart';
 import '../services/vosk_grammar_builder.dart';
 import '../services/vosk_speech_service_interface.dart';
 import '../services/deepgram_speech_service.dart';
@@ -93,17 +92,18 @@ class StoryController extends StateNotifier<StoryState> {
   }
 
   final Ref _ref;
-  /// Choose which STT backend to use:
-  /// - 'stt' = speech_to_text plugin (platform default)
-  /// - 'vosk' = offline Vosk
-  /// - 'deepgram' = Deepgram streaming API
-  static const String _sttBackend = 'vosk'; // <-- Change to 'stt' or 'vosk' or 'deepgram' to switch
+  /// Language-aware STT dispatch:
+  ///   Turkish ('tr') → Deepgram (streaming cloud API)
+  ///   All other languages → Vosk (offline model)
+  final _VoskBackend _voskBackend = _VoskBackend(VoskSpeechService.instance);
+  final _DeepgramBackend _deepgramBackend =
+      _DeepgramBackend(DeepgramSpeechService.instance);
 
-  late final _SpeechBackend _speech = switch (_sttBackend) {
-    'vosk' => _VoskBackend(VoskSpeechService.instance),
-    'deepgram' => _DeepgramBackend(DeepgramSpeechService.instance),
-    _ => _SttBackend(SpeechService.instance),
-  };
+  /// The backend currently in use (set at startListening time).
+  _SpeechBackend? _activeBackend;
+
+  _SpeechBackend _backendFor(String languageCode) =>
+      languageCode.toLowerCase() == 'tr' ? _deepgramBackend : _voskBackend;
   StreamSubscription<String>? _speechSub;
 
   /// Monotonically incremented on every [loadStory] call. After each await
@@ -275,7 +275,8 @@ class StoryController extends StateNotifier<StoryState> {
       );
     }
 
-    final ok = await _speech.startListening(
+    final backend = _backendFor(languageCode);
+    final ok = await backend.startListening(
       languageCode: languageCode,
       grammar: initialGrammar,
     );
@@ -286,14 +287,18 @@ class StoryController extends StateNotifier<StoryState> {
       return;
     }
 
+    _activeBackend = backend;
     state = state.copyWith(isListening: true);
 
-    _speechSub = _speech.wordStream.listen(_onWords);
-    debugPrint('[StoryController] speech listening started (backend=$_sttBackend)');
+    await _speechSub?.cancel();
+    _speechSub = backend.wordStream.listen(_onWords);
+    final backendName = languageCode.toLowerCase() == 'tr' ? 'deepgram' : 'vosk';
+    debugPrint('[StoryController] speech listening started (backend=$backendName, lang=$languageCode)');
   }
 
   Future<void> stopListening() async {
-    await _speech.stopListening();
+    await _activeBackend?.stopListening();
+    _activeBackend = null;
     await _ref
         .read(audioControllerProvider.notifier)
         .setSpeechCaptureDucking(false);
@@ -643,7 +648,7 @@ class StoryController extends StateNotifier<StoryState> {
 
     // Full-story grammar is loaded once at startup — no per-scene swap needed.
     // Only restart STT if it stopped unexpectedly (e.g. mic permission denied).
-    if (_sttBackend == 'vosk' && !state.isListening) {
+    if (!state.isListening) {
       debugPrint(
         '[StoryController] not listening at scene transition → '
         'restarting STT for scene "${nextScene.sceneId}"',
@@ -662,8 +667,9 @@ class StoryController extends StateNotifier<StoryState> {
   @override
   void dispose() {
     _speechSub?.cancel();
-    _speech.stopListening();
-    _speech.dispose();
+    _activeBackend?.stopListening();
+    _voskBackend.dispose();
+    _deepgramBackend.dispose();
     super.dispose();
   }
 }
@@ -693,27 +699,6 @@ abstract class _SpeechBackend {
   void dispose();
 }
 
-class _SttBackend implements _SpeechBackend {
-  _SttBackend(this._svc);
-  final SpeechService _svc;
-
-  @override
-  Stream<String> get wordStream => _svc.wordStream;
-
-  @override
-  Future<bool> startListening(
-          {String languageCode = 'en', List<String>? grammar}) =>
-      _svc.startListening(languageCode: languageCode);
-
-  @override
-  Future<void> updateGrammar(List<String> grammar) async {}
-
-  @override
-  Future<void> stopListening() => _svc.stopListening();
-
-  @override
-  void dispose() => _svc.dispose();
-}
 
 class _VoskBackend implements _SpeechBackend {
   _VoskBackend(this._svc);
